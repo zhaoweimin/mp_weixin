@@ -35,7 +35,7 @@ export default {
         {
           title: '业绩管理',
           list: [
-            {text: '产品预约', icon: '../../img/two_1.png'},
+            {text: '产品预约', url: '../product/booking/main', icon: '../../img/two_1.png'},
             {text: '合同管理', icon: '../../img/two_2.png'},
             {text: '业绩新增', icon: '../../img/two_3.png'},
             {text: '历史业绩', icon: '../../img/two_4.png'}

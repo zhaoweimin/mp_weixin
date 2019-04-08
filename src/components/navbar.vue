@@ -32,6 +32,7 @@ export default {
   right: 0;
   text-align: center;
   color: #ffffff;
+  z-index: 10;
 }
 .header .nav{
   font-size: 14px;

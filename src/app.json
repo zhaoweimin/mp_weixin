@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/main",
+
     "pages/customer/archives/main",
     "pages/customer/customer/main",
     "pages/customer/add/main",
@@ -9,6 +10,10 @@
     "pages/customer/followDetail/main",
     "pages/customer/report/main",
     "pages/customer/reportDetail/main",
+
+    "pages/product/booking/main",
+    "pages/product/detail/main",
+
     "pages/index/main",
     "pages/logs/main"  ],
   "window": {
