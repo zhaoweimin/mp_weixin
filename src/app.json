@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/home/main",
+    "pages/customer/archives/main",
+    "pages/customer/customer/main",
+    "pages/customer/add/main",
+    "pages/customer/follow/main",
+    "pages/customer/followList/main",
+    "pages/customer/followDetail/main",
+    "pages/customer/report/main",
+    "pages/customer/reportDetail/main",
+    "pages/index/main",
+    "pages/logs/main"  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "backgroundColor": "#fafafa",
+    "selectedColor": "#509ef0",
+    "borderStyle": "white",
+
+    "list": [{
+      "text": "应用",
+      "pagePath": "pages/home/main",
+      "iconPath": "static/tabs/home.png",
+      "selectedIconPath": "static/tabs/home-active.png"
+    }, {
+      "text": "待办",
+      "pagePath": "pages/index/main",
+      "iconPath": "static/tabs/wait.png",
+      "selectedIconPath": "static/tabs/wait-active.png"
+    }, {
+      "text": "报表",
+      "pagePath": "pages/logs/main",
+      "iconPath": "static/tabs/table.png",
+      "selectedIconPath": "static/tabs/table-active.png"
+    }],
+
+    "items": [{
+      "name": "首页",
+      "pagePath": "pages/index/main",
+      "icon": "static/tabs/home.png",
+      "activeIcon": "static/tabs/home-active.png"
+    }, {
+      "name": "订单",
+      "pagePath": "pages/logs/main",
+      "icon": "static/tabs/orders.png",
+      "activeIcon": "static/tabs/orders-active.png"
+    }],
+    "position": "bottom"
+  }
+}

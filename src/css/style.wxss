@@ -1,0 +1,147 @@
+/* search */
+.search{
+    padding: 10px;
+    color: #333333;
+}
+.search .dis-flex{
+    background: #ffffff;
+    line-height: 20px;
+    height: 30px;
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 12px;
+}
+.search .dis-flex .icon{
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.search .dis-flex .icon .iconfont{
+    font-size: 14px;
+}
+.search .dis-flex .input input{
+    line-height: 30px;
+    height: 30px;
+    min-height: 30px;
+}
+/* end */
+
+/* application */
+.application{
+    background: #edf6ff;
+}
+.application .block{
+    padding: 10px;
+    background: #ffffff;
+    margin-bottom: 10px;
+}
+.application .title{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+}
+.application .con{
+    margin-top: 10px;
+}
+.application .con .item{
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    font-size: 14px;
+}
+.application .con .item .icon{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #fff1d1;
+    color: #f4c352;
+    line-height: 40px;
+    margin: auto;
+}
+.application .con .item .icon .iconfont{
+    font-size: 20px;
+}
+.application .con .item .name{
+    margin-top: 6px;
+}
+/* end */
+
+/* customer */
+.customer-card{
+  margin: 10px;
+  background: #ffffff;
+  padding: 20px 10px;
+  border-radius: 4px;
+}
+.customer-card .avatar{
+  width: 50px;
+  height: 50px;
+}
+.customer-card .avatar .img{
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+}
+.customer-card .msg{
+  padding: 0 10px;
+  flex: 1;
+}
+.customer-card .msg .title{
+  font-size: 16px;
+  line-height: 25px;
+}
+.customer-card .msg .title .sex{
+  font-size: 13px;
+  color: #9a9a9a; 
+  margin-left: 4px;
+}
+.customer-card .msg .tag{
+  line-height: 25px;
+  height: 25px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 2px;
+  border: 1px solid #fd8f1c;
+  color: #fd8f1c;
+  font-size: 12px;
+  margin-right: 4px;
+  text-align: center;
+  padding: 0 6px;
+  background: #ffffff;
+}
+.customer-card .msg .level{
+  min-width: 40px;
+  background: #ffe6d7;
+}
+.customer-card .more{
+  line-height: 50px;
+  height: 50px;
+  font-size: 13px;
+  color: #9a9a9a;
+}
+.customer-card .level-1{
+  border-color: #fd8f1c;
+}
+.customer-card .level-2 .tag{
+  border-color: #519eee;
+  color: #519eee;
+}
+.customer-card .level-2 .level{
+  background: #d4f9ff;
+}
+.customer-card .level-3 .tag{
+  border-color: #f3c450;
+  color: #f3c450;
+}
+.customer-card .level-3 .level{
+  background: #fff1d2;
+}
+.customer-card .level-4 .tag{
+  border-color: #14ebc1;
+  color: #14ebc1;
+}
+.customer-card .level-4 .level{
+  background: #dafff8;
+}
+
+/* end */

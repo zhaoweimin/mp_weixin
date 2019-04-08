@@ -1,0 +1,84 @@
+/* 基础类名 */
+/* color */
+page{
+  background: #edf6ff;
+}
+.main{
+    color: #333333;
+}
+.cblack{
+    color: #333333 !important;
+}
+.cred {
+    color: #d95940 !important;
+}
+.cgey {
+    color: #999999 !important;
+}
+.clink{
+    color: #509ef0 !important;
+}
+
+.bg-blue{
+    background: #509ef0 !important;
+}
+
+.has-header{
+  padding-top: 50px; 
+}
+.has-two-header{
+  padding-top: 100px; 
+}
+
+.strong {
+    font-weight: bold !important;
+}
+.rel {
+    position: relative;
+}
+.abs {
+    position: absolute;
+}
+
+.over-flow-ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+.over-flow-ellipsis-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.over-flow-ellipsis-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+/* flex */
+.dis-flex {
+    display: flex;
+}
+.flex-1 {
+    flex: 1;
+}
+.flex-2 {
+    flex: 2;
+}
+.flex-3 {
+    flex: 3;
+}
+
+.ta-c {
+    text-align: center !important;
+}
+.ta-l {
+    text-align: left !important;
+}
+.ta-r {
+    text-align: right !important;
+}
