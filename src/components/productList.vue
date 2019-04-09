@@ -29,7 +29,8 @@
             <div class="line">所属部门：市场部</div>
           </div>
           <div class="right">
-            <div class="btn">我要预约</div>
+            <div class="btn" @click="booking(id)" v-if="type == 0">我要预约</div>
+            <div class="btn" @click="bookingRes(id)" v-if="type == 1">查看结果</div>
           </div>
         </div>
       </div>
@@ -39,10 +40,18 @@
 
 <script>
 export default {
-  props: ['info'],
+  props: ['info', 'type'],
   methods: {
     detail (id) {
       let url = `../detail/main?id=${id}`
+      mpvue.navigateTo({ url })
+    },
+    booking (id) {
+      let url = `../booking/main?id=${id}`
+      mpvue.navigateTo({ url })
+    },
+    bookingRes (id) {
+      let url = `../bookingRes/main?id=${id}`
       mpvue.navigateTo({ url })
     }
   }

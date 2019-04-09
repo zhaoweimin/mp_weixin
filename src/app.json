@@ -11,11 +11,24 @@
     "pages/customer/report/main",
     "pages/customer/reportDetail/main",
 
+    "pages/product/bookingList/main",
+    "pages/product/bookingRes/main",
     "pages/product/booking/main",
     "pages/product/detail/main",
+    "pages/product/contract/main",
+    "pages/product/achievement/main",
+    "pages/product/addAchievement/main",
+    "pages/product/historyAchievement/main",
+    
+    "pages/interest/list/main",
+    "pages/interest/detail/main",
+    "pages/royalty/list/main",
+    "pages/royalty/detail/main",
 
     "pages/index/main",
-    "pages/logs/main"  ],
+    "pages/success/main",
+    "pages/logs/main"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

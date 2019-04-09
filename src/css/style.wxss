@@ -1,4 +1,7 @@
 /* search */
+button::after{
+  border: none;
+}
 .search{
     padding: 10px;
     color: #333333;
@@ -144,4 +147,22 @@
   background: #dafff8;
 }
 
+/* end */
+
+/* footer button */
+.has-footer{
+  padding-bottom: 50px;
+}
+.fixed-btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.fixed-btn .btn{
+  border-radius: 0px;
+  background:rgba(80,158,240,1);
+  color: #ffffff;
+  font-size: 16px;
+}
 /* end */

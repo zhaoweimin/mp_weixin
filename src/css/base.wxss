@@ -18,6 +18,9 @@ page{
 .clink{
     color: #509ef0 !important;
 }
+.cgreen{
+    color: #16EAC2 !important;
+}
 
 .bg-blue{
     background: #509ef0 !important;

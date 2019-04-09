@@ -213,9 +213,6 @@ export default {
 .msg-table .table .line .key{
   color: #999999;
 }
-.msg-table .table .line .key{
-
-}
 .msg-table .table .line-2 .key{
   color: #999999;
   width: 30%;

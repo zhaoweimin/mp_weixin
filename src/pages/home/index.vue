@@ -35,17 +35,17 @@ export default {
         {
           title: '业绩管理',
           list: [
-            {text: '产品预约', url: '../product/booking/main', icon: '../../img/two_1.png'},
-            {text: '合同管理', icon: '../../img/two_2.png'},
-            {text: '业绩新增', icon: '../../img/two_3.png'},
-            {text: '历史业绩', icon: '../../img/two_4.png'}
+            {text: '产品预约', url: '../product/bookingList/main', icon: '../../img/two_1.png'},
+            {text: '合同管理', url: '../product/contract/main', icon: '../../img/two_2.png'},
+            {text: '业绩新增', url: '../product/achievement/main', icon: '../../img/two_3.png'},
+            {text: '历史业绩', url: '../product/historyAchievement/main', icon: '../../img/two_4.png'}
           ]
         },
         {
           title: '收入管理',
           list: [
-            {text: '客户计息', icon: '../../img/three_1.png'},
-            {text: '产品提成', icon: '../../img/three_2.png'}
+            {text: '客户计息', url: '../interest/list/main', icon: '../../img/three_1.png'},
+            {text: '产品提成', url: '../royalty/list/main', icon: '../../img/three_2.png'}
           ]
         },
         {
