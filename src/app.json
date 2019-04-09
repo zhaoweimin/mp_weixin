@@ -25,7 +25,13 @@
     "pages/royalty/list/main",
     "pages/royalty/detail/main",
 
+
     "pages/task/main",
+
+    "pages/discover/message/main",
+
+    "pages/index/main",
+
     "pages/success/main",
     "pages/statis/main"
   ],
