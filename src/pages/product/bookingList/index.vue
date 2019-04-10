@@ -4,12 +4,16 @@
     <block v-for="(vo, key) in info" :key="key">
       <product :info="vo" :type="nav_num"></product>
     </block>
+
+    <footerIcon></footerIcon>
+    
   </div>
 </template>
 
 <script>
 import navbar from '@/components/navbar'
 import product from '@/components/productList'
+import footerIcon from '@/components/footerIcon'
 
 export default {
   data () {
@@ -63,7 +67,8 @@ export default {
 
   components: {
     navbar,
-    product
+    product,
+    footerIcon
   },
 
   methods: {

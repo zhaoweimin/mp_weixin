@@ -26,35 +26,35 @@ export default {
         {
           title: '客户管理',
           list: [
-            {text: '客户档案', url: '../customer/archives/main', icon: '../../img/one_1.png'},
-            {text: '客户新增', url: '../customer/add/main', icon: '../../img/one_2.png'},
-            {text: '客户跟进', url: '../customer/follow/main', icon: '../../img/one_3.png'},
-            {text: '客户投诉', url: '../customer/report/main', icon: '../../img/one_4.png'}
+            {text: '客户档案', url: '../customer/archives/main', icon: require('../../img/one_1.png')},
+            {text: '客户新增', url: '../customer/add/main', icon: require('../../img/one_2.png')},
+            {text: '客户跟进', url: '../customer/follow/main', icon: require('../../img/one_3.png')},
+            {text: '客户投诉', url: '../customer/report/main', icon: require('../../img/one_4.png')}
           ]
         },
         {
           title: '业绩管理',
           list: [
-            {text: '产品预约', url: '../product/bookingList/main', icon: '../../img/two_1.png'},
-            {text: '合同管理', url: '../product/contract/main', icon: '../../img/two_2.png'},
-            {text: '业绩新增', url: '../product/achievement/main', icon: '../../img/two_3.png'},
-            {text: '历史业绩', url: '../product/historyAchievement/main', icon: '../../img/two_4.png'}
+            {text: '产品预约', url: '../product/bookingList/main', icon: require('../../img/two_1.png')},
+            {text: '合同管理', url: '../product/contract/main', icon: require('../../img/two_2.png')},
+            {text: '业绩新增', url: '../product/achievement/main', icon: require('../../img/two_3.png')},
+            {text: '历史业绩', url: '../product/historyAchievement/main', icon: require('../../img/two_4.png')}
           ]
         },
         {
           title: '收入管理',
           list: [
-            {text: '客户计息', url: '../interest/list/main', icon: '../../img/three_1.png'},
-            {text: '产品提成', url: '../royalty/list/main', icon: '../../img/three_2.png'}
+            {text: '客户计息', url: '../interest/list/main', icon: require('../../img/three_1.png')},
+            {text: '产品提成', url: '../royalty/list/main', icon: require('../../img/three_2.png')}
           ]
         },
         {
           title: '线索发现',
           list: [
-            {text: '消息提醒', icon: '../../img/four_1.png'},
-            {text: '市场活动', icon: '../../img/four_2.png'},
-            {text: '在售产品', icon: '../../img/four_3.png'},
-            {text: '知识库', icon: '../../img/four_4.png'}
+            {text: '消息提醒', icon: require('../../img/four_1.png')},
+            {text: '市场活动', icon: require('../../img/four_2.png')},
+            {text: '在售产品', icon: require('../../img/four_3.png')},
+            {text: '知识库', icon: require('../../img/four_4.png')}
           ]
         }
       ]

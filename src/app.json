@@ -25,9 +25,9 @@
     "pages/royalty/list/main",
     "pages/royalty/detail/main",
 
-    "pages/index/main",
+    "pages/task/main",
     "pages/success/main",
-    "pages/logs/main"
+    "pages/statis/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -48,12 +48,12 @@
       "selectedIconPath": "static/tabs/home-active.png"
     }, {
       "text": "待办",
-      "pagePath": "pages/index/main",
+      "pagePath": "pages/task/main",
       "iconPath": "static/tabs/wait.png",
       "selectedIconPath": "static/tabs/wait-active.png"
     }, {
       "text": "报表",
-      "pagePath": "pages/logs/main",
+      "pagePath": "pages/statis/main",
       "iconPath": "static/tabs/table.png",
       "selectedIconPath": "static/tabs/table-active.png"
     }],
