@@ -323,3 +323,25 @@ page{
 .f18{
   font-size: 18px;
 }
+
+.flex-column{
+  flex-direction: column
+}
+.l-center{
+  align-items: center;
+}
+.l-end{
+  align-items: flex-end;
+}
+.l-start{
+  align-items: flex-start;
+}
+.a-center{
+  justify-content: center;
+}
+.a-right{
+  justify-content: right;
+}
+.a-left{
+  justify-content: left;
+}
