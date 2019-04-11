@@ -27,6 +27,11 @@
 
     "pages/discover/message/main",
     "pages/discover/market/main",
+    "pages/discover/marketAction/main",
+    "pages/discover/marketCustomer/main",
+    "pages/discover/actionDetail/main",
+    "pages/discover/product/main",
+    "pages/discover/lore/main",
 
     "pages/success/main",
     "pages/task/main",

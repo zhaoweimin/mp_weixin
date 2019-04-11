@@ -199,12 +199,60 @@
         <div class="line"><span class="key">提成总额：50万</span></div>
       </div>
     </div>
+
+    <div class="contract-card" v-if="type == 6">
+      <div class="order"><div class="bg">合同编号：201903201530326548</div></div>
+      <div class="status two c1" v-if="status == 0">募集中</div>
+      <div class="status two c2" v-if="status == 1">已完成</div>
+      <div class="title">
+        <div class="name">产品名称<span class="small">基金</span></div>
+      </div>
+      <div class="msg no-boder">
+        <div class="line">
+          <span class="key">募集规模：10亿</span>
+        </div>
+        <div class="line">
+          <span class="key">募集期：10个月</span> 
+          <div class="more">查看更多<span class="iconfont iconright"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contract-card" v-if="type == 7">
+      <div class="title">
+        <div class="name">标题<span class="small">类型</span></div>
+      </div>
+      <div class="msg no-boder">
+        <div class="line"><span class="key">所属目录：目录名称</span></div>
+        <div class="line"><span class="key">上传人：陈成</span></div>
+        <div class="line"><span class="key">上传部门：合约部</span></div>
+        <div class="line">
+          <span class="key">上传时间：2019-03-15</span> 
+          <div class="more-2">查看跟多<span class="iconfont iconright"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contract-card" v-if="type == 8" @click="actionDetail(id)">
+      <div class="title">
+        <div class="name">活动名称</div>
+      </div>
+      <div class="msg no-boder">
+        <div class="line"><span class="key">活动时间：2018-03-20至2019-5-20</span></div>
+        <div class="line"><span class="key">活动发起人：陈方圆</span></div>
+        <div class="line">
+          <span class="key">活动发起部门：合约部</span>
+          <div class="more">更多<span class="iconfont iconright"></span></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
 export default {
-  props: ['info', 'type'],
+  props: ['info', 'type', 'status'],
   methods: {
     interstDetail (id) {
       let url = `/pages/interest/detail/main?id=${id}`
@@ -212,6 +260,10 @@ export default {
     },
     royaltyDetail (id) {
       let url = `/pages/royalty/detail/main?id=${id}`
+      mpvue.navigateTo({ url })
+    },
+    actionDetail (id) {
+      let url = `/pages/discover/actionDetail/main?id=${id}`
       mpvue.navigateTo({ url })
     }
   }
@@ -237,6 +289,14 @@ export default {
   padding: 0 10px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+.contract-card .status.c1{
+  color: #F2A711;
+  background: rgba(255,238,203,1);
+}
+.contract-card .status.c2{
+  background: #e0e0e0;
+  color: #999999;
 }
 .contract-card .two{
   top: 20px;
@@ -286,6 +346,20 @@ export default {
 }
 .contract-card .msg .val{
   font-weight: bold;
+}
+.contract-card .msg .more{
+  float: right;
+  color: #999999;
+}
+.contract-card .msg .more-2{
+  float: right;
+  box-sizing: border-box;
+  height: 24px;
+  border-radius: 12px;
+  color: #509ef0;
+  border: 1px solid #509ef0;
+  padding-left: 10px;
+  line-height: 22px;
 }
 .contract-card .msg .btn{
   line-height: 20px;

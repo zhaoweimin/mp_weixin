@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="contract-card">
+    <div class="contract-card" :class="status == 2 ? 'fail' : ''">
       <div class="order">合同编号：201903201530326548 <div class="copy">复制</div></div>
-      <div class="status">预约成功</div>
+      <div class="status c1" v-if="status == 0">审核中</div>
+      <div class="status" v-if="status == 1">预约成功</div>
+      <div class="status c2" v-if="status == 2">预约失败</div>
       <div class="title">
-        <div class="name">预约产品：<span class="tag">产品名称</span></div>
+        <div class="name">产品名称：<span class="tag">产品名称</span></div>
       </div>
       <div class="msg no-boder">
         <div class="line">
@@ -22,7 +24,10 @@
           <span class="key">客户姓名：</span><span class="val">周方文</span>
         </div>
         <div class="line">
-          <span class="key">已预约金额：</span><span class="val cred">2千万</span>
+          <span class="key">已预约金额：</span><span class="val" :class="status != 2 ? 'cred' : ''">2千万</span>
+        </div>
+        <div class="line cblack">
+          <span class="key">失败原因：</span><span class="val">客户放弃</span>
         </div>
       </div>
     </div>
@@ -31,62 +36,28 @@
 
 
 <script>
-import navbar from '@/components/navbar'
-import product from '@/components/productList'
-
 export default {
   data () {
     return {
       nav: ['新建预约', '历史预约'],
       nav_num: 0,
-      info: [
-        {
-          title: '基金',
-          type: 0,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
-        },
-        {
-          title: '股权',
-          type: 1,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
-        },
-        {
-          title: '证券',
-          type: 2,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
-        },
-        {
-          title: '其他',
-          type: 3,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
-        }
-      ]
+      info: [],
+      status: 0
     }
   },
 
   components: {
-    navbar,
-    product
+  },
+
+  onLoad (option) {
+    let status = option.status
+    this.status = status
+    let title = [
+      '审核中',
+      '预约成功',
+      '预约失败'
+    ]
+    mpvue.setNavigationBarTitle({ title: title[status] })
   },
 
   methods: {
@@ -109,6 +80,9 @@ export default {
   font-size: 13px;
   position: relative;
 }
+.contract-card.fail{
+  color: #999999;
+}
 .contract-card .status{
   position: absolute;
   right: 0;
@@ -120,6 +94,14 @@ export default {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+.contract-card .status.c1{
+  background: #d9fff8;
+  color: #16eac2;
+}
+.contract-card .status.c2{
+  background: #e0e0e0;
+  color: #999999;
+}
 .contract-card .order{
   background: rgba(80,158,240,1);
   line-height: 22px;
@@ -127,6 +109,10 @@ export default {
   font-size: 11px;
   color: #ffffff;
   padding: 0 15px;
+}
+.contract-card.fail .order{
+  background: #e0e0e0;
+  color: #999999;
 }
 .contract-card .order .copy{
   color: #ffffff;
@@ -145,6 +131,20 @@ export default {
 .contract-card .title .name{
   font-size: 16px;
   font-weight: bold;
+}
+.contract-card .title .tag{
+  background:rgba(255,230,214,1);
+  border-radius:4rpx;
+  font-size:26rpx;
+  color:rgba(234,118,40,1);
+  line-height:60rpx;
+  padding:0 8rpx;
+  margin-left:8rpx;
+  font-weight: normal;
+}
+.contract-card.fali .title .tag{
+  background: #e0e0e0;
+  color: #999999;
 }
 .contract-card .title .name .small{
   font-size: 13px;
@@ -168,6 +168,9 @@ export default {
 }
 .contract-card .msg .val{
   font-weight: bold;
+}
+.contract-card.fail .msg .val{
+  font-weight: normal;
 }
 .contract-card .no-boder{
   border-top: 0px solid rgba(240,240,240,1);

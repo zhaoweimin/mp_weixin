@@ -53,8 +53,8 @@ export default {
           list: [
             {text: '消息提醒', url: '../discover/message/main', icon: require('../../img/four_1.png')},
             {text: '市场活动', url: '../discover/market/main', icon: require('../../img/four_2.png')},
-            {text: '在售产品', icon: require('../../img/four_3.png')},
-            {text: '知识库', icon: require('../../img/four_4.png')}
+            {text: '在售产品', url: '../discover/product/main', icon: require('../../img/four_3.png')},
+            {text: '知识库', url: '../discover/lore/main', icon: require('../../img/four_4.png')}
           ]
         }
       ]

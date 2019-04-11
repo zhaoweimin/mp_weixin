@@ -1,11 +1,11 @@
 <template>
   <div class="main">
    <div class="plr10 pt20">
-     <div class="card bg-fff dis-flex l-end">
+     <div class="card bg-fff dis-flex l-end" v-for="(vo, key) in list" :key="key">
        <div class="card-left dis-flex flex-1 l-center a-center">
          <div class="dis-flex flex-column a-center l-center">
-           <div class="strong f17 cblack mb20">可邀约活动</div>
-           <span class="f12 clink btn-in">点击进入</span>
+           <div class="strong f17 cblack mb20">{{vo.name}}</div>
+           <span class="f12 clink btn-in" @click="link(vo.url)">点击进入</span>
          </div>
        </div>
         <img class="card-img" src="../../../img/follow_1.png" alt="">   
@@ -18,10 +18,20 @@
 export default {
   data () {
     return {
+      list: [
+        {name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0`},
+        {name: '历史活动', url: `/pages/discover/marketAction/main?type=1`},
+        {name: '历史邀约客户', url: `/pages/discover/marketCustomer/main`}
+      ]
     }
   },
 
   methods: {
+    link (url) {
+      if (url) {
+        mpvue.navigateTo({ url })
+      }
+    }
   },
 
   created () {
@@ -31,6 +41,7 @@ export default {
 
 <style scoped>
 .card{
+  margin: 10px 0;
   height:150px;
   box-shadow:0px 1px 9px 0px rgba(85,168,255,0.2);
   border-radius:0px 0px 2px 2px;

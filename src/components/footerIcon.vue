@@ -2,20 +2,20 @@
   <div>
     <div class="footer-icon">
       <div class="dis-flex">
-        <div class="flex-1">
-          <div class="icon"><span class="iconfont iconjiahao"></span></div>
+        <div class="flex-1 clink">
+          <div class="icon"><span class="iconfont iconxinjian"></span></div>
           <div class="text">新建</div>
         </div>
-        <div class="flex-1" @click="bookingStatus(0)">
-          <div class="icon"><span class="iconfont iconjiahao"></span></div>
+        <div class="flex-1" @click="bookingRes(0)">
+          <div class="icon"><span class="iconfont icongaizhang"></span></div>
           <div class="text">审核中</div>
         </div>
-        <div class="flex-1" @click="bookingStatus(1)">
-          <div class="icon"><span class="iconfont iconjiahao"></span></div>
+        <div class="flex-1" @click="bookingRes(1)">
+          <div class="icon"><span class="iconfont iconchenggong"></span></div>
           <div class="text" >预约成功</div>
         </div>
-        <div class="flex-1" @click="bookingStatus(2)">
-          <div class="icon"><span class="iconfont iconjiahao"></span></div>
+        <div class="flex-1" @click="bookingRes(2)">
+          <div class="icon"><span class="iconfont iconshibai"></span></div>
           <div class="text">预约失败</div>
         </div>
       </div>
@@ -25,7 +25,13 @@
 
 <script>
 export default {
-  props: ['text']
+  props: ['text'],
+  methods: {
+    bookingRes (status) {
+      let url = `../bookingRes/main?status=${status}`
+      mpvue.navigateTo({ url })
+    }
+  }
 }
 </script>
 
