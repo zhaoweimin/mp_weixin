@@ -25,15 +25,11 @@
     "pages/royalty/list/main",
     "pages/royalty/detail/main",
 
-
-    "pages/task/main",
-
     "pages/discover/message/main",
     "pages/discover/market/main",
 
-    "pages/index/main",
-
     "pages/success/main",
+    "pages/task/main",
     "pages/statis/main"
   ],
   "window": {
@@ -65,17 +61,6 @@
       "selectedIconPath": "static/tabs/table-active.png"
     }],
 
-    "items": [{
-      "name": "首页",
-      "pagePath": "pages/index/main",
-      "icon": "static/tabs/home.png",
-      "activeIcon": "static/tabs/home-active.png"
-    }, {
-      "name": "订单",
-      "pagePath": "pages/logs/main",
-      "icon": "static/tabs/orders.png",
-      "activeIcon": "static/tabs/orders-active.png"
-    }],
     "position": "bottom"
   }
 }
