@@ -13,6 +13,7 @@ cd myproject
 yarn
 
 # 开发时构建
+测试自己本地
 npm run dev
 
 # 打包构建

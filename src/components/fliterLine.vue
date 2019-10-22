@@ -109,6 +109,7 @@ export default {
   right: 0;
   bottom: 0;
   background: rgba(0,0,0,.3);
+  z-index: 11;
 }
 .filter {
   position: fixed;
@@ -118,6 +119,7 @@ export default {
   right: 0;
   text-align: center;
   background: #ffffff;
+  z-index: 11;
 }
 
 .filter .nav{
@@ -140,9 +142,8 @@ export default {
   top: 0;
   bottom: 0;
   background: #ffffff;
-  
   text-align: left;
-
+  z-index: 12;
 }
 .filter-block{
   position: absolute;

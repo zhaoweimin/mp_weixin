@@ -65,6 +65,21 @@ export default {
     item
   },
 
+  mounted () {
+    this.$api.test().then(res => {
+      console.log(res)
+    }).then(res => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log(2)
+          resolve()
+        }, 1000)
+      })
+    }).then(res => {
+      console.log(3)
+    })
+  },
+
   methods: {
     link (url) {
       console.log(url)
