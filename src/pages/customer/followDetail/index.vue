@@ -79,46 +79,5 @@ export default {
 </script>
 
 <style scoped>
-.msg-table{
-  margin: 15px 0;
-  background: #ffffff;
-  border-radius: 4px;
-}
-.msg-table .title{
-  padding-top: 5px;
-  margin-left: 15px;
-  padding-right: 15px;
-  font-weight: bold;
-  line-height: 40px;
-}
-.msg-table .table{
-  padding-left: 15px;
-  line-height: 40px;
-}
-.msg-table .table .line{
-  display: flex;
-  padding-right: 15px;
-  font-size: 13px;
-  border-top: rgba(245,245,245,1);
-}
-.msg-table .table .line .key{
-  color: #999999;
-}
-.msg-table .table .line .val .iconfont{
-  font-size: 14px;
-}
-.msg-table .title .iconfont{
-  color: #55A8FF;
-}
-.msg-table .table .big-line{
-  text-align: center;
-  line-height: 20px;
-  padding: 10px;
-  position: relative;
-  left: -15px;
-}
-.msg-table .table .big-line .val{
-  line-height: 30px;
-  font-size: 17px;
-}
+
 </style>

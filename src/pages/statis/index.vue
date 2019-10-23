@@ -218,13 +218,13 @@ export default {
 }
 .statis .title{
   position: relative;
-  top: -10px;
+  top: -20rpx;
   line-height: 30px;
   height: 30px;
   width: 100px;
   font-size: 16px;
   font-weight: bold;
-  background: #509EF0;
+  background: #259efa;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   margin: auto;
@@ -237,24 +237,24 @@ export default {
 .statis .title .r-horn{
   position: absolute;
   top: 0px;
-  right: -10px;
+  right: -19rpx;
   width:0;
   height:0;
-	border-right: 10px solid transparent;
+	border-right: 20rpx solid transparent;
 	border-left: 0px solid transparent;
-  border-bottom: 10px solid #4181C4;
+  border-bottom: 20rpx solid #4483c5;
   /* transform:rotate(-45deg); */
   z-index: 1;
 }
 .statis .title .l-horn{
   position: absolute;
   top: 0px;
-  left: -10px;
+  left: -19rpx;
   width:0;
   height:0;
 	border-right: 0px solid transparent;
-	border-left: 10px solid transparent;
-  border-bottom: 10px solid #4181C4;
+	border-left: 20rpx solid transparent;
+  border-bottom: 20rpx solid #4483c5;
   /* transform:rotate(-45deg); */
   z-index: 1;
 }
@@ -268,9 +268,9 @@ export default {
   margin: 10px auto;
   text-align: center;
   box-sizing: border-box;
-  border: 1px solid #509EF0;
+  border: 1px solid #259efa;
   line-height: 24px;
-  color: #509EF0;
+  color: #259efa;
   font-size: 15px;
   font-weight: 600;
   border-radius: 2px;
@@ -283,7 +283,7 @@ export default {
   bottom: -5px;
   width: 0;
   height: 0;
-  border-top: 5px solid #509EF0;
+  border-top: 5px solid #259efa;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
 }

@@ -278,6 +278,7 @@ export default {
   background: #ffffff;
   font-size: 13px;
   position: relative;
+  box-shadow: 0 0 5px rgba(100,100,100,0.1);
 }
 .contract-card .status{
   position: absolute;

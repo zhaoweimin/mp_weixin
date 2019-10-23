@@ -1,7 +1,17 @@
 <template>
-  <div class="main has-two-header">
+  <div class="main has-big-header">
     <navbar :info="nav" @changeNav="changeNav"></navbar>
-    <fliter :info="nav"></fliter>
+    <!-- <fliter :info="nav"></fliter> -->
+    <div class="search dis-flex">
+      <div class="dis-flex flex-1">
+        <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
+        <div class="input flex-1">
+          <input type="text" placeholder="搜索">
+        </div>
+      </div>
+      <div class="action">取消</div>
+    </div>
+
     <block v-for="(vo, key) in list" :key="key">
       <card :info="vo"></card>
     </block>
@@ -59,6 +69,10 @@ export default {
   methods: {
     changeNav (nav) {
       console.log(nav)
+    },
+    send () {
+      let url = '/pages/task/detail/main?id='
+      mpvue.navigateTo({ url })
     }
   },
 

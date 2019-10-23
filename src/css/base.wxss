@@ -1,7 +1,8 @@
 /* 基础类名 */
 /* color */
 page{
-  background: #edf6ff;
+  background: #f7f7f7;
+  /* background: #edf6ff; */
 }
 .main{
     color: #333333;
@@ -16,21 +17,26 @@ page{
     color: #999999 !important;
 }
 .clink{
-    color: #509ef0 !important;
+    color: #259efa !important;
 }
 .cgreen{
     color: #16EAC2 !important;
 }
 
 .bg-blue{
-    background: #509ef0 !important;
+    background: #259efa !important;
 }
 .bg-fff{
     background: #fff;
 }
-
+.box-shadow{
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
 .has-header{
   padding-top: 50px; 
+}
+.has-big-header{
+  padding-top: 60px; 
 }
 .has-two-header{
   padding-top: 100px; 

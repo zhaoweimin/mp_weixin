@@ -33,8 +33,10 @@
     "pages/discover/product/main",
     "pages/discover/lore/main",
 
+    "pages/task/list/main",
+    "pages/task/detail/main",
+
     "pages/success/main",
-    "pages/task/main",
     "pages/statis/main"
   ],
   "window": {
@@ -56,7 +58,7 @@
       "selectedIconPath": "static/tabs/home-active.png"
     }, {
       "text": "待办",
-      "pagePath": "pages/task/main",
+      "pagePath": "pages/task/list/main",
       "iconPath": "static/tabs/wait.png",
       "selectedIconPath": "static/tabs/wait-active.png"
     }, {

@@ -3,7 +3,7 @@
     <div class="booking">
       <div class="block">
         <div class="title">客户信息</div>
-        <div class="table">
+        <div class="from">
           <div class="line">
             <div class="key">客户姓名</div>
             <div class="val">
@@ -38,7 +38,7 @@
     <div class="booking">
       <div class="block">
         <div class="title">产品信息</div>
-        <div class="table">
+        <div class="from">
           <div class="line">
             <div class="key">产品名称</div>
             <div class="val">名称</div>
@@ -86,7 +86,7 @@
     <div class="booking">
       <div class="block">
         <div class="title">付款信息</div>
-        <div class="table">
+        <div class="from">
           <div class="line">
             <div class="key">预约付款日期</div>
             <div class="val">
@@ -178,29 +178,29 @@ export default {
   padding: 0 15px;
   font-size: 13px;
 }
-.block .table{
+.block .from{
   background: #ffffff;
 }
-.block .table .line{
+.block .from .line{
   line-height: 40px;
   height: 40px;
   display: flex;
   padding: 0 15px;
   font-size: 16px;
 }
-.block .table .line .key{
+.block .from .line .key{
   width: 30%;
   /* font-weight: bold; */
 }
-.block .table .line .val{
+.block .from .line .val{
   flex: 1;
   padding: 0 5px;
 }
-.block .table .line .val input{
+.block .from .line .val input{
   line-height: 40px;
   height: 40px;
 }
-.block .table .line .icon{
+.block .from .line .icon{
   float: right;
   line-height: 40px;
 }
