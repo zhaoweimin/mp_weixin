@@ -19,7 +19,7 @@
     "pages/product/achievement/main",
     "pages/product/addAchievement/main",
     "pages/product/historyAchievement/main",
-    
+
     "pages/interest/list/main",
     "pages/interest/detail/main",
     "pages/royalty/list/main",
@@ -51,23 +51,50 @@
     "selectedColor": "#509ef0",
     "borderStyle": "white",
 
-    "list": [{
-      "text": "应用",
-      "pagePath": "pages/home/main",
-      "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
-    }, {
-      "text": "待办",
-      "pagePath": "pages/task/list/main",
-      "iconPath": "static/tabs/wait.png",
-      "selectedIconPath": "static/tabs/wait-active.png"
-    }, {
-      "text": "报表",
-      "pagePath": "pages/statis/main",
-      "iconPath": "static/tabs/table.png",
-      "selectedIconPath": "static/tabs/table-active.png"
-    }],
+    "list": [
+      {
+        "text": "应用",
+        "pagePath": "pages/home/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      },
+      {
+        "text": "待办",
+        "pagePath": "pages/task/list/main",
+        "iconPath": "static/tabs/wait.png",
+        "selectedIconPath": "static/tabs/wait-active.png"
+      },
+      {
+        "text": "报表",
+        "pagePath": "pages/statis/main",
+        "iconPath": "static/tabs/table.png",
+        "selectedIconPath": "static/tabs/table-active.png"
+      }
+    ],
 
     "position": "bottom"
+  },
+  "usingComponents": {
+    "van-search": "/static/vant/search/index",
+    "van-row": "/static/vant/row/index",
+    "van-col": "/static/vant/col/index",
+    "van-tab": "/static/vant/tab/index",
+    "van-tabs": "/static/vant/tabs/index",
+    "van-cell": "/static/vant/cell/index",
+    "van-cell-group": "/static/vant/cell-group/index",
+    "van-radio": "/static/vant/radio/index",
+    "van-radio-group": "/static/vant/radio-group/index",
+    "van-field": "/static/vant/field/index",
+    "van-button": "/static/vant/button/index",
+    "van-card": "/static/vant/card/index",
+    "van-popup": "/static/vant/popup/index",
+    "van-icon": "/static/vant/icon/index",
+    "van-panel": "/static/vant/panel/index",
+    "van-action-sheet": "/static/vant/cell-group/index",
+    "van-area": "/static/vant/area/index",
+    "van-dialog": "/static/vant/dialog/index",
+    "van-toast": "/static/vant/toast/index",
+    "van-tabbar": "/static/vant/tabbar/index",
+    "van-tabbar-item": "/static/vant/tabbar-item/index"
   }
 }
