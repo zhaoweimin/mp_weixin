@@ -1,6 +1,7 @@
 <template>
-    <div class="main">
-        <div class="box plr10 pt15">
+    <div class="main has-header">
+        <navbar :info="nav" @changeNav="changeNav"></navbar>
+        <div v-if="currentNavId===0" class="box plr10 pt15">
             <div class="item dis-flex bg-fff plr20 pt15 pb10">
                 <div class="flex-1">
                     <div class="f17 mb10 cblack strong">管理员</div>
@@ -13,16 +14,35 @@
                 </div> -->
             </div>
         </div>
+        <div v-if="currentNavId===1" class="box plr10 pt15">
+            <div class="item dis-flex bg-fff plr20 pt15 pb10">
+                <div class="flex-1">
+                    <div class="f17 mb10 cblack strong">系统</div>
+                    <div class="f12 cblack mb5">您好：流程【客户】-Tj0920230320230320（客户投诉已正常结束）。</div>
+                    <div class="f12 cgey">2019-03-20 15:52</div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+import navbar from '@/components/navbar'
 export default {
   data () {
-    return {}
+    return {
+      nav: ['未读', '已读'],
+      currentNavId: 0
+    }
   },
-
-  methods: {},
+  components: {
+    navbar
+  },
+  methods: {
+    changeNav (nav) {
+      this.currentNavId = nav
+    }
+  },
 
   created () {}
 }
