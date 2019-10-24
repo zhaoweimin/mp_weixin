@@ -1,6 +1,6 @@
 <template>
-    <div class="main">
-        <div class="plr10 pt20">
+    <div class="main has-footer">
+        <div v-if="active===0" class="plr10">
             <div class="card bg-fff dis-flex l-end" v-for="(vo, key) in list" :key="key">
                 <div class="card-left dis-flex flex-1 l-center a-center">
                     <div class="dis-flex flex-column a-center l-center">
@@ -9,6 +9,28 @@
                     </div>
                 </div>
                 <img class="card-img" src="../../../img/follow_1.png" alt="">
+            </div>
+        </div>
+        <div class="items" v-if="active!==0">
+            <div class="item ptb">
+                <div class="dis-flex l-end">
+                    <div class="f18 strong pr5">张耀阳</div>
+                    <div class="f12 cgey">先生</div>
+                </div>
+                <div class="flex mb10">
+                    <span class="items-label items-label-outline mr10">历史成交客户</span>
+                    <span class="items-label items-label-outline">A级</span>
+                </div>
+                <div class="foot dis-flex l-end">
+                    <div class="flex-1">
+                        <div class="cgey">活动名称：<span class="cblack">陈伟</span></div>
+                        <div class="cgey mb10">邀约日期：<span class="cblack">默认当前</span></div>
+                        <div class="cgey">审批状态：<span class="clink">待审批</span></div>
+                    </div>
+                    <div class="right">
+                        <div class="clink f12">查看更多</div>
+                    </div>
+                </div>
             </div>
         </div>
         <van-tabbar :active="active" @change="onChange">
@@ -66,5 +88,59 @@ export default {
 	border: 1px solid #509ef0;
 	border-radius: 50px;
 	padding: 2px 13px;
+}
+
+.items-label {
+	font-size: 12px;
+	color: sienna;
+	padding: 2px 6px;
+	border: 1px solid sienna;
+	border-radius: 2px;
+}
+
+.item {
+	margin: 15px;
+	padding: 15px;
+	background: #ffffff;
+	border-radius: 2px;
+	box-shadow: 0px 1px 9px 0px rgba(85, 168, 255, 0.2);
+	font-size: 13px;
+	line-height: 30px;
+}
+.item .top {
+	padding: 10px 0;
+	border-bottom: 1px solid rgba(245, 245, 245, 1);
+}
+.item .top .name {
+	font-size: 18px;
+	font-weight: bold;
+}
+.item .top .tag {
+	background: rgba(255, 230, 214, 1);
+	border-radius: 2px;
+	font-size: 13px;
+	color: rgba(234, 118, 40, 1);
+	line-height: 30px;
+	padding: 0 4px;
+	margin-left: 4px;
+}
+
+.item .top .tag-2 {
+	background: rgba(255, 241, 209, 1);
+	color: rgba(242, 167, 17, 1);
+}
+
+.item .foot {
+	font-size: 12px;
+	line-height: 16px;
+}
+.item .right .btn {
+	border: 1px solid rgba(80, 158, 240, 1);
+	border-radius: 20px;
+	line-height: 30px;
+	text-align: center;
+	width: 100px;
+	color: rgba(80, 158, 240, 1);
+	margin-top: 9px;
 }
 </style>

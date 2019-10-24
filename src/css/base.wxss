@@ -40,7 +40,9 @@ page {
 .has-two-header {
   padding-top: 100px;
 }
-
+.has-footer {
+  padding-bottom: 100px;
+}
 .strong {
   font-weight: bold !important;
 }
