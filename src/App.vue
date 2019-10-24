@@ -1,7 +1,8 @@
 <style>
-  @import "../static/icon/iconfont.wxss";
-  @import "./css/base.wxss";
-  @import "./css/style.wxss";
+@import '../static/icon/iconfont.wxss';
+@import './css/base.wxss';
+@import './css/style.wxss';
+@import './css/llx.wxss';
 </style>
 
 <script>
@@ -18,7 +19,7 @@ export default {
 
     let logs
     if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
+      logs = mpvue.getStorageSync({ key: 'logs' }).data || []
       logs.unshift(Date.now())
       mpvue.setStorageSync({
         key: 'logs',
@@ -38,19 +39,19 @@ export default {
 
 <style>
 .container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 200rpx 0;
+	box-sizing: border-box;
 }
 /* this rule will be remove */
 * {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
+	transition: width 2s;
+	-moz-transition: width 2s;
+	-webkit-transition: width 2s;
+	-o-transition: width 2s;
 }
 </style>

@@ -50,7 +50,7 @@ export default {
 
 <style scoped>
 .item {
-	box-shadow: 0px 1px 9px 0px rgba(85, 168, 255, 0.2);
+	box-shadow: 0px 1px 5px 0px rgba(127, 127, 127, 0.2);
 	border-radius: 2px;
 }
 .btn-detail {

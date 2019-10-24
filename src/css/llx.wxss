@@ -1,0 +1,20 @@
+.label-yellow {
+  padding: 0 10px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #ea7628;
+  border-radius: 2px;
+  background-color: #ffe6d6;
+  box-sizing: border-box;
+}
+.label-yellow-outline {
+  padding: 0 6px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #ea7628;
+  border-radius: 2px;
+  border: 1px solid #ea7628;
+  box-sizing: border-box;
+}

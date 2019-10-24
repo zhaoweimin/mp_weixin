@@ -13,13 +13,13 @@
         </div>
         <div class="items" v-if="active!==0">
             <div class="item ptb">
-                <div class="dis-flex l-end">
+                <div class="dis-flex l-baseline">
                     <div class="f18 strong pr5">张耀阳</div>
                     <div class="f12 cgey">先生</div>
                 </div>
-                <div class="flex mb10">
-                    <span class="items-label items-label-outline mr10">历史成交客户</span>
-                    <span class="items-label items-label-outline">A级</span>
+                <div class="dis-flex mb10">
+                    <div class="label-yellow mr10">历史成交客户</div>
+                    <div class="label-yellow-outline">A级</div>
                 </div>
                 <div class="foot dis-flex l-end">
                     <div class="flex-1">
@@ -51,7 +51,8 @@ export default {
         { name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0` },
         { name: '历史活动', url: `/pages/discover/marketAction/main?type=1` },
         { name: '历史邀约客户', url: `/pages/discover/marketCustomer/main` }
-      ]
+      ],
+      titles: new Map([[0, '市场活动'], [1, '待审批'], [2, '同意'], [3, '拒绝']])
     }
   },
 
@@ -63,6 +64,9 @@ export default {
     },
     onChange (event) {
       this.active = event.mp.detail
+      wx.setNavigationBarTitle({
+        title: this.titles.get(event.mp.detail)
+      })
     }
   },
 
@@ -74,7 +78,7 @@ export default {
 .card {
 	margin: 10px 0;
 	height: 150px;
-	box-shadow: 0px 1px 9px 0px rgba(85, 168, 255, 0.2);
+	box-shadow: 0px 1px 5px 0px rgba(127, 127, 127, 0.2);
 	border-radius: 0px 0px 2px 2px;
 }
 .card-left {
@@ -90,20 +94,12 @@ export default {
 	padding: 2px 13px;
 }
 
-.items-label {
-	font-size: 12px;
-	color: sienna;
-	padding: 2px 6px;
-	border: 1px solid sienna;
-	border-radius: 2px;
-}
-
 .item {
 	margin: 15px;
 	padding: 15px;
 	background: #ffffff;
 	border-radius: 2px;
-	box-shadow: 0px 1px 9px 0px rgba(85, 168, 255, 0.2);
+	box-shadow: 0px 1px 5px 0px rgba(127, 127, 127, 0.2);
 	font-size: 13px;
 	line-height: 30px;
 }

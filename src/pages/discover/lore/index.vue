@@ -1,9 +1,9 @@
 <template>
-  <div class="main">
-    <block v-for="(vo, key) in list" :key="key">
-      <card :info="vo" :type="7"></card>
-    </block>
-  </div>
+    <div class="main">
+        <block v-for="(vo, key) in list" :key="key">
+            <card :info="vo" :type="7"></card>
+        </block>
+    </div>
 </template>
 
 <script>
@@ -45,11 +45,9 @@ export default {
     }
   },
 
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style scoped>
-
 </style>
