@@ -53,6 +53,12 @@ page{
 .abs {
   position: absolute;
 }
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
 
 .over-flow-ellipsis {
   display: -webkit-box;

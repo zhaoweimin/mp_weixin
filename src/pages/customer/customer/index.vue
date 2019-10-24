@@ -4,10 +4,14 @@
       <div class="dis-flex">
         <div class="avatar">
           <img class="img" :src="info.avatar" mode="aspectFill">
-          <div class="text">编辑</div>
+          <!-- <div class="text">编辑</div> -->
         </div>
         <div class="msg">
-          <div class="title"><span class="strong">{{info.name}}</span> <span class="sex">{{info.sex ? '先生' : '女士'}}</span></div>
+          <div class="title">
+            <span class="strong">{{info.name}}</span> 
+            <span class="sex">{{info.sex ? '先生' : '女士'}}</span>
+            <div class="edit">编辑档案</div>
+          </div>
           <div class="tags level-1" v-if="info.level == 1">
             <div class="tag">历史成交客户</div>
             <div class="tag level">A级</div>
@@ -29,8 +33,11 @@
     </div>
 
     <div class="msg-table">
-      <div class="title">基本信息 <span class="iconfont iconjibenxinxi"></span></div>
-      <div class="table">
+      <div class="title" @click="setOpen(0)">
+        基本信息 <span class="iconfont iconjibenxinxi"></span>
+        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[0], 'iconxiangxiajiantou-copy': open[0] }"></div>
+      </div>
+      <div class="table" v-show="open[0]">
         <div class="line">
           <div class="key flex-1">证件类型</div>
           <div class="val">身份证 <span class="iconfont iconright"></span></div>
@@ -75,9 +82,12 @@
       </div>
     </div>
 
-    <div class="msg-table">
-      <div class="title">联系方式 <span class="iconfont iconliaotianduihua"></span></div>
-      <div class="table">
+    <div class="msg-table" @click="setOpen(1)">
+      <div class="title">
+        联系方式 <span class="iconfont iconliaotianduihua"></span>
+        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[1], 'iconxiangxiajiantou-copy': open[1] }"></div>
+      </div>
+      <div class="table" v-show="open[1]">
         <div class="line">
           <div class="key flex-1">手机号码</div>
           <div class="val">18032654593 <span class="iconfont iconright"></span></div>
@@ -101,9 +111,12 @@
       </div>
     </div>
 
-    <div class="msg-table">
-      <div class="title">风险能力测评 <span class="iconfont iconjibenxinxi"></span></div>
-      <div class="table">
+    <div class="msg-table" @click="setOpen(2)">
+      <div class="title">
+        风险能力测评 <span class="iconfont iconjibenxinxi"></span>
+        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[2], 'iconxiangxiajiantou-copy': open[2] }"></div>
+      </div>
+      <div class="table" v-show="open[2]">
         <div class="line">
           <div class="key flex-1">风险测评得分</div>
           <div class="val">80 <span class="iconfont iconright"></span></div>
@@ -123,9 +136,12 @@
       </div>
     </div>
 
-    <div class="msg-table">
-      <div class="title">兴趣爱好 <span class="iconfont iconjibenxinxi"></span></div>
-      <div class="table">
+    <div class="msg-table" @click="setOpen(3)">
+      <div class="title">
+        兴趣爱好 <span class="iconfont iconjibenxinxi"></span>
+        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[3], 'iconxiangxiajiantou-copy': open[3] }"></div>
+      </div>
+      <div class="table" v-show="open[3]">
         <div class="line">
           <div class="key flex-1">性别</div>
           <div class="val">男 <span class="iconfont iconright"></span></div>
@@ -190,9 +206,12 @@
       </div>
     </div>
 
-    <div class="msg-table">
-      <div class="title">统计与分析 <span class="iconfont iconjibenxinxi"></span></div>
-      <div class="table">
+    <div class="msg-table" @click="setOpen(4)">
+      <div class="title">
+        统计与分析 <span class="iconfont iconjibenxinxi"></span>
+        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[4], 'iconxiangxiajiantou-copy': open[4] }"></div>
+      </div>
+      <div class="table" v-show="open[4]">
         <div class="big-line line">
           <div class="flex-1">
             <div class="val"><span class="strong">10万</span> <span class="iconfont iconright"></span></div>
@@ -231,11 +250,17 @@ export default {
         name: '张耀扬',
         level: 1,
         sex: 1
-      }
+      },
+      open: [false, false, false, false, false]
     }
   },
-
   created () {
+  },
+  methods: {
+    setOpen (key) {
+      this.open[key] = !this.open[key]
+      this.$forceUpdate()
+    }
   }
 }
 </script>
@@ -252,7 +277,7 @@ export default {
 .customer-card::after{
   content: "";
   position: absolute;
-  bottom: -20px;
+  bottom: -19px;
   left: 32px;
   width: 0; 
   height: 0;
@@ -280,6 +305,14 @@ export default {
   font-size: 12px;
   text-align: center;
   line-height: 12px;
+}
+.customer-card .edit{
+  border: 1px solid #fff;
+  float: right;
+  padding:  0 5px;
+  /* width: 60px; */
+  text-align: center;
+  border-radius: 20px;
 }
 .msg-table{
   margin: 15px;
