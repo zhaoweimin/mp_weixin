@@ -1,27 +1,19 @@
 <template>
-  <div class="main has-big-header">
-    <navbar :info="nav" @changeNav="changeNav"></navbar>
-    <!-- <fliter :info="nav"></fliter> -->
-    <div class="search dis-flex">
-      <div class="dis-flex flex-1">
-        <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
-        <div class="input flex-1">
-          <input type="text" placeholder="搜索">
-        </div>
-      </div>
-      <div class="action">取消</div>
+    <div class="main has-big-header">
+        <navbar :info="nav" @changeNav="changeNav"></navbar>
+        <!-- <fliter :info="nav"></fliter> -->
+        <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
+        <block v-for="(vo, key) in list" :key="key">
+            <card :info="vo"></card>
+        </block>
     </div>
-
-    <block v-for="(vo, key) in list" :key="key">
-      <card :info="vo"></card>
-    </block>
-  </div>
 </template>
 
 <script>
 import navbar from '@/components/navbar'
 import fliter from '@/components/fliterNav'
 import card from '@/components/taskCard'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -63,7 +55,8 @@ export default {
   components: {
     navbar,
     fliter,
-    card
+    card,
+    search
   },
 
   methods: {
@@ -76,11 +69,9 @@ export default {
     }
   },
 
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style scoped>
-
 </style>

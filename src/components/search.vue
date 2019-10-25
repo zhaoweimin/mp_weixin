@@ -1,10 +1,10 @@
 <template>
-    <div class="search bg-blue dis-flex l-center" :class="[fixed?'fixed':'']">
+    <div class="search dis-flex l-center" :class="[fixed?'fixed':'',isMainBg?'bg-blue':'']">
         <div class="input flex-1 bg-fff dis-flex l-center">
             <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
             <input class="flex-1" type="text" :placeholder="placeholder">
         </div>
-        <div v-if="rightButton" class="cfff f12 pl10">取消</div>
+        <div v-if="rightButton" class="f12 pl10" :class="[isMainBg?'cfff':'cgey']">取消</div>
     </div>
 </template>
 
@@ -30,6 +30,12 @@ export default {
       type: String,
       default () {
         return '请输入搜索内容'
+      }
+    },
+    isMainBg: {
+      type: Boolean,
+      default () {
+        return true
       }
     }
   },

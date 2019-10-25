@@ -1,7 +1,7 @@
 <template>
     <div class="header bg-blue">
         <div class="dis-flex">
-            <div class="nav flex-1" :class="[nav == key ? 'active' : '']" v-for="(vo, key) in info" :key="key" @click="changeNav(key)">{{vo}}</div>
+            <div class="nav flex-1" :class="[nav == key ? 'active' : '']" v-for="(vo, key) in info" :key="key" @click="tabNav(key)">{{vo}}</div>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   },
   props: ['info'],
   methods: {
-    changeNav (nav) {
+    tabNav (nav) {
       this.nav = nav
       this.$emit('changeNav', nav)
     }
