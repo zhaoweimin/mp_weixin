@@ -47,7 +47,7 @@
   },
   "tabBar": {
     "color": "#999",
-    "backgroundColor": "#fafafa",
+    "backgroundColor": "#ffffff",
     "selectedColor": "#509ef0",
     "borderStyle": "white",
 
@@ -95,6 +95,8 @@
     "van-dialog": "/static/vant/dialog/index",
     "van-toast": "/static/vant/toast/index",
     "van-tabbar": "/static/vant/tabbar/index",
-    "van-tabbar-item": "/static/vant/tabbar-item/index"
+    "van-tabbar-item": "/static/vant/tabbar-item/index",
+    "van-datetime-picker": "/static/vant/datetime-picker/index",
+    "van-picker": "/static/vant/picker/index"
   }
 }

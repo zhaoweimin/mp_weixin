@@ -1,8 +1,6 @@
 <template>
-    <div class="main">
-        <van-search :value="searchValue" background="#259efa" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
-            <div slot="action" class="cfff" @tap="onSearch">搜索</div>
-        </van-search>
+    <div class="main has-header">
+        <search :rightButton="true" placeholder="搜索"></search>
         <block v-for="(vo, key) in list" :key="key">
             <card :info="vo" :type="8"></card>
         </block>
@@ -11,6 +9,7 @@
 
 <script>
 import card from '@/components/achievementCard'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -35,7 +34,8 @@ export default {
   },
 
   components: {
-    card
+    card,
+    search
   },
 
   onLoad (option) {
@@ -64,4 +64,7 @@ export default {
 </script>
 
 <style scoped>
+.c-inputclass {
+	height: 10px;
+}
 </style>

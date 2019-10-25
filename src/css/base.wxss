@@ -31,6 +31,9 @@ page {
 .bg-blue {
   background: #259efa !important;
 }
+.bg-color {
+  background: #f7f7f7 !important;
+}
 .bg-fff {
   background: #fff;
 }
@@ -368,4 +371,14 @@ page {
 }
 .a-left {
   justify-content: left;
+}
+
+.border-b {
+  border-bottom: 1px solid #f2f2f2;
+}
+.border-box {
+  box-sizing: border-box;
+}
+.w-full {
+  width: 100%;
 }
