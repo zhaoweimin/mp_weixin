@@ -1,5 +1,5 @@
 <template>
-  <div class="customer">
+  <div class="customer has-footer">
     <div class="customer-card">
       <div class="dis-flex">
         <div class="avatar">
@@ -10,7 +10,7 @@
           <div class="title">
             <span class="strong">{{info.name}}</span> 
             <span class="sex">{{info.sex ? '先生' : '女士'}}</span>
-            <div class="edit">编辑档案</div>
+            <div class="edit" @click="edit">{{isEdit ? '编辑中...' : '编辑档案'}}</div>
           </div>
           <div class="tags level-1" v-if="info.level == 1">
             <div class="tag">历史成交客户</div>
@@ -33,182 +33,274 @@
     </div>
 
     <div class="msg-table">
+      <div class="title">
+        风险能力测评 <span class="iconfont iconkehugenjin"></span>
+        <div class="fr check-count">
+          再测评
+        </div>
+      </div>
+      <div class="flex chart">
+        <div class="count">
+          <div class="num">80</div>
+          <div class="text">风险测评得分</div>
+        </div>
+        <div class="flex-1">
+          <div class="text">客户风险等级：C1</div>
+          <div class="text">风险承受能力类型：稳健型</div>
+          <div class="text">相匹配产品风险等级：R1R2R3</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="msg-table">
       <div class="title" @click="setOpen(0)">
         基本信息 <span class="iconfont iconjibenxinxi"></span>
         <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[0], 'iconxiangxiajiantou-copy': open[0] }"></div>
       </div>
       <div class="table" v-show="open[0]">
         <div class="line">
-          <div class="key flex-1">证件类型</div>
+          <div class="key">客户编号</div>
+          <div class="val">
+            <span v-show="!isEdit">{{code}}</span>
+            <input v-show="isEdit" class="input" type="text" v-model="code">
+          </div>
+        </div>
+        <div class="line required">
+          <div class="key">客户来源</div>
+          <picker class="val" @change="pickerSell" :value="sell" :range="sells" :disabled="!isEdit">
+            {{sells[sell]}} <span class="iconfont iconright"></span>
+          </picker>
+        </div>
+        <div class="line required">
+          <div class="key">客户来源明细</div>
+          <div class="val">市场活动 <span class="iconfont iconright"></span></div>
+        </div>
+        <div class="line">
+          <div class="key">市场活动</div>
+          <div class="val">XXXXXXX</div>
+        </div>
+        <div class="line">
+          <div class="key">投诉次数</div>
+          <div class="val">1次</div>
+        </div>
+        <div class="line required">
+          <div class="key">证件类型</div>
           <div class="val">身份证 <span class="iconfont iconright"></span></div>
         </div>
-        <div class="line">
-          <div class="key flex-1">证件号码</div>
-          <div class="val">521201295262699562535 <span class="iconfont iconright"></span></div>
+        <div class="line required">
+          <div class="key">证件号码</div>
+          <div class="val">521201295262699562535 </div>
         </div>
-        <div class="line">
-          <div class="key flex-1">婚姻状况</div>
+        <div class="line required">
+          <div class="key">婚姻状况</div>
           <div class="val">已婚 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">出身日期</div>
+          <div class="key">出身日期</div>
           <div class="val">1985.3.25 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">国籍</div>
+          <div class="key">国籍</div>
           <div class="val">中国 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">生日关怀</div>
+          <div class="key">生日关怀</div>
           <div class="val">晚宴 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">工作单位</div>
-          <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div>
+          <div class="flex-1">
+            <div class="key l-end w100">工作单位</div>
+            <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
+            <div class="text-val">深圳市×××××××××××××××××公司</div>
+          </div>
+        </div>
+        <div class="line required">
+          <div class="key">行业</div>
+          <div class="val">互联网 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">职位</div>
+          <div class="key">职位</div>
           <div class="val">市场总监 <span class="iconfont iconright"></span></div>
         </div>
-        <div class="line">
-          <div class="key flex-1">常住省份</div>
+        <div class="line required">
+          <div class="key">常住省份</div>
           <div class="val">广东 <span class="iconfont iconright"></span></div>
         </div>
-        <div class="line">
-          <div class="key flex-1">常住城市</div>
+        <div class="line required">
+          <div class="key">常住城市</div>
           <div class="val">深圳 <span class="iconfont iconright"></span></div>
         </div>
 
       </div>
     </div>
 
-    <div class="msg-table" @click="setOpen(1)">
-      <div class="title">
+    <div class="msg-table" >
+      <div class="title" @click="setOpen(1)">
         联系方式 <span class="iconfont iconliaotianduihua"></span>
         <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[1], 'iconxiangxiajiantou-copy': open[1] }"></div>
       </div>
       <div class="table" v-show="open[1]">
-        <div class="line">
-          <div class="key flex-1">手机号码</div>
-          <div class="val">18032654593 <span class="iconfont iconright"></span></div>
+        <div class="line required">
+          <div class="key">手机号码</div>
+          <div class="val">18032654593</div>
         </div>
         <div class="line">
-          <div class="key flex-1">电话类型</div>
+          <div class="key">电话类型</div>
           <div class="val">国内电话 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">紧急联系人</div>
-          <div class="val">张宇行 <span class="iconfont iconright"></span></div>
+          <div class="key">紧急联系人</div>
+          <div class="val">张宇行</div>
         </div>
         <div class="line">
-          <div class="key flex-1">紧急联系人电话</div>
-          <div class="val">15963252564 <span class="iconfont iconright"></span></div>
+          <div class="key">紧急联系人电话</div>
+          <div class="val">15963252564</div>
         </div>
-        <div class="line">
-          <div class="key flex-1">邮寄地址</div>
-          <div class="val">深圳市南山区软件产业基地 <span class="iconfont iconright"></span></div>
+        <div class="line required">
+          <div class="flex-1">
+            <div class="key">邮寄地址</div>
+            <div class="text-val">深圳市南山区软件产业基地</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="msg-table" @click="setOpen(2)">
-      <div class="title">
-        风险能力测评 <span class="iconfont iconjibenxinxi"></span>
-        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[2], 'iconxiangxiajiantou-copy': open[2] }"></div>
-      </div>
-      <div class="table" v-show="open[2]">
-        <div class="line">
-          <div class="key flex-1">风险测评得分</div>
-          <div class="val">80 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">客户风险等级</div>
-          <div class="val">C1 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">风险承受能力</div>
-          <div class="val">稳健型 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">相匹配产品风险等级</div>
-          <div class="val">R1R2R3 <span class="iconfont iconright"></span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="msg-table" @click="setOpen(3)">
-      <div class="title">
+    <div class="msg-table">
+      <div class="title" @click="setOpen(3)">
         兴趣爱好 <span class="iconfont iconjibenxinxi"></span>
         <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[3], 'iconxiangxiajiantou-copy': open[3] }"></div>
       </div>
       <div class="table" v-show="open[3]">
         <div class="line">
-          <div class="key flex-1">性别</div>
-          <div class="val">男 <span class="iconfont iconright"></span></div>
+          <div class="key">性别</div>
+          <div class="val">
+            男
+            <span class="iconfont iconright"></span>
+          </div>
         </div>
         <div class="line">
-          <div class="key flex-1">年龄段</div>
+          <div class="key">年龄段</div>
           <div class="val">25岁以下 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">收入来源</div>
-          <div class="val">工资，劳务报酬 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">行业</div>
+          <div class="key">行业</div>
           <div class="val">互联网行业 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">投资占收入比</div>
+          <div class="key">投资占收入比</div>
           <div class="val">5%-20% <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">投资理财年限</div>
+          <div class="key">投资理财年限</div>
           <div class="val">2-5年 <span class="iconfont iconright"></span></div>
         </div>
-        <div class="line">
-          <div class="key flex-1">投资私募基金信息来源渠道</div>
-          <div class="val">私募基金管理机构 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">选择私募基金的关注点</div>
-          <div class="val">私募基金管理机构的品牌 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">运动健康</div>
-          <div class="val">帆船/游艇出海 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">私享会</div>
-          <div class="val">红酒品鉴 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">沙龙分享</div>
-          <div class="val">摄影分享 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">女性专享手作</div>
-          <div class="val">香水手作 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">亲子/单人手作</div>
-          <div class="val">鸡尾酒/精酿啤酒手作 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">美食专享</div>
-          <div class="val">西餐 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key flex-1">旅行</div>
-          <div class="val">海滨海岛 <span class="iconfont iconright"></span></div>
-        </div>
 
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">收入来源</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_income" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'income')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">投资私募基金信息来源渠道</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_channel" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'channel')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">选择私募基金的关注点</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_point" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'point')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">运动健康</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_exercise" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'exercise')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">私享会</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_enjoy" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'enjoy')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">沙龙分享</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_salon" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'salon')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">女性专享手作</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_hands" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'hands')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">亲子/单人手作</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_selfHands" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'selfHands')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">美食专享</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_food" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'food')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <div class="flex-1">
+            <div class="key">旅行</div>
+            <div class="check-bok">
+              <div v-for="(vo, key) in souce_travel" :key="key">
+                <van-checkbox :value="vo.val" @change="onChange(key, 'travel')">{{vo.text}}</van-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="msg-table" @click="setOpen(4)">
-      <div class="title">
-        统计与分析 <span class="iconfont iconjibenxinxi"></span>
+    <div class="msg-table" >
+      <div class="title" @click="setOpen(4)">
+        统计与分析 <span class="iconfont iconyejixinzeng"></span>
         <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[4], 'iconxiangxiajiantou-copy': open[4] }"></div>
       </div>
       <div class="table" v-show="open[4]">
@@ -223,13 +315,22 @@
           </div>
         </div>
         <div class="line">
-          <div class="key flex-1">最近跟进时间</div>
+          <div class="key">最近跟进时间</div>
           <div class="val">2019.3.20 <span class="iconfont iconright"></span></div>
         </div>
         <div class="line">
-          <div class="key flex-1">首次成交时间</div>
+          <div class="key">首次成交时间</div>
           <div class="val">2018.12.20 <span class="iconfont iconright"></span></div>
         </div>
+      </div>
+    </div>
+
+    <div class="footer-bar" v-if="isEdit">
+      <div class="flex-1 mr10">
+        <van-button plain type="info" @click="cancle">取消</van-button>
+      </div>
+      <div class="flex-1">
+        <van-button type="info" @click="submit">确定</van-button>
       </div>
     </div>
   </div>
@@ -242,7 +343,11 @@ export default {
   components: {
     card
   },
-
+  computed: {
+    updateSource () {
+      return this.source
+    }
+  },
   data () {
     return {
       info: {
@@ -251,7 +356,91 @@ export default {
         level: 1,
         sex: 1
       },
-      open: [false, false, false, false, false]
+      code: 'Ada',
+
+      open: [false, false, false, false, false],
+      isEdit: false,
+      check: [true, true, false, false],
+      souce_income: [
+        {val: true, text: '工资，劳务报酬'},
+        {val: true, text: '生产经营所得'},
+        {val: false, text: '利息、股息，转让证券等金融性资产收入'},
+        {val: false, text: '出租、出售房地产等非金融性资产收入 '}
+      ],
+      souce_channel: [
+        {val: false, text: '互联网'},
+        {val: false, text: '微信、微博等手机App'},
+        {val: false, text: '亲戚朋友'},
+        {val: false, text: '银行、证券、信托公司'},
+        {val: false, text: '私募基金管理机构'},
+        {val: false, text: '第三方理财机构'}
+      ],
+      souce_point: [
+        {val: false, text: '私募基金管理机构的品牌'},
+        {val: false, text: '基金销售机构的宣传和推介'},
+        {val: false, text: '私募基金的业绩表现 '},
+        {val: false, text: '综合考虑私募基金管理机构的管理能力'}
+      ],
+      souce_exercise: [
+        {val: false, text: '马术运动'},
+        {val: false, text: '帆船/游艇出海'},
+        {val: false, text: '高尔夫赛事/体验场'},
+        {val: false, text: '网球'},
+        {val: false, text: '射箭'},
+        {val: false, text: '羽毛球'},
+        {val: false, text: '其他'}
+      ],
+      souce_enjoy: [
+        {val: false, text: '红酒品鉴'},
+        {val: false, text: '形象提升'},
+        {val: false, text: '美体/形体培训'},
+        {val: false, text: '珠宝鉴赏'},
+        {val: false, text: '其他'}
+      ],
+      souce_salon: [
+        {val: false, text: '摄影分享'},
+        {val: false, text: '花艺沙龙'},
+        {val: false, text: '投资策略'},
+        {val: false, text: '茶艺沙龙'},
+        {val: false, text: '其他'}
+      ],
+      souce_hands: [
+        {val: false, text: '香水手作'},
+        {val: false, text: '小黑裙手作 '},
+        {val: false, text: '包包手作'},
+        {val: false, text: '香薰干花蜡烛手作'},
+        {val: false, text: '口红手作'},
+        {val: false, text: '其他'}
+      ],
+      souce_selfHands: [
+        {val: false, text: '油画创作手作'},
+        {val: false, text: '鸡尾酒/精酿啤酒手作'},
+        {val: false, text: '咖啡手作'},
+        {val: false, text: '永生花＆永生花团扇手作'},
+        {val: false, text: '蛋糕/粽子/饼干手作'},
+        {val: false, text: '其他'}
+      ],
+      souce_food: [
+        {val: false, text: '西餐'},
+        {val: false, text: '自助餐'},
+        {val: false, text: '中餐'},
+        {val: false, text: '日料'},
+        {val: false, text: '日料'}
+      ],
+      souce_travel: [
+        {val: false, text: '繁华都市'},
+        {val: false, text: '名胜古迹'},
+        {val: false, text: '自然景观'},
+        {val: false, text: '水乡古镇'},
+        {val: false, text: '海滨海岛'},
+        {val: false, text: '其他'}
+      ],
+
+      sells: ['直销', '代理'],
+      sexs: ['男', '女'],
+
+      sell: 0,
+      sex: 0
     }
   },
   created () {
@@ -260,6 +449,62 @@ export default {
     setOpen (key) {
       this.open[key] = !this.open[key]
       this.$forceUpdate()
+    },
+    edit () {
+      // console.log(1)
+      if (!this.isEdit) {
+        this.isEdit = true
+      }
+    },
+    submit () {
+      this.isEdit = false
+    },
+    cancle () {
+      this.isEdit = false
+    },
+    onChange (key, type) {
+      if (this.isEdit) {
+        switch (type) {
+          case 'income':
+            this.souce_income[key].val = !this.souce_income[key].val
+            break
+          case 'channel':
+            this.souce_channel[key].val = !this.souce_channel[key].val
+            break
+          case 'point':
+            this.souce_point[key].val = !this.souce_point[key].val
+            break
+          case 'exercise':
+            this.souce_exercise[key].val = !this.souce_exercise[key].val
+            break
+          case 'enjoy':
+            this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+            break
+          case 'salon':
+            this.souce_salon[key].val = !this.souce_salon[key].val
+            break
+          case 'hands':
+            this.souce_hands[key].val = !this.souce_hands[key].val
+            break
+          case 'selfHands':
+            this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+            break
+          case 'food':
+            this.souce_food[key].val = !this.souce_food[key].val
+            break
+          case 'travel':
+            this.souce_travel[key].val = !this.souce_travel[key].val
+            break
+        }
+        this.$forceUpdate()
+      }
+    },
+    onSexChange (e) {
+      console.log(e)
+    },
+    pickerSell (e) {
+      console.log(e)
+      this.seel = e.mp.detail.value
     }
   }
 }
@@ -331,13 +576,31 @@ export default {
   line-height: 40px;
 }
 .msg-table .table .line{
+  position: relative;
   display: flex;
   padding-right: 15px;
   font-size: 13px;
-  border-top: rgba(245,245,245,1);
+  border-top: 1px solid #f5f5f5;
+}
+
+.msg-table .table .line.required::after{
+  content: "*";
+  color: #ff0000;
+  position: absolute;
+  left: -10px;
+  top: 3px;
 }
 .msg-table .table .line .key{
   color: #999999;
+  min-width: 100px;
+}
+.msg-table .table .line .val{
+  text-align: right;
+  flex: 1;
+}
+.msg-table .table .line .val .input{
+  line-height: 40px;
+  height: 40px;
 }
 .msg-table .table .line .val .iconfont{
   font-size: 14px;
@@ -355,5 +618,46 @@ export default {
 .msg-table .table .big-line .val{
   line-height: 30px;
   font-size: 17px;
+}
+.msg-table .table .text-val{
+  background: #f0f0f0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  min-height: 40px;
+  padding: 12px;
+}
+.msg-table .table .check-bok{
+  padding: 0 5px;
+}
+.msg-table .table .check-bok .van-checkbox{
+  margin-bottom: 10px;
+}
+.check-count{
+  border: 1px solid #509EF0;
+  color: #509EF0;
+  font-weight: normal;
+  line-height: 20px;
+  height: 20px;
+  padding: 0 10px;
+  font-size: 14px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+.chart{
+  margin: 0 15px ;
+  padding: 15px 0;
+  border-top: 2px solid #f5f5f5;
+  font-size: 13px;
+  line-height: 20px;
+}
+.chart .count {
+  text-align: center;
+  padding: 5px 0px;
+  margin-right: 10px;
+}
+.chart .count .num{
+  font-size: 24px;
+  line-height: 30px;
 }
 </style>
