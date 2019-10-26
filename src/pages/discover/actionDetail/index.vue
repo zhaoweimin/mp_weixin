@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <van-button type="info" size="large">+ 新增邀约</van-button>
+        <van-button type="info" size="large" @click="addInvitation">+ 新增邀约</van-button>
     </div>
 </template>
 
@@ -44,7 +44,11 @@ export default {
       }
     }
   },
-
+  methods: {
+    addInvitation () {
+      mpvue.navigateTo({ url: `/pages/discover/invitation/main` })
+    }
+  },
   created () {}
 }
 </script>

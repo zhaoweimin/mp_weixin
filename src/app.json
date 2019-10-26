@@ -32,6 +32,7 @@
     "pages/discover/actionDetail/main",
     "pages/discover/product/main",
     "pages/discover/lore/main",
+    "pages/discover/invitation/main",
 
     "pages/task/list/main",
     "pages/task/detail/main",

@@ -16,7 +16,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"enhance": true
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
