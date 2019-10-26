@@ -1,17 +1,20 @@
 <template>
-  <div class="main">
-    <block v-for="(vo, key) in list" :key="key">
-      <card :info="vo" :type="8"></card>
-    </block>
-  </div>
+    <div class="main has-header">
+        <search :rightButton="true" placeholder="搜索"></search>
+        <block v-for="(vo, key) in list" :key="key">
+            <card :info="vo" :type="8"></card>
+        </block>
+    </div>
 </template>
 
 <script>
 import card from '@/components/achievementCard'
+import search from '@/components/search'
 
 export default {
   data () {
     return {
+      searchValue: '',
       type: 0,
       list: [
         {
@@ -31,16 +34,14 @@ export default {
   },
 
   components: {
-    card
+    card,
+    search
   },
 
   onLoad (option) {
     let type = option.type
     this.type = type
-    let title = [
-      '可邀约活动',
-      '历史活动'
-    ]
+    let title = ['可邀约活动', '历史活动']
     mpvue.setNavigationBarTitle({ title: title[type] })
   },
 
@@ -51,14 +52,19 @@ export default {
     add () {
       let url = `../addAchievement/main`
       mpvue.navigateTo({ url })
-    }
+    },
+    onSearch () {
+      console.log(111)
+    },
+    onCancel () {}
   },
 
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style scoped>
-
+.c-inputclass {
+	height: 10px;
+}
 </style>

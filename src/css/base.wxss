@@ -1,6 +1,6 @@
 /* 基础类名 */
 /* color */
-page{
+page {
   background: #f7f7f7;
   /* background: #edf6ff; */
 }
@@ -13,33 +13,44 @@ page{
 .cred {
   color: #d95940 !important;
 }
+.cyellow {
+  color: #ea7628 !important;
+}
 .cgey {
   color: #999999 !important;
 }
-.clink{
-    color: #259efa !important;
+.clink {
+  color: #259efa !important;
 }
 .cgreen {
   color: #16eac2 !important;
 }
-
-.bg-blue{
-    background: #259efa !important;
+.cfff {
+  color: #fff;
+}
+.bg-blue {
+  background: #259efa !important;
+}
+.bg-color {
+  background: #f7f7f7 !important;
 }
 .bg-fff {
   background: #fff;
 }
-.box-shadow{
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+.bg-yellow {
+  background: #ea7628 !important;
 }
-.has-header{
-  padding-top: 50px; 
+.box-shadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-.has-big-header{
-  padding-top: 60px; 
+.has-header {
+  padding-top: 50px;
 }
-.has-two-header{
-  padding-top: 100px; 
+.has-big-header {
+  padding-top: 60px;
+}
+.has-two-header {
+  padding-top: 100px;
 }
 .has-footer {
   padding-bottom: 100px;
@@ -346,6 +357,9 @@ page{
 }
 .l-end {
   align-items: flex-end;
+}
+.l-baseline {
+  align-items: baseline;
 }
 .l-start {
   align-items: flex-start;

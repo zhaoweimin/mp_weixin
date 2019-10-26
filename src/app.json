@@ -47,7 +47,7 @@
   },
   "tabBar": {
     "color": "#999",
-    "backgroundColor": "#fafafa",
+    "backgroundColor": "#ffffff",
     "selectedColor": "#509ef0",
     "borderStyle": "white",
 
@@ -96,8 +96,13 @@
     "van-toast": "/static/vant/toast/index",
     "van-tabbar": "/static/vant/tabbar/index",
     "van-tabbar-item": "/static/vant/tabbar-item/index",
+<<<<<<< HEAD
     "van-picker": "/static/vant/picker/index",
     "van-checkbox": "/static/vant/checkbox/index",
     "van-checkbox-group": "/static/vant/checkbox-group/index"
+=======
+    "van-datetime-picker": "/static/vant/datetime-picker/index",
+    "van-picker": "/static/vant/picker/index"
+>>>>>>> 49edb292c7fb571f45e61f7bb32f2ec4fce299df
   }
 }

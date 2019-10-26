@@ -1,24 +1,17 @@
 <template>
-    <div class="main">
-        <div class="search bg-blue">
-            <div class="dis-flex">
-                <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
-                <div class="input flex-1">
-                    <input type="text" placeholder="搜索应用、待办、报表">
-                </div>
-            </div>
-        </div>
+    <div class="main has-header">
+        <search placeholder="搜索应用、待办、报表"></search>
         <div class="application">
             <block v-for="(vo, key) in data" :key="key">
                 <item :info="vo" text="文字"></item>
             </block>
         </div>
-        <van-button type="primary">按钮</van-button>
     </div>
 </template>
 
 <script>
 import item from '@/components/homeItem'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -63,7 +56,8 @@ export default {
   },
 
   components: {
-    item
+    item,
+    search
   },
 
   mounted () {

@@ -1,0 +1,175 @@
+<template>
+    <div class="pl15 bg-fff border-box">
+        <div class="inputItem dis-flex l-start ptb10 pr15" :class="{'border-b':border}">
+            <div class="label f16 cgey">{{title}}</div>
+            <div class="flex-1 dis-flex flex-column pl20">
+                <!-- 文字 -->
+                <div v-if="type===0" class="f16 ta-r c-333">{{resultValue}}</div>
+                <!-- 输入框 -->
+                <input v-if="type===1" class="ta-r w-full f16 c-333" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
+                <!-- 点击事件 -->
+                <div v-if="type===4" class="btnItem dis-flex flex-1 a-right l-center">
+                    <!-- <div class="f16 mr5">{{resultValue}}</div> -->
+                    <input class="ta-r w-full f16 c-333" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus">
+                    <!-- <img class="ml10" src="./img/icon_camera@3x.png" alt="" @click="onBtnClick"> -->
+                </div>
+                <!-- 选择项 -->
+                <div v-if="type===6" class="picker flex1 flex a-left l-center">
+                    <div class="chooseItem mr15 f12" :class="[resultValue==item.key?'bg-main c-fff':'bg-color c-999']" v-for="(item,index) in dataList" :key="index" @click="getTabChoose(index)">{{item.value}}</div>
+                </div>
+                <div class="error-tip ta-r" v-if="isShowErr&&enableInputErr">{{errTxt}}</div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import Verify from '@/utils/Verify.js'
+
+export default {
+  props: {
+    options: {
+      default () {
+        return []
+      }
+    },
+    dataList: {
+      default () {
+        return []
+      }
+    },
+    type: {
+      type: Number,
+      default () {
+        return 1
+      }
+    },
+    title: {
+      type: String,
+      default () {
+        return ''
+      }
+    },
+    placeholder: {
+      type: String,
+      default () {
+        return '请输入内容'
+      }
+    },
+    value: {
+      type: String,
+      default () {
+        return ''
+      }
+    },
+    border: {
+      type: Boolean,
+      default () {
+        return true
+      }
+    },
+    // 校验方法
+    validType: {
+      type: String,
+      default () {
+        return ''
+      }
+    },
+    paramkey: {
+      type: String,
+      default () {
+        return ''
+      }
+    },
+    // 启用错误提示开关（默认启用）
+    enableInputErr: {
+      type: Boolean,
+      default () {
+        return true
+      }
+    },
+    disabled: {
+      type: Boolean,
+      default () {
+        return false
+      }
+    }
+  },
+  created () {},
+  watch: {
+    value (newV) {
+      this.resultValue = newV
+    }
+  },
+  data () {
+    return {
+      resultValue: this.value,
+      isShowErr: false,
+      errTxt: '',
+      scrollTop: '',
+      focusDOMScrollTop: ''
+    }
+  },
+  methods: {
+    onBtnClick () {
+      this.isShowErr = false
+      this.$emit('getClickItems', { key: this.paramkey })
+    },
+    onBlur () {
+      // 修复ios键盘消失后页面不回缩（失焦后强制让页面归位）
+      window.scroll(0, this.focusDOMScrollTop)
+      let Fn = this.validType ? (!(this.validType * 1) ? this.validType : 'numberFloatLimitValid') : 'emptyValid'
+      if (Fn !== 'none') {
+        Verify[Fn](
+          '',
+          this.resultValue,
+          res => {
+            this.isShowErr = !!res
+            if (this.isShowErr) {
+              this.errTxt = res
+            }
+          },
+          this.validType
+        )
+      }
+      this.resultValue = this.isShowErr ? '' : this.resultValue
+      this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
+    },
+    onFocus () {
+      this.focusDOMScrollTop = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop
+      this.isShowErr = false
+    },
+    getTabChoose (index) {
+      this.$emit('getTabChoose', this.dataList[index].key)
+    }
+  }
+}
+</script>
+
+<style scoped>
+.inputItem {
+	min-height: 45px;
+	box-sizing: border-box;
+}
+.inputItem .error-tip {
+	color: #ee0a24;
+	font-size: 12px;
+}
+.inputItem .btnItem img {
+	width: 26px;
+	height: 22px;
+}
+.inputItem .chooseItem {
+	width: 40px;
+	height: 27px;
+	line-height: 27px;
+	text-align: center;
+	border-radius: 4px;
+}
+input:disabled,
+input[disabled] {
+	background: none;
+	color: #333;
+	-webkit-text-fill-color: #333;
+}
+</style>
