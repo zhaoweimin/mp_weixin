@@ -43,6 +43,7 @@
 </template>
 
 <script>
+const titles = new Map([['0', '市场活动'], ['1', '待审批'], ['2', '同意'], ['3', '拒绝']])
 export default {
   data () {
     return {
@@ -51,11 +52,9 @@ export default {
         { name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0` },
         { name: '历史活动', url: `/pages/discover/marketAction/main?type=1` },
         { name: '历史邀约客户', url: `/pages/discover/marketCustomer/main` }
-      ],
-      titles: new Map([[0, '市场活动'], [1, '待审批'], [2, '同意'], [3, '拒绝']])
+      ]
     }
   },
-
   methods: {
     link (url) {
       if (url) {
@@ -65,12 +64,10 @@ export default {
     onChange (event) {
       this.active = event.mp.detail
       wx.setNavigationBarTitle({
-        title: this.titles.get(event.mp.detail)
+        title: titles.get(String(event.mp.detail))
       })
     }
-  },
-
-  created () {}
+  }
 }
 </script>
 

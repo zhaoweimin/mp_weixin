@@ -6,10 +6,10 @@
                 <!-- 文字 -->
                 <div v-if="type===0" class="f16 c-333" :class="[textRight?'ta-r':'ta-l']">{{resultValue}}</div>
                 <!-- 输入框 -->
-                <input v-if="type===1" class="w-full f16 c-333" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
+                <input v-if="type===1" class="w-full f16 c-333" :placeholder-style="{color:#f1f1f1}" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
                 <!-- 选择 -->
                         <picker v-if="type===2" class="w-full" :class="[textRight?'ta-r':'ta-l']" @change="onPickerChange" :value="index" :range="options">
-                    <span class="f16 c-333"> 当前选择：{{index}}</span>
+                    <span class="f16" :class="resultValue?'cblack':'cgey'">{{options[resultValue]||'请选择'}}</span>
                 </picker>
                 <!-- 点击事件 -->
                 <div v-if="type===4" class="btnItem dis-flex flex-1 a-right l-center">
@@ -200,5 +200,8 @@ input[disabled] {
 	background: none;
 	color: #333;
 	-webkit-text-fill-color: #333;
+}
+.clight {
+	color: #f1f1f1;
 }
 </style>
