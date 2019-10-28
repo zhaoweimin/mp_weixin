@@ -33,10 +33,10 @@
           <div class="text">超过30天未跟进客户</div>
         </div>
       </div>
-      <div class="items type-two" @click="link(4)">
+      <div class="items type-two" @click="add()">
         <div class="bg">
           <div class="img">
-            <img class="img-img" src="../../../img/follow_4.png" alt="">
+            <img class="img-img" src="../../../img/follow_5.png" alt="">
           </div>
           <div class="text">新增</div>
         </div>
@@ -54,17 +54,18 @@ export default {
 
   components: {
   },
-
+  created () {
+    // let app = getApp()
+  },
   methods: {
     link (type) {
       // type: 1.今日 2.计划 3.本周 4.未跟进
       let url = `../followList/main?type=${type}`
       mpvue.navigateTo({ url })
+    },
+    add () {
+      // mpvue.navigateTo({ `../followList/main`})
     }
-  },
-
-  created () {
-    // let app = getApp()
   }
 }
 </script>
@@ -96,12 +97,15 @@ export default {
   box-sizing: border-box;
   border-radius: 4px;
   position: relative;
-  width: 160px;
+  width: 154px;
   height: 140px;
   right: 5px;
   top: 5px;
   background: #ffffff;
   overflow: hidden;
+}
+.follow-block .items.type-two .bg{
+  border: 1px solid #0feac0;
 }
 .follow-block .items .bg .img{
   text-align: center;

@@ -70,6 +70,12 @@
 					"pathName": "pages/product/achievement/main",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "用户新增",
+					"pathName": "pages/customer/add/main",
+					"scene": null
 				}
 			]
 		}

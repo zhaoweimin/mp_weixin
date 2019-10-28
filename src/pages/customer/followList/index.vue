@@ -1,5 +1,7 @@
 <template>
-  <div class="main">
+  <div class="main has-header">
+    <search placeholder="搜索"></search>
+
     <div class="customer-card follow-custom"  v-for="(vo, key) in list" :key="key" @click="detail(vo.id)">
       <div class="dis-flex">
         <div class="avatar">
@@ -37,7 +39,13 @@
 </template>
 
 <script>
+import search from '@/components/search'
+
 export default {
+  components: {
+    search
+  },
+
   data () {
     return {
       type: 0,
@@ -72,9 +80,6 @@ export default {
         }
       ]
     }
-  },
-
-  components: {
   },
 
   methods: {

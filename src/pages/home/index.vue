@@ -21,7 +21,7 @@ export default {
           title: '客户管理',
           list: [
             { text: '客户档案', url: '../customer/archives/main', icon: require('../../img/one_1.png') },
-            { text: '客户新增', url: '../customer/add/main', icon: require('../../img/one_2.png') },
+            { text: '客户新增', url: '../customer/create/main', icon: require('../../img/one_2.png') },
             { text: '客户跟进', url: '../customer/follow/main', icon: require('../../img/one_3.png') },
             { text: '客户投诉', url: '../customer/report/main', icon: require('../../img/one_4.png') }
           ]

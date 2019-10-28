@@ -19,6 +19,9 @@ page {
 .cgey {
   color: #999999 !important;
 }
+.cplaceholder {
+  color: #f1f1f1 !important;
+}
 .clink {
   color: #259efa !important;
 }

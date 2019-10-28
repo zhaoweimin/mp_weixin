@@ -1,38 +1,8 @@
 <template>
-  <div class="customer has-footer">
-    <div class="customer-card">
-      <div class="dis-flex">
-        <div class="avatar">
-          <img class="img" :src="info.avatar" mode="aspectFill">
-          <!-- <div class="text">编辑</div> -->
-        </div>
-        <div class="msg">
-          <div class="title">
-            <span class="strong">{{info.name}}</span> 
-            <span class="sex">{{info.sex ? '先生' : '女士'}}</span>
-            <div class="edit" @click="edit">{{isEdit ? '编辑中...' : '编辑档案'}}</div>
-          </div>
-          <div class="tags level-1" v-if="info.level == 1">
-            <div class="tag">历史成交客户</div>
-            <div class="tag level">A级</div>
-          </div>
-          <div class="tags level-2" v-if="info.level == 2">
-            <div class="tag">成交客户</div>
-            <div class="tag level">B级</div>
-          </div>
-          <div class="tags level-3" v-if="info.level == 3">
-            <div class="tag">准客户</div>
-            <div class="tag level">C级</div>
-          </div>
-          <div class="tags level-4" v-if="info.level == 4">
-            <div class="tag">潜在客户</div>
-            <div class="tag level">D级</div>
-          </div>
-        </div>
-      </div>
+  <div class="customer creat has-footer">
+    <div class="msg-top-bg">
     </div>
-
-    <div class="msg-table">
+    <div class="msg-table has-bg box-shaw">
       <div class="title">
         风险能力测评 <span class="iconfont iconkehugenjin"></span>
         <div class="fr check-count">
@@ -45,24 +15,39 @@
           <div class="text">风险测评得分</div>
         </div>
         <div class="flex-1">
-          <div class="text">客户风险等级：C1</div>
-          <div class="text">风险承受能力类型：稳健型</div>
-          <div class="text">相匹配产品风险等级：R1R2R3</div>
+          <div class="text">客户风险等级：---</div>
+          <div class="text">风险承受能力类型：---</div>
+          <div class="text">相匹配产品风险等级：---</div>
         </div>
       </div>
     </div>
 
-    <div class="msg-table">
-      <div class="title" @click="setOpen(0)">
-        基本信息 <span class="iconfont iconjibenxinxi"></span>
-        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[0], 'iconxiangxiajiantou-copy': open[0] }"></div>
+    <div class="step-block box-shaw">
+      <div class="line left" v-if="step > 0"></div>
+      <div class="line right" v-if="step > 1"></div>
+      <div class="flex">
+        <div class="flex-1">
+          <div class="number active">1</div>
+          <div class="text">基本信息</div>
+        </div>
+        <div class="flex-1">
+          <div class="number" :class="{active: step > 0}">2</div>
+          <div class="text">联系方式</div>
+        </div>
+        <div class="flex-1">
+          <div class="number" :class="{active: step == 2}">3</div>
+          <div class="text">兴趣爱好</div>
+        </div>
       </div>
-      <div class="table" v-show="open[0]">
+    </div>
+
+
+    <div class="msg-table" v-show="step === 0">
+      <div class="table">
         <div class="line">
           <div class="key">客户编号</div>
           <div class="val">
-            <span v-show="!isEdit">{{code}}</span>
-            <input v-show="isEdit" class="input" type="text" v-model="code">
+            <input v-show="isEdit" class="input" placeholder="请输入客户编号" placeholder-class="cplaceholder" type="text" v-model="code">
           </div>
         </div>
         <div class="line required">
@@ -77,11 +62,15 @@
         </div>
         <div class="line">
           <div class="key">市场活动</div>
-          <div class="val">XXXXXXX</div>
+          <div class="val">
+            <input v-show="isEdit" class="input" placeholder="请输入市场活动" placeholder-class="cplaceholder" type="text" v-model="code">
+          </div>
         </div>
         <div class="line">
           <div class="key">投诉次数</div>
-          <div class="val">1次</div>
+          <div class="val">
+            <input v-show="isEdit" class="input" placeholder="请输入投诉次数" placeholder-class="cplaceholder" type="text" v-model="code">
+          </div>
         </div>
         <div class="line required">
           <div class="key">证件类型</div>
@@ -89,7 +78,9 @@
         </div>
         <div class="line required">
           <div class="key">证件号码</div>
-          <div class="val">521201295262699562535 </div>
+          <div class="val">
+            <input v-show="isEdit" class="input" placeholder="请输入证件号码" placeholder-class="cplaceholder" type="text" v-model="code">
+          </div>
         </div>
         <div class="line required">
           <div class="key">婚姻状况</div>
@@ -111,7 +102,9 @@
           <div class="flex-1">
             <div class="key l-end w100">工作单位</div>
             <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
-            <div class="text-val">深圳市×××××××××××××××××公司</div>
+            <div class="text-val text-placeholder">
+              <textarea v-show="isEdit" class="input" placeholder="请输入工作单位" placeholder-class="cplaceholder" type="text" v-model="code" />
+            </div>
           </div>
         </div>
         <div class="line required">
@@ -134,15 +127,13 @@
       </div>
     </div>
 
-    <div class="msg-table" >
-      <div class="title" @click="setOpen(1)">
-        联系方式 <span class="iconfont iconliaotianduihua"></span>
-        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[1], 'iconxiangxiajiantou-copy': open[1] }"></div>
-      </div>
-      <div class="table" v-show="open[1]">
+    <div class="msg-table" v-show="step === 1">
+      <div class="table" >
         <div class="line required">
           <div class="key">手机号码</div>
-          <div class="val">18032654593</div>
+          <div class="val">
+            <input v-show="isEdit" class="input" placeholder="请输入手机号码" placeholder-class="cplaceholder" type="text" v-model="code">
+          </div>
         </div>
         <div class="line">
           <div class="key">电话类型</div>
@@ -150,27 +141,29 @@
         </div>
         <div class="line">
           <div class="key">紧急联系人</div>
-          <div class="val">张宇行</div>
+          <div class="val">
+            <input v-show="isEdit" class="input" placeholder="请输入紧急联系人" placeholder-class="cplaceholder" type="text" v-model="code">
+          </div>
         </div>
         <div class="line">
           <div class="key">紧急联系人电话</div>
-          <div class="val">15963252564</div>
+          <div class="val">
+            <input v-show="isEdit" class="input" placeholder="请输入紧急联系人电话" placeholder-class="cplaceholder" type="text" v-model="code">
+          </div>
         </div>
         <div class="line required">
           <div class="flex-1">
             <div class="key">邮寄地址</div>
-            <div class="text-val">深圳市南山区软件产业基地</div>
+            <div class="text-val text-placeholder">
+              <textarea v-show="isEdit" class="input" placeholder="请输入邮寄地址" placeholder-class="" type="text" v-model="code" />
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="msg-table">
-      <div class="title" @click="setOpen(3)">
-        兴趣爱好 <span class="iconfont iconjibenxinxi"></span>
-        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[3], 'iconxiangxiajiantou-copy': open[3] }"></div>
-      </div>
-      <div class="table" v-show="open[3]">
+    <div class="msg-table" v-show="step === 2">
+      <div class="table">
         <div class="line">
           <div class="key">性别</div>
           <div class="val">
@@ -298,40 +291,10 @@
       </div>
     </div>
 
-    <div class="msg-table" >
-      <div class="title" @click="setOpen(4)">
-        统计与分析 <span class="iconfont iconyejixinzeng"></span>
-        <div class="fr cblack iconfont" :class="{ 'iconxiangxiajiantou': !open[4], 'iconxiangxiajiantou-copy': open[4] }"></div>
-      </div>
-      <div class="table" v-show="open[4]">
-        <div class="big-line line">
-          <div class="flex-1">
-            <div class="val"><span class="strong">10万</span> <span class="iconfont iconright"></span></div>
-            <div class="key">客户投资总额</div>
-          </div>
-          <div class="flex-1">
-            <div class="val"><span class="strong">50万</span> <span class="iconfont iconright"></span></div>
-            <div class="key">累计投资总额</div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="key">最近跟进时间</div>
-          <div class="val">2019.3.20 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key">首次成交时间</div>
-          <div class="val">2018.12.20 <span class="iconfont iconright"></span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bar" v-if="isEdit">
-      <div class="flex-1 mr10">
-        <van-button plain type="info" @click="cancle">取消</van-button>
-      </div>
-      <div class="flex-1">
-        <van-button type="info" @click="submit">确定</van-button>
-      </div>
+    <div class="line-bar">
+        <van-button type="info" @click="submit" v-if="step === 2">确认</van-button>
+        <van-button type="info" @click="setStep(1)" v-if="step < 2">下一步</van-button>
+        <van-button plain type="info" @click="setStep(0)" v-if="step > 0">上一步</van-button>
     </div>
   </div>
 </template>
@@ -356,14 +319,15 @@ export default {
         level: 1,
         sex: 1
       },
-      code: 'Ada',
+      code: '',
+      step: 0,
 
       open: [false, false, false, false, false],
-      isEdit: false,
+      isEdit: true,
       check: [true, true, false, false],
       souce_income: [
-        {val: true, text: '工资，劳务报酬'},
-        {val: true, text: '生产经营所得'},
+        {val: false, text: '工资，劳务报酬'},
+        {val: false, text: '生产经营所得'},
         {val: false, text: '利息、股息，转让证券等金融性资产收入'},
         {val: false, text: '出租、出售房地产等非金融性资产收入 '}
       ],
@@ -450,6 +414,13 @@ export default {
       this.open[key] = !this.open[key]
       this.$forceUpdate()
     },
+    setStep (type) {
+      if (type) {
+        this.step += 1
+      } else {
+        this.step -= 1
+      }
+    },
     edit () {
       // console.log(1)
       if (!this.isEdit) {
@@ -511,54 +482,7 @@ export default {
 </script>
 
 <style>
-.customer-card{
-  margin: 0px;
-  padding: 15px;
-  background: linear-gradient(to right, #509EF0 , #5BC7FF); /* 标准的语法 */
-  border-radius: 0px;
-  position: relative;
-  margin-bottom: 30px;
+page{
+  background: #edf6ff
 }
-.customer-card::after{
-  content: "";
-  position: absolute;
-  bottom: -19px;
-  left: 32px;
-  width: 0; 
-  height: 0;
-  border-width: 10px;
-  border-style: solid;
-  border-color: #509EF0 transparent transparent transparent;
-}
-.customer-card .title{
-  color: #ffffff;
-}
-
-.customer-card .msg .title .sex{
-  color: #ffffff;
-}
-.customer-card .avatar{
-  width: 44px;
-  height: 50px;
-}
-.customer-card .avatar .img{
-  width: 44px;
-  height: 44px;
-}
-.customer-card .avatar .text{
-  color: #ffffff;
-  font-size: 12px;
-  text-align: center;
-  line-height: 12px;
-}
-.customer-card .edit{
-  border: 1px solid #fff;
-  float: right;
-  padding:  0 5px;
-  /* width: 60px; */
-  text-align: center;
-  border-radius: 20px;
-}
-
-
 </style>

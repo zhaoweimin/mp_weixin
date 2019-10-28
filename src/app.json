@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/main",
 
+    "pages/customer/create/main",
     "pages/customer/archives/main",
     "pages/customer/customer/main",
     "pages/customer/add/main",
