@@ -25,6 +25,9 @@ page {
 .clink {
   color: #259efa !important;
 }
+.clight {
+  color: #d8d8d8;
+}
 .cgreen {
   color: #16eac2 !important;
 }
@@ -376,35 +379,41 @@ page {
 .a-left {
   justify-content: left;
 }
+.a-between {
+  justify-content: space-between;
+}
+.border-b {
+  border-bottom: 1px solid #f5f5f5;
+}
 /* width */
-.w100{
+.w100 {
   width: 100%;
 }
-.w90{
+.w90 {
   width: 90%;
 }
-.w80{
+.w80 {
   width: 80%;
 }
-.w70{
+.w70 {
   width: 70%;
 }
-.w60{
+.w60 {
   width: 60%;
 }
-.w50{
+.w50 {
   width: 50%;
 }
-.w40{
+.w40 {
   width: 40%;
 }
-.w30{
+.w30 {
   width: 30%;
 }
-.w20{
+.w20 {
   width: 20%;
 }
-.w10{
+.w10 {
   width: 10%;
 }
 /* end */

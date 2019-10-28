@@ -1,20 +1,24 @@
 <template>
-    <div class="pl15 bg-fff border-box">
-        <div class="inputItem dis-flex l-start ptb10 pr15" :class="{'border-b':border}">
+    <div class="pl15 bg-fff border-box" :class="{'pr15':!isSpecialBorderStyle}">
+        <div class="inputItem dis-flex l-start ptb10" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
             <div class="label f16 cgey" :class="[titleDark?'cblack':'cgey']">{{title}}</div>
             <div class="flex-1 dis-flex flex-column pl20">
                 <!-- 文字 -->
-                <div v-if="type===0" class="f16 c-333" :class="[textRight?'ta-r':'ta-l']">{{resultValue}}</div>
+                <div v-if="type===0" class="f16 cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack']">{{resultValue}}</div>
                 <!-- 输入框 -->
-                <input v-if="type===1" class="w-full f16 c-333" placeholder-style="color:#f1f1f1" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
+                <input v-if="type===1" class="w-full f16" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
                 <!-- 选择 -->
                         <picker v-if="type===2" class="w-full" :class="[textRight?'ta-r':'ta-l']" @change="onPickerChange" :value="index" :range="options">
-                    <span class="f16" :class="resultValue?'cblack':'cgey'">{{options[resultValue]||'请选择'}}</span>
+                    <span class="f16" :class="resultValue?'cblack':'clight'">{{options[resultValue]||'请选择'}}</span>
+                </picker>
+                <!-- 日期 -->
+                <picker v-if="type===3" mode="date" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
+                    <span class="f16" :class="resultValue?'cblack':'clight'">{{resultValue||'请选择'}}</span>
                 </picker>
                 <!-- 点击事件 -->
                 <div v-if="type===4" class="btnItem dis-flex flex-1 a-right l-center">
                     <!-- <div class="f16 mr5">{{resultValue}}</div> -->
-                    <input class="w-full f16 c-333" :class="[textRight?'ta-r':'ta-l']" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus">
+                    <input class="w-full f16 cblack" :class="[textRight?'ta-r':'ta-l']" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus">
                     <!-- <img class="ml10" src="./img/icon_camera@3x.png" alt="" @click="onBtnClick"> -->
                 </div>
                 <!-- 选择项 -->
@@ -111,6 +115,18 @@ export default {
       default () {
         return true
       }
+    },
+    isSpecialColorTxt: {
+      type: Boolean,
+      default () {
+        return false
+      }
+    },
+    isSpecialBorderStyle: {
+      type: Boolean,
+      default () {
+        return false
+      }
     }
   },
   created () {},
@@ -133,12 +149,12 @@ export default {
       this.isShowPicker = false
     },
     onPickerChange (e) {
-      console.log(e.mp)
-      console.log(e.mp.detail)
-      console.log(e.mp.detail.value)
       this.resultValue = e.mp.detail.value
-      this.$forceUpdate()
       this.$emit('getSelect', { key: this.paramkey, value: this.options[e.mp.detail.value], index: e.mp.detail.value })
+    },
+    onDateChange (e) {
+      this.resultValue = e.mp.detail.value
+      this.$emit('getSelectDate', { key: this.paramkey, value: e.mp.detail.value })
     },
     onBtnClick () {
       this.isShowErr = false
@@ -200,8 +216,5 @@ input[disabled] {
 	background: none;
 	color: #333;
 	-webkit-text-fill-color: #333;
-}
-.clight {
-	color: #f1f1f1;
 }
 </style>

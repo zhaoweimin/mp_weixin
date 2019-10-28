@@ -18,17 +18,17 @@
                     <div class="f12 cgey">先生</div>
                 </div>
                 <div class="dis-flex mb10">
-                    <div class="label-yellow mr10">历史成交客户</div>
-                    <div class="label-yellow-outline">A级</div>
+                    <div class="label-yellow-outline mr10">历史成交客户</div>
+                    <div class="label-yellow">A级</div>
                 </div>
                 <div class="foot dis-flex l-end">
                     <div class="flex-1">
                         <div class="cgey">活动名称：<span class="cblack">陈伟</span></div>
                         <div class="cgey mb10">邀约日期：<span class="cblack">默认当前</span></div>
-                        <div class="cgey">审批状态：<span class="clink">待审批</span></div>
+                        <div class="cgey">审批状态：<span class="clink">{{status}}</span></div>
                     </div>
                     <div class="right">
-                        <div class="clink f12">查看更多</div>
+                        <div class="clink f12" @click="link(`/pages/discover/details/main?type=${active}`)">查看更多</div>
                     </div>
                 </div>
             </div>
@@ -48,6 +48,7 @@ export default {
   data () {
     return {
       active: 0,
+      status: '',
       list: [
         { name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0` },
         { name: '历史活动', url: `/pages/discover/marketAction/main?type=1` },
@@ -57,12 +58,14 @@ export default {
   },
   methods: {
     link (url) {
+      console.log(url)
       if (url) {
         mpvue.navigateTo({ url })
       }
     },
     onChange (event) {
       this.active = event.mp.detail
+      this.status = titles.get(String(event.mp.detail))
       wx.setNavigationBarTitle({
         title: titles.get(String(event.mp.detail))
       })

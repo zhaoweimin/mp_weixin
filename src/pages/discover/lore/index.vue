@@ -1,5 +1,7 @@
 <template>
-    <div class="main">
+    <div class="main has-header">
+        <search :rightButton="true" placeholder="搜索"></search>
+        <div class="clink f13 ta-r pt20 pr15">文件类型<span class="iconfont icondown"></span></div>
         <block v-for="(vo, key) in list" :key="key">
             <card :info="vo" :type="7"></card>
         </block>
@@ -8,6 +10,7 @@
 
 <script>
 import card from '@/components/achievementCard'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -32,7 +35,8 @@ export default {
   },
 
   components: {
-    card
+    card,
+    search
   },
 
   methods: {

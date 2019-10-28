@@ -1,20 +1,23 @@
 <template>
     <div class="customer">
-        <div class="bg-fff mb30">
+        <div class="bg-fff mb20">
             <div class="pl15 ptb15 f16 strong clink">邀约1</div>
             <comInput :type="0" title="邀约编号" :titleDark="true" value="系统分配" :textRight="false"></comInput>
             <comInput :type="1" title="活动名称" :titleDark="true" value="自带" :textRight="false"></comInput>
             <comInput :type="1" title="活动编号" :titleDark="true" value="自带" :textRight="false"></comInput>
-            <comInput :type="1" title="邀约日期" :titleDark="true" value="默认当前" :textRight="false"></comInput>
+            <comInput :type="3" title="邀约日期" :titleDark="true" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
             <comInput :type="2" title="审批状态" :titleDark="true" placeholder="请选择审批状态" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']" :textRight="false"></comInput>
             <comInput :type="1" title="备注" :titleDark="true" placeholder="请输入备注" value="" :textRight="false"></comInput>
             <comInput :type="1" title="客户姓名" :titleDark="true" placeholder="请输入客户姓名" value="" :textRight="false"></comInput>
             <comInput :type="1" title="手机号码" :titleDark="true" placeholder="请输入手机号码" value="" :textRight="false"></comInput>
-            <comInput :type="1" title="客户类型" :titleDark="true" placeholder="请选择客户类型" value="" :textRight="false"></comInput>
+            <comInput :type="2" title="客户类型" :titleDark="true" placeholder="请选择客户类型" value="" @getSelect="getSelect" :options="['有意向客户']" :textRight="false"></comInput>
             <comInput :type="1" title="客户投资总额" :titleDark="true" placeholder="请输入客户投资总额" value="" :textRight="false"></comInput>
+            <comInput :type="1" title="邀约审批人" :titleDark="true" placeholder="请输入客户投资总额" value="自带" :textRight="false"></comInput>
+            <comInput :type="1" title="所属部门" :titleDark="true" placeholder="请输入客户投资总额" value="商务部门" :textRight="false"></comInput>
             <comInput :type="1" title="邀约审批状态" :titleDark="true" placeholder="自动判断状态" value="" :textRight="false"></comInput>
-            <comInput :type="1" title="理财经理" :titleDark="true" placeholder="请选择理财经理" value="" :textRight="false"></comInput>
-            <comInput :type="1" title="所属部门" :titleDark="true" placeholder="请选择所属部门" value="" :textRight="false"></comInput>
+            <comInput :type="1" title="备注" :titleDark="true" placeholder="请输入备注" value="" :textRight="false"></comInput>
+            <comInput :type="2" title="理财经理" :titleDark="true" placeholder="请选择理财经理" value="" @getSelect="getSelect" :options="['小王','小李']" :textRight="false"></comInput>
+            <comInput :type="2" title="归属部门" :titleDark="true" placeholder="请选择归属部门" value="" @getSelect="getSelect" :options="['市场部门','行政部门']" :textRight="false"></comInput>
         </div>
         <van-button type="info" size="large">确认提交</van-button>
     </div>
@@ -45,6 +48,9 @@ export default {
   methods: {
     getSelect (data) {
       console.log(11111, data)
+    },
+    getSelectDate (data) {
+      console.log(22, data)
     }
   }
 }
