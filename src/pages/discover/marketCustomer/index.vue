@@ -1,7 +1,7 @@
 <template>
     <div class="main has-header">
         <search :rightButton="true" placeholder="搜索"></search>
-        <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key" @click="detail(vo.id)">
+        <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key" @click="detail()">
             <div class="dis-flex">
                 <div class="avatar">
                     <img class="img" :src="vo.avatar" mode="aspectFill">
@@ -91,16 +91,16 @@ export default {
 
   methods: {
     detail (id) {
-      let url = `/pages/customer/customer/main?id=${id}`
+      let url = `/pages/discover/invitationDetail/main`
       mpvue.navigateTo({ url })
     }
   },
 
   onLoad (option) {
-    let type = option.type
-    this.type = type
-    let title = ['今日需跟进', '计划跟进', '本周需跟进', '超过30天未跟进']
-    mpvue.setNavigationBarTitle({ title: title[type - 1] })
+    // let type = option.type
+    // this.type = type
+    // let title = ['今日需跟进', '计划跟进', '本周需跟进', '超过30天未跟进']
+    // mpvue.setNavigationBarTitle({ title: title[type - 1] })
   }
 }
 </script>

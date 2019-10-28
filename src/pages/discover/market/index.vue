@@ -52,7 +52,7 @@ export default {
       list: [
         { name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0` },
         { name: '历史活动', url: `/pages/discover/marketAction/main?type=1` },
-        { name: '历史邀约客户', url: `/pages/discover/marketCustomer/main` }
+        { name: '历史邀约客户', url: `/pages/discover/marketCustomer/main?type=2` }
       ]
     }
   },
