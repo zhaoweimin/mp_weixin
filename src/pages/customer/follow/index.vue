@@ -33,6 +33,14 @@
           <div class="text">超过30天未跟进客户</div>
         </div>
       </div>
+      <div class="items type-two" @click="link(4)">
+        <div class="bg">
+          <div class="img">
+            <img class="img-img" src="../../../img/follow_4.png" alt="">
+          </div>
+          <div class="text">新增</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -77,6 +85,9 @@ export default {
   margin-right: 25px;
   margin-bottom: 25px;
 }
+.follow-block .items.type-two{
+  border: 1px solid #0feac0;
+}
 .follow-block .items:nth-child(2n){
   margin-right: 0px;
 }
@@ -107,5 +118,8 @@ export default {
   color: #ffffff;
   font-size: 13px;
   text-align: center;
+}
+.follow-block .items.type-two .bg .text{
+  background: #0feac0;
 }
 </style>
