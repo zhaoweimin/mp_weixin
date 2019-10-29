@@ -64,7 +64,8 @@ export default {
       mpvue.navigateTo({ url })
     },
     add () {
-      // mpvue.navigateTo({ `../followList/main`})
+      let url = `../create/main`
+      mpvue.navigateTo({ url })
     }
   }
 }

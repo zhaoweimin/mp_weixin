@@ -1,6 +1,7 @@
 <template>
-  <div class="main has-header">
+  <div class="main has-big-header">
     <navbar :info="nav" @changeNav="changeNav"></navbar>
+    <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
     <block v-for="(vo, key) in list" :key="key">
       <div class="customer-card report-card" @click="detail(vo.id)">
         <div class="tle">客户</div>
@@ -50,6 +51,7 @@
 <script>
 import navbar from '@/components/navbar'
 import card from '@/components/customerCard'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -90,7 +92,8 @@ export default {
 
   components: {
     navbar,
-    card
+    card,
+    search
   },
 
   methods: {
@@ -137,5 +140,9 @@ export default {
   top: 10px;
   height: 1px;
   background: rgba(242,242,242,1);
+}
+.report-card .line .iconfont{
+  position: relative;
+  top: -20px;
 }
 </style>

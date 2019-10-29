@@ -1,5 +1,5 @@
 <template>
-  <div class="customer">
+  <div class="customer has-footer">
     <div class="customer-card">
       <div class="dis-flex">
         <div class="avatar">
@@ -11,37 +11,37 @@
         </div>
       </div>
     </div>
-
+  
     <div class="msg-table">
       <div class="title">基本信息 <span class="iconfont iconjibenxinxi"></span></div>
       <div class="table">
         <div class="line-2">
           <div class="key">投诉单号</div>
-          <div class="val">20190320153023654</div>
+          <div class="val ta-r clink">20190320153023654</div>
         </div>
         <div class="line-2">
           <div class="key">客户姓名</div>
-          <div class="val">周方文</div>
+          <div class="val ta-r">周方文</div>
         </div>
         <div class="line-2">
           <div class="key">证件号码</div>
-          <div class="val">521365846951234452361</div>
+          <div class="val ta-r">521365846951234452361</div>
         </div>
         <div class="line-2">
           <div class="key">邮箱</div>
-          <div class="val">19855625@163.com</div>
+          <div class="val ta-r">19855625@163.com</div>
         </div>
         <div class="line-2">
           <div class="key">被投诉人</div>
-          <div class="val">杨文超</div>
+          <div class="val ta-r">杨文超</div>
         </div>
         <div class="line-2">
           <div class="key">被投诉部门</div>
-          <div class="val">销售部</div>
+          <div class="val ta-r">销售部</div>
         </div>
         <div class="line-2">
           <div class="key">购买产品</div>
-          <div class="val">产品名</div>
+          <div class="val ta-r">产品名</div>
         </div>
 
       </div>
@@ -61,13 +61,13 @@
 
         <div class="line-3 line">
           <div class="key">投诉原因</div>
-          <div class="val">
+          <div class="val ta-l">
             <text>投诉原因</text>
           </div>
         </div>
         <div class="line-3 line">
           <div class="key">投诉内容</div>
-          <div class="val">
+          <div class="val ta-l">
             <text>投诉内容</text>
           </div>
         </div>
@@ -89,7 +89,7 @@
         </div>
         <div class="line-3 line has-pd-b">
           <div class="key">处理批注</div>
-          <div class="val">
+          <div class="val ta-l">
             <text>请求协调处理</text>
           </div>
         </div>
@@ -99,15 +99,18 @@
     <div class="msg-table">
       <div class="title">转部门主管 <span class="iconfont iconjibenxinxi"></span></div>
       <div class="table">
-        <div class="line">
+        <!-- <div class="line">
           <div class="key flex-1">处理状态</div>
           <div class="val">处理中 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line-3 line has-pd-b">
+        </div> -->
+        <!-- <div class="line-3 line has-pd-b">
           <div class="key">办理意见</div>
-          <div class="val">
+          <div class="val ta-l">
             <text>加紧协调处理</text>
           </div>
+        </div> -->
+        <div class="search">
+          <span class="iconfont iconsearch-1-copy"></span><input class="input" type="text" placeholder="搜索" placeholder-class="cgrey">
         </div>
       </div>
     </div>
@@ -116,6 +119,15 @@
       <div class="flex-1"></div>
       <div class="text">已经到底了</div>
       <div class="flex-1"></div>
+    </div>
+
+    <div class="footer-bar">
+      <div class="flex-1 mr10">
+        <van-button plain type="info" @click="submit">提交</van-button>
+      </div>
+      <div class="flex-1">
+        <van-button type="info" @click="reBack">打回</van-button>
+      </div>
     </div>
 
   </div>
@@ -157,7 +169,7 @@ export default {
 .customer-card::after{
   content: "";
   position: absolute;
-  bottom: -20px;
+  bottom: -19px;
   left: 32px;
   width: 0; 
   height: 0;
@@ -188,7 +200,7 @@ export default {
   line-height: 12px;
 }
 .msg-table{
-  margin: 15px;
+  margin: 15px 0;
   background: #ffffff;
   border-radius: 4px;
 }
@@ -275,5 +287,24 @@ export default {
 .footer-line .text{
   margin: 0 10px;
   font-size: 10px;
+}
+
+.msg-table .search{
+  height: 36px;
+  border: 1px solid #a3d0ff;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-right: 15px;
+  line-height: 36px;
+  display: flex;
+}
+.msg-table .search .iconfont{
+  color: #999;
+  margin: 0 10px;
+  display: block;
+}
+.msg-table .search .input{
+  flex: 1;
+  height: 36px;
 }
 </style>

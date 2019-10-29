@@ -5,8 +5,8 @@
     <div class="msg-table has-bg box-shaw">
       <div class="title">
         风险能力测评 <span class="iconfont iconkehugenjin"></span>
-        <div class="fr check-count">
-          再测评
+        <div class="fr check-count" @click="lingQuestion">
+          去测评
         </div>
       </div>
       <div class="flex chart">
@@ -426,6 +426,10 @@ export default {
       if (!this.isEdit) {
         this.isEdit = true
       }
+    },
+    lingQuestion (e) {
+      let url = `../quetions/main?type=1`
+      mpvue.navigateTo({ url })
     },
     submit () {
       this.isEdit = false

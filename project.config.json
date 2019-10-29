@@ -75,6 +75,20 @@
 					"id": -1,
 					"name": "用户新增",
 					"pathName": "pages/customer/add/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷",
+					"pathName": "pages/customer/quetions/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "投诉详情",
+					"pathName": "pages/customer/reportDetail/main",
 					"scene": null
 				}
 			]

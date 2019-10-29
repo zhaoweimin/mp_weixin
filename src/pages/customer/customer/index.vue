@@ -35,7 +35,7 @@
     <div class="msg-table">
       <div class="title">
         风险能力测评 <span class="iconfont iconkehugenjin"></span>
-        <div class="fr check-count">
+        <div class="fr check-count"  @click="lingQuestion">
           再测评
         </div>
       </div>
@@ -505,6 +505,10 @@ export default {
     pickerSell (e) {
       console.log(e)
       this.seel = e.mp.detail.value
+    },
+    lingQuestion (e) {
+      let url = `../quetions/main?type=1`
+      mpvue.navigateTo({ url })
     }
   }
 }
