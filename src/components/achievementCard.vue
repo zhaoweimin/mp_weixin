@@ -212,33 +212,36 @@
             <div class="order">
                 <div class="bg">合同编号：201903201530326548</div>
             </div>
-            <div class="status two c1" v-if="status == 0">募集中</div>
-            <div class="status two c2" v-if="status == 1">已完成</div>
-            <div class="title">
-                <div class="name">产品名称<span class="small">基金</span></div>
+            <!-- <div class="status two c1" v-if="status == 0">募集中</div>
+            <div class="status two c2" v-if="status == 1">已完成</div> -->
+            <div class="title dis-flex l-baseline">
+                <div class="name mr10">产品名称</div>
+                <div class="label-blue-outline">股权类</div>
             </div>
             <div class="msg no-boder">
-                <div class="line">
-                    <span class="key">募集规模：10亿</span>
+                <div class="line mb10">
+                    <div class="key f13"><span class="cgey">募集规模：</span>10亿</div>
+                    <div class="key f13"><span class="cgey">募集期：</span> 10个月</div>
                 </div>
-                <div class="line">
-                    <span class="key">募集期：10个月</span>
-                    <div class="more">查看更多<span class="iconfont iconright"></span></div>
+                <div class="line dis-flex a-between">
+                    <div class="key f13"><span class="cgey">运作状态：</span>已结束</div>
+                    <div class="more clink f13" @click="productDetail()">查看更多</div>
                 </div>
             </div>
         </div>
 
         <div class="contract-card" v-if="type == 7">
-            <div class="ptb10">
-                <div class="name">标题<span class="small">类型</span></div>
+            <div class="dis-flex l-baseline ptb10 plr15 border-b">
+                <div class="name f16 strong mr10">标题</div>
+                <div class="f13 cgey">类型</div>
             </div>
             <div class="msg no-boder">
-                <div class="line"><span class="key">所属目录：目录名称</span></div>
-                <div class="line"><span class="key">上传人：陈成</span></div>
-                <div class="line"><span class="key">上传部门：合约部</span></div>
-                <div class="line">
-                    <span class="key">上传时间：2019-03-15</span>
-                    <div class="more-2">查看跟多<span class="iconfont iconright"></span></div>
+                <div class="line f13 mb10"><span class="key cgey">所属目录：</span>目录名称</div>
+                <div class="line f13"><span class="key cgey">上传人：</span>陈成</div>
+                <div class="line f13"><span class="key cgey">上传部门：</span>合约部</div>
+                <div class="line dis-flex a-between">
+                    <div class="key f13"><span class="key cgey">上传时间：</span>2019-03-15</div>
+                    <div class="f13 clink">查看更多</div>
                 </div>
             </div>
         </div>
@@ -275,6 +278,10 @@ export default {
     },
     actionDetail (id) {
       let url = `/pages/discover/actionDetail/main?id=${id}`
+      mpvue.navigateTo({ url })
+    },
+    productDetail () {
+      let url = `/pages/discover/productDetail/main`
       mpvue.navigateTo({ url })
     }
   }
@@ -314,14 +321,14 @@ export default {
 	top: 20px;
 }
 .contract-card .order .bg {
+	margin-top: 10px;
 	display: inline-block;
-	background: rgba(255, 230, 214, 1);
-	line-height: 22px;
-	height: 22px;
+	background: #259efa;
+	line-height: 16px;
+	height: 16px;
 	font-size: 11px;
-	color: #ea7628;
+	color: #ffffff;
 	padding: 0 15px;
-	border-bottom-right-radius: 10px;
 }
 .contract-card .title {
 	margin: 10px 15px;

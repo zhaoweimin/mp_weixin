@@ -1,6 +1,7 @@
 <template>
-    <div class="main">
-        <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key" @click="detail(vo.id)">
+    <div class="main has-header">
+        <search :rightButton="true" placeholder="搜索"></search>
+        <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key" @click="detail()">
             <div class="dis-flex">
                 <div class="avatar">
                     <img class="img" :src="vo.avatar" mode="aspectFill">
@@ -31,25 +32,14 @@
                     <div class="val">某某活动</div>
                 </div>
                 <div class="line">
-                    <div class="key">活动发起人</div>
-                    <div class="val">方兆龙</div>
-                </div>
-                <div class="line">
-                    <div class="key">发起部门：</div>
-                    <div class="val">运营部</div>
-                </div>
-                <div class="line">
                     <div class="key">活动时间：</div>
                     <div class="val">2019-03-20</div>
                 </div>
                 <div class="line">
-                    <div class="key">邀约审批人：</div>
-                    <div class="val">纳兰方知</div>
-                </div>
-                <div class="line">
                     <div class="key">审批结果：</div>
-                    <div class="val">纳兰方知</div>
-                    <div class="right">更多 <span class="iconfont iconright"></span></div>
+                    <div class="val">同意</div>
+                    <div class="right clink">查看详情</div>
+                    <!-- <div class="right">更多 <span class="iconfont iconright"></span></div> -->
                 </div>
             </div>
         </div>
@@ -57,6 +47,7 @@
 </template>
 
 <script>
+import search from '@/components/search'
 export default {
   data () {
     return {
@@ -94,20 +85,22 @@ export default {
     }
   },
 
-  components: {},
+  components: {
+    search
+  },
 
   methods: {
     detail (id) {
-      let url = `/pages/customer/customer/main?id=${id}`
+      let url = `/pages/discover/invitationDetail/main`
       mpvue.navigateTo({ url })
     }
   },
 
   onLoad (option) {
-    let type = option.type
-    this.type = type
-    let title = ['今日需跟进', '计划跟进', '本周需跟进', '超过30天未跟进']
-    mpvue.setNavigationBarTitle({ title: title[type - 1] })
+    // let type = option.type
+    // this.type = type
+    // let title = ['今日需跟进', '计划跟进', '本周需跟进', '超过30天未跟进']
+    // mpvue.setNavigationBarTitle({ title: title[type - 1] })
   }
 }
 </script>
@@ -124,7 +117,7 @@ export default {
 	height: auto;
 }
 .follow-custom .line {
-	line-height: 30px;
+	line-height: 24px;
 	display: flex;
 }
 .follow-custom .line .key {
