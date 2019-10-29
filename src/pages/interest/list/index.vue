@@ -1,14 +1,16 @@
 <template>
-  <div class="main">
-    <block v-for="(vo, key) in list" :key="key">
-      <card :info="vo" :type="4"></card>
-    </block>
-  </div>
+    <div class="main has-header">
+        <search :rightButton="true" placeholder="搜索"></search>
+        <block v-for="(vo, key) in list" :key="key">
+            <card :info="vo" :type="4"></card>
+        </block>
+    </div>
 </template>
 
 <script>
 import navbar from '@/components/navbar'
 import card from '@/components/achievementCard'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -34,7 +36,8 @@ export default {
 
   components: {
     navbar,
-    card
+    card,
+    search
   },
 
   methods: {
@@ -47,11 +50,9 @@ export default {
     }
   },
 
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style scoped>
-
 </style>

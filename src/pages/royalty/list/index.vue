@@ -1,14 +1,19 @@
 <template>
-  <div class="main">
-    <block v-for="(vo, key) in list" :key="key">
-      <card :info="vo" :type="5"></card>
-    </block>
-  </div>
+    <div class="main has-header">
+        <search :rightButton="true" placeholder="搜索"></search>
+        <block v-for="(vo, key) in list" :key="key">
+            <card :info="vo" :type="5"></card>
+        </block>
+        <div class="dis-flex a-center ptb15">
+            <van-button plain hairline type="info" @click="link">+ 新建提成单</van-button>
+        </div>
+    </div>
 </template>
 
 <script>
 import navbar from '@/components/navbar'
 import card from '@/components/achievementCard'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -34,7 +39,8 @@ export default {
 
   components: {
     navbar,
-    card
+    card,
+    search
   },
 
   methods: {
@@ -44,14 +50,15 @@ export default {
     add () {
       let url = `../addAchievement/main`
       mpvue.navigateTo({ url })
+    },
+    link () {
+      mpvue.navigateTo({ url: `/pages/royalty/newList/main` })
     }
   },
 
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style scoped>
-
 </style>

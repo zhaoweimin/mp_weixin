@@ -26,6 +26,7 @@
     "pages/interest/detail/main",
     "pages/royalty/list/main",
     "pages/royalty/detail/main",
+    "pages/royalty/newList/main",
 
     "pages/discover/message/main",
     "pages/discover/market/main",

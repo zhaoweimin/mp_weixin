@@ -150,61 +150,34 @@
             <div class="order">
                 <div class="bg">业绩单号：201265849215</div>
             </div>
+            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>周方文</div>
             <div class="msg no-boder">
-                <div class="line">
-                    <span class="key">客户姓名：周方文</span>
-                </div>
+                <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
+                <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
+                <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
+                <div class="f13"><span class="cgey">提成总额：</span>2万(打款日期：2019-03-30)</div>
             </div>
-            <div class="msg no-boder">
-                <div class="line"><span class="key">产品名称：某某某</span></div>
-                <div class="line"><span class="key">产品期限：14个月</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">合同编号：523256654555444</span></div>
-                <div class="line"><span class="key">合同金额：2千万</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">打款日期：2019-03-30</span></div>
-                <div class="line"><span class="key">到账日：2019-03-31</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">到期日：2019-04-5</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">年化收益：6亿</span></div>
-                <div class="line"><span class="key">收益总额：20亿</span> <span class="btn">更多信息</span></div>
+            <div class="dis-flex a-between plr15 pb10">
+                <div class="f13 cgey">2019-03-31</div>
+                <div class="f13 clink">更多信息</div>
             </div>
         </div>
 
         <div class="contract-card" v-if="type == 5" @click="royaltyDetail(id)">
+            <img class="img-status" src="../img/status_1.png" alt="">
             <div class="order">
                 <div class="bg">业绩单号：201265849215</div>
             </div>
+            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>周方文</div>
             <div class="msg no-boder">
-                <div class="line">
-                    <span class="key">客户姓名：周方文</span>
-                </div>
+                <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
+                <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
+                <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
+                <div class="f13"><span class="cgey">提成总额：</span>20万</div>
             </div>
-            <div class="msg no-boder">
-                <div class="line"><span class="key">产品名称：某某某</span></div>
-                <div class="line"><span class="key">产品期限：14个月</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">合同编号：523256654555444</span></div>
-                <div class="line"><span class="key">合同金额：2千万</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">打款日期：2019-03-30</span></div>
-                <div class="line"><span class="key">到账日：2019-03-31</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">到期日：2019-04-5</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">年化系数：0.20</span></div>
-                <div class="line"><span class="key">年化业绩：3千万</span></div>
-                <div class="line"><span class="key">提成系数：××</span></div>
-                <div class="line"><span class="key">提成总额：50万</span></div>
+            <div class="dis-flex a-between plr15 pb10">
+                <div class="f13 cgey">2019-03-31</div>
+                <div class="f13 clink">更多信息</div>
             </div>
         </div>
 
@@ -397,5 +370,12 @@ export default {
 	margin: 10px 15px;
 	padding-top: 10px;
 	font-weight: bold;
+}
+.img-status {
+	position: absolute;
+	right: 0;
+	top: 15px;
+	width: 50px;
+	height: 40px;
 }
 </style>
