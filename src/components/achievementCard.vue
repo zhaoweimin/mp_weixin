@@ -146,7 +146,7 @@
             </div>
         </div>
 
-        <div class="contract-card" v-if="type == 4" @click="interstDetail(id)">
+        <div class="contract-card" v-if="type == 4" @click="interstDetail('interest',id)">
             <div class="order">
                 <div class="bg">业绩单号：201265849215</div>
             </div>
@@ -155,10 +155,25 @@
                 <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
                 <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
                 <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
-                <div class="f13"><span class="cgey">提成总额：</span>2万(打款日期：2019-03-30)</div>
             </div>
             <div class="dis-flex a-between plr15 pb10">
-                <div class="f13 cgey">2019-03-31</div>
+                <div class="f13 cgey">成立日：2019-03-31</div>
+                <div class="f13 clink">更多信息</div>
+            </div>
+        </div>
+
+        <div class="contract-card" v-if="type == 41" @click="interstDetail('redeem',id)">
+            <div class="order">
+                <div class="bg">业绩单号：201265849215</div>
+            </div>
+            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>周方文</div>
+            <div class="msg no-boder">
+                <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
+                <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
+                <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
+            </div>
+            <div class="dis-flex a-between plr15 pb10">
+                <div class="f13 cgey">赎回日期：2019-03-31</div>
                 <div class="f13 clink">更多信息</div>
             </div>
         </div>
@@ -176,7 +191,7 @@
                 <div class="f13"><span class="cgey">提成总额：</span>20万</div>
             </div>
             <div class="dis-flex a-between plr15 pb10">
-                <div class="f13 cgey">2019-03-31</div>
+                <div class="f13 cgey">申请日期：2019-03-31</div>
                 <div class="f13 clink">更多信息</div>
             </div>
         </div>
@@ -241,8 +256,8 @@
 export default {
   props: ['info', 'type', 'status'],
   methods: {
-    interstDetail (id) {
-      let url = `/pages/interest/detail/main?id=${id}`
+    interstDetail (type, id) {
+      let url = `/pages/${type}/detail/main?id=${id}`
       mpvue.navigateTo({ url })
     },
     royaltyDetail (id) {
