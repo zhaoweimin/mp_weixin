@@ -42,7 +42,12 @@
     "pages/discover/details/main",
 
     "pages/task/list/main",
-    "pages/task/detail/main",
+    "pages/task/detail0/main",
+    "pages/task/detail1/main",
+    "pages/task/detail2/main",
+    "pages/task/detail3/main",
+    "pages/task/detail4/main",
+    "pages/task/detail5/main",
 
     "pages/success/main",
     "pages/statis/main"
