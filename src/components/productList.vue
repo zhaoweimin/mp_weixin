@@ -19,15 +19,18 @@
                         </div>
                         <div class="more cgey" @click="detail(vo.id)">查看简介<span class="iconfont iconright"></span></div>
                     </div>
-                    <div class="line">
+                    <!-- <div class="line">
                         <span class="strong">产品限期：2018-03-20至2019-5-20</span><span class="cgey">（14个月）</span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="foot dis-flex">
                     <div class="flex-1">
-                        <div class="line">理财经理：陈伟</div>
-                        <div class="line">所属部门：市场部</div>
+                        <div class="line">募集开始时间：<span class="cblack">2018-03-20</span></div>
+                        <div class="line">产品限期：<span class="cblack">12个月</span></div>
                     </div>
+                </div>
+                <div class="foot dis-flex">
+                    <div class="flex-1"></div>
                     <div class="right">
                         <div class="btn" @click="booking(id)" v-if="type == 0">我要预约</div>
                         <div class="btn" @click="bookingRes(id)" v-if="type == 1">查看结果</div>
@@ -47,11 +50,12 @@ export default {
       mpvue.navigateTo({ url })
     },
     booking (id) {
-      let url = `../booking/main?id=${id}`
+      let url = `../booking/main?id=${id}&isEdit=1`
       mpvue.navigateTo({ url })
     },
     bookingRes (id) {
-      let url = `../bookingRes/main?id=${id}`
+      let url = `../booking/main?id=${id}&isEdit=0`
+      // let url = `../bookingRes/main?id=${id}`
       mpvue.navigateTo({ url })
     }
   }
@@ -60,7 +64,7 @@ export default {
 
 <style>
 .product-list {
-	margin-top: 40px;
+	margin-top: 20px;
 }
 .product-list .title {
 	position: relative;
@@ -138,6 +142,6 @@ export default {
 	text-align: center;
 	width: 100px;
 	color: rgba(80, 158, 240, 1);
-	margin-top: 9px;
+	margin-top: -9px;
 }
 </style>

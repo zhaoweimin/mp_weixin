@@ -1,22 +1,17 @@
 <template>
   <div>
-    <div class="contract-card" :class="status == 2 ? 'fail' : ''">
-      <div class="order">合同编号：201903201530326548 <div class="copy">复制</div></div>
+    <div class="contract-card" :class="status == 2 ? 'fail' : ''" @click="booking(id)">
+      <!-- <div class="order">合同编号：201903201530326548 <div class="copy">复制</div></div> -->
+      <div class="order-two"><span class="bg">合同编号：201903201530326548</span></div>
       <div class="status c1" v-if="status == 0">审核中</div>
       <div class="status" v-if="status == 1">预约成功</div>
       <div class="status c2" v-if="status == 2">预约失败</div>
       <div class="title">
-        <div class="name">产品名称：<span class="tag">产品名称</span></div>
+        <div class="name">产品名称：<span class="tag">产品名称</span> <span class="tag white">股权类</span></div>
       </div>
       <div class="msg no-boder">
         <div class="line">
           <span class="key">产品限期：</span><span class="val">(14个月)</span><span class="cgey">2018-03-20至2019-5-20</span>
-        </div>
-        <div class="line">
-          <span class="key">已募集金额：</span><span class="val">5亿</span>
-        </div>
-        <div class="line">
-          <span class="key">已预约人数：</span><span class="val">10人</span>
         </div>
       </div>
       <div class="msg">
@@ -24,10 +19,17 @@
           <span class="key">客户姓名：</span><span class="val">周方文</span>
         </div>
         <div class="line">
-          <span class="key">已预约金额：</span><span class="val" :class="status != 2 ? 'cred' : ''">2千万</span>
+          <span class="key">预约金额：</span><span class="val">2万</span>
+        </div>
+      </div>
+      <div class="msg">
+        
+        <div class="line">
+          <span class="key">预计打款日期：2019-03-29</span>
         </div>
         <div class="line cblack">
-          <span class="key">失败原因：</span><span class="val">客户放弃</span>
+          <span class="key">实际打款日期：2019-03-30</span>
+          <span class="clink fr">查看更多</span>
         </div>
       </div>
     </div>
@@ -37,36 +39,29 @@
 
 <script>
 export default {
+  props: ['status'],
   data () {
     return {
       nav: ['新建预约', '历史预约'],
       nav_num: 0,
-      info: [],
-      status: 0
+      info: []
     }
   },
 
   components: {
   },
-
-  onLoad (option) {
-    let status = option.status
-    this.status = status
-    let title = [
-      '审核中',
-      '预约成功',
-      '预约失败'
-    ]
-    mpvue.setNavigationBarTitle({ title: title[status] })
+  created () {
+    console.log(this.status)
   },
 
   methods: {
     changeNav (nav) {
       this.nav_num = nav
+    },
+    booking (id) {
+      let url = `../booking/main?id=${id}&isEdit=0`
+      mpvue.navigateTo({ url })
     }
-  },
-
-  created () {
   }
 }
 </script>
@@ -110,6 +105,19 @@ export default {
   color: #ffffff;
   padding: 0 15px;
 }
+.contract-card .order-two{
+  /* background: rgba(80,158,240,1); */
+  margin-top: 10px;
+  line-height: 22px;
+  height: 22px;
+  font-size: 11px;
+  color: #020202;
+  /* padding: 0 15px; */
+}
+.contract-card .order-two .bg{
+  background: #f0f0f0;
+  padding-left: 15px;
+}
 .contract-card.fail .order{
   background: #e0e0e0;
   color: #999999;
@@ -142,6 +150,12 @@ export default {
   margin-left:8rpx;
   font-weight: normal;
 }
+.contract-card .title .tag.white{
+  background: #fff;
+  color: rgba(234,118,40,1);
+  border: 1px solid rgba(255,230,214,1);
+  box-shadow: 0 0 2px rgba(234,118,40, .1);
+}
 .contract-card.fali .title .tag{
   background: #e0e0e0;
   color: #999999;
@@ -162,9 +176,9 @@ export default {
 }
 .contract-card .msg{
   margin: 0 15px;
-  padding: 10px 0;
+  padding: 6px 0;
   line-height: 24px;
-  border-top: 1px solid rgba(240,240,240,1);
+  border-top: 0px solid rgba(240,240,240,1);
 }
 .contract-card .msg .val{
   font-weight: bold;

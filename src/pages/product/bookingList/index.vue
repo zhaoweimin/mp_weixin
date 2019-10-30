@@ -1,11 +1,24 @@
 <template>
-  <div class="main has-header">
-    <navbar :info="nav" @changeNav="changeNav"></navbar>
-    <block v-for="(vo, key) in info" :key="key">
-      <product :info="vo" :type="nav_num"></product>
-    </block>
+  <div class="main ">
+    <div class="has-header" v-if="tag == 0">
+      <navbar :info="nav" @changeNav="changeNav"></navbar>
+      <block v-for="(vo, key) in info" :key="key">
+        <product :info="vo" :type="nav_num"></product>
+      </block>
+    </div>
 
-    <footerIcon></footerIcon>
+
+    <div v-if="tag == 1">
+      <booking :status="0"></booking>
+    </div>
+    <div v-if="tag == 2">
+      <booking :status="1"></booking>
+    </div>
+    <div v-if="tag == 3">
+      <booking :status="2"></booking>
+    </div>
+
+    <footerIcon @change="changeTag"></footerIcon>
     
   </div>
 </template>
@@ -14,12 +27,14 @@
 import navbar from '@/components/navbar'
 import product from '@/components/productList'
 import footerIcon from '@/components/footerIcon'
+import booking from '@/pages/product/bookingRes/index'
 
 export default {
   data () {
     return {
       nav: ['新建预约', '历史预约'],
       nav_num: 0,
+      tag: 0,
       info: [
         {
           title: '基金',
@@ -68,12 +83,17 @@ export default {
   components: {
     navbar,
     product,
-    footerIcon
+    footerIcon,
+    booking
   },
 
   methods: {
     changeNav (nav) {
       this.nav_num = nav
+    },
+    changeTag (tag) {
+      console.log(tag)
+      this.tag = tag
     }
   },
 

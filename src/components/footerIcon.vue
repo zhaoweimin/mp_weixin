@@ -2,19 +2,19 @@
   <div>
     <div class="footer-icon">
       <div class="dis-flex">
-        <div class="flex-1 clink">
+        <div class="flex-1" :class="{clink: tag == 0}" @click="change(0)">
           <div class="icon"><span class="iconfont iconxinjian"></span></div>
           <div class="text">新建</div>
         </div>
-        <div class="flex-1" @click="bookingRes(0)">
+        <div class="flex-1" :class="{clink: tag == 1}" @click="change(1)">
           <div class="icon"><span class="iconfont icongaizhang"></span></div>
           <div class="text">审核中</div>
         </div>
-        <div class="flex-1" @click="bookingRes(1)">
+        <div class="flex-1" :class="{clink: tag == 2}" @click="change(2)">
           <div class="icon"><span class="iconfont iconchenggong"></span></div>
           <div class="text" >预约成功</div>
         </div>
-        <div class="flex-1" @click="bookingRes(2)">
+        <div class="flex-1" :class="{clink: tag == 3}" @click="change(3)">
           <div class="icon"><span class="iconfont iconshibai"></span></div>
           <div class="text">预约失败</div>
         </div>
@@ -26,10 +26,19 @@
 <script>
 export default {
   props: ['text'],
+  data () {
+    return {
+      tag: 0
+    }
+  },
   methods: {
     bookingRes (status) {
       let url = `../bookingRes/main?status=${status}`
       mpvue.navigateTo({ url })
+    },
+    change (tag) {
+      this.tag = tag
+      this.$emit('change', tag)
     }
   }
 }

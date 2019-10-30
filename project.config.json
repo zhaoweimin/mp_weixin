@@ -89,6 +89,34 @@
 					"id": -1,
 					"name": "投诉详情",
 					"pathName": "pages/customer/reportDetail/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品预约",
+					"pathName": "pages/product/bookingList/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "预约",
+					"pathName": "pages/product/booking/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "合同管理",
+					"pathName": "pages/product/contract/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "历史业绩",
+					"pathName": "pages/product/historyAchievement/main",
 					"scene": null
 				}
 			]
