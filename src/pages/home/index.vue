@@ -39,7 +39,8 @@ export default {
           title: '收入管理',
           list: [
             { text: '客户计息', url: '../interest/list/main', icon: require('../../img/three_1.png') },
-            { text: '产品提成', url: '../royalty/list/main', icon: require('../../img/three_2.png') }
+            { text: '产品提成', url: '../royalty/list/main', icon: require('../../img/three_2.png') },
+            { text: '业绩赎回', url: '../redeem/list/main', icon: require('../../img/three_3.png') }
           ]
         },
         {
