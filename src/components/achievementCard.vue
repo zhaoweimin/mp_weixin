@@ -124,25 +124,16 @@
                 </div>
             </div>
             <div class="msg no-boder">
-                <div class="line"><span class="key">产品名称：某某某</span></div>
+                <div class="line"><span class="key">产品名称</span><span class="tag">股权类</span></div>
+            </div>
+            <div class="msg">
                 <div class="line"><span class="key">产品期限：14个月</span></div>
+                <div class="line"><span class="key">合同金额：20万</span></div>
+                <div class="line"><span class="key">确认收款日：2019-3-21</span></div>
             </div>
             <div class="msg">
-                <div class="line"><span class="key">合同编号：523256654555444</span></div>
-                <div class="line"><span class="key">合同金额：2千万</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">打款日期：2019-03-30</span></div>
-                <div class="line"><span class="key">到账日：2019-03-31</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">到期日：2019-04-5</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">年化系数：0.20</span></div>
-                <div class="line"><span class="key">年化业绩：3千万</span></div>
-                <div class="line"><span class="key">年化收益：6亿</span></div>
-                <div class="line"><span class="key">收益总额：20亿</span></div>
+                <div class="line"><span class="key">起息日：2019-4-1</span></div>
+                <div class="line"><span class="key">产品到期日：2019-10-1</span></div>
             </div>
         </div>
 

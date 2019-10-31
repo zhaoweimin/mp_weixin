@@ -20,6 +20,8 @@
     "pages/product/contract/main",
     "pages/product/achievement/main",
     "pages/product/addAchievement/main",
+    "pages/product/achievementCreate/main",
+    "pages/product/historyDetail/main",
     "pages/product/historyAchievement/main",
 
     "pages/interest/list/main",
@@ -94,6 +96,7 @@
     "van-radio-group": "/static/vant/radio-group/index",
     "van-field": "/static/vant/field/index",
     "van-button": "/static/vant/button/index",
+    "van-switch": "/static/vant/switch/index",
     "van-card": "/static/vant/card/index",
     "van-popup": "/static/vant/popup/index",
     "van-icon": "/static/vant/icon/index",

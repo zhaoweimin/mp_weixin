@@ -117,6 +117,20 @@
 					"id": -1,
 					"name": "历史业绩",
 					"pathName": "pages/product/historyAchievement/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "achievementCreate",
+					"pathName": "pages/product/achievementCreate/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "历史详情",
+					"pathName": "pages/product/historyDetail/main",
 					"scene": null
 				}
 			]
