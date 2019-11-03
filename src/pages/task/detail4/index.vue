@@ -1,29 +1,34 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">赎回信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" title="赎回编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
-            <comInput :type="0" title="赎回日期" value="2019-03-03"></comInput>
-            <comInput :type="0" title="赎回金额" value="2千万"></comInput>
-            <comInput :type="0" title="赎回收益" value="XXX"></comInput>
-            <comInput :type="0" title="剩余金额" value="2千万"></comInput>
-            <comInput :type="0" title="后端提奖金额" value="123123"></comInput>
+            <div class="plr15 ptb15 f16 clink strong">客户信息</div>
+            <comInput :type="0" title="预约编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
+            <comInput :type="0" title="客户姓名" value="XXX"></comInput>
+            <comInput :type="0" title="证件类型" value="XXX"></comInput>
+            <comInput :type="0" title="证件号码" value="XXXXXXXXX"></comInput>
         </div>
         <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">业绩信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" value="15565512"></comInput>
-            <comInput :type="0" title="客户名称" value="XXX"></comInput>
-            <comInput :type="0" title="产品名称" value="XXX"></comInput>
-            <comInput :type="0" title="产品期限" value="XXX%"></comInput>
-            <comInput :type="0" title="证件类型" value="XXX"></comInput>
-            <comInput :type="0" title="证件号码" value="XXX"></comInput>
-            <comInput :type="0" title="银行账号" value="XXX"></comInput>
-            <comInput :type="0" title="账号开户行" value="XXX"></comInput>
-            <comInput :type="0" title="合同编号" value="XXX"></comInput>
-            <comInput :type="0" title="合同金额" value="XXX"></comInput>
-            <comInput :type="0" title="理财经理" value="XXX"></comInput>
-            <comInput :type="0" title="归属部门" value="XXX"></comInput>
-            <comInput :type="0" title="单据状态" value="XXX"></comInput>
+            <div class="plr15 ptb15 f16 clink strong">产品信息</div>
+            <comInput :type="0" title="产品类别" value="股权类"></comInput>
+            <comInput :type="0" title="产品编号" value="523446322"></comInput>
+            <comInput :type="0" title="产品名称" value="名车"></comInput>
+            <comInput :type="0" title="产品期限" value="12个月"></comInput>
+            <comInput :type="0" title="募集账户" value="XXX"></comInput>
+            <comInput :type="0" title="已募集份数" value="5万份"></comInput>
+            <comInput :type="0" title="已募集金额" value="5万"></comInput>
+            <comInput :type="0" title="剩余募集金额" value="2万"></comInput>
+            <comInput :type="0" title="已预约人数" value="10人"></comInput>
+            <comInput :type="0" title="已预约金额" value="8万"></comInput>
+            <comInput :type="0" title="剩余可预约" value="2万"></comInput>
+        </div>
+        <div class="bg-fff mt10">
+            <div class="plr15 ptb15 f16 clink strong">付款信息</div>
+            <comInput :type="0" title="预打款日期" value="2019-09-09"></comInput>
+            <comInput :type="0" title="实际打款日期" value="019-09-09"></comInput>
+            <comInput :type="0" title="出资金额" value="XXXXXXXXX"></comInput>
+        </div>
+        <div class="plr15 mt25 pb20">
+            <van-button type="info" size="large">进入审批</van-button>
         </div>
     </div>
 </template>

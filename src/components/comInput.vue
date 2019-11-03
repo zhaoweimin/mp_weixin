@@ -12,11 +12,11 @@
                     <span class="f16" :class="resultValue?'cblack':'clight'">{{options[resultValue]||'请选择'}}</span>
                 </picker>
                 <!-- 日期 -->
-                <picker v-if="type===3" mode="date" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
-                    <span class="f16" :class="resultValue?'cblack':'clight'">{{resultValue||'请选择'}}</span>
+                <picker v-if="type===3" mode="date" :class="[textRight?'ta-r':'ta-l']" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
+                    <span class="f16" :class="[resultValue?'cblack':'clight']">{{resultValue||'请选择'}}</span>
                 </picker>
                 <!-- 点击事件 -->
-                <div v-if="type===4" class="btnItem dis-flex flex-1 a-right l-center">
+                <div v-if=" type===4" class="btnItem dis-flex flex-1 a-right l-center">
                     <!-- <div class="f16 mr5">{{resultValue}}</div> -->
                     <input class="w-full f16 cblack" :class="[textRight?'ta-r':'ta-l']" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus">
                     <!-- <img class="ml10" src="./img/icon_camera@3x.png" alt="" @click="onBtnClick"> -->

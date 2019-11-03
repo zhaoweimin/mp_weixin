@@ -1,14 +1,14 @@
 <template>
     <div class="main ">
-      <div class="has-big-header">
-        <navbar :info="nav" @changeNav="changeNav"></navbar>
-        <!-- <fliter :info="nav"></fliter> -->
-        <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
-        <block v-for="(vo, key) in list" :key="key">
-            <card :info="vo"></card>
-        </block>
-      </div>
-      
+        <div class="has-big-header">
+            <navbar :info="nav" @changeNav="changeNav"></navbar>
+            <!-- <fliter :info="nav"></fliter> -->
+            <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
+            <block v-for="(vo, key) in list" :key="key">
+                <card :info="vo"></card>
+            </block>
+        </div>
+
     </div>
 </template>
 

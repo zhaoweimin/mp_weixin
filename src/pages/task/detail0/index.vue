@@ -19,7 +19,7 @@
             <comInput :type="0" title="申请时间" value="2019-09-08"></comInput>
         </div>
         <div class="plr15 mt25 pb20">
-            <van-button type="info" size="large">进入审批</van-button>
+            <van-button type="info" size="large" @click="link">进入审批</van-button>
         </div>
     </div>
 </template>
@@ -44,7 +44,13 @@ export default {
       }
     }
   },
-
+  methods: {
+    link () {
+      console.log(111)
+      let url = '/pages/task/approval/main?id='
+      mpvue.navigateTo({ url })
+    }
+  },
   created () {}
 }
 </script>
