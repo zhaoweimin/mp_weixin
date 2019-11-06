@@ -44,6 +44,7 @@
     "pages/discover/details/main",
 
     "pages/task/list/main",
+    "pages/task/approval/main",
     "pages/task/detail0/main",
     "pages/task/detail1/main",
     "pages/task/detail2/main",
@@ -115,6 +116,7 @@
     "van-checkbox": "/static/vant/checkbox/index",
     "van-checkbox-group": "/static/vant/checkbox-group/index",
     "van-datetime-picker": "/static/vant/datetime-picker/index",
-    "van-picker": "/static/vant/picker/index"
+    "van-picker": "/static/vant/picker/index",
+    "van-steps": "/static/vant/steps/index"
   }
 }

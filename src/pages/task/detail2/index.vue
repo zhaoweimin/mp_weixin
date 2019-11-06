@@ -1,29 +1,69 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">赎回信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" title="赎回编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
-            <comInput :type="0" title="赎回日期" value="2019-03-03"></comInput>
-            <comInput :type="0" title="赎回金额" value="2千万"></comInput>
-            <comInput :type="0" title="赎回收益" value="XXX"></comInput>
-            <comInput :type="0" title="剩余金额" value="2千万"></comInput>
-            <comInput :type="0" title="后端提奖金额" value="123123"></comInput>
+            <div class="plr15 ptb15 f16 clink strong">销售信息</div>
+            <comInput :type="1" title="业绩单号" :isSpecialColorTxt="true" value="XXXXXXXXX"></comInput>
+            <comInput :type="1" title="客户姓名" value="XXX"></comInput>
+            <comInput :type="2" title="证件类型" :titleDark="true" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
+            <comInput :type="1" title="证件号码" value="XXXXXXXXX"></comInput>
+            <comInput :type="2" title="产品名称" :titleDark="true" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
+            <comInput :type="1" title="产品分类" value="XXX"></comInput>
+            <comInput :type="3" title="产品期限" :titleDark="true" value="" @getSelectDate="getSelectDate"></comInput>
+            <comInput :type="1" title="合同编号" value="XXXXXXXXXXXXXXX"></comInput>
+            <comInput :type="2" title="理财经理" :titleDark="true" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
+            <comInput :type="2" title="所属部门" :titleDark="true" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
+            <comInput :type="1" title="录单员" value="XXX"></comInput>
+            <comInput :type="2" title="录单员所属部门" :titleDark="true" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
+            <div class="plr15 ptb10 border-b">
+                <div class="f16 cgey mb10">上传附件（格式pdf或图片）</div>
+                <div class="dis-flex l-end">
+                    <img class="preview" src="../../../img/preview.png" alt="">
+                </div>
+            </div>
         </div>
         <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">业绩信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" value="15565512"></comInput>
-            <comInput :type="0" title="客户名称" value="XXX"></comInput>
-            <comInput :type="0" title="产品名称" value="XXX"></comInput>
-            <comInput :type="0" title="产品期限" value="XXX%"></comInput>
-            <comInput :type="0" title="证件类型" value="XXX"></comInput>
-            <comInput :type="0" title="证件号码" value="XXX"></comInput>
-            <comInput :type="0" title="银行账号" value="XXX"></comInput>
-            <comInput :type="0" title="账号开户行" value="XXX"></comInput>
-            <comInput :type="0" title="合同编号" value="XXX"></comInput>
-            <comInput :type="0" title="合同金额" value="XXX"></comInput>
-            <comInput :type="0" title="理财经理" value="XXX"></comInput>
-            <comInput :type="0" title="归属部门" value="XXX"></comInput>
-            <comInput :type="0" title="单据状态" value="XXX"></comInput>
+            <div class="plr15 ptb15 f16 clink strong">财务信息</div>
+            <comInput :type="3" title="打款日期" :titleDark="true" value="2019-09-09" @getSelectDate="getSelectDate"></comInput>
+            <comInput :type="1" title="合同金额" value="XXX"></comInput>
+            <comInput :type="2" title="付款方式" :titleDark="true" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
+            <comInput :type="1" title="付款账户开户行" value="XXXXXXXXX"></comInput>
+            <comInput :type="1" title="付款账号" value="XXX"></comInput>
+            <comInput :type="1" title="累计缴款金额" value="XXX"></comInput>
+            <comInput :type="1" title="确认收款日" value="XXXXXXXXX"></comInput>
+            <comInput :type="1" title="起息日" value="XXXXXXXXXXXXXXX"></comInput>
+            <comInput :type="1" title="产品到期日" value="XXX"></comInput>
+            <comInput :type="1" title="年化系数" value="XXXX"></comInput>
+            <comInput :type="1" title="年化业绩" value="XXX"></comInput>
+            <comInput :type="1" title="收益分配账户" value="XXX"></comInput>
+            <comInput :type="1" title="收益分配账户开户行" value="请输入收益分配账户开户行"></comInput>
+            <comInput :type="3" title="冷静日" :titleDark="true" value="2019-09-09" @getSelectDate="getSelectDate"></comInput>
+            <div class="plr15 ptb10 border-b">
+                <div class="f16 cgey mb10">上传附件（格式pdf或图片）</div>
+                <div class="dis-flex l-end">
+                    <img class="preview" src="../../../img/preview.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="bg-fff mt10">
+            <div class="plr15 ptb15 dis-flex a-between border-b">
+                <div class="f16 strong">销售确认</div>
+                <van-switch :checked="checked" size="24px" @change="onChange" />
+            </div>
+            <comInput :type="3" title="到账日期" :titleDark="true" value="2019-09-09" @getSelectDate="getSelectDate"></comInput>
+            <comInput :type="1" title="业绩比较基准" value="0.5"></comInput>
+            <comInput :type="1" title="产品提奖率" value="0.7"></comInput>
+            <div class="plr15 ptb15">
+                <div class="f16 mb10">本人郑重承洁</div>
+                <div class="f12 mb10">1.本人以真是身份向客户推荐所销售产品；</div>
+                <div class="f12 mb10">2.销售产品已向客户进行充分风险揭示；</div>
+                <div class="f12 mb10">3.已严格按照《私募投资基金募集管理办法》的要求确认投资者的合格投资者身份并已向公司提交相应的证明文件，并严格按照规范的募集行为向客户推荐产品；</div>
+                <div class="f12 mb10">4.已严格按照《私募投资基金募集管理办法》认本人以真是身份向客户推荐所销售产品份并已向公司提交相；</div>
+                <div class="f12 mb10">5.已严格按照《私募投资基金募集管理办法》认本人以真是身份向客户推荐所销售产品份并已向提相；</div>
+                <div class="f12 mb10">6.已严格按照《私募投资基金募集管理办法》认本人以真是身份向客户推荐所销向公司提交相；</div>
+            </div>
+        </div>
+        <div class="plr15 mt25 pb20">
+            <van-button type="info" size="large">进入审批</van-button>
         </div>
     </div>
 </template>
@@ -45,99 +85,24 @@ export default {
         name: '张耀扬',
         level: 1,
         sex: 1
-      }
+      },
+      checked: true
     }
   },
 
-  created () {}
+  created () {},
+  methods: {
+    onChange (e) {
+      // 需要手动对 checked 状态进行更新
+      this.checked = e.mp.detail
+    }
+  }
 }
 </script>
 
 <style>
-.customer-card {
-	margin: 0px;
-	padding: 15px;
-	background: linear-gradient(to right, #509ef0, #5bc7ff); /* 标准的语法 */
-	border-radius: 0px;
-	position: relative;
-	margin-bottom: 30px;
-}
-.customer-card::after {
-	content: '';
-	position: absolute;
-	bottom: -20px;
-	left: 32px;
-	width: 0;
-	height: 0;
-	border-width: 10px;
-	border-style: solid;
-	border-color: #509ef0 transparent transparent transparent;
-}
-.customer-card .title {
-	color: #ffffff;
-}
-
-.customer-card .msg .title .sex {
-	color: #ffffff;
-}
-.customer-card .avatar {
-	width: 44px;
-	height: 50px;
-}
-.customer-card .avatar .img {
-	width: 44px;
-	height: 44px;
-}
-.customer-card .avatar .text {
-	color: #ffffff;
-	font-size: 12px;
-	text-align: center;
-	line-height: 12px;
-}
-.msg-table {
-	margin: 15px;
-	background: #ffffff;
-	border-radius: 4px;
-}
-.msg-table .title {
-	padding-top: 5px;
-	margin-left: 15px;
-	padding-right: 15px;
-	font-weight: bold;
-	line-height: 40px;
-}
-.msg-table .table {
-	padding-left: 15px;
-	line-height: 40px;
-}
-.msg-table .table .line {
-	display: flex;
-	padding-right: 15px;
-	font-size: 13px;
-	border-top: rgba(245, 245, 245, 1);
-}
-.msg-table .table .line .key {
-	color: #999999;
-	width: 36%;
-}
-.msg-table .table .line .val {
-	flex: 1;
-}
-.msg-table .table .line .icon .iconfont {
-	font-size: 14px;
-}
-.msg-table .title .iconfont {
-	color: #55a8ff;
-}
-.msg-table .table .big-line {
-	text-align: center;
-	line-height: 20px;
-	padding: 10px;
-	position: relative;
-	left: -15px;
-}
-.msg-table .table .big-line .val {
-	line-height: 30px;
-	font-size: 17px;
+.preview {
+	width: 100px;
+	height: 100px;
 }
 </style>
