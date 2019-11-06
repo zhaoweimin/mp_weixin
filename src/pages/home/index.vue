@@ -12,6 +12,7 @@
 <script>
 import item from '@/components/homeItem'
 import search from '@/components/search'
+import { mapState } from 'vuex'
 
 export default {
   data () {
@@ -52,9 +53,14 @@ export default {
             { text: '知识库', url: '../discover/lore/main', icon: require('../../img/four_4.png') }
           ]
         }
-      ]
+      ],
+      textStore: this.$store.state
     }
   },
+
+  ...mapState({
+    test: 'test'
+  }),
 
   components: {
     item,
@@ -62,6 +68,16 @@ export default {
   },
 
   mounted () {
+    // 通过mutations 修改vuex 里面保存的值
+    this.$store.commit('setTest')
+    // 通过Action 修改vuex 里面保存的值
+    this.$store.dispatch('setTest')
+    // 通过store的state 获取vuex保存的值 (直接使用这个方法获取就好了 不用getters)
+    console.log(this.$store.state.test.test)
+    // 通过store的getters 获取vuex保存的值
+    console.log(this.$store.getters.getTest)
+    // 测试直接在data 中赋值的store
+    console.log(this.textStore)
     this.$api
       .test()
       .then(res => {

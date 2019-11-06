@@ -25,8 +25,9 @@
   },
   "dependencies": {
     "mpvue": "^2.0.0",
-    "zwm_utils": "^1.0.2",
-    "vant-weapp": "^1.0.0-beta.0"
+    "vant-weapp": "^1.0.0-beta.0",
+    "vuex": "^3.1.1",
+    "zwm_utils": "^1.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
