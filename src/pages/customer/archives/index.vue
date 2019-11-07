@@ -1,11 +1,11 @@
 <template>
-  <div class="main has-two-header">
-    <navbar :info="nav" @changeNav="changeNav"></navbar>
-    <fliter :info="nav"></fliter>
-    <block v-for="(vo, key) in list" :key="key">
-      <card :info="vo"></card>
-    </block>
-  </div>
+    <div class="main has-two-header">
+        <navbar :info="nav" @changeNav="changeNav"></navbar>
+        <fliter :info="nav"></fliter>
+        <div class="pt10">
+            <card v-for="(vo, key) in list" :key="key" :info="vo"></card>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -62,11 +62,9 @@ export default {
     }
   },
 
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style scoped>
-
 </style>
