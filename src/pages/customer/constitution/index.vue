@@ -9,7 +9,6 @@
                 <div class="msg">
                     <div class="title">
                         <span class="strong">{{info.name}}</span>
-                        <span class="sex">{{info.sex ? '先生' : '女士'}}</span>
                         <div class="edit f13" @click="edit">{{isEdit ? '编辑中...' : '编辑档案'}}</div>
                     </div>
                     <div class="tags level-1" v-if="info.level == 1">
@@ -40,7 +39,7 @@
                 </div>
             </div>
             <div class="flex chart">
-                <div class="count ml10">
+                <div class="count mr10 ml10">
                     <div class="num">80</div>
                     <div class="text">风险测评得分</div>
                 </div>
@@ -84,53 +83,44 @@
                     <div class="val">1次</div>
                 </div>
                 <div class="line required">
-                    <div class="key">证件类型</div>
-                    <div class="val">身份证 <span class="iconfont iconright"></span></div>
+                    <div class="key">机构名称</div>
+                    <div class="val">XXXX</div>
                 </div>
                 <div class="line required">
-                    <div class="key">证件号码</div>
-                    <div class="val">521201295262699562535 </div>
+                    <div class="key">上级单位</div>
+                    <div class="val">XXXXXX </div>
                 </div>
                 <div class="line required">
-                    <div class="key">婚姻状况</div>
-                    <div class="val">已婚 <span class="iconfont iconright"></span></div>
-                </div>
-                <div class="line">
-                    <div class="key">出身日期</div>
-                    <div class="val">1985.3.25 <span class="iconfont iconright"></span></div>
+                    <div class="key">机构性质</div>
+                    <div class="val">XXX <span class="iconfont iconright"></span></div>
                 </div>
                 <div class="line required">
-                    <div class="key">国籍</div>
-                    <div class="val">中国 <span class="iconfont iconright"></span></div>
+                    <div class="key">执照类型</div>
+                    <div class="val">营业执照 <span class="iconfont iconright"></span></div>
+                </div>
+                <div class="line required">
+                    <div class="key">执照号码</div>
+                    <div class="val">XXXXXX </div>
                 </div>
                 <div class="line">
-                    <div class="key">生日关怀</div>
-                    <div class="val">晚宴 <span class="iconfont iconright"></span></div>
+                    <div class="key">有效期限</div>
+                    <div class="val">XXXXX <span class="iconfont iconright"></span></div>
                 </div>
                 <div class="line">
+                    <div class="key">年检有效</div>
+                    <div class="val">XXXX</div>
+                </div>
+                <div class="line required">
                     <div class="flex-1">
-                        <div class="key l-end w100">工作单位</div>
+                        <div class="key l-end w100">注册地址</div>
                         <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
                         <div class="text-val">深圳市×××××××××××××××××公司</div>
                     </div>
                 </div>
-                <div class="line required">
-                    <div class="key">职业</div>
-                    <div class="val">互联网 <span class="iconfont iconright"></span></div>
-                </div>
                 <div class="line">
-                    <div class="key">职位</div>
-                    <div class="val">市场总监 <span class="iconfont iconright"></span></div>
+                    <div class="key">注册资本</div>
+                    <div class="val">1000万</div>
                 </div>
-                <div class="line required">
-                    <div class="key">常住省份</div>
-                    <div class="val">广东 <span class="iconfont iconright"></span></div>
-                </div>
-                <div class="line required">
-                    <div class="key">常住城市</div>
-                    <div class="val">深圳 <span class="iconfont iconright"></span></div>
-                </div>
-
             </div>
         </div>
 
@@ -141,26 +131,42 @@
             </div>
             <div class="table" v-show="open[1]">
                 <div class="line required">
-                    <div class="key">手机号码</div>
+                    <div class="key">主联系人</div>
+                    <div class="val">陈嘉尚</div>
+                </div>
+                <div class="line required">
+                    <div class="key">性别</div>
+                    <div class="val">男 <span class="iconfont iconright"></span></div>
+                </div>
+                <div class="line">
+                    <div class="key">年龄</div>
+                    <div class="val">42岁 <span class="iconfont iconright"></span></div>
+                </div>
+                <div class="line required">
+                    <div class="key">主联系人电话</div>
                     <div class="val">18032654593</div>
                 </div>
                 <div class="line">
-                    <div class="key">电话类型</div>
-                    <div class="val">国内电话 <span class="iconfont iconright"></span></div>
+                    <div class="key">主联系人传真</div>
+                    <div class="val">XXXXX</div>
                 </div>
                 <div class="line">
-                    <div class="key">紧急联系人</div>
-                    <div class="val">张宇行</div>
-                </div>
-                <div class="line">
-                    <div class="key">紧急联系人电话</div>
-                    <div class="val">15963252564</div>
+                    <div class="key">主联系人邮箱</div>
+                    <div class="val">XXXXX</div>
                 </div>
                 <div class="line required">
                     <div class="flex-1">
-                        <div class="key">邮寄地址</div>
+                        <div class="key">通讯地址</div>
                         <div class="text-val">深圳市南山区软件产业基地</div>
                     </div>
+                </div>
+                <div class="line required">
+                    <div class="key">法定代表人</div>
+                    <div class="val">陈嘉尚</div>
+                </div>
+                <div class="line required">
+                    <div class="key">法定代表人性别</div>
+                    <div class="val">男 <span class="iconfont iconright"></span></div>
                 </div>
             </div>
         </div>
@@ -352,7 +358,7 @@ export default {
     return {
       info: {
         avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
+        name: '深圳市XXX有限公司',
         level: 1,
         sex: 1
       },

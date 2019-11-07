@@ -189,7 +189,7 @@
 
         <div class="contract-card" v-if="type == 6">
             <div class="order">
-                <div class="bg">合同编号：201903201530326548</div>
+                <div class="bg">产品编号：201903201530326548</div>
             </div>
             <!-- <div class="status two c1" v-if="status == 0">募集中</div>
             <div class="status two c2" v-if="status == 1">已完成</div> -->

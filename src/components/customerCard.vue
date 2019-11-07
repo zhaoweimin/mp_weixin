@@ -2,10 +2,10 @@
     <div class="customer-card">
         <div class="dis-flex">
             <div class="avatar">
-                <img class="img" :src="avatar" mode="aspectFill">
+                <img class="img" :src="info.avatar" mode="aspectFill">
             </div>
             <div class="msg">
-                <div class="title"><span class="strong">{{info.name}}</span> <span class="sex">{{info.sex ? '先生' : '女士'}}</span></div>
+                <div class="title"><span class="strong">{{info.name}}</span> <span v-if="info.type===0" class="sex">{{info.sex ? '先生' : '女士'}}</span></div>
                 <div class="tags mb10 level-1" v-if="info.level == 1">
                     <div class="tag">历史成交客户</div>
                     <div class="tag level">A级</div>
@@ -27,7 +27,7 @@
                     <div class="f12">累计投资总额 | <span class="cyellow">100万</span></div>
                 </div>
             </div>
-            <div class="more" @click="linkDetail()">更多<span class="iconfont iconright"></span></div>
+            <div class="more" @click="linkDetail(info.url)">更多<span class="iconfont iconright"></span></div>
         </div>
     </div>
 </template>
@@ -35,17 +35,11 @@
 <script>
 export default {
   data () {
-    return {
-      avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v='
-    }
+    return {}
   },
   props: ['info'],
   methods: {
-    changeNav (nav) {
-      this.nav = nav
-    },
-    linkDetail () {
-      let url = `../customer/main?id=1`
+    linkDetail (url) {
       mpvue.navigateTo({ url })
     }
   }

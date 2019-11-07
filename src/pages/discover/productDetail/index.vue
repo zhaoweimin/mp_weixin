@@ -13,7 +13,7 @@
             <comInput :type="0" title="备计划募集规模" value="20万"></comInput>
             <comInput :type="0" title="基金份额" value="80%"></comInput>
             <comInput :type="0" title="基金单位净值" value="15亿"></comInput>
-            <comInput :type="0" title="纯续期限" value="12个月"></comInput>
+            <comInput :type="0" title="退出期" value="12个月"></comInput>
             <comInput :type="0" title="投资期限" value="12个月"></comInput>
             <comInput :type="0" title="募集期" value="100天"></comInput>
             <comInput :type="0" title="托管方" value="XXXXXX"></comInput>

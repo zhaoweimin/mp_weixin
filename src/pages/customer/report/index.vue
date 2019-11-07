@@ -43,8 +43,8 @@
                         <!-- <div class="title"><span class="tag-grey">投诉单号：20190320153023654</span></div> -->
                     </div>
                 </div>
-                <img v-if="curNavId===0" class="status" src="../../../img/status_no_deal.png" alt="">
-                <img v-else class="status" src="../../../img/status_deal.png" alt="">
+                <img v-if="curNavId===0" class="status" src="../../../img/status_deal.png" alt="">
+                <img v-else class="status" src="../../../img/status_no_deal.png" alt="">
             </div>
         </block>
     </div>

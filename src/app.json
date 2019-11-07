@@ -6,6 +6,7 @@
     "pages/customer/quetions/main",
     "pages/customer/archives/main",
     "pages/customer/customer/main",
+    "pages/customer/constitution/main",
     "pages/customer/add/main",
     "pages/customer/addFollow/main",
     "pages/customer/follow/main",
@@ -43,6 +44,7 @@
     "pages/discover/lore/main",
     "pages/discover/invitation/main",
     "pages/discover/details/main",
+    "pages/discover/productDetail/main",
 
     "pages/task/list/main",
     "pages/task/approval/main",
