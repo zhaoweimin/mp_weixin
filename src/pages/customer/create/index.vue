@@ -1,12 +1,12 @@
 <template>
-  <div class="main">
-    <div class="block" @click="create(1)">
-      <img src="../../../img/personal_creat.jpg" alt="" mode="aspectFit">
+    <div class="main">
+        <div class="block" @click="create(1)">
+            <img src="../../../img/personal_creat.jpg" alt="" mode="aspectFit">
+        </div>
+        <div class="block" @click="create(2)">
+            <img src="../../../img/company_creat.jpg" alt="" mode="aspectFit">
+        </div>
     </div>
-    <div class="block" @click="create(2)">
-      <img src="../../../img/company_creat.jpg" alt="" mode="aspectFit">
-    </div>
-  </div>
 </template>
 
 <script>
@@ -16,8 +16,7 @@ import card from '@/components/customerCard'
 
 export default {
   data () {
-    return {
-    }
+    return {}
   },
 
   components: {
@@ -28,7 +27,7 @@ export default {
 
   methods: {
     create (type) {
-      let url = `../add/main?type=${type}`
+      let url = type === 1 ? `../add/main` : '../addConstitution/main'
       mpvue.navigateTo({ url })
     }
   },
@@ -40,14 +39,14 @@ export default {
 </script>
 
 <style scoped>
-.block{
-  margin: 15px;
-  width: 345px;
-  border-radius: 6px;
-  overflow: hidden;
+.block {
+	margin: 15px;
+	width: 345px;
+	border-radius: 6px;
+	overflow: hidden;
 }
-.block img{
-  width: 100%;
-  height: 120px;
+.block img {
+	width: 100%;
+	height: 120px;
 }
 </style>

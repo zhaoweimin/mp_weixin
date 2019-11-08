@@ -20,7 +20,7 @@ page {
   color: #999999 !important;
 }
 .cplaceholder {
-  color: #f1f1f1 !important;
+  color: #d8d8d8 !important;
 }
 .clink {
   color: #259efa !important;
@@ -422,4 +422,5 @@ page {
 .w10 {
   width: 10%;
 }
+
 /* end */

@@ -1,129 +1,162 @@
 <template>
-  <div class="customer creat has-footer">
-    <div class="msg-top-bg">
-    </div>
-    <div class="msg-table has-bg box-shaw">
-      <div class="title">
-        风险能力测评 <span class="iconfont iconkehugenjin"></span>
-        <div class="fr check-count" @click="lingQuestion">
-          去测评
+    <div class="customer creat has-footer">
+        <div class="msg-top-bg">
         </div>
-      </div>
-      <div class="flex chart">
-        <div class="count">
-          <div class="num">80</div>
-          <div class="text">风险测评得分</div>
-        </div>
-        <div class="flex-1">
-          <div class="text">客户风险等级：---</div>
-          <div class="text">风险承受能力类型：---</div>
-          <div class="text">相匹配产品风险等级：---</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-block box-shaw">
-      <div class="line left" v-if="step > 0"></div>
-      <div class="line right" v-if="step > 1"></div>
-      <div class="flex">
-        <div class="flex-1">
-          <div class="number active">1</div>
-          <div class="text">基本信息</div>
-        </div>
-        <div class="flex-1">
-          <div class="number" :class="{active: step > 0}">2</div>
-          <div class="text">联系方式</div>
-        </div>
-        <div class="flex-1">
-          <div class="number" :class="{active: step == 2}">3</div>
-          <div class="text">兴趣爱好</div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="msg-table" v-show="step === 0">
-      <div class="table">
-        <div class="line">
-          <div class="key">客户编号</div>
-          <div class="val">
-            <input v-show="isEdit" class="input" placeholder="请输入客户编号" placeholder-class="cplaceholder" type="text" v-model="code">
-          </div>
-        </div>
-        <div class="line required">
-          <div class="key">客户来源</div>
-          <picker class="val" @change="pickerSell" :value="sell" :range="sells" :disabled="!isEdit">
-            {{sells[sell]}} <span class="iconfont iconright"></span>
-          </picker>
-        </div>
-        <div class="line required">
-          <div class="key">客户来源明细</div>
-          <div class="val">市场活动 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key">市场活动</div>
-          <div class="val">
-            <input v-show="isEdit" class="input" placeholder="请输入市场活动" placeholder-class="cplaceholder" type="text" v-model="code">
-          </div>
-        </div>
-        <div class="line">
-          <div class="key">投诉次数</div>
-          <div class="val">
-            <input v-show="isEdit" class="input" placeholder="请输入投诉次数" placeholder-class="cplaceholder" type="text" v-model="code">
-          </div>
-        </div>
-        <div class="line required">
-          <div class="key">证件类型</div>
-          <div class="val">身份证 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line required">
-          <div class="key">证件号码</div>
-          <div class="val">
-            <input v-show="isEdit" class="input" placeholder="请输入证件号码" placeholder-class="cplaceholder" type="text" v-model="code">
-          </div>
-        </div>
-        <div class="line required">
-          <div class="key">婚姻状况</div>
-          <div class="val">已婚 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key">出身日期</div>
-          <div class="val">1985.3.25 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key">国籍</div>
-          <div class="val">中国 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="key">生日关怀</div>
-          <div class="val">晚宴 <span class="iconfont iconright"></span></div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key l-end w100">工作单位</div>
-            <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
-            <div class="text-val text-placeholder">
-              <textarea v-show="isEdit" class="input" placeholder="请输入工作单位" placeholder-class="cplaceholder" type="text" v-model="code" />
+        <div class="msg-table has-bg box-shaw">
+            <div class="title">
+                风险能力测评 <span class="iconfont iconkehugenjin"></span>
+                <div class="fr check-count" @click="lingQuestion">
+                    去测评
+                </div>
             </div>
+            <div class="flex chart">
+                <div class="count ml10">
+                    <div class="num">80</div>
+                    <div class="text">风险测评得分</div>
+                </div>
+                <div class="pl20 flex-1">
+                    <div class="text mb10">客户风险等级：---</div>
+                    <div class="text mb10">风险承受能力类型：---</div>
+                    <div class="text">相匹配产品风险等级：---</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-block box-shaw">
+            <div class="line left" v-if="step > 0"></div>
+            <div class="line right" v-if="step > 1"></div>
+            <div class="flex">
+                <div class="flex-1">
+                    <div class="number active">1</div>
+                    <div class="text">基本信息</div>
+                </div>
+                <div class="flex-1">
+                    <div class="number" :class="{active: step > 0}">2</div>
+                    <div class="text">联系方式</div>
+                </div>
+                <div class="flex-1">
+                    <div class="number" :class="{active: step == 2}">3</div>
+                    <div class="text">兴趣爱好</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="msg-table" v-show="step === 0">
+            <div class="table">
+                <div class="line">
+                    <div class="key">客户编号</div>
+                    <div class="val dis-flex">
+                        <!-- <input v-show="isEdit" class="input" placeholder="请输入客户编号" placeholder-class="cplaceholder" type="text" v-model="code"> -->
+                        <div class="clink ta-l">A002</div>
+                    </div>
+                </div>
+                <div class="line required">
+                    <div class="key">客户来源</div>
+                    <div class="val dis-flex">
+                        <picker class="flex-1 ta-l" @change="pickerSell" :value="sell" :range="sells" :disabled="!isEdit">
+                            {{sells[sell]}}
+                        </picker>
+                        <span class="iconfont iconright"></span>
+                    </div>
+                </div>
+                <div class="line required">
+                    <div class="key">客户来源明细</div>
+                    <div class="val dis-flex">
+                        <div class="flex-1 ta-l">市场活动</div>
+                        <span class="iconfont iconright"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="key">市场活动</div>
+                    <div class="val dis-flex">
+                        <!-- <input v-show="isEdit" class="input" placeholder="请输入市场活动" placeholder-class="cplaceholder" type="text" v-model="code"> -->
+                        <div class="ta-l">活动</div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="key">投诉次数</div>
+                    <div class="val dis-flex">
+                        <!-- <input v-show="isEdit" class="input" placeholder="请输入投诉次数" placeholder-class="cplaceholder" type="text" v-model="code"> -->
+                        <div class="ta-l">2次</div>
+                    </div>
+                </div>
+                <div class="line required">
+                    <div class="key">证件类型</div>
+                    <div class="val dis-flex">
+                        <div class="flex-1 ta-l">身份证</div>
+                        <span class="iconfont iconright"></span>
+                    </div>
+                </div>
+                <div class="line required">
+                    <div class="key">证件号码</div>
+                    <div class="val">
+                        <input v-show="isEdit" class="input" placeholder="请输入证件号码" placeholder-class="cplaceholder" type="text" v-model="code">
+                    </div>
+                </div>
+                <div class="line required">
+                    <div class="key">婚姻状况</div>
+                    <div class="val dis-flex">
+                        <div class="flex-1 ta-l">已婚</div>
+                        <span class="iconfont iconright"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="key">出生日期</div>
+                    <div class="val dis-flex">
+                        <div class="flex-1 ta-l">1985.3.25</div>
+                        <span class="iconfont iconright"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="key">国籍</div>
+                    <div class="val dis-flex">
+                        <div class="flex-1 ta-l">中国</div>
+                        <span class="iconfont iconright"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="key">生日关怀</div>
+                    <div class="val dis-flex">
+                        <div class="flex-1 ta-l">晚宴</div>
+                        <span class="iconfont iconright"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key l-end w100">工作单位</div>
+                        <div class="text-val text-placeholder">
+                            <textarea v-show="isEdit" class="input" placeholder="请输入工作单位" placeholder-class="cplaceholder" type="text" v-model="code" />
+                            </div>
           </div>
         </div>
         <div class="line required">
           <div class="key">行业</div>
-          <div class="val">互联网 <span class="iconfont iconright"></span></div>
+            <div class="val dis-flex">
+                <div class="flex-1 ta-l">互联网</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line">
-          <div class="key">职位</div>
-          <div class="val">市场总监 <span class="iconfont iconright"></span></div>
+            <div class="key">职位</div>
+            <div class="val dis-flex">
+                <div class="flex-1 ta-l">市场总监</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line required">
           <div class="key">常住省份</div>
-          <div class="val">广东 <span class="iconfont iconright"></span></div>
+          <div class="val dis-flex">
+                <div class="flex-1 ta-l">广东</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line required">
           <div class="key">常住城市</div>
-          <div class="val">深圳 <span class="iconfont iconright"></span></div>
+           <div class="val dis-flex">
+                <div class="flex-1 ta-l">深圳</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
-
       </div>
     </div>
 
@@ -137,7 +170,10 @@
         </div>
         <div class="line">
           <div class="key">电话类型</div>
-          <div class="val">国内电话 <span class="iconfont iconright"></span></div>
+          <div class="val dis-flex">
+                <div class="flex-1 ta-l">国内电话</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line">
           <div class="key">紧急联系人</div>
@@ -166,26 +202,38 @@
       <div class="table">
         <div class="line">
           <div class="key">性别</div>
-          <div class="val">
-            男
-            <span class="iconfont iconright"></span>
-          </div>
+          <div class="val dis-flex">
+                <div class="flex-1 ta-l">男</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line">
           <div class="key">年龄段</div>
-          <div class="val">25岁以下 <span class="iconfont iconright"></span></div>
+          <div class="val dis-flex">
+                <div class="flex-1 ta-l">25岁以下</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line">
           <div class="key">行业</div>
-          <div class="val">互联网行业 <span class="iconfont iconright"></span></div>
+          <div class="val dis-flex">
+                <div class="flex-1 ta-l">互联网行业</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line">
           <div class="key">投资占收入比</div>
-          <div class="val">5%-20% <span class="iconfont iconright"></span></div>
+           <div class="val dis-flex">
+                <div class="flex-1 ta-l">5%-20%</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
         <div class="line">
           <div class="key">投资理财年限</div>
-          <div class="val">2-5年 <span class="iconfont iconright"></span></div>
+          <div class="val dis-flex">
+                <div class="flex-1 ta-l">2-5年</div>
+                <span class="iconfont iconright"></span>
+            </div>
         </div>
 
         <div class="line">
@@ -326,78 +374,60 @@ export default {
       isEdit: true,
       check: [true, true, false, false],
       souce_income: [
-        {val: false, text: '工资，劳务报酬'},
-        {val: false, text: '生产经营所得'},
-        {val: false, text: '利息、股息，转让证券等金融性资产收入'},
-        {val: false, text: '出租、出售房地产等非金融性资产收入 '}
+        { val: false, text: '工资，劳务报酬' },
+        { val: false, text: '生产经营所得' },
+        { val: false, text: '利息、股息，转让证券等金融性资产收入' },
+        { val: false, text: '出租、出售房地产等非金融性资产收入 ' }
       ],
       souce_channel: [
-        {val: false, text: '互联网'},
-        {val: false, text: '微信、微博等手机App'},
-        {val: false, text: '亲戚朋友'},
-        {val: false, text: '银行、证券、信托公司'},
-        {val: false, text: '私募基金管理机构'},
-        {val: false, text: '第三方理财机构'}
+        { val: false, text: '互联网' },
+        { val: false, text: '微信、微博等手机App' },
+        { val: false, text: '亲戚朋友' },
+        { val: false, text: '银行、证券、信托公司' },
+        { val: false, text: '私募基金管理机构' },
+        { val: false, text: '第三方理财机构' }
       ],
       souce_point: [
-        {val: false, text: '私募基金管理机构的品牌'},
-        {val: false, text: '基金销售机构的宣传和推介'},
-        {val: false, text: '私募基金的业绩表现 '},
-        {val: false, text: '综合考虑私募基金管理机构的管理能力'}
+        { val: false, text: '私募基金管理机构的品牌' },
+        { val: false, text: '基金销售机构的宣传和推介' },
+        { val: false, text: '私募基金的业绩表现 ' },
+        { val: false, text: '综合考虑私募基金管理机构的管理能力' }
       ],
       souce_exercise: [
-        {val: false, text: '马术运动'},
-        {val: false, text: '帆船/游艇出海'},
-        {val: false, text: '高尔夫赛事/体验场'},
-        {val: false, text: '网球'},
-        {val: false, text: '射箭'},
-        {val: false, text: '羽毛球'},
-        {val: false, text: '其他'}
+        { val: false, text: '马术运动' },
+        { val: false, text: '帆船/游艇出海' },
+        { val: false, text: '高尔夫赛事/体验场' },
+        { val: false, text: '网球' },
+        { val: false, text: '射箭' },
+        { val: false, text: '羽毛球' },
+        { val: false, text: '其他' }
       ],
-      souce_enjoy: [
-        {val: false, text: '红酒品鉴'},
-        {val: false, text: '形象提升'},
-        {val: false, text: '美体/形体培训'},
-        {val: false, text: '珠宝鉴赏'},
-        {val: false, text: '其他'}
-      ],
-      souce_salon: [
-        {val: false, text: '摄影分享'},
-        {val: false, text: '花艺沙龙'},
-        {val: false, text: '投资策略'},
-        {val: false, text: '茶艺沙龙'},
-        {val: false, text: '其他'}
-      ],
+      souce_enjoy: [{ val: false, text: '红酒品鉴' }, { val: false, text: '形象提升' }, { val: false, text: '美体/形体培训' }, { val: false, text: '珠宝鉴赏' }, { val: false, text: '其他' }],
+      souce_salon: [{ val: false, text: '摄影分享' }, { val: false, text: '花艺沙龙' }, { val: false, text: '投资策略' }, { val: false, text: '茶艺沙龙' }, { val: false, text: '其他' }],
       souce_hands: [
-        {val: false, text: '香水手作'},
-        {val: false, text: '小黑裙手作 '},
-        {val: false, text: '包包手作'},
-        {val: false, text: '香薰干花蜡烛手作'},
-        {val: false, text: '口红手作'},
-        {val: false, text: '其他'}
+        { val: false, text: '香水手作' },
+        { val: false, text: '小黑裙手作 ' },
+        { val: false, text: '包包手作' },
+        { val: false, text: '香薰干花蜡烛手作' },
+        { val: false, text: '口红手作' },
+        { val: false, text: '其他' }
       ],
       souce_selfHands: [
-        {val: false, text: '油画创作手作'},
-        {val: false, text: '鸡尾酒/精酿啤酒手作'},
-        {val: false, text: '咖啡手作'},
-        {val: false, text: '永生花＆永生花团扇手作'},
-        {val: false, text: '蛋糕/粽子/饼干手作'},
-        {val: false, text: '其他'}
+        { val: false, text: '油画创作手作' },
+        { val: false, text: '鸡尾酒/精酿啤酒手作' },
+        { val: false, text: '咖啡手作' },
+        { val: false, text: '永生花＆永生花团扇手作' },
+        { val: false, text: '蛋糕/粽子/饼干手作' },
+        { val: false, text: '其他' }
       ],
-      souce_food: [
-        {val: false, text: '西餐'},
-        {val: false, text: '自助餐'},
-        {val: false, text: '中餐'},
-        {val: false, text: '日料'},
-        {val: false, text: '日料'}
-      ],
+      souce_food: [{ val: false, text: '西餐' }, { val: false, text: '自助餐' }, { val: false, text: '中餐' }, { val: false, text: '日料' }, { val: false, text: '日料' }],
       souce_travel: [
-        {val: false, text: '繁华都市'},
-        {val: false, text: '名胜古迹'},
-        {val: false, text: '自然景观'},
-        {val: false, text: '水乡古镇'},
-        {val: false, text: '海滨海岛'},
-        {val: false, text: '其他'}
+        { val: false, text: '繁华都市' },
+        { val: false, text: '名胜古迹' },
+        { val: false, text: '自然景观' },
+        { val: false, text: '水乡古镇' },
+        { val: false, text: '海滨海岛' },
+        { val: false, text: '其他' }
       ],
 
       sells: ['直销', '代理'],
@@ -407,8 +437,7 @@ export default {
       sex: 0
     }
   },
-  created () {
-  },
+  created () {},
   methods: {
     setOpen (key) {
       this.open[key] = !this.open[key]
@@ -486,7 +515,13 @@ export default {
 </script>
 
 <style>
-page{
-  background: #edf6ff
+page {
+	background: #edf6ff;
+}
+.msg-top-bg-green {
+	background: #16eac2;
+	width: 100%;
+	height: 150px;
+	border-radius: 0 0 20px 20px;
 }
 </style>

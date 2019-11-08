@@ -131,10 +131,10 @@
   color: #ffffff;
   font-size: 16px;
 }
-.line-bar{
+.line-bar {
   padding: 15px;
 }
-.line-bar button{
+.line-bar button {
   font-size: 16px;
   border-radius: 4px;
   width: 100%;
@@ -144,23 +144,23 @@
 
 /* msg-table */
 
-.msg-table{
+.msg-table {
   margin: 15px;
   background: #ffffff;
   border-radius: 4px;
 }
-.msg-table .title{
+.msg-table .title {
   padding-top: 5px;
   margin-left: 15px;
   padding-right: 15px;
   font-weight: bold;
   line-height: 40px;
 }
-.msg-table .table{
+.msg-table .table {
   padding-left: 15px;
   line-height: 40px;
 }
-.msg-table .table .line{
+.msg-table .table .line {
   position: relative;
   display: flex;
   padding-right: 15px;
@@ -168,45 +168,45 @@
   border-top: 1px solid #f5f5f5;
 }
 
-.msg-table .table .line.required::after{
-  content: "*";
+.msg-table .table .line.required::after {
+  content: '*';
   color: #ff0000;
   position: absolute;
   left: -10px;
   top: 3px;
 }
-.msg-table .table .line .key{
+.msg-table .table .line .key {
   color: #999999;
   min-width: 100px;
 }
-.msg-table .table .line .val{
+.msg-table .table .line .val {
   text-align: right;
   flex: 1;
 }
-.msg-table .table .line .val .input{
+.msg-table .table .line .val .input {
   line-height: 40px;
   height: 40px;
   text-align: left;
 }
 
-.msg-table .table .line .val .iconfont{
+.msg-table .table .line .val .iconfont {
   font-size: 14px;
 }
-.msg-table .title .iconfont{
-  color: #55A8FF;
+.msg-table .title .iconfont {
+  color: #55a8ff;
 }
-.msg-table .table .big-line{
+.msg-table .table .big-line {
   text-align: center;
   line-height: 20px;
   padding: 10px;
   position: relative;
   left: -15px;
 }
-.msg-table .table .big-line .val{
+.msg-table .table .big-line .val {
   line-height: 30px;
   font-size: 17px;
 }
-.msg-table .table .text-val{
+.msg-table .table .text-val {
   background: #f0f0f0;
   border-radius: 4px;
   margin-bottom: 10px;
@@ -214,39 +214,39 @@
   min-height: 40px;
   padding: 12px;
 }
-.msg-table .table .line .text-placeholder{
+.msg-table .table .line .text-placeholder {
   background: #f5f5f5;
 }
-.msg-table .table .line .text-placeholder .cplaceholder{
-  color: #eee !important; 
+.msg-table .table .line .text-placeholder .cplaceholder {
+  color: #eee !important;
 }
-.msg-table .table .check-bok{
+.msg-table .table .check-bok {
   padding: 0 5px;
 }
-.msg-table .table .check-bok .van-checkbox{
+.msg-table .table .check-bok .van-checkbox {
   margin-bottom: 10px;
 }
 
-.creat .msg-table{
+.creat .msg-table {
   margin: 15px 0;
 }
 
-.msg-top-bg{
+.msg-top-bg {
   background: #519eee;
   width: 100%;
-  height: 100px;
-  border-radius: 0;
+  height: 140px;
+  border-radius: 0 0 30px 30px;
 }
 
-.has-bg.msg-table{
+.has-bg.msg-table {
   z-index: 10;
   margin: 15px;
-  margin-top: -60px;
+  margin-top: -110px;
 }
 
-.check-count{
-  border: 1px solid #509EF0;
-  color: #509EF0;
+.check-count {
+  border: 1px solid #509ef0;
+  color: #509ef0;
   font-weight: normal;
   line-height: 20px;
   height: 20px;
@@ -255,8 +255,8 @@
   border-radius: 20px;
   margin-top: 10px;
 }
-.customer .chart{
-  margin: 0 15px ;
+.customer .chart {
+  margin: 0 15px;
   padding: 15px 0;
   border-top: 2px solid #f5f5f5;
   font-size: 13px;
@@ -267,38 +267,38 @@
   padding: 5px 0px;
   margin-right: 10px;
 }
-.customer .chart .count .num{
+.customer .chart .count .num {
   font-size: 24px;
   line-height: 30px;
 }
 
-.creat .box-shaw{
-  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+.creat .box-shaw {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 /* end */
 
 /* footer-bar */
-.has-footer{
+.has-footer {
   padding-bottom: 100px;
 }
-.footer-bar{
+.footer-bar {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   padding: 10px;
   background: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
 }
-.footer-bar button{
+.footer-bar button {
   border-radius: 5px;
   width: 100%;
 }
 /* end */
 
 /* step block */
-.step-block{
+.step-block {
   position: relative;
   margin: 15px 0;
   background: #fff;
@@ -307,7 +307,7 @@
   color: #020202;
   padding: 30px 0;
 }
-.step-block .number{
+.step-block .number {
   color: #999999;
   margin: auto;
   width: 40px;
@@ -316,19 +316,19 @@
   font-weight: bold;
   margin-bottom: 15px;
 }
-.step-block .line{
+.step-block .line {
   position: absolute;
   top: 47px;
   /* top: 7px; */
-  left: calc(1/6*100% + 20px);
+  left: calc(1 / 6 * 100% + 20px);
   height: 3px;
   background: #259efa;
-  width: calc(2/6*100% - 40px);
+  width: calc(2 / 6 * 100% - 40px);
 }
-.step-block .line.right{
-  left: calc(1/2*100% + 20px);
+.step-block .line.right {
+  left: calc(1 / 2 * 100% + 20px);
 }
-.step-block .number.active{
+.step-block .number.active {
   background: #259efa;
   color: #fff;
   border-radius: 4px;

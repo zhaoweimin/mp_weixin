@@ -8,6 +8,7 @@
     "pages/customer/customer/main",
     "pages/customer/constitution/main",
     "pages/customer/add/main",
+    "pages/customer/addConstitution/main",
     "pages/customer/addFollow/main",
     "pages/customer/follow/main",
     "pages/customer/followList/main",
