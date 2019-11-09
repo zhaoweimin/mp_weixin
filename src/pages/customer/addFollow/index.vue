@@ -1,33 +1,34 @@
 <template>
     <div class="main">
         <div class="bg-fff mt10">
-            <comInput :type="0" title="跟进编号" :isSpecialColorTxt="true" value="12312313123123" :textRight="false"></comInput>
-            <comInput :type="0" title="客户编号" :isSpecialColorTxt="true" value="12312311" :textRight="false"></comInput>
-            <comInput :type="2" title="跟进方式" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']" :textRight="false"></comInput>
-            <comInput :type="3" title="上次跟进时间" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
-            <comInput :type="3" title="计划跟进时间" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
-            <comInput :type="2" title="客户类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']" :textRight="false"></comInput>
-            <comInput :type="1" title="投资总额" value="100万元" :textRight="false"></comInput>
-            <comInput :type="1" title="累计投资总额" value="200万元" :textRight="false"></comInput>
+            <comInput :type="0" :titleDark="true" title="跟进编号" :isSpecialColorTxt="true" value="12312313123123" :textRight="false"></comInput>
+            <comInput :type="0" :titleDark="true" title="客户编号" :isSpecialColorTxt="true" value="A-102" :textRight="false"></comInput>
+            <comInput :type="0" :titleDark="true" title="客户姓名" value="周方文" :textRight="false"></comInput>
+            <comInput :type="2" :titleDark="true" title="跟进方式" placeholder="请选择" value="" @getSelect="getSelect" :options="['亲自拜访']" :textRight="false"></comInput>
+            <comInput :type="3" :titleDark="true" title="跟进开始时间" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+            <comInput :type="3" :titleDark="true" title="跟进结束时间" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+            <comInput :type="2" :titleDark="true" title="客户类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['成交类型']" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="投资总额" value="100万元" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="累计投资总额" value="200万元" :textRight="false"></comInput>
             <div class="mlr15 ptb10 border-b">
-                <div class="cgey f16 mb10">跟进主题</div>
+                <div class="cblack f16 mb10">跟进主题</div>
                 <textarea name="" id="" cols="30" rows="10" placeholder="" value="主题内容XXX"></textarea>
             </div>
-            <comInput :type="2" title="跟进类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']" :textRight="false"></comInput>
+            <comInput :type="2" :titleDark="true" title="跟进类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['客情维护']" :textRight="false"></comInput>
             <div class="mlr15 ptb10 border-b">
-                <div class="cgey f16 mb10">跟进内容</div>
+                <div class="cblack f16 mb10">跟进内容</div>
                 <textarea name="" id="" cols="30" rows="10" placeholder="" value="沟通签署合同事宜"></textarea>
             </div>
-            <comInput :type="3" title="今日跟进时间" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+            <comInput :type="3" :titleDark="true" title="下次跟进时间" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
             <div class="mlr15 ptb10 border-b">
-                <div class="cgey f16 mb10">今日跟进计划</div>
+                <div class="cblack f16 mb10">下次跟进计划</div>
                 <textarea name="" id="" cols="30" rows="10" placeholder="" value="执行签署合同事宜"></textarea>
             </div>
-            <comInput :type="1" title="跟进人" value="小张" :textRight="false"></comInput>
-            <comInput :type="1" title="跟进部门" value="小王" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="跟进人" value="张维亮" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="跟进部门" value="市场部" :textRight="false"></comInput>
         </div>
         <div class="ptb25 plr15 ">
-            <van-button type="info" size="large">跟进</van-button>
+            <van-button type="info" size="large">确认</van-button>
         </div>
     </div>
 </template>

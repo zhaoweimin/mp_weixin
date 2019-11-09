@@ -1,7 +1,7 @@
 <template>
     <div class="contract-card task-card" @click="detail(info.id)">
         <div class="order">
-            <div class="bg">合同编号：201903201530326548</div>
+            <div class="bg">流程号：2098462</div>
         </div>
         <div class="msg no-boder">
             <div class="line">

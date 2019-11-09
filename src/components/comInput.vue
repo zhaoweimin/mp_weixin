@@ -1,19 +1,21 @@
 <template>
     <div class="pl15 bg-fff border-box" :class="{'pr15':!isSpecialBorderStyle}">
         <div class="inputItem dis-flex l-start ptb10" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
-            <div class="label f16 cgey" :class="[titleDark?'cblack':'cgey']">{{title}}</div>
+            <div class="label f16" :class="[titleDark?'cblack':'cgey']">{{title}}</div>
             <div class="flex-1 dis-flex flex-column pl20">
                 <!-- 文字 -->
                 <div v-if="type===0" class="f16 cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack']">{{resultValue}}</div>
                 <!-- 输入框 -->
                 <input v-if="type===1" class="w-full f16" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
                 <!-- 选择 -->
-                        <picker v-if="type===2" class="w-full" :class="[textRight?'ta-r':'ta-l']" @change="onPickerChange" :value="index" :range="options">
+                        <picker v-if="type===2" class="w-full rel" :disabled="disabled" :class="[textRight?'ta-r':'ta-l']" @change="onPickerChange" :value="index" :range="options">
                     <span class="f16" :class="resultValue?'cblack':'clight'">{{options[resultValue]||'请选择'}}</span>
+                    <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                 </picker>
                 <!-- 日期 -->
-                <picker v-if="type===3" mode="date" :class="[textRight?'ta-r':'ta-l']" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
+                <picker v-if="type===3" mode="date" class="w-full rel" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
                     <span class="f16" :class="[resultValue?'cblack':'clight']">{{resultValue||'请选择'}}</span>
+                    <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                 </picker>
                 <!-- 点击事件 -->
                 <div v-if=" type===4" class="btnItem dis-flex flex-1 a-right l-center">
@@ -216,5 +218,10 @@ input[disabled] {
 	background: none;
 	color: #333;
 	-webkit-text-fill-color: #333;
+}
+.icon-r {
+	position: absolute;
+	right: 0;
+	top: 5px;
 }
 </style>

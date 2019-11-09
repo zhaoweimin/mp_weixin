@@ -60,7 +60,7 @@ button::after {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 1;
+	z-index: 999;
 }
 .search .action {
 	padding-left: 10px;

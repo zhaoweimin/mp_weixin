@@ -22,8 +22,8 @@
             <textarea class="textarea bg-color plr10 ptb10 border-box" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"></textarea>
         </div>
         <div class="dis-flex a-between plr15 mt25 pb20">
-            <van-button plain type="info" custom-style="width: 180px">驳回</van-button>
-            <van-button type="info" custom-style="width: 180px">通过</van-button>
+            <van-button plain type="info" custom-style="width: 160px">驳回</van-button>
+            <van-button type="info" custom-style="width: 160px">通过</van-button>
         </div>
     </div>
 </template>

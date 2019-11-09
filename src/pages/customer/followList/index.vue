@@ -2,7 +2,7 @@
     <div class="main has-header">
         <search placeholder="搜索"></search>
         <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key">
-            <div class="dis-flex l-center mb15 plr10">
+            <div class="dis-flex l-center mb15 plr10" @click="isShowForm=!isShowForm">
                 <div class="avatar">
                     <img class="img" :src="vo.avatar" mode="aspectFill">
                 </div>
@@ -25,33 +25,39 @@
                         <div class="tag level">D级</div>
                     </div>
                 </div>
-                <div class="right" @click="isShowForm=!isShowForm"><span class="iconfont iconxiangxiajiantou f12"></span></div>
+                <div class="right"><span class="iconfont iconxiangxiajiantou f12"></span></div>
             </div>
             <div v-if="isShowForm">
                 <comInput :type="0" title="跟进编号" :isSpecialColorTxt="true" value="12312313123123"></comInput>
                 <comInput :type="0" title="客户编号" :isSpecialColorTxt="true" value="12312311"></comInput>
-                <comInput :type="2" title="跟进方式" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
-                <comInput :type="3" title="上次跟进时间" value="" @getSelectDate="getSelectDate"></comInput>
-                <comInput :type="3" title="计划跟进时间" value="" @getSelectDate="getSelectDate"></comInput>
-                <comInput :type="2" title="客户类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
-                <comInput :type="1" title="投资总额" value="100万元"></comInput>
-                <comInput :type="1" title="累计投资总额" value="200万元"></comInput>
+                <comInput :type="0" title="跟进方式" value="亲自拜访"></comInput>
+                <!-- <comInput :type="2" title="跟进方式" placeholder="请选择" value="" @getSelect="getSelect" :options="['亲自拜访']"></comInput> -->
+                <comInput :type="0" title="上次跟进时间" value="2019-07-08"></comInput>
+                <!-- <comInput :type="3" title="上次跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
+                <comInput :type="0" title="计划跟进时间" value="2019-08-08"></comInput>
+                <!-- <comInput :type="3" title="计划跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
+                <comInput :type="0" title="客户类型" value="成交类型"></comInput>
+                <!-- <comInput :type="2" title="客户类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['成交类型']"></comInput> -->
+                <comInput :type="0" title="投资总额" value="100万元"></comInput>
+                <comInput :type="0" title="累计投资总额" value="200万元"></comInput>
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进主题</div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="" value="主题内容XXX"></textarea>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="主题内容XXX"></textarea>
                 </div>
-                <comInput :type="2" title="跟进类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
+                <comInput :type="0" title="跟进类型" value="客情维护"></comInput>
+                <!-- <comInput :type="2" title="跟进类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['客情维护']"></comInput> -->
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进内容</div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="" value="沟通签署合同事宜"></textarea>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="沟通签署合同事宜"></textarea>
                 </div>
-                <comInput :type="3" title="今日跟进时间" value="" @getSelectDate="getSelectDate"></comInput>
+                <comInput :type="0" title="今日跟进时间" value="2019-11-09"></comInput>
+                <!-- <comInput :type="3" title="今日跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">今日跟进计划</div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="" value="执行签署合同事宜"></textarea>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="执行签署合同事宜"></textarea>
                 </div>
-                <comInput :type="1" title="跟进人" value="小张"></comInput>
-                <comInput :type="1" title="跟进部门" value="小王"></comInput>
+                <comInput :type="0" title="跟进人" value="小张"></comInput>
+                <comInput :type="0" title="跟进部门" value="小王"></comInput>
             </div>
             <div v-else class="more dis-flex flex-column a-center plr15">
                 <div class="line"><span>跟进类型-</span><span class="cblack">转化成交</span></div>
