@@ -444,7 +444,7 @@ export default {
       }
     },
     lingQuestion (e) {
-      let url = `../quetions/main?type=1`
+      let url = `../quetions/main?type=2`
       mpvue.navigateTo({ url })
     },
     submit () {

@@ -1,44 +1,52 @@
 <template>
     <div class="main">
         <div class="block" @click="create(1)">
-            <img src="../../../img/questions.png" alt="" mode="aspectFit">
+            <img v-if="type==='1'" src="../../../img/questions.png" alt="" mode="aspectFit">
+            <img v-else src="../../../img/questions1.png" alt="" mode="aspectFit">
         </div>
+        <div v-if="type==='1'">
+            <div class="question-block">
+                <div class="title">一、基本信息</div>
+                <div class="input-question">
+                    <div class="flex">
+                        <div class="key">1、客户姓名</div>
+                        <div class="val flex-1">
+                            <input type="text" placeholder="请输入用户姓名" disabled value="程咬金" placeholder-class="cplaceholder">
+                        </div>
+                    </div>
 
-        <div class="question-block">
-            <div class="title">一、基本信息</div>
-            <div class="input-question">
-                <div class="flex">
-                    <div class="key">1、客户姓名</div>
-                    <div class="val flex-1">
-                        <input type="text" placeholder="请输入用户姓名" disabled value="程咬金" placeholder-class="cplaceholder">
+                    <div class="flex">
+                        <div class="key"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;身份号码</div>
+                        <div class="val flex-1">
+                            <input type="text" placeholder="请输入身份号码" disabled value="4415221888222222222" placeholder-class="cplaceholder">
+                        </div>
                     </div>
                 </div>
-
-                <div class="flex">
-                    <div class="key"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;身份号码</div>
-                    <div class="val flex-1">
-                        <input type="text" placeholder="请输入身份号码" disabled value="4415221888222222222" placeholder-class="cplaceholder">
-                    </div>
-                </div>
+                <question v-for="(vo, key) in questions1" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
             </div>
-            <question v-for="(vo, key) in questions1" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
+            <div class="question-block">
+                <div class="title">二、财务状况</div>
+                <question v-for="(vo, key) in questions2" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
+            </div>
+            <div class="question-block">
+                <div class="title">三、投资知识</div>
+                <question v-for="(vo, key) in questions3" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
+            </div>
+            <div class="question-block">
+                <div class="title">四、投资目标</div>
+                <question v-for="(vo, key) in questions4" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
+            </div>
+            <div class="question-block">
+                <div class="title">五、风险偏好</div>
+                <question v-for="(vo, key) in questions5" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
+            </div>
         </div>
-        <div class="question-block">
-            <div class="title">二、财务状况</div>
-            <question v-for="(vo, key) in questions2" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
+        <div v-if="type==='2'">
+            <div class="question-block">
+                <question v-for="(vo, key) in questions_constitution" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
+            </div>
         </div>
-        <div class="question-block">
-            <div class="title">三、投资知识</div>
-            <question v-for="(vo, key) in questions3" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
-        </div>
-        <div class="question-block">
-            <div class="title">四、投资目标</div>
-            <question v-for="(vo, key) in questions4" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
-        </div>
-        <div class="question-block">
-            <div class="title">五、风险偏好</div>
-            <question v-for="(vo, key) in questions5" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change"></question>
-        </div>
+
         <div class="line-bar">
             <van-button type="info" @click="submit">确认</van-button>
         </div>
@@ -51,6 +59,7 @@ import question from '@/components/question'
 export default {
   data () {
     return {
+      type: '1',
       questions1: [
         {
           num: 2,
@@ -179,6 +188,182 @@ export default {
           question: '客户认为自己能承受的最大投资损失是多少',
           options: [{ val: 'A', text: '10%以内' }, { val: 'B', text: '10%-30%' }, { val: 'C', text: '30%-50%' }, { val: 'D', text: '超过50%' }]
         }
+      ],
+      questions_constitution: [
+        {
+          num: 1,
+          sign: 'old_type',
+          question: '客户的单位的性质：',
+          options: [{ val: 'A', text: '国有企事业单位' }, { val: 'B', text: '非上市民营企业' }, { val: 'C', text: '外资企业' }, { val: 'D', text: '上市公司' }]
+        },
+        {
+          num: 2,
+          sign: 'old_type',
+          question: '客户单位的净资产规模为：',
+          options: [{ val: 'A', text: '500万元以下' }, { val: 'B', text: '500万元-2000万元' }, { val: 'C', text: '2000万元-1亿元' }, { val: 'D', text: '超过1亿元' }]
+        },
+        {
+          num: 3,
+          sign: 'old_type',
+          question: '客户单位年营业收入为',
+          options: [{ val: 'A', text: '500万元以下' }, { val: 'B', text: '500万元-2000万元' }, { val: 'C', text: '2000万元-1亿元' }, { val: 'D', text: '超过1亿元' }]
+        },
+        {
+          num: 4,
+          sign: 'old_type',
+          question: '客户单位证券账户资产为：',
+          options: [{ val: 'A', text: '300万元以内' }, { val: 'B', text: '300万元-1000万元' }, { val: 'C', text: '1000万元-3000万元' }, { val: 'D', text: '超过000万元' }]
+        },
+        {
+          num: 5,
+          sign: 'old_type',
+          question: '客户单位是否有尚未清偿的数额较大的债务？如有，主要是：',
+          options: [
+            { val: 'A', text: '银行贷款' },
+            { val: 'B', text: '公司债券或企业债券' },
+            { val: 'C', text: '通过担保公司等中介机构募集等借款' },
+            { val: 'D', text: '民间借贷' },
+            { val: 'E', text: '没有数额较大的债务' }
+          ]
+        },
+        {
+          num: 6,
+          sign: 'old_type',
+          question: '对于金融资产投资工作，客户单位打算配置怎样的人员力量：',
+          options: [
+            { val: 'A', text: '一名兼职人员（包括负责人自行决策）' },
+            { val: 'B', text: '一名专职人员' },
+            { val: 'C', text: '多名兼职或专职人员，相互之间分工不明确' },
+            { val: 'D', text: '多名兼职或专职人员，相互之间有明确分工' }
+          ]
+        },
+        {
+          num: 7,
+          sign: 'old_type',
+          question: '客户单位所配置的金融产品投资工作的人员是否符合以下情况',
+          options: [
+            { val: 'A', text: '现在或此前曾从事金融、经济或财会等与金融产品投资相关的工作超过两年' },
+            { val: 'B', text: '已取得金融、经济或财会等与金融产品投资专业学士以上学位' },
+            { val: 'C', text: '取得证券从业资格、期货从业资格、注册会计师证书（CPA）或注册金融分析师（CFA）中的一项及以上' },
+            { val: 'D', text: '本单位配置的人员不符合以上任何一项描述' }
+          ]
+        },
+        {
+          num: 8,
+          sign: 'old_type',
+          question: '客户单位是否建立了金融产品投资相关的管理制度：',
+          options: [
+            { val: 'A', text: '没有，因为要保证操作的灵活性' },
+            { val: 'B', text: '已建立。包括了分工和授权的要求，但未包括投资风险控制的规则' },
+            { val: 'C', text: '已建立。包括了分工与授权、风险控制等一系列与金融产品投资有关的规则' },
+            { val: 'D', text: '本单位配置的人员不符合以上任何一项描述' }
+          ]
+        },
+        {
+          num: 9,
+          sign: 'old_type',
+          question: '客户单位的投资经验可以被概括为：',
+          options: [
+            { val: 'A', text: '有限：除银行活期账户和定期存款外基本没有其他投资经验' },
+            { val: 'B', text: '一般：除银行活期账户和定期存款外，购买过基金、保险等理财产品，但还需进一步但指导' },
+            { val: 'C', text: '丰富：本单位具有相当投资经验，参与过股票、基金等产品等交易并倾向于自己做出的投资决策' },
+            { val: 'D', text: '非常丰富：本单位对于投资非常有经验，参与过权证、期货或创业板等高风险产品等交易' }
+          ]
+        },
+        {
+          num: 10,
+          sign: 'old_type',
+          question: '有一个投资者一个月内做了15笔5交易（同一个品种买卖各一次算一笔）客户单位认为这样的交易频率：',
+          options: [{ val: 'A', text: '太高了' }, { val: 'B', text: '偏高' }, { val: 'C', text: '正常' }, { val: 'D', text: '偏低' }]
+        },
+        {
+          num: 11,
+          sign: 'old_type',
+          question: '过去一年时间内，客户购买的不同金融产品（含同一类型的不同金融产品）的数量是：',
+          options: [{ val: 'A', text: '5个以下' }, { val: 'B', text: '6至10个' }, { val: 'C', text: '11至15个' }, { val: 'D', text: '16个以上' }]
+        },
+        {
+          num: 12,
+          sign: 'old_type',
+          question: '以下金融产品，客户单位投资经验在两年以上的有（多选）：',
+          options: [
+            { val: 'A', text: '银行存款' },
+            { val: 'B', text: '债券、货币市场基金、债券型基金或其他固定收益类产品' },
+            { val: 'C', text: '股票、混合型基金、偏股型基金、股票型基金等权益类投资品种' },
+            { val: 'D', text: '期货、融资融券' },
+            { val: 'E', text: '复杂金融产品或其他产品' }
+          ]
+        },
+        {
+          num: 13,
+          sign: 'old_type',
+          question: '如果客户单位曾经从事过金融产品投资，在交易较为活跃等月份，平均月交易额大概是多少：',
+          options: [
+            { val: 'A', text: '100万元以内' },
+            { val: 'B', text: '100万元-300万元' },
+            { val: 'C', text: '300万元-1000万元' },
+            { val: 'D', text: '1000万元以上' },
+            { val: 'E', text: '从未投资过金融产品' }
+          ]
+        },
+        {
+          num: 14,
+          sign: 'old_type',
+          question: '客户单位用于证券投资等大部分资金不会用作其他用途的时间段为：',
+          options: [{ val: 'A', text: '短期----0到1年' }, { val: 'B', text: '中期----1到5年' }, { val: 'C', text: '长期----5年以上' }]
+        },
+        {
+          num: 15,
+          sign: 'old_type',
+          question: '客户单位进行投资时的首要目标是：',
+          options: [
+            { val: 'A', text: '资产保值，我不愿意承担任何投资风险' },
+            { val: 'B', text: '尽可能保证本金安全，不在乎收益率比较低' },
+            { val: 'C', text: '产生较多的收益，可以承担一定的投资风险' },
+            { val: 'D', text: '实现资产的大幅增长，愿意承担很大的投资风险' }
+          ]
+        },
+        {
+          num: 16,
+          sign: 'old_type',
+          question: '客户单位打算重点投资于哪个种类的投资品种：',
+          options: [
+            { val: 'A', text: '债券、货币市场基金、债券基金固定收益类投资品种' },
+            { val: 'B', text: '股票、混合型基金、偏股型基金、股票型基金等权益类投资品种' },
+            { val: 'C', text: '期货、融资融券' },
+            { val: 'D', text: '复杂金融产品' },
+            { val: 'E', text: '其他产品' }
+          ]
+        },
+        {
+          num: 17,
+          sign: 'old_type',
+          question: '客户单位认为自己能承担等最大投资损失是多少：',
+          options: [{ val: 'A', text: '10%以内' }, { val: 'B', text: '10%-30%' }, { val: 'C', text: '30%-50%' }, { val: 'D', text: '超过50%' }]
+        },
+        {
+          num: 18,
+          sign: 'old_type',
+          question: '假设有两种不同的投资：投资A预期获得5%的收益，有可能承担非常小的损失；投资B预期获得20%的收益，但有可能面临25%甚至更高的亏损。客户将客户的投资资产分配为：',
+          options: [
+            { val: 'A', text: '全部投资于A' },
+            { val: 'B', text: '大部分投资于A' },
+            { val: 'C', text: '两种投资各一半' },
+            { val: 'D', text: '大部分投资于B' },
+            { val: 'E', text: '全部投资于B' }
+          ]
+        },
+        {
+          num: 19,
+          sign: 'old_type',
+          question: '客户单位参与金融产品投资的主要目的是什么：',
+          options: [
+            { val: 'A', text: '闲置资金保值增值' },
+            { val: 'B', text: '获取主营业务以外的投资收益' },
+            { val: 'C', text: '现货套期保值、对冲主营业务风险' },
+            { val: 'D', text: '减持已持有的股票' }
+          ]
+        }
       ]
     }
   },
@@ -198,7 +383,10 @@ export default {
       console.log('submit')
     }
   },
-
+  onLoad (options) {
+    this.type = options.type
+    console.log('tag', options.type)
+  },
   created () {
     // let app = getApp()
   }

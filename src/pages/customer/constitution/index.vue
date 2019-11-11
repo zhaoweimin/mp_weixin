@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="flex chart">
-                <div class="count mr10 ml10">
+                <div class="count ml10">
                     <div class="num">80</div>
                     <div class="text">风险测评得分</div>
                 </div>
