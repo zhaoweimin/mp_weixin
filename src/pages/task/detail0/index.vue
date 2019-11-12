@@ -1,22 +1,22 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <comInput :type="0" title="单据编号" :isSpecialColorTxt="true" value="53456762312313"></comInput>
-            <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" value="1312245423"></comInput>
-            <comInput :type="0" title="客户名称" value="XXX"></comInput>
-            <comInput :type="0" title="购买产品" value="XXX"></comInput>
-            <comInput :type="0" title="产品期限" value="12个月"></comInput>
-            <comInput :type="0" title="认购金额" value="12万"></comInput>
-            <comInput :type="0" title="出资认缴日" value="2019-09-08"></comInput>
-            <comInput :type="0" title="到账日" value="2019-09-08"></comInput>
-            <comInput :type="0" title="到期日" value="2019-09-08"></comInput>
-            <comInput :type="0" title="认购费" value="关联产品发布"></comInput>
-            <comInput :type="0" title="提成方式" value="一次"></comInput>
-            <comInput :type="0" title="提奖率" value="80%"></comInput>
-            <comInput :type="0" title="本次提奖" value="50万"></comInput>
-            <comInput :type="0" title="部门经理" value="XXX"></comInput>
-            <comInput :type="0" title="归属部门" value="XXX"></comInput>
-            <comInput :type="0" title="申请时间" value="2019-09-08"></comInput>
+            <comInput :type="0" :titleDark="false" title="单据编号" :isSpecialColorTxt="true" value="53456762312313"></comInput>
+            <comInput :type="0" :titleDark="false" title="业绩单号" :isSpecialColorTxt="true" value="1312245423"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户姓名" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="购买产品" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" value="12个月"></comInput>
+            <comInput :type="0" :titleDark="false" title="认购金额" value="12万"></comInput>
+            <comInput :type="0" :titleDark="false" title="出资认缴日" value="2019-09-08"></comInput>
+            <comInput :type="0" :titleDark="false" title="到账日" value="2019-09-08"></comInput>
+            <comInput :type="0" :titleDark="false" title="到期日" value="2019-09-08"></comInput>
+            <comInput :type="0" :titleDark="false" title="认购费" value="关联产品发布"></comInput>
+            <comInput :type="0" :titleDark="false" title="提成方式" value="一次"></comInput>
+            <comInput :type="0" :titleDark="false" title="提奖率" value="80%"></comInput>
+            <comInput :type="0" :titleDark="false" title="本次提奖" value="50万"></comInput>
+            <comInput :type="0" :titleDark="false" title="部门经理" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="申请时间" value="2019-09-08"></comInput>
         </div>
         <div class="plr15 mt25 pb20">
             <van-button type="info" size="large" @click="link">进入审批</van-button>
@@ -46,7 +46,6 @@ export default {
   },
   methods: {
     link () {
-      console.log(111)
       let url = '/pages/task/approval/main?id='
       mpvue.navigateTo({ url })
     }

@@ -47,10 +47,6 @@ export default {
     changeNav (nav) {
       this.nav_num = nav
     },
-    add () {
-      let url = `../addAchievement/main`
-      mpvue.navigateTo({ url })
-    },
     link () {
       mpvue.navigateTo({ url: `/pages/royalty/newList/main` })
     }

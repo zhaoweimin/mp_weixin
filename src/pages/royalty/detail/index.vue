@@ -1,22 +1,21 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">基本信息 <span class="iconfont iconjibenxinxi"></span></div>
             <comInput :type="0" title="单据编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
             <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" value="265512223664"></comInput>
+            <comInput :type="0" title="客户姓名" value="周方文"></comInput>
             <comInput :type="0" title="购买产品" value="某某某某"></comInput>
+            <comInput :type="0" title="产品期限" value="12个月"></comInput>
             <comInput :type="0" title="认购金额" value="2千万"></comInput>
-            <comInput :type="0" title="年化系数" value="0.21"></comInput>
-            <comInput :type="0" title="年化业绩" value="2千万"></comInput>
+            <comInput :type="0" title="出资认缴日" value="2019-3-18"></comInput>
             <comInput :type="0" title="到账日" value="2019-3-18"></comInput>
             <comInput :type="0" title="到期日" value="2019-3-18"></comInput>
             <comInput :type="0" title="认购费" value="2千万"></comInput>
             <comInput :type="0" title="提成方式" value="一次"></comInput>
             <comInput :type="0" title="提成率" value="80%"></comInput>
             <comInput :type="0" title="本次提奖" value="50万"></comInput>
-            <comInput :type="0" title="后端提奖" value="50万"></comInput>
-            <comInput :type="0" title="提成是否完成" value="不是一次性提取情况下"></comInput>
-            <comInput :type="0" title="申请人" value="展播"></comInput>
+            <comInput :type="0" title="理财经理" value="李维嘉"></comInput>
+            <comInput :type="0" title="归属部门" value="市场部"></comInput>
             <comInput :type="0" title="申请时间" value="2019-3-18"></comInput>
             <comInput :type="0" title="状态" value="审核中"></comInput>
         </div>

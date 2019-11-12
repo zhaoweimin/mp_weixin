@@ -44,6 +44,7 @@
     "pages/discover/product/main",
     "pages/discover/lore/main",
     "pages/discover/invitation/main",
+    "pages/discover/invitationDetail/main",
     "pages/discover/details/main",
     "pages/discover/productDetail/main",
 

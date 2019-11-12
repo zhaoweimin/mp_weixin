@@ -1,6 +1,6 @@
 <template>
     <div class="main has-header">
-        <search :rightButton="true" placeholder="搜索"></search>
+        <search :rightButton="true" :isMainBg="false" placeholder="搜索"></search>
         <block v-for="(vo, key) in list" :key="key">
             <card :info="vo" :type="4"></card>
         </block>
@@ -43,10 +43,6 @@ export default {
   methods: {
     changeNav (nav) {
       this.nav_num = nav
-    },
-    add () {
-      let url = `../addAchievement/main`
-      mpvue.navigateTo({ url })
     }
   },
 

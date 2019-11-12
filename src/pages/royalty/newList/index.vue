@@ -3,21 +3,20 @@
         <div class="bg-fff mt10">
             <comInput :type="0" title="单据编号" :textRight="false" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
             <comInput :type="0" title="业绩单号" :textRight="false" :isSpecialColorTxt="true" value="265512223664"></comInput>
+            <comInput :type="1" title="客户姓名" :textRight="false" placeholder="请输入客户姓名" value=""></comInput>
             <comInput :type="1" title="购买产品" :textRight="false" value="某某某某"></comInput>
+            <comInput :type="1" title="产品期限" :textRight="false" value="12个月"></comInput>
             <comInput :type="1" title="认购金额" :textRight="false" value="2千万"></comInput>
-            <comInput :type="1" title="年化系数" :textRight="false" value="0.21"></comInput>
-            <comInput :type="1" title="年化业绩" :textRight="false" value="2千万"></comInput>
+            <comInput :type="3" title="出资认缴日" :textRight="false" value="2019-3-18"></comInput>
             <comInput :type="3" title="到账日" :textRight="false" value="2019-3-18"></comInput>
             <comInput :type="3" title="到期日" :textRight="false" value="2019-3-18"></comInput>
-            <comInput :type="1" title="认购费" :textRight="false" value="2千万"></comInput>
+            <comInput :type="0" title="认购费" :textRight="false" value="2千万"></comInput>
             <comInput :type="3" title="提成方式" :textRight="false" value="一次"></comInput>
             <comInput :type="1" title="提成率" :textRight="false" value="80%"></comInput>
             <comInput :type="1" title="本次提奖" :textRight="false" value="50万"></comInput>
-            <comInput :type="1" title="后端提奖" :textRight="false" value="50万"></comInput>
-            <comInput :type="3" title="提成是否完成" :textRight="false" value="不是一次性提取情况下"></comInput>
-            <comInput :type="1" title="申请人" :textRight="false" value="展播"></comInput>
+            <comInput :type="2" title="理财经理" :textRight="false" placeholder="请选择理财经理" value="" @getSelect="getSelect" :options="['小王','小李']"></comInput>
+            <comInput :type="2" title="归属部门" :textRight="false" placeholder="请选择归属部门" value="" @getSelect="getSelect" :options="['市场部门','行政部门']"></comInput>
             <comInput :type="3" title="申请时间" :textRight="false" value="2019-3-18"></comInput>
-            <comInput :type="0" title="状态" :textRight="false" value="审核中"></comInput>
         </div>
         <div class="mlr15 mb15 mt25">
             <van-button type="info" size="large">确认</van-button>
@@ -45,7 +44,14 @@ export default {
       }
     }
   },
-
+  methods: {
+    getSelect (data) {
+      console.log(11111, data)
+    },
+    getSelectDate (data) {
+      console.log(22, data)
+    }
+  },
   created () {}
 }
 </script>

@@ -2,21 +2,22 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="pl15 ptb15 f16 strong">活动名称</div>
-            <comInput :type="0" title="邀约编号" :isSpecialColorTxt="true" value="15668554456"></comInput>
-            <comInput :type="0" title="活动编号" :isSpecialColorTxt="true" value="12354456"></comInput>
-            <comInput :type="0" title="邀约日期" value="2019-03-20 15:30"></comInput>
-            <comInput :type="0" title="审批状态" value="同意"></comInput>
-            <comInput :type="0" title="预计参与人" value="100人"></comInput>
-            <comInput :type="0" title="客户姓名" value="欧阳超"></comInput>
-            <comInput :type="0" title="手机号码" value="15012002939"></comInput>
-            <comInput :type="0" title="客户类型" value="成交客户"></comInput>
-            <comInput :type="0" title="客户投资总额" value="150万"></comInput>
-            <comInput :type="0" title="邀约审批人" value="杨伟明"></comInput>
-            <comInput :type="0" title="所属活动" value="XXXXXX"></comInput>
-            <comInput :type="0" title="邀约审批状态" value="同意"></comInput>
-            <comInput :type="0" title="备注" value="XXXXXX"></comInput>
-            <comInput :type="0" title="理财经理" value="XXXXXX"></comInput>
-            <comInput :type="0" title="归属部门" value="XXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约编码" :isSpecialColorTxt="true" value="15668554456"></comInput>
+            <comInput :type="0" :titleDark="false" title="活动编号" :isSpecialColorTxt="true" value="12354456"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约日期" value="2019-03-20 15:30"></comInput>
+            <comInput :type="0" :titleDark="false" title="审批状态" value="同意"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="预计参与人" value="100人"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户姓名" value="欧阳超"></comInput>
+            <comInput :type="0" :titleDark="false" title="手机号码" value="15012002939"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户类型" value="成交客户"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户投资总额" value="150万"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批人" value="杨伟明"></comInput>
+            <comInput :type="0" :titleDark="false" title="所属活动" value="XXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批状态" value="同意"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="理财经理" value="XXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" value="XXXXXX"></comInput>
         </div>
     </div>
 </template>

@@ -155,17 +155,19 @@
 
         <div class="contract-card" v-if="type == 41" @click="interstDetail('redeem',id)">
             <div class="order">
-                <div class="bg">业绩单号：201265849215</div>
+                <div class="bg">赎回编号：201265849215</div>
             </div>
             <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>周方文</div>
-            <div class="msg no-boder">
-                <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
-                <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
-                <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
-            </div>
-            <div class="dis-flex a-between plr15 pb10">
-                <div class="f13 cgey">赎回日期：2019-03-31</div>
-                <div class="f13 clink">更多信息</div>
+            <div class="dis-flex l-end">
+                <div class="msg no-boder flex-1">
+                    <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
+                    <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
+                    <div class="f13"><span class="cgey">赎回金额：</span>2万</div>
+                    <div class="f13 cgey">赎回日期：2019-03-31</div>
+                </div>
+                <div class="dis-flex a-between plr15 pb10">
+                    <div class="f13 clink">查看更多</div>
+                </div>
             </div>
         </div>
 
@@ -203,7 +205,7 @@
                     <div class="key f13"><span class="cgey">募集期：</span> 10个月</div>
                 </div>
                 <div class="line dis-flex a-between">
-                    <div class="key f13"><span class="cgey">运作状态：</span>已结束</div>
+                    <div class="key f13"><span class="cgey">运作状态：</span>{{info.status}}</div>
                     <div class="more clink f13" @click="productDetail()">查看更多</div>
                 </div>
             </div>

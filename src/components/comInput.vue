@@ -1,6 +1,7 @@
 <template>
     <div class="pl15 bg-fff border-box" :class="{'pr15':!isSpecialBorderStyle}">
         <div class="inputItem dis-flex l-start ptb10" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
+            <div v-if="isRequired" class="cred">*</div>
             <div class="label f16" :class="[titleDark?'cblack':'cgey']">{{title}}</div>
             <div class="flex-1 dis-flex flex-column pl20">
                 <!-- 文字 -->
@@ -8,12 +9,12 @@
                 <!-- 输入框 -->
                 <input v-if="type===1" class="w-full f16" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
                 <!-- 选择 -->
-                        <picker v-if="type===2" class="w-full rel" :disabled="disabled" :class="[textRight?'ta-r':'ta-l']" @change="onPickerChange" :value="index" :range="options">
+                        <picker v-if="type===2" class="w-full rel pr20" :disabled="disabled" :class="[textRight?'ta-r':'ta-l']" @change="onPickerChange" :value="index" :range="options">
                     <span class="f16" :class="resultValue?'cblack':'clight'">{{options[resultValue]||'请选择'}}</span>
                     <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                 </picker>
                 <!-- 日期 -->
-                <picker v-if="type===3" mode="date" class="w-full rel" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
+                <picker v-if="type===3" mode="date" class="w-full rel pr20" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
                     <span class="f16" :class="[resultValue?'cblack':'clight']">{{resultValue||'请选择'}}</span>
                     <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                 </picker>
@@ -129,6 +130,12 @@ export default {
       default () {
         return false
       }
+    },
+    isRequired: {
+      type: Boolean,
+      default () {
+        return false
+      }
     }
   },
   created () {},
@@ -222,6 +229,6 @@ input[disabled] {
 .icon-r {
 	position: absolute;
 	right: 0;
-	top: 5px;
+	top: 4px;
 }
 </style>

@@ -13,17 +13,18 @@
                     </div>
                 </div>
             </div>
-            <comInput :type="0" title="活动名称" value="自带"></comInput>
-            <comInput :type="1" title="邀约日期" :disabled="true" value="默认当前"></comInput>
-            <comInput :type="0" title="审批状态" :isSpecialColorTxt="true" value="同意"></comInput>
-            <comInput :type="1" title="手机号码" :disabled="true" value="15000000000"></comInput>
-            <comInput :type="1" title="客户投资总额" :disabled="true" value="100万"></comInput>
-            <comInput :type="1" title="邀约审批人" :disabled="true" value="自带"></comInput>
-            <comInput :type="1" title="所属部门" :disabled="true" value="商务部门"></comInput>
-            <comInput :type="1" title="邀约审批状态" :disabled="true" value="自动判断状态"></comInput>
-            <comInput :type="1" title="备注" :disabled="true" value="XXXXXXXX"></comInput>
-            <comInput :type="1" title="理财经理" :disabled="true" value="XXX"></comInput>
-            <comInput :type="1" title="归属部门" :disabled="true" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="活动名称" value="自带"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约日期" value="默认当前"></comInput>
+            <comInput :type="0" :titleDark="false" title="审批状态" :isSpecialColorTxt="true" :value="status"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="手机号码" value="15000000000"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户投资总额" value="100万"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批人" value="自带"></comInput>
+            <comInput :type="0" :titleDark="false" title="所属部门" value="商务部门"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批状态" value="自动判断状态"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="理财经理" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" value="XXX"></comInput>
         </div>
     </div>
 </template>
@@ -32,6 +33,7 @@
 import card from '@/components/card'
 import comInput from '@/components/comInput'
 
+const titles = new Map([['1', '待审批'], ['2', '同意'], ['3', '拒绝']])
 export default {
   components: {
     card,
@@ -45,13 +47,17 @@ export default {
         name: '张耀扬',
         level: 1,
         sex: 1
-      }
+      },
+      status: ''
     }
   },
   methods: {
     addInvitation () {
       mpvue.navigateTo({ url: `/pages/discover/invitation/main` })
     }
+  },
+  onLoad (options) {
+    this.status = titles.get(options.type)
   },
   created () {}
 }

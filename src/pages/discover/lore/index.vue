@@ -42,10 +42,6 @@ export default {
   methods: {
     changeNav (nav) {
       this.nav_num = nav
-    },
-    add () {
-      let url = `../addAchievement/main`
-      mpvue.navigateTo({ url })
     }
   },
 

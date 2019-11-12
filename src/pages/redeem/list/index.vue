@@ -5,7 +5,7 @@
             <card :info="vo" :type="41"></card>
         </block>
         <div class="dis-flex a-center ptb15">
-            <van-button plain hairline type="info" @click="link">+ 新建提成单</van-button>
+            <van-button plain type="info" @click="link">+ 新增赎回</van-button>
         </div>
     </div>
 </template>
@@ -37,10 +37,6 @@ export default {
   methods: {
     changeNav (nav) {
       this.nav_num = nav
-    },
-    add () {
-      let url = `../addAchievement/main`
-      mpvue.navigateTo({ url })
     },
     link () {
       mpvue.navigateTo({ url: `/pages/redeem/newList/main` })

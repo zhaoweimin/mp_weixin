@@ -16,6 +16,7 @@
             <comInput :type="1" title="产品名称" :textRight="false" value="XXX"></comInput>
             <comInput :type="1" title="产品期限" :textRight="false" value="XXX"></comInput>
             <comInput :type="1" title="证件类型" :textRight="false" value="XXX"></comInput>
+            <comInput :type="1" title="证件号码" :textRight="false" value="XXX"></comInput>
             <comInput :type="3" title="银行账号" :textRight="false" value="XXX"></comInput>
             <comInput :type="3" title="账号开户行" :textRight="false" value="XXX"></comInput>
             <comInput :type="1" title="合同编号" :textRight="false" value="XXX"></comInput>
@@ -23,6 +24,12 @@
             <comInput :type="2" title="理财经理" :textRight="false" :options="[1,2,3]"></comInput>
             <comInput :type="2" title="归属部门" :textRight="false" :options="[1,2,3]"></comInput>
             <comInput :type="2" title="单据状态" :textRight="false" :options="[1,2,3]"></comInput>
+            <div class="pt10 plr15">
+                <div class="key mb10">上传附件 <span class="cgey">（格式pdf或图片）</span></div>
+                <div class="val" style="padding-bottom: 10px;">
+                    <upload></upload>
+                </div>
+            </div>
         </div>
         <div class="mlr15 mb15 mt25">
             <van-button type="info" size="large">确认</van-button>
@@ -33,11 +40,13 @@
 <script>
 import card from '@/components/card'
 import comInput from '@/components/comInput'
+import upload from '@/components/upload'
 
 export default {
   components: {
     card,
-    comInput
+    comInput,
+    upload
   },
 
   data () {

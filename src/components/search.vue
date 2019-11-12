@@ -1,5 +1,5 @@
 <template>
-    <div class="search dis-flex l-center" :class="[fixed?'fixed':'',isMainBg?'bg-blue':'']">
+    <div class="search dis-flex l-center" :class="[fixed?'fixed':'',isMainBg?'bg-blue':'bg-color']">
         <div class="input flex-1 bg-fff dis-flex l-center">
             <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
             <input class="flex-1" type="text" :placeholder="placeholder">

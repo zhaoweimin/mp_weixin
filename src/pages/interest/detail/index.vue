@@ -2,25 +2,27 @@
     <div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">基本信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" title="业绩编号" value="2322115565512223664"></comInput>
-            <comInput :type="0" title="客户姓名" value="方周文"></comInput>
-            <comInput :type="0" title="证件号码" value="521456984564858547"></comInput>
-            <comInput :type="0" title="购买产品" value="某某某某"></comInput>
-            <comInput :type="0" title="认购期限" value="14个月"></comInput>
-            <comInput :type="0" title="合同编号" value="574152429642"></comInput>
-            <comInput :type="0" title="预期年化收益率" value="0.21"></comInput>
-            <comInput :type="0" title="客户收益" value="5亿"></comInput>
-            <comInput :type="0" title="到账日" value="2019-5-30"></comInput>
-            <comInput :type="0" title="产品成立日" value="2019-6-30"></comInput>
-            <comInput :type="0" title="产品到期日" value="2019-6-30"></comInput>
-            <comInput :type="0" title="业绩编号" value="2322115565512223664"></comInput>
+            <comInput :type="0" :titleDark="false" title="业绩单号" value="2322115565512223664"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户姓名" value="方周文"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件号码" value="521456984564858547"></comInput>
+            <comInput :type="0" :titleDark="false" title="购买产品" value="某某某某"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" value="14个月"></comInput>
+            <comInput :type="0" :titleDark="false" title="合同编号" value="574152429642"></comInput>
+            <comInput :type="0" :titleDark="false" title="认购金额" value="18000"></comInput>
+            <comInput :type="0" :titleDark="false" title="预期年化收益率" value="0.21"></comInput>
+            <comInput :type="0" :titleDark="false" title="出资认缴日" value="18000"></comInput>
+            <comInput :type="0" :titleDark="false" title="到账日" value="2019-5-30"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品成立日" value="2019-6-30"></comInput>
+            <comInput :type="0" :titleDark="false" title="起息日" value="2019-6-30"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品到期日" value="2019-6-30"></comInput>
         </div>
 
         <div class="bg-fff mt10 pb20">
             <div class="plr15 ptb15 f16 clink strong">财务信息 <span class="iconfont iconliaotianduihua"></span></div>
-            <comInput :type="0" title="本息总额" value="1363445" :border="false"></comInput>
-            <comInput :type="0" title="总计息天数" value="365天" :border="false"></comInput>
-            <div class="bg-color mlr15">
+            <comInput :type="0" :titleDark="false" title="本息总额" value="1363445" :border="false"></comInput>
+            <comInput :type="0" :titleDark="false" title="总计息天数" value="365天" :border="false"></comInput>
+            <div class="f12 ta-c pt10 pb15">展开<span class="iconfont iconxiangxiajiantou"></span></div>
+            <div class="bg-color mlr10">
                 <div class="list ta-c dis-flex l-center">
                     <div class="item f12">结算次数</div>
                     <div class="item f12">结算日</div>
@@ -33,14 +35,35 @@
                     <div class="item f12">2019-06-06</div>
                     <div class="item f12">523452</div>
                     <div class="item f12">2019-06-09</div>
-                    <div class="item f12">--</div>
+                    <div class="item f12">✓</div>
                 </div>
                 <div class="list ta-c dis-flex l-center">
-                    <div class="item f12">第一次</div>
+                    <div class="item f12">第二次</div>
                     <div class="item f12">2019-06-06</div>
                     <div class="item f12">523452</div>
                     <div class="item f12">2019-06-09</div>
                     <div class="item f12">--</div>
+                </div>
+                <div class="list ta-c dis-flex l-center">
+                    <div class="item f12">第三次</div>
+                    <div class="item f12">2019-06-06</div>
+                    <div class="item f12">523452</div>
+                    <div class="item f12">2019-06-09</div>
+                    <div class="item f12"></div>
+                </div>
+                <div class="list ta-c dis-flex l-center">
+                    <div class="item f12">第四次</div>
+                    <div class="item f12">2019-06-06</div>
+                    <div class="item f12">523452</div>
+                    <div class="item f12">2019-06-09</div>
+                    <div class="item f12">✓</div>
+                </div>
+                <div class="list ta-c dis-flex l-center">
+                    <div class="item f12">第五次</div>
+                    <div class="item f12">2019-06-06</div>
+                    <div class="item f12">523452</div>
+                    <div class="item f12">2019-06-09</div>
+                    <div class="item f12">✓</div>
                 </div>
             </div>
             <div class="plr15 pb20">

@@ -10,10 +10,12 @@
             <comInput :type="0" title="基金类型" value="某某"></comInput>
             <comInput :type="0" title="合伙主体" value="私募基金管理机构"></comInput>
             <comInput :type="0" title="基金规模" value="10万"></comInput>
-            <comInput :type="0" title="备计划募集规模" value="20万"></comInput>
+            <comInput :type="0" title="计划募集规模" value="20万"></comInput>
             <comInput :type="0" title="基金份额" value="80%"></comInput>
             <comInput :type="0" title="基金单位净值" value="15亿"></comInput>
-            <comInput :type="0" title="退出期" value="12个月"></comInput>
+            <comInput :type="0" title="存续期限" value="12个月"></comInput>
+            <comInput :type="0" title="投资期限" value="12个月"></comInput>
+            <comInput :type="0" title="募集期" value="180天"></comInput>
             <comInput :type="0" title="投资期限" value="12个月"></comInput>
             <comInput :type="0" title="募集期" value="100天"></comInput>
             <comInput :type="0" title="托管方" value="XXXXXX"></comInput>
