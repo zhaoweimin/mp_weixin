@@ -1,7 +1,7 @@
 <template>
     <div class="pl15 bg-fff border-box" :class="{'pr15':!isSpecialBorderStyle}">
-        <div class="inputItem dis-flex l-start ptb10" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
-            <div v-if="isRequired" class="cred">*</div>
+        <div class="inputItem dis-flex l-start ptb10 rel" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
+            <div v-if="isRequired" class="required cred">*</div>
             <div class="label f16" :class="[titleDark?'cblack':'cgey']">{{title}}</div>
             <div class="flex-1 dis-flex flex-column pl20">
                 <!-- 文字 -->
@@ -219,6 +219,12 @@ export default {
 	line-height: 27px;
 	text-align: center;
 	border-radius: 4px;
+}
+.inputItem .required {
+	position: absolute;
+	left: -8px;
+	top: 12px;
+	font-size: 12px;
 }
 input:disabled,
 input[disabled] {
