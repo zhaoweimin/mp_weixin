@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <van-button type="info" size="large" @click="addInvitation">+ 新增邀约</van-button>
+        <van-button v-if="type==0" type="info" size="large" @click="addInvitation">+ 新增邀约</van-button>
     </div>
 </template>
 
@@ -39,6 +39,7 @@ export default {
 
   data () {
     return {
+      type: 0,
       info: {
         avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
         name: '张耀扬',
@@ -51,6 +52,10 @@ export default {
     addInvitation () {
       mpvue.navigateTo({ url: `/pages/discover/invitation/main` })
     }
+  },
+  onLoad (option) {
+    let type = option.type
+    this.type = type
   },
   created () {}
 }

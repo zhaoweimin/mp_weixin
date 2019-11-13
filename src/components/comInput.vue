@@ -223,7 +223,7 @@ export default {
 .inputItem .required {
 	position: absolute;
 	left: -8px;
-	top: 12px;
+	top: 14px;
 	font-size: 12px;
 }
 input:disabled,

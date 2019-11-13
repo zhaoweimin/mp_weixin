@@ -2,28 +2,28 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">赎回信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" title="赎回编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
-            <comInput :type="0" title="赎回日期" value="2019-03-03"></comInput>
-            <comInput :type="0" title="赎回金额" value="2千万"></comInput>
-            <comInput :type="0" title="赎回收益" value="XXX"></comInput>
-            <comInput :type="0" title="剩余金额" value="2千万"></comInput>
-            <comInput :type="0" title="后端提奖金额" value="123123"></comInput>
+            <comInput :type="0" :titleDark="false" title="赎回编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
+            <comInput :type="0" :titleDark="false" title="赎回日期" value="2019-03-03"></comInput>
+            <comInput :type="0" :titleDark="false" title="赎回金额" value="2千万"></comInput>
+            <comInput :type="0" :titleDark="false" title="赎回收益" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="剩余金额" value="2千万"></comInput>
+            <comInput :type="0" :titleDark="false" title="后端提奖金额" value="123123"></comInput>
         </div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">业绩信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" value="15565512"></comInput>
-            <comInput :type="0" title="客户名称" value="XXX"></comInput>
-            <comInput :type="0" title="产品名称" value="XXX"></comInput>
-            <comInput :type="0" title="产品期限" value="XXX%"></comInput>
-            <comInput :type="0" title="证件类型" value="XXX"></comInput>
-            <comInput :type="0" title="证件号码" value="XXX"></comInput>
-            <comInput :type="0" title="银行账号" value="XXX"></comInput>
-            <comInput :type="0" title="账号开户行" value="XXX"></comInput>
-            <comInput :type="0" title="合同编号" value="XXX"></comInput>
-            <comInput :type="0" title="合同金额" value="XXX"></comInput>
-            <comInput :type="0" title="理财经理" value="XXX"></comInput>
-            <comInput :type="0" title="归属部门" value="XXX"></comInput>
-            <comInput :type="0" title="单据状态" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="业绩单号" :isSpecialColorTxt="true" value="15565512"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户名称" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品名称" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" value="XXX%"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件类型" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件号码" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="银行账号" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="账号开户行" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="合同编号" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="合同金额" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="理财经理" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="单据状态" value="XXX"></comInput>
         </div>
     </div>
 </template>

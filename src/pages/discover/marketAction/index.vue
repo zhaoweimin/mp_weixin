@@ -2,7 +2,7 @@
     <div class="main has-header">
         <search :rightButton="true" placeholder="搜索"></search>
         <block v-for="(vo, key) in list" :key="key">
-            <card :info="vo" :type="8"></card>
+            <card :info="vo" :type="8" :actionType="type"></card>
         </block>
     </div>
 </template>

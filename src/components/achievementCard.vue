@@ -227,7 +227,7 @@
             </div>
         </div>
 
-        <div class="contract-card plr10" v-if="type == 8" @click="actionDetail(id)">
+        <div class="contract-card plr10" v-if="type == 8" @click="actionDetail">
             <div class="ptb10 border-b">
                 <div class="f16 strong">活动名称</div>
             </div>
@@ -247,7 +247,7 @@
 
 <script>
 export default {
-  props: ['info', 'type', 'status'],
+  props: ['info', 'type', 'status', 'actionType'],
   methods: {
     interstDetail (type, id) {
       let url = `/pages/${type}/detail/main?id=${id}`
@@ -257,8 +257,8 @@ export default {
       let url = `/pages/royalty/detail/main?id=${id}`
       mpvue.navigateTo({ url })
     },
-    actionDetail (id) {
-      let url = `/pages/discover/actionDetail/main?id=${id}`
+    actionDetail () {
+      let url = `/pages/discover/actionDetail/main?type=${this.actionType}`
       mpvue.navigateTo({ url })
     },
     productDetail () {

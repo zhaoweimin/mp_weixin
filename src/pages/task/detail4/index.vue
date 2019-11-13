@@ -2,30 +2,30 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">客户信息</div>
-            <comInput :type="0" title="预约编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
-            <comInput :type="0" title="客户姓名" value="XXX"></comInput>
-            <comInput :type="0" title="证件类型" value="XXX"></comInput>
-            <comInput :type="0" title="证件号码" value="XXXXXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="预约编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户姓名" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件类型" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件号码" value="XXXXXXXXX"></comInput>
         </div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">产品信息</div>
-            <comInput :type="0" title="产品类别" value="股权类"></comInput>
-            <comInput :type="0" title="产品编号" value="523446322"></comInput>
-            <comInput :type="0" title="产品名称" value="名车"></comInput>
-            <comInput :type="0" title="产品期限" value="12个月"></comInput>
-            <comInput :type="0" title="募集账户" value="XXX"></comInput>
-            <comInput :type="0" title="已募集份数" value="5万份"></comInput>
-            <comInput :type="0" title="已募集金额" value="5万"></comInput>
-            <comInput :type="0" title="剩余募集金额" value="2万"></comInput>
-            <comInput :type="0" title="已预约人数" value="10人"></comInput>
-            <comInput :type="0" title="已预约金额" value="8万"></comInput>
-            <comInput :type="0" title="剩余可预约" value="2万"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品类别" value="股权类"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品编号" value="523446322"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品名称" value="名车"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" value="12个月"></comInput>
+            <comInput :type="0" :titleDark="false" title="募集账户" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="已募集份数" value="5万份"></comInput>
+            <comInput :type="0" :titleDark="false" title="已募集金额" value="5万"></comInput>
+            <comInput :type="0" :titleDark="false" title="剩余募集金额" value="2万"></comInput>
+            <comInput :type="0" :titleDark="false" title="已预约人数" value="10人"></comInput>
+            <comInput :type="0" :titleDark="false" title="已预约金额" value="8万"></comInput>
+            <comInput :type="0" :titleDark="false" title="剩余可预约" value="2万"></comInput>
         </div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">付款信息</div>
-            <comInput :type="0" title="预打款日期" value="2019-09-09"></comInput>
-            <comInput :type="0" title="实际打款日期" value="019-09-09"></comInput>
-            <comInput :type="0" title="出资金额" value="XXXXXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="预打款日期" value="2019-09-09"></comInput>
+            <comInput :type="0" :titleDark="false" title="实际打款日期" value="系统自动关联"></comInput>
+            <comInput :type="0" :titleDark="false" title="出资金额" value="XXXXXXXXX"></comInput>
         </div>
         <div class="plr15 mt25 pb20">
             <van-button type="info" size="large">进入审批</van-button>
