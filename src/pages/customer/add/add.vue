@@ -107,7 +107,7 @@
                         <span class="iconfont iconright"></span>
                     </div>
                 </div>
-                <div class="line">
+                <div class="line required">
                     <div class="key">国籍</div>
                     <div class="val dis-flex">
                         <div class="flex-1 ta-l">中国</div>
@@ -130,7 +130,7 @@
           </div>
         </div>
         <div class="line required">
-          <div class="key">行业</div>
+          <div class="key">职业</div>
             <div class="val dis-flex">
                 <div class="flex-1 ta-l">互联网</div>
                 <span class="iconfont iconright"></span>

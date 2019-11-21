@@ -22,9 +22,9 @@
                     <div class="tag">潜在客户</div>
                     <div class="tag level">D级</div>
                 </div>
-                <div class="dis-flex" v-if="info.level == 1">
-                    <div class="f12 mr20">投资总额 | <span class="cyellow">60万</span></div>
-                    <div class="f12">累计投资总额 | <span class="cyellow">100万</span></div>
+                <div class="dis-flex" v-if="info.deal == 1">
+                    <div class="f12 mr20">投资总额 | <span :class="{'cyellow':info.level===1,'clink':info.level===2}">60万</span></div>
+                    <div class="f12">累计投资总额 | <span :class="{'cyellow':info.level===1,'clink':info.level===2}">100万</span></div>
                 </div>
             </div>
             <div class="more" @click="linkDetail(info.url)">更多<span class="iconfont iconright"></span></div>

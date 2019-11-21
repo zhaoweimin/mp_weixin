@@ -164,7 +164,13 @@
                             <span>XXXX</span>
                         </div>
                     </div>
-                    <div class="line auto">
+                    <div class="line">
+                        <div class="key">资产证明上传时间</div>
+                        <div class="val ta-r">
+                            <span>2019-02-22</span>
+                        </div>
+                    </div>
+                    <div class="line auto mt5">
                         <div class="key">附件</div>
                         <div class="val ta-r">
                             <div class="img-item">

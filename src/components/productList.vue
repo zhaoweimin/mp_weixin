@@ -25,7 +25,7 @@
                 </div>
                 <div class="foot dis-flex">
                     <div class="flex-1">
-                        <div class="line">募集开始时间：<span class="cblack">2018-03-20</span></div>
+                        <!-- <div class="line">募集开始时间：<span class="cblack">2018-03-20</span></div> -->
                         <div class="line">产品限期：<span class="cblack">12个月</span></div>
                     </div>
                 </div>

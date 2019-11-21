@@ -1,5 +1,5 @@
 <template>
-    <div class="customer has-footer">
+    <div class="customer" :class="{'has-footer':type===1}">
         <div class="customer-card dis-flex l-center">
             <div class="msg">
                 <div class="title"><span class="strong">{{info.name}}</span> <span class="sex">2019-03-20 15:30被投诉</span></div>
@@ -115,7 +115,7 @@
             <div class="flex-1"></div>
         </div> -->
 
-        <div class="footer-bar">
+        <div v-if="type===1" class="footer-bar">
             <div class="flex-1 mr10">
                 <van-button plain type="info" @click="submit">提交</van-button>
             </div>
@@ -134,7 +134,10 @@ export default {
   components: {
     card
   },
-
+  onLoad (option) {
+    this.type = option.type * 1
+    console.log(this.type)
+  },
   data () {
     return {
       info: {
@@ -142,7 +145,8 @@ export default {
         name: '张耀扬',
         level: 1,
         sex: 1
-      }
+      },
+      type: 0
     }
   },
 

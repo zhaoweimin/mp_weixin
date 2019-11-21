@@ -101,7 +101,7 @@ export default {
 
   methods: {
     detail (id) {
-      let url = `../reportDetail/main?id=${id}`
+      let url = `../reportDetail/main?type=${this.curNavId}&id=${id}`
       mpvue.navigateTo({ url })
     },
     changeNav (e) {

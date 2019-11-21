@@ -1,26 +1,25 @@
 <template>
-  <div class="main ">
-    <div class="has-header" v-if="tag == 0">
-      <navbar :info="nav" @changeNav="changeNav"></navbar>
-      <block v-for="(vo, key) in info" :key="key">
-        <product :info="vo" :type="nav_num"></product>
-      </block>
-    </div>
+    <div class="main ">
+        <div class="has-header" v-if="tag == 0">
+            <navbar :info="nav" @changeNav="changeNav"></navbar>
+            <block v-for="(vo, key) in info" :key="key">
+                <product :info="vo" :type="nav_num"></product>
+            </block>
+        </div>
 
+        <div v-if="tag == 1">
+            <booking :status="0"></booking>
+        </div>
+        <div v-if="tag == 2">
+            <booking :status="1"></booking>
+        </div>
+        <div v-if="tag == 3">
+            <booking :status="2"></booking>
+        </div>
 
-    <div v-if="tag == 1">
-      <booking :status="0"></booking>
-    </div>
-    <div v-if="tag == 2">
-      <booking :status="1"></booking>
-    </div>
-    <div v-if="tag == 3">
-      <booking :status="2"></booking>
-    </div>
+        <footerIcon @change="changeTag"></footerIcon>
 
-    <footerIcon @change="changeTag"></footerIcon>
-    
-  </div>
+    </div>
 </template>
 
 <script>
@@ -39,42 +38,22 @@ export default {
         {
           title: '基金',
           type: 0,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
+          list: [{ type: 0 }, { type: 1 }, { type: 0 }, { type: 0 }]
         },
         {
           title: '股权',
           type: 1,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
+          list: [{ type: 0 }, { type: 1 }, { type: 0 }, { type: 0 }]
         },
         {
           title: '证券',
           type: 2,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
+          list: [{ type: 0 }, { type: 1 }, { type: 0 }, { type: 0 }]
         },
         {
           title: '其他',
           type: 3,
-          list: [
-            {type: 0},
-            {type: 1},
-            {type: 0},
-            {type: 0}
-          ]
+          list: [{ type: 0 }, { type: 1 }, { type: 0 }, { type: 0 }]
         }
       ]
     }
@@ -92,16 +71,15 @@ export default {
       this.nav_num = nav
     },
     changeTag (tag) {
-      console.log(tag)
       this.tag = tag
+      let title = ['产品预约', '审核中', '预约成功', '预约失败']
+      mpvue.setNavigationBarTitle({ title: title[tag] })
     }
   },
 
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style scoped>
-
 </style>

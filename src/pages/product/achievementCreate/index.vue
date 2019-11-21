@@ -144,6 +144,18 @@
                         </div>
                     </div>
 
+                    <div class="line">
+                        <div class="key">资产证明上传时间</div>
+                        <div class="val">
+                            <picker mode="date">
+                                <div class="icon"><span class="iconfont iconright"></span></div>
+                                <div class="picker cgey">
+                                    请选择资产证明上传时间
+                                </div>
+                            </picker>
+                        </div>
+                    </div>
+
                     <div class="line line-big required">
                         <div class="key">上传附件（格式pdf或图片）</div>
                         <div class="val" style="padding-bottom: 10px;">

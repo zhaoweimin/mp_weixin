@@ -10,14 +10,6 @@
                     <div class="text">今日需跟进客户</div>
                 </div>
             </div>
-            <div class="items" @click="link(2)">
-                <div class="bg">
-                    <div class="img">
-                        <img class="img-img" src="../../../img/follow_2.png" alt="">
-                    </div>
-                    <div class="text">计划跟进客户</div>
-                </div>
-            </div>
             <div class="items" @click="link(3)">
                 <div class="bg">
                     <div class="img">
@@ -32,6 +24,14 @@
                         <img class="img-img" src="../../../img/follow_4.png" alt="">
                     </div>
                     <div class="text">超过30天未跟进客户</div>
+                </div>
+            </div>
+            <div class="items" @click="link(2)">
+                <div class="bg">
+                    <div class="img">
+                        <img class="img-img" src="../../../img/follow_2.png" alt="">
+                    </div>
+                    <div class="text">历史跟进</div>
                 </div>
             </div>
             <div class="items type-two" @click="add()">
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     link (type) {
-      // type: 1.今日 2.计划 3.本周 4.未跟进
+      // type: 1.今日 2.历史 3.本周 4.未跟进
       let url = `../followList/main?type=${type}`
       mpvue.navigateTo({ url })
     },

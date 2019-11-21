@@ -28,36 +28,41 @@
                 <div class="right"><span class="iconfont iconxiangxiajiantou f12"></span></div>
             </div>
             <div v-if="isShowForm">
-                <comInput :type="0" title="跟进编号" :isSpecialColorTxt="true" value="12312313123123"></comInput>
-                <comInput :type="0" title="客户编号" :isSpecialColorTxt="true" value="12312311"></comInput>
-                <comInput :type="0" title="跟进方式" value="亲自拜访"></comInput>
-                <!-- <comInput :type="2" title="跟进方式" placeholder="请选择" value="" @getSelect="getSelect" :options="['亲自拜访']"></comInput> -->
-                <comInput :type="0" title="上次跟进时间" value="2019-07-08"></comInput>
-                <!-- <comInput :type="3" title="上次跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
-                <comInput :type="0" title="计划跟进时间" value="2019-08-08"></comInput>
-                <!-- <comInput :type="3" title="计划跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
-                <comInput :type="0" title="客户类型" value="成交类型"></comInput>
-                <!-- <comInput :type="2" title="客户类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['成交类型']"></comInput> -->
-                <comInput :type="0" title="投资总额" value="100万元"></comInput>
-                <comInput :type="0" title="累计投资总额" value="200万元"></comInput>
+                <comInput :type="0" :titleDark="false" title="跟进编号" :isSpecialColorTxt="true" value="12312313123123"></comInput>
+                <comInput :type="0" :titleDark="false" title="客户编号" :isSpecialColorTxt="true" value="12312311"></comInput>
+                <comInput :type="0" :titleDark="false" title="跟进方式" value="亲自拜访"></comInput>
+                <!-- <comInput :type="2" :titleDark="false" title="跟进方式" placeholder="请选择" value="" @getSelect="getSelect" :options="['亲自拜访']"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="上次跟进时间" value="2019-07-08"></comInput>
+                <!-- <comInput :type="3" :titleDark="false" title="上次跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="计划跟进时间" value="2019-08-08"></comInput>
+                <!-- <comInput :type="3" :titleDark="false" title="计划跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="客户类型" value="成交类型"></comInput>
+                <!-- <comInput :type="2" :titleDark="false" title="客户类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['成交类型']"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="投资总额" value="100万元"></comInput>
+                <comInput :type="0" :titleDark="false" title="累计投资总额" value="200万元"></comInput>
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进主题</div>
                     <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="主题内容XXX"></textarea>
                 </div>
-                <comInput :type="0" title="跟进类型" value="客情维护"></comInput>
-                <!-- <comInput :type="2" title="跟进类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['客情维护']"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="跟进类型" value="客情维护"></comInput>
+                <!-- <comInput :type="2" :titleDark="false" title="跟进类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['客情维护']"></comInput> -->
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进内容</div>
                     <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="沟通签署合同事宜"></textarea>
                 </div>
-                <comInput :type="0" title="今日跟进时间" value="2019-11-09"></comInput>
-                <!-- <comInput :type="3" title="今日跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
-                <div class="mlr15 ptb10 border-b">
+                <comInput v-if="type==='1'" :type="0" :titleDark="false" title="今日跟进时间" value="2019-11-09"></comInput>
+                <comInput v-else :type="0" :titleDark="false" title="跟进时间" value="2019-11-09"></comInput>
+                <!-- <comInput :type="3" :titleDark="false" title="今日跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
+                <div v-if="type==='1'" class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">今日跟进计划</div>
                     <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="执行签署合同事宜"></textarea>
                 </div>
-                <comInput :type="0" title="跟进人" value="小张"></comInput>
-                <comInput :type="0" title="跟进部门" value="小王"></comInput>
+                <div v-else class="mlr15 ptb10 border-b">
+                    <div class="cgey f16 mb10">跟进计划</div>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="执行签署合同事宜"></textarea>
+                </div>
+                <comInput :type="0" :titleDark="false" title="跟进人" value="小张"></comInput>
+                <comInput :type="0" :titleDark="false" title="跟进部门" value="小王"></comInput>
             </div>
             <div v-else class="more dis-flex flex-column a-center plr15">
                 <div class="line"><span>跟进类型-</span><span class="cblack">转化成交</span></div>
@@ -129,7 +134,7 @@ export default {
   onLoad (option) {
     let type = option.type
     this.type = type
-    let title = ['今日需跟进', '计划跟进', '本周需跟进', '超过30天未跟进']
+    let title = ['今日需跟进', '历史跟进', '本周需跟进', '超过30天未跟进']
     mpvue.setNavigationBarTitle({ title: title[type - 1] })
   }
 }

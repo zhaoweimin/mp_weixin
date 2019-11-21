@@ -26,6 +26,7 @@ export default {
           avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
           id: 0,
           level: 1,
+          deal: true,
           sex: 1,
           url: '../customer/main?id=1'
         },
@@ -44,6 +45,7 @@ export default {
           avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
           id: 0,
           level: 2,
+          deal: true,
           sex: 1,
           url: '../customer/main?id=1'
         },

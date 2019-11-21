@@ -14,6 +14,7 @@
             <comInput :type="0" title="提成方式" value="一次"></comInput>
             <comInput :type="0" title="提成率" value="80%"></comInput>
             <comInput :type="0" title="本次提奖" value="50万"></comInput>
+            <comInput :type="0" title="提成总额" value="150万"></comInput>
             <comInput :type="0" title="理财经理" value="李维嘉"></comInput>
             <comInput :type="0" title="归属部门" value="市场部"></comInput>
             <comInput :type="0" title="申请时间" value="2019-3-18"></comInput>
