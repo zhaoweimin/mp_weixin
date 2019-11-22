@@ -85,7 +85,8 @@
                 <div class="l-horn"></div>
                 <div class="r-horn"></div>
             </div>
-            <div class="count">
+            <div class="count rel">
+                <div class="icon f12">录入<span class="f12 icon-r iconfont iconright"></span></div>
                 <div class="con-title">本季</div>
                 <div class="con">
                     <div class="val"><span class="num">20</span><span class="unit">万</span></div>
@@ -100,7 +101,8 @@
                     <div class="text">达成率</div>
                 </div>
             </div>
-            <div class="count">
+            <div class="count rel">
+                <div class="icon f12">录入<span class="f12 icon-r iconfont iconright"></span></div>
                 <div class="con-title">本月</div>
                 <div class="con">
                     <div class="val"><span class="num">10</span><span class="unit">万</span></div>
@@ -124,7 +126,8 @@
                 <div class="l-horn"></div>
                 <div class="r-horn"></div>
             </div>
-            <div class="count">
+            <div class="count rel">
+                <div class="icon f12">录入<span class="f12 icon-r iconfont iconright"></span></div>
                 <div class="con-title">本季</div>
                 <div class="con">
                     <div class="val"><span class="num">20</span><span class="unit">万</span></div>
@@ -139,7 +142,8 @@
                     <div class="text">达成率</div>
                 </div>
             </div>
-            <div class="count">
+            <div class="count rel">
+                <div class="icon f12">录入<span class="f12 icon-r iconfont iconright"></span></div>
                 <div class="con-title">本月</div>
                 <div class="con">
                     <div class="val"><span class="num">10</span><span class="unit">万</span></div>
@@ -261,6 +265,11 @@ export default {
 	padding: 15px 0;
 	border-top: 1px solid #f5f5f5;
 	text-align: left;
+}
+.statis .count .icon {
+	position: absolute;
+	right: 0;
+	top: 30px;
 }
 .statis .count .con-title {
 	width: 70px;

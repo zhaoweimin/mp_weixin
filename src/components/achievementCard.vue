@@ -222,7 +222,7 @@
                 <div class="line f13"><span class="key cgey">上传部门：</span>合约部</div>
                 <div class="line dis-flex a-between">
                     <div class="key f13"><span class="key cgey">上传时间：</span>2019-03-15</div>
-                    <div class="f13 clink">查看更多</div>
+                    <div @click="openDoc" class="f13 clink">查看更多</div>
                 </div>
             </div>
         </div>
@@ -264,6 +264,23 @@ export default {
     productDetail () {
       let url = `/pages/discover/productDetail/main`
       mpvue.navigateTo({ url })
+    },
+    openDoc () {
+      wx.showLoading({
+        title: '请稍后..'
+      })
+      wx.downloadFile({
+        url: 'http://video.317hu.com/917b3140-3da6-47d5-911c-a15462fcdeb2.pdf',
+        success: function (res) {
+          var filePath = res.tempFilePath
+          wx.openDocument({
+            filePath: filePath,
+            success: function (res) {
+              wx.hideLoading()
+            }
+          })
+        }
+      })
     }
   }
 }

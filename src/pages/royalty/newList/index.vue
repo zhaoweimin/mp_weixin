@@ -12,6 +12,7 @@
             <comInput :type="3" title="到期日" :textRight="false" value="2019-3-18"></comInput>
             <comInput :type="0" title="认购费" :textRight="false" value="2千万"></comInput>
             <comInput :type="3" title="提成方式" :textRight="false" value="一次"></comInput>
+            <comInput :type="1" title="提成总额" :textRight="false" value="80万"></comInput>
             <comInput :type="1" title="提成率" :textRight="false" value="80%"></comInput>
             <comInput :type="1" title="本次提奖" :textRight="false" value="50万"></comInput>
             <comInput :type="2" title="理财经理" :textRight="false" placeholder="请选择理财经理" value="" @getSelect="getSelect" :options="['小王','小李']"></comInput>

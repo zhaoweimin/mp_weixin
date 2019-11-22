@@ -7,7 +7,7 @@
             <comInput :type="0" :titleDark="false" title="邀约日期" value="2019-03-20 15:30"></comInput>
             <comInput :type="0" :titleDark="false" title="审批状态" value="同意"></comInput>
             <comInput :type="0" :titleDark="false" title="备注" value="XXXXXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="预计参与人" value="100人"></comInput>
+            <!-- <comInput :type="0" :titleDark="false" title="预计参与人" value="100人"></comInput> -->
             <comInput :type="0" :titleDark="false" title="客户姓名" value="欧阳超"></comInput>
             <comInput :type="0" :titleDark="false" title="手机号码" value="15012002939"></comInput>
             <comInput :type="0" :titleDark="false" title="客户类型" value="成交客户"></comInput>

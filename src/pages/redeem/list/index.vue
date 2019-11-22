@@ -4,8 +4,8 @@
         <block v-for="(vo, key) in list" :key="key">
             <card :info="vo" :type="41"></card>
         </block>
-        <div class="dis-flex a-center ptb15">
-            <van-button plain type="info" @click="link">+ 新增赎回</van-button>
+        <div class="btn-create" @click="link">
+            <img class="icon-create" src="../../../img/create.png" alt="">
         </div>
     </div>
 </template>
@@ -48,4 +48,14 @@ export default {
 </script>
 
 <style scoped>
+.btn-create {
+	position: fixed;
+	right: 15px;
+	bottom: 50px;
+	z-index: 999;
+}
+.icon-create {
+	width: 60px;
+	height: 60px;
+}
 </style>

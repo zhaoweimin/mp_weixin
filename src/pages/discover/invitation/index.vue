@@ -1,13 +1,13 @@
 <template>
     <div class="customer">
         <div class="bg-fff mb20">
-            <div class="pl15 ptb15 f16 strong clink">邀约1</div>
             <comInput :type="0" title="邀约编号" :titleDark="true" value="系统分配" :textRight="false"></comInput>
             <comInput :type="1" title="活动名称" :titleDark="true" value="自带" :textRight="false"></comInput>
             <comInput :type="1" title="活动编号" :titleDark="true" value="自带" :textRight="false"></comInput>
             <comInput :type="3" title="邀约日期" :titleDark="true" value="" @getSelectDate="getSelectDate" :textRight="false"></comInput>
             <comInput :type="2" title="审批状态" :titleDark="true" placeholder="请选择审批状态" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']" :textRight="false"></comInput>
             <comInput :type="1" title="备注" :titleDark="true" placeholder="请输入备注" value="" :textRight="false"></comInput>
+            <div class="mlr15 ptb15 f16 strong clink border-b">邀约(1)</div>
             <comInput :type="1" title="客户姓名" :titleDark="true" placeholder="请输入客户姓名" value="" :textRight="false"></comInput>
             <comInput :type="1" title="手机号码" :titleDark="true" placeholder="请输入手机号码" value="" :textRight="false"></comInput>
             <comInput :type="2" title="客户类型" :titleDark="true" placeholder="请选择客户类型" value="" @getSelect="getSelect" :options="['有意向客户']" :textRight="false"></comInput>
@@ -18,7 +18,15 @@
             <comInput :type="1" title="备注" :titleDark="true" placeholder="请输入备注" value="" :textRight="false"></comInput>
             <comInput :type="2" title="理财经理" :titleDark="true" placeholder="请选择理财经理" value="" @getSelect="getSelect" :options="['小王','小李']" :textRight="false"></comInput>
             <comInput :type="2" title="归属部门" :titleDark="true" placeholder="请选择归属部门" value="" @getSelect="getSelect" :options="['市场部门','行政部门']" :textRight="false"></comInput>
+            <div v-for="(item, index) in customers" :key="index">
+                <div class="mlr15 ptb15 f16 strong clink border-b">邀约({{item.number+1}})</div>
+                <comInput :type="1" title="客户姓名" :titleDark="true" placeholder="请输入客户姓名" value="" :textRight="false"></comInput>
+                <comInput :type="1" title="手机号码" :titleDark="true" placeholder="请输入手机号码" value="" :textRight="false"></comInput>
+                <comInput :type="2" title="客户类型" :titleDark="true" placeholder="请选择客户类型" value="" @getSelect="getSelect" :options="['有意向客户']" :textRight="false"></comInput>
+                <comInput :type="1" title="客户投资总额" :titleDark="true" placeholder="请输入客户投资总额" value="" :textRight="false"></comInput>
+            </div>
         </div>
+        <div class="ta-c pt25 pb25 clink f16" @click="addCustomer">+ 添加邀约</div>
         <van-button type="info" size="large">确认提交</van-button>
     </div>
 </template>
@@ -40,7 +48,9 @@ export default {
         name: '张耀扬',
         level: 1,
         sex: 1
-      }
+      },
+      customers: [],
+      customerNum: 1
     }
   },
 
@@ -51,6 +61,9 @@ export default {
     },
     getSelectDate (data) {
       console.log(22, data)
+    },
+    addCustomer () {
+      this.customers.push({ number: this.customerNum++ })
     }
   }
 }

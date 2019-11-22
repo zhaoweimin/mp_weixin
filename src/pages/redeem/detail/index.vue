@@ -5,7 +5,7 @@
             <comInput :type="0" :titleDark="false" title="赎回编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
             <comInput :type="0" :titleDark="false" title="赎回日期" value="2019-03-03"></comInput>
             <comInput :type="0" :titleDark="false" title="赎回金额" value="2千万"></comInput>
-            <comInput :type="0" :titleDark="false" title="赎回收益" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="浮动收益率" value="12%"></comInput>
             <comInput :type="0" :titleDark="false" title="剩余金额" value="2千万"></comInput>
             <comInput :type="0" :titleDark="false" title="后端提奖金额" value="123123"></comInput>
         </div>
