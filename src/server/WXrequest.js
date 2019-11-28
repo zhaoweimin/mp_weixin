@@ -1,5 +1,5 @@
 const config = {
-  host: 'https://rmall.ukelink.net', // 接口域名
+  host: 'http://218.17.210.74:8011', // 接口域名 测试域名
   version: '' // 接口版本
 }
 

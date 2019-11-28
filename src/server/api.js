@@ -1,6 +1,7 @@
 import WXrequest from './WXrequest'
 
 export default {
+  // base action
   get: function (obj) {
     return WXrequest.request(obj.url, 'GET', obj.data)
   },
@@ -13,17 +14,15 @@ export default {
   del: function (obj) {
     return WXrequest.request(obj.url, 'DELETE', obj.data)
   },
+
+  // test
   test: function () {
     // 测试接口
     let obj = {
-      url: '/mms/country/queryValidZoneListForMallHome',
+      url: '/ashx/mobile/MoblieLogin.ashx?service=userlogin',
       data: {
-        'categoryType': 'SaleGoodsType@sim',
-        'streamNo': 'web_bss153570682909641893',
-        'reqSource': 'MALL_H5',
-        'appid': 'string',
-        'timestamp': 1535706829096,
-        'sign': 'string'
+        userName: 'admin',
+        passWord: ''
       }
     }
     return this.post(obj)
