@@ -431,7 +431,16 @@ export default {
       sex: 0
     }
   },
-  created () {},
+  onLoad () {
+    console.log(101010)
+    wx.getStorage({
+      // 获取本地缓存
+      key: 'cusInfo',
+      success: function (res) {
+        console.log(10101, res)
+      }
+    })
+  },
   methods: {
     setOpen (key) {
       this.open[key] = !this.open[key]
@@ -494,7 +503,7 @@ export default {
       this.seel = e.mp.detail.value
     },
     lingQuestion (e) {
-      let url = `../quetions/main?type=1`
+      let url = `../quetions/main?type=2`
       mpvue.navigateTo({ url })
     }
   }

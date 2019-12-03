@@ -425,7 +425,16 @@ export default {
       sex: 0
     }
   },
-  created () {},
+  onLoad () {
+    console.log(88888)
+    wx.getStorage({
+      // 获取本地缓存
+      key: 'cusInfo',
+      success: function (res) {
+        console.log(9999, res)
+      }
+    })
+  },
   methods: {
     setOpen (key) {
       this.open[key] = !this.open[key]

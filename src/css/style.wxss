@@ -88,6 +88,10 @@
   font-size: 13px;
   color: #9a9a9a;
 }
+.customer-card .level-0 .tag {
+  border-color: #999;
+  color: #999;
+}
 .customer-card .level-1 {
   border-color: #fd8f1c;
 }
@@ -169,7 +173,7 @@
 }
 
 .msg-table .table .line.required::after {
-  content: '*';
+  content: "*";
   color: #ff0000;
   position: absolute;
   left: -10px;
