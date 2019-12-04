@@ -1,27 +1,30 @@
 <template>
     <div class="pl15 bg-fff border-box" :class="{'pr15':!isSpecialBorderStyle}">
         <div class="inputItem dis-flex l-start ptb10 rel" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
-            <div v-if="isRequired" class="required cred">*</div>
-            <div class="label f16" :class="[titleDark?'cblack':'cgey']">{{title}}</div>
+            <div v-if="isRequired" class="required">*</div>
+            <div class="label" :class="[titleDark?'cblack':'cgey',fontSize]">{{title}}</div>
             <div class="flex-1 dis-flex flex-column pl20">
                 <!-- 文字 -->
-                <div v-if="type===0" class="f16 cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack']">{{resultValue}}</div>
+                <div v-if="type===0" class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue||'--'}}</div>
                 <!-- 输入框 -->
-                <input v-if="type===1" class="w-full f16" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
+                <input v-if="type===1" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l',fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
                 <!-- 选择 -->
-                        <picker v-if="type===2" class="w-full rel pr20" :disabled="disabled" :class="[textRight?'ta-r':'ta-l']" @change="onPickerChange" :value="index" :range="options">
-                    <span class="f16" :class="resultValue?'cblack':'clight'">{{options[resultValue]||'请选择'}}</span>
-                    <span v-if="!disabled" class="icon-r iconfont iconright"></span>
-                </picker>
+                <div v-if="type===2">
+                    <picker v-if="!disabled" class="w-full rel" :class="[textRight?'ta-r':'ta-l',!disabled?'pr20':'']" @change="onPickerChange" :value="index" :range="options">
+                        <span :class="[resultValue?'cblack':'clight',fontSize]">{{options[resultValue]||'请选择'}}</span>
+                        <span v-if="!disabled" class="icon-r iconfont iconright"></span>
+                    </picker>
+                    <div v-else class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue}}</div>
+                </div>
                 <!-- 日期 -->
                 <picker v-if="type===3" mode="date" class="w-full rel pr20" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
-                    <span class="f16" :class="[resultValue?'cblack':'clight']">{{resultValue||'请选择'}}</span>
+                    <span :class="[resultValue?'cblack':'clight',fontSize]">{{resultValue||'请选择'}}</span>
                     <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                 </picker>
                 <!-- 点击事件 -->
                 <div v-if=" type===4" class="btnItem dis-flex flex-1 a-right l-center">
                     <!-- <div class="f16 mr5">{{resultValue}}</div> -->
-                    <input class="w-full f16 cblack" :class="[textRight?'ta-r':'ta-l']" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus">
+                    <input class="w-full cblack" :class="[textRight?'ta-r':'ta-l',fontSize]" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus">
                     <!-- <img class="ml10" src="./img/icon_camera@3x.png" alt="" @click="onBtnClick"> -->
                 </div>
                 <!-- 选择项 -->
@@ -136,6 +139,12 @@ export default {
       default () {
         return false
       }
+    },
+    fontSize: {
+      type: String,
+      default () {
+        return 'f16'
+      }
     }
   },
   created () {},
@@ -231,6 +240,9 @@ input[disabled] {
 	background: none;
 	color: #333;
 	-webkit-text-fill-color: #333;
+}
+.inputItem .required {
+	color: #ee0a24;
 }
 .icon-r {
 	position: absolute;
