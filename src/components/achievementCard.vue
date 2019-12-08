@@ -229,15 +229,15 @@
 
         <div class="contract-card plr10" v-if="type == 8" @click="actionDetail">
             <div class="ptb10 border-b">
-                <div class="f16 strong">活动名称</div>
+                <div class="f16 strong">{{info['活动名称']}}</div>
             </div>
             <div class="dis-flex l-end ptb10">
                 <div class="flex-1">
-                    <div class="mb5 f13"><span class="cgey">活动时间：</span>2018-03-20至2019-5-20</div>
-                    <div class="mb5 f13"><span class="cgey">活动目的：</span>目的</div>
-                    <div class="mb5 f13"><span class="cgey">活动范围：</span>准客户</div>
-                    <div class="mb5 f13"><span class="cgey">活动发起人：</span>陈方圆</div>
-                    <div class="f13"><span class="cgey">活动发起部门：</span>运营部</div>
+                    <div class="mb5 f13"><span class="cgey">活动时间：</span>{{info['活动时间']}}</div>
+                    <div class="mb5 f13"><span class="cgey">活动目的：</span>{{info['活动目的']}}</div>
+                    <div class="mb5 f13"><span class="cgey">活动范围：</span>{{info['活动范围']}}</div>
+                    <div class="mb5 f13"><span class="cgey">活动发起人：</span>{{info['活动发起人']}}</div>
+                    <div class="f13"><span class="cgey">活动发起部门：</span>{{info['活动发起部门']}}</div>
                 </div>
                 <div class="clink f13">查看更多</div>
             </div>
@@ -259,6 +259,7 @@ export default {
     },
     actionDetail () {
       let url = `/pages/discover/actionDetail/main?type=${this.actionType}`
+      mpvue.setStorageSync('action_detail_info', this.info)
       mpvue.navigateTo({ url })
     },
     productDetail () {

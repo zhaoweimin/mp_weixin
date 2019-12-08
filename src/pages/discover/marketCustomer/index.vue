@@ -1,13 +1,13 @@
 <template>
     <div class="main has-header">
         <search :rightButton="true" placeholder="搜索"></search>
-        <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key" @click="detail()">
+        <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key" @click="detail(key)">
             <div class="dis-flex">
                 <div class="avatar">
                     <img class="img" :src="vo.avatar" mode="aspectFill">
                 </div>
                 <div class="msg">
-                    <div class="title"><span class="strong">{{vo.name}}</span> <span class="sex">{{vo.sex ? '先生' : '女士'}}</span></div>
+                    <div class="title"><span class="strong">{{vo['客户名称']}}</span> <span class="sex">{{vo.sex ? '先生' : '女士'}}</span></div>
                     <div class="tags level-1" v-if="vo.level == 1">
                         <div class="tag">历史成交客户</div>
                         <div class="tag level">A级</div>
@@ -29,11 +29,11 @@
             <div class="base more">
                 <div class="line">
                     <div class="key">邀约活动：</div>
-                    <div class="val">某某活动</div>
+                    <div class="val">{{vo['活动名称']}}</div>
                 </div>
                 <div class="line">
                     <div class="key">活动时间：</div>
-                    <div class="val">2019-03-20</div>
+                    <div class="val">{{vo['邀约时间']}}</div>
                 </div>
                 <div class="line">
                     <div class="key">审批结果：</div>
@@ -52,36 +52,8 @@ export default {
   data () {
     return {
       type: 0,
-      list: [
-        {
-          name: '张耀阳',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 1,
-          sex: 1
-        },
-        {
-          name: '刘世勋',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 4,
-          sex: 1
-        },
-        {
-          name: '方世伟',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 2,
-          sex: 1
-        },
-        {
-          name: '董颖',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 3,
-          sex: 0
-        }
-      ]
+      page: 1,
+      list: []
     }
   },
 
@@ -89,18 +61,35 @@ export default {
     search
   },
 
-  methods: {
-    detail (id) {
-      let url = `/pages/discover/invitationDetail/main`
-      mpvue.navigateTo({ url })
-    }
+  onLoad () {
+    this.getList()
   },
 
-  onLoad (option) {
-    // let type = option.type
-    // this.type = type
-    // let title = ['今日需跟进', '计划跟进', '本周需跟进', '超过30天未跟进']
-    // mpvue.setNavigationBarTitle({ title: title[type - 1] })
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
+  methods: {
+    getList (page = 1) {
+      this.$api
+        .getDiscoverMarkerHistoryExerciseList(page)
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          }
+        })
+    },
+    detail (key) {
+      let url = `/pages/discover/invitationDetail/main`
+      mpvue.setStorageSync('market_customer_info', this.list[key])
+      mpvue.navigateTo({ url })
+    }
   }
 }
 </script>

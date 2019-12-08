@@ -16,20 +16,8 @@ export default {
     return {
       searchValue: '',
       type: 0,
-      list: [
-        {
-          name: '张耀阳'
-        },
-        {
-          name: '刘世勋'
-        },
-        {
-          name: '方世伟'
-        },
-        {
-          name: '董颖'
-        }
-      ]
+      list: [],
+      page: 1
     }
   },
 
@@ -43,9 +31,53 @@ export default {
     this.type = type
     let title = ['可邀约活动', '历史活动']
     mpvue.setNavigationBarTitle({ title: title[type] })
+
+    this.getList()
+    // if (type === '0') {
+    // } else {
+    //   this.getHistoryList()
+    // }
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+    // if (this.type === 0) {
+    // } else {
+    //   this.getHistoryList(this.page + 1)
+    // }
   },
 
   methods: {
+    getList (page = 1) {
+      this.$api
+        .getDiscoverMarkerExerciseList(page)
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          }
+        })
+    },
+    getHistoryList (page = 1) {
+      this.$api
+        .getDiscoverMarkerHistoryExerciseList(page)
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          }
+        })
+    },
     changeNav (nav) {
       this.nav_num = nav
     },

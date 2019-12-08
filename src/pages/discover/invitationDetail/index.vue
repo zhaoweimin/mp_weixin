@@ -2,22 +2,22 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="pl15 ptb15 f16 strong">活动名称</div>
-            <comInput :type="0" :titleDark="false" title="邀约编码" :isSpecialColorTxt="true" value="15668554456"></comInput>
-            <comInput :type="0" :titleDark="false" title="活动编号" :isSpecialColorTxt="true" value="12354456"></comInput>
-            <comInput :type="0" :titleDark="false" title="邀约日期" value="2019-03-20 15:30"></comInput>
-            <comInput :type="0" :titleDark="false" title="审批状态" value="同意"></comInput>
-            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXX"></comInput>
-            <!-- <comInput :type="0" :titleDark="false" title="预计参与人" value="100人"></comInput> -->
-            <comInput :type="0" :titleDark="false" title="客户姓名" value="欧阳超"></comInput>
-            <comInput :type="0" :titleDark="false" title="手机号码" value="15012002939"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户类型" value="成交客户"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户投资总额" value="150万"></comInput>
-            <comInput :type="0" :titleDark="false" title="邀约审批人" value="杨伟明"></comInput>
-            <comInput :type="0" :titleDark="false" title="所属活动" value="XXXXXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="邀约审批状态" value="同意"></comInput>
-            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="理财经理" value="XXXXXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="归属部门" value="XXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约编码" :isSpecialColorTxt="true" :value="info['邀约编码']"></comInput>
+            <comInput :type="0" :titleDark="false" title="活动编号" :isSpecialColorTxt="true" :value="info['活动编号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约日期" :value="info['邀约日期']"></comInput>
+            <comInput :type="0" :titleDark="false" title="审批状态" :value="info['审批状态']"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" :value="info['备注']"></comInput>
+            <!-- <comInput :type="0" :titleDark="false" title="预计参与人" :value="100人"></comInput> -->
+            <comInput :type="0" :titleDark="false" title="客户姓名" :value="info['客户姓名']"></comInput>
+            <comInput :type="0" :titleDark="false" title="手机号码" :value="info['手机号码']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户类型" :value="info['客户类型']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户投资总额" :value="info['客户投资总额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批人" :value="info['邀约审批人']"></comInput>
+            <comInput :type="0" :titleDark="false" title="所属活动" :value="info['所属活动']"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批状态" :value="info['邀约审批状态']"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" :value="info['备注']"></comInput>
+            <comInput :type="0" :titleDark="false" title="理财经理" :value="info['理财经理']"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" :value="info['归属部门']"></comInput>
         </div>
     </div>
 </template>
@@ -34,13 +34,17 @@ export default {
 
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      }
+      info: {}
     }
+  },
+  onLoad (option) {
+    wx.getStorage({
+      // 获取本地缓存
+      key: 'market_customer_info',
+      success: res => {
+        this.info = res.data
+      }
+    })
   },
   methods: {
     addInvitation () {

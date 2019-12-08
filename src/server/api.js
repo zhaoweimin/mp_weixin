@@ -28,7 +28,7 @@ export default {
     return this.post(obj)
   },
 
-  // 在售产品接口
+  // 在售产品接口查询
   getDiscoverProductList (page) {
     let obj = {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
@@ -44,7 +44,7 @@ export default {
     return this.post(obj)
   },
 
-  // 合同管理
+  // 合同管理查询
   getContractList (page) {
     let obj = {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
@@ -55,6 +55,38 @@ export default {
         Parameter: 'escontain=true&deptid=1',
         filter: '{}',
         rightvalueid: '14e54990-f1eb-e911-b38f-39f0cbb5fe1f'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 邀约活动接口查询
+  getDiscoverMarkerExerciseList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+      data: {
+        id: '37db7883-a615-ea11-b397-39f1dd0a73a7',
+        pageIndex: page - 1,
+        pageSize: 10,
+        Parameter: 'escontain=true&deptid=1',
+        filter: '{}',
+        rightvalueid: '37db7883-a615-ea11-b397-39f1dd0a73a7'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 历史活动/历史邀约客户接口查询
+  getDiscoverMarkerHistoryExerciseList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+      data: {
+        id: 'fcd4083e-a415-ea11-b397-39f1dcfb9124',
+        pageIndex: page - 1,
+        pageSize: 10,
+        Parameter: 'escontain=true&deptid=1',
+        filter: '{}',
+        rightvalueid: 'fcd4083e-a415-ea11-b397-39f1dcfb9124'
       }
     }
     return this.post(obj)
