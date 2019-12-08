@@ -39,7 +39,7 @@ export default {
   methods: {
     getList (page = 1) {
       this.$api
-        .getProductList(page)
+        .getDiscoverProductList(page)
         .then(res => {
           console.log(res)
           if (res.success) {

@@ -2,18 +2,18 @@
     <div class="main has-big-header">
         <navbar :info="navList" @changeNav="changeNav"></navbar>
         <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
-        <block v-for="(vo, key) in [0, 1, 2]" :key="key">
+        <block v-for="(vo, key) in list" :key="key">
             <!-- <card :info="vo"></card> -->
             <div class="con-list">
                 <div class="flex">
                     <div class="flex-1 left">
-                        <div class="order" v-if="nav == 0">合同编号：<span class="clink">V-07822</span></div>
-                        <div class="order" v-if="nav == 1">合同编号：V-07822</div>
-                        <div class="order used" v-if="nav == 2">合同编号：V-07822</div>
+                        <div class="order over-flow-ellipsis" v-if="nav == 0">合同编号：<span class="clink">{{vo['合同编号']}}</span></div>
+                        <div class="order over-flow-ellipsis" v-if="nav == 1">合同编号：{{vo['合同编号']}}</div>
+                        <div class="order over-flow-ellipsis used" v-if="nav == 2">合同编号：{{vo['合同编号']}}</div>
 
                         <div class="mt10">
                             <div class="time" v-if="nav == 1">业绩单号：6549846546</div>
-                            <div class="time">发放日期：2019-06-20</div>
+                            <div class="time">发放日期：{{vo['合同发放日期']}}</div>
                         </div>
                     </div>
                     <div class="status">
@@ -35,7 +35,8 @@ export default {
   data () {
     return {
       navList: ['可使用', '已使用'],
-      nav: 0
+      nav: 0,
+      list: []
     }
   },
 
@@ -45,10 +46,33 @@ export default {
     search
   },
 
+  mounted () {
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
     changeNav (nav) {
       console.log(nav)
       this.nav = nav
+    },
+    getList (page = 1) {
+      this.$api
+        .getContractList(page)
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          }
+        })
     }
   },
 
@@ -73,6 +97,7 @@ export default {
 	color: #020202;
 	font-size: 17px;
 	font-weight: bold;
+
 }
 .con-list .left .used {
 	color: #9d9d9d;

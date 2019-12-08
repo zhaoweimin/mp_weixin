@@ -29,7 +29,7 @@ export default {
   },
 
   // 在售产品接口
-  getProductList (page) {
+  getDiscoverProductList (page) {
     let obj = {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
       data: {
@@ -42,5 +42,26 @@ export default {
       }
     }
     return this.post(obj)
+  },
+
+  // 合同管理
+  getContractList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+      data: {
+        id: '14e54990-f1eb-e911-b38f-39f0cbb5fe1f',
+        pageIndex: page - 1,
+        pageSize: 10,
+        Parameter: 'escontain=true&deptid=1',
+        filter: '{}',
+        rightvalueid: '14e54990-f1eb-e911-b38f-39f0cbb5fe1f'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 阿卢
+  alu () {
+
   }
 }
