@@ -26,5 +26,21 @@ export default {
       }
     }
     return this.post(obj)
+  },
+
+  // 在售产品接口
+  getProductList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+      data: {
+        id: '438a4934-0715-5104-a95e-39eb821771d2',
+        pageIndex: page - 1,
+        pageSize: 10,
+        Parameter: 'escontain=true&deptid=1',
+        filter: '{}',
+        rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
+      }
+    }
+    return this.post(obj)
   }
 }

@@ -131,6 +131,14 @@
 					"id": -1,
 					"name": "历史详情",
 					"pathName": "pages/product/historyDetail/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "在售产品",
+					"pathName": "pages/discover/product/main",
+					"query": "",
 					"scene": null
 				}
 			]

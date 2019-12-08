@@ -2,39 +2,39 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">详情</div>
-            <comInput :type="0" title="产品编号" value="12331231231"></comInput>
-            <comInput :type="0" title="产品类型" value="股权类"></comInput>
-            <comInput :type="0" title="基金管理人名称" value="程程"></comInput>
-            <comInput :type="0" title="基金管理人编号" value="42691"></comInput>
-            <comInput :type="0" title="基金名称" value="某某"></comInput>
-            <comInput :type="0" title="基金类型" value="某某"></comInput>
-            <comInput :type="0" title="合伙主体" value="私募基金管理机构"></comInput>
-            <comInput :type="0" title="基金规模" value="10万"></comInput>
-            <comInput :type="0" title="计划募集规模" value="20万"></comInput>
-            <comInput :type="0" title="基金份额" value="80%"></comInput>
-            <comInput :type="0" title="基金单位净值" value="15亿"></comInput>
-            <comInput :type="0" title="退出期" value="12个月"></comInput>
-            <comInput :type="0" title="投资期限" value="12个月"></comInput>
-            <comInput :type="0" title="募集期" value="100天"></comInput>
-            <comInput :type="0" title="托管方" value="XXXXXX"></comInput>
-            <comInput :type="0" title="募集监督机构" value="XXXXXX"></comInput>
-            <comInput :type="0" title="托管账户" value="1231312312312312"></comInput>
-            <comInput :type="0" title="募集账户户名" value="XXXXXX"></comInput>
-            <comInput :type="0" title="募集账户开户行" value="XXXXXX"></comInput>
-            <comInput :type="0" title="募集账户账号" value="XXXXXX"></comInput>
-            <comInput :type="0" title="收益分配日" value="2019-03-25"></comInput>
-            <comInput :type="0" title="收益基准日" value="2019-03-25"></comInput>
-            <comInput :type="0" title="止损线" value="0.8"></comInput>
-            <comInput :type="0" title="系统产品成立日" value="2019-03-25"></comInput>
-            <comInput :type="0" title="系统产品到期日" value="2029-03-25"></comInput>
-            <comInput :type="0" title="开放日" value="2029-03-25"></comInput>
-            <comInput :type="0" title="合同终止日" value="2029-03-25"></comInput>
-            <comInput :type="0" title="产品兑付日" value="2029-03-25"></comInput>
-            <comInput :type="0" title="业绩比较基准" value="9%"></comInput>
-            <comInput :type="0" title="管理费" value="200万"></comInput>
-            <comInput :type="0" title="认购费" value="150万"></comInput>
-            <comInput :type="0" title="申购费" value="2000万"></comInput>
-            <comInput :type="0" title="赎回费" value="263万"></comInput>
+            <comInput :type="0" title="产品编号" :value="info.FNumber"></comInput>
+            <comInput :type="0" title="产品类型" :value="info.FTypeId"></comInput>
+            <comInput :type="0" title="基金管理人名称" :value="info.FBlongToName"></comInput>
+            <comInput :type="0" title="基金管理人编号" :value="info.FBltoNO"></comInput>
+            <comInput :type="0" title="基金名称" :value="info.FName"></comInput>
+            <comInput :type="0" title="基金类型" :value="info.Fundtype"></comInput>
+            <comInput :type="0" title="合伙主体" :value="info.FpartnershipBody"></comInput>
+            <comInput :type="0" title="基金规模" :value="info.FundScale"></comInput>
+            <comInput :type="0" title="计划募集规模" :value="info.FRaiseScale"></comInput>
+            <comInput :type="0" title="基金份额" :value="info.FundShare"></comInput>
+            <comInput :type="0" title="基金单位净值" :value="info.FNetfundUnitvalue"></comInput>
+            <comInput :type="0" title="退出期" :value="info.FNetfundUnitvalue"></comInput>
+            <comInput :type="0" title="投资期限" :value="info.FInvestment"></comInput>
+            <comInput :type="0" title="募集期" :value="info.FRaiseDate"></comInput>
+            <comInput :type="0" title="托管方" :value="info.Fhoster"></comInput>
+            <comInput :type="0" title="募集监督机构" :value="info.RSBody"></comInput>
+            <comInput :type="0" title="托管账户" :value="info.FTrusteeshipaccout"></comInput>
+            <comInput :type="0" title="募集账户户名" :value="info.mmm"></comInput>
+            <comInput :type="0" title="募集账户开户行" :value="info.mmm"></comInput>
+            <comInput :type="0" title="募集账户账号" :value="info.mmm"></comInput>
+            <comInput :type="0" title="收益分配日" :value="info.FProfitDay"></comInput>
+            <comInput :type="0" title="收益基准日" :value="info.FProfitBaseday"></comInput>
+            <comInput :type="0" title="止损线" :value="info.FStopLine"></comInput>
+            <comInput :type="0" title="系统产品成立日" :value="info.FEstabDate"></comInput>
+            <comInput :type="0" title="系统产品到期日" :value="info.FDueDate"></comInput>
+            <comInput :type="0" title="开放日" :value="info.FopenDate"></comInput>
+            <comInput :type="0" title="合同终止日" :value="info.Fcontractenddate"></comInput>
+            <comInput :type="0" title="产品兑付日" :value="info.FCashpaymentdate"></comInput>
+            <comInput :type="0" title="业绩比较基准" :value="info.FachiBase"></comInput>
+            <comInput :type="0" title="管理费" :value="info.FManageEx"></comInput>
+            <comInput :type="0" title="认购费" :value="info.FSubFee"></comInput>
+            <comInput :type="0" title="申购费" :value="info.FsubscriFee"></comInput>
+            <comInput :type="0" title="赎回费" :value="info.FredemptionFee"></comInput>
         </div>
     </div>
 </template>
@@ -51,13 +51,18 @@ export default {
 
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      }
+      info: {}
     }
+  },
+  onLoad () {
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'discover_product_info',
+      success: res => {
+        console.log(res)
+        this.info = res.data
+      }
+    })
   },
   methods: {
     addInvitation () {

@@ -2,10 +2,10 @@
     <div class="main has-header">
         <navbar :info="nav" @changeNav="changeNav"></navbar>
         <block v-if="nav_num===0">
-            <card v-for="(vo, key) in list1" :key="key" :info="vo" :type="6" :status="nav_num"></card>
+            <card v-for="(vo, key) in list" :key="key" :info="vo" :type="6" :status="nav_num"></card>
         </block>
         <block v-else>
-            <card v-for="(vo, key) in list2" :key="key" :info="vo" :type="6" :status="nav_num"></card>
+            <card v-for="(vo, key) in list" :key="key" :info="vo" :type="6" :status="nav_num"></card>
         </block>
     </div>
 </template>
@@ -19,42 +19,7 @@ export default {
     return {
       nav: ['在售产品', '历史产品'],
       nav_num: 0,
-      list1: [
-        {
-          name: '张耀阳',
-          status: '募集中'
-        },
-        {
-          name: '刘世勋',
-          status: '募集中'
-        },
-        {
-          name: '方世伟',
-          status: '募集中'
-        },
-        {
-          name: '董颖',
-          status: '募集中'
-        }
-      ],
-      list2: [
-        {
-          name: '张耀阳',
-          status: '已结束'
-        },
-        {
-          name: '刘世勋',
-          status: '已结束'
-        },
-        {
-          name: '方世伟',
-          status: '已结束'
-        },
-        {
-          name: '董颖',
-          status: '已结束'
-        }
-      ]
+      list: []
     }
   },
 
@@ -63,7 +28,30 @@ export default {
     card
   },
 
+  mounted () {
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
+    getList (page = 1) {
+      this.$api
+        .getProductList(page)
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          }
+        })
+    },
     changeNav (nav) {
       this.nav_num = nav
     }

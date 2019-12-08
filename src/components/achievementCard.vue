@@ -191,22 +191,22 @@
 
         <div class="contract-card" v-if="type == 6">
             <div class="order">
-                <div class="bg">产品编号：201903201530326548</div>
+                <div class="bg">产品编号：{{ info['FNumber'] }}</div>
             </div>
             <!-- <div class="status two c1" v-if="status == 0">募集中</div>
             <div class="status two c2" v-if="status == 1">已完成</div> -->
             <div class="title dis-flex l-baseline">
-                <div class="name mr10">产品名称</div>
-                <div class="label-blue-outline">股权类</div>
+                <div class="name mr10">{{info.FName}}</div>
+                <div class="label-blue-outline">{{info.Fundtype}}</div>
             </div>
             <div class="msg no-boder">
                 <div class="line mb10">
-                    <div class="key f13"><span class="cgey">募集规模：</span>10亿</div>
-                    <div class="key f13"><span class="cgey">募集期：</span> 10个月</div>
+                    <div class="key f13"><span class="cgey">募集规模：</span>{{info.FRaiseScale}}</div>
+                    <div class="key f13"><span class="cgey">募集期：</span> {{info.FRaiseDate}}</div>
                 </div>
                 <div class="line dis-flex a-between">
-                    <div class="key f13"><span class="cgey">运作状态：</span>{{info.status}}</div>
-                    <div class="more clink f13" @click="productDetail()">查看更多</div>
+                    <div class="key f13"><span class="cgey">运作状态：</span>{{info['string27']}}</div>
+                    <div class="more clink f13" @click="productDetail(info.id)">查看更多</div>
                 </div>
             </div>
         </div>
@@ -263,6 +263,7 @@ export default {
     },
     productDetail () {
       let url = `/pages/discover/productDetail/main`
+      mpvue.setStorageSync('discover_product_info', this.info)
       mpvue.navigateTo({ url })
     },
     openDoc () {
@@ -334,6 +335,10 @@ export default {
 .contract-card .title .name {
 	font-size: 16px;
 	font-weight: bold;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .contract-card .title .name .small {
 	font-size: 13px;
