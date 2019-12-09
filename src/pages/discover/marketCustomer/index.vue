@@ -37,7 +37,7 @@
                 </div>
                 <div class="line">
                     <div class="key">审批结果：</div>
-                    <div class="val">同意</div>
+                    <div class="val">{{vo['审批状态']}}</div>
                     <div class="right clink">查看详情</div>
                     <!-- <div class="right">更多 <span class="iconfont iconright"></span></div> -->
                 </div>

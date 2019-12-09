@@ -33,39 +33,16 @@ export default {
     mpvue.setNavigationBarTitle({ title: title[type] })
 
     this.getList()
-    // if (type === '0') {
-    // } else {
-    //   this.getHistoryList()
-    // }
   },
 
   onReachBottom () {
     this.getList(this.page + 1)
-    // if (this.type === 0) {
-    // } else {
-    //   this.getHistoryList(this.page + 1)
-    // }
   },
 
   methods: {
     getList (page = 1) {
       this.$api
-        .getDiscoverMarkerExerciseList(page)
-        .then(res => {
-          console.log(res)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0) this.page = page
-          }
-        })
-    },
-    getHistoryList (page = 1) {
-      this.$api
-        .getDiscoverMarkerHistoryExerciseList(page)
+        .getDiscoverMarkerExerciseList(page, this.type)
         .then(res => {
           console.log(res)
           if (res.success) {

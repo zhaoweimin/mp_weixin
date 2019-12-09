@@ -34,11 +34,25 @@ export default {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
       data: {
         id: '438a4934-0715-5104-a95e-39eb821771d2',
-        pageIndex: page - 1,
-        pageSize: 10,
+        index: page - 1,
         Parameter: 'escontain=true&deptid=1',
         filter: '{}',
         rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 消息列表
+  getMsgList (page, type, userId) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '32ffa833-0ac2-42ac-8098-6f12aa866ebd',
+        index: page - 1,
+        size: 10,
+        UserID: userId || 10183,
+        msgType: type
       }
     }
     return this.post(obj)
@@ -50,8 +64,7 @@ export default {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
       data: {
         id: '14e54990-f1eb-e911-b38f-39f0cbb5fe1f',
-        pageIndex: page - 1,
-        pageSize: 10,
+        index: page - 1,
         Parameter: 'escontain=true&deptid=1',
         filter: '{}',
         rightvalueid: '14e54990-f1eb-e911-b38f-39f0cbb5fe1f'
@@ -61,14 +74,14 @@ export default {
   },
 
   // 邀约活动接口查询
-  getDiscoverMarkerExerciseList (page) {
+  getDiscoverMarkerExerciseList (page, type = 0) {
+    // type  1 历史邀约 0 可邀约
     let obj = {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
       data: {
         id: '37db7883-a615-ea11-b397-39f1dd0a73a7',
-        pageIndex: page - 1,
-        pageSize: 10,
-        Parameter: 'escontain=true&deptid=1',
+        index: page - 1,
+        Parameter: `escontain=true&deptid=1${type === '1' ? '&r=1' : ''}`,
         filter: '{}',
         rightvalueid: '37db7883-a615-ea11-b397-39f1dd0a73a7'
       }
@@ -82,8 +95,7 @@ export default {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
       data: {
         id: 'fcd4083e-a415-ea11-b397-39f1dcfb9124',
-        pageIndex: page - 1,
-        pageSize: 10,
+        index: page - 1,
         Parameter: 'escontain=true&deptid=1',
         filter: '{}',
         rightvalueid: 'fcd4083e-a415-ea11-b397-39f1dcfb9124'

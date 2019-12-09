@@ -147,6 +147,13 @@
 					"pathName": "pages/discover/market/main",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息提醒",
+					"pathName": "pages/discover/message/main",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

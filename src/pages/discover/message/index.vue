@@ -1,12 +1,12 @@
 <template>
     <div class="main has-header">
         <navbar :info="nav" @changeNav="changeNav"></navbar>
-        <div v-if="currentNavId===0" class="box plr10 pt15">
-            <div class="item dis-flex bg-fff plr20 pt15 pb10">
+        <div class="box plr10 pt15" v-for="(vo, key) in list" :key="key">
+            <div class="item dis-flex bg-fff plr20 pt15 pb10" >
                 <div class="flex-1">
-                    <div class="f17 mb10 cblack strong">管理员</div>
-                    <div class="f12 cblack mb5">客户：张天佑成为潜在客户</div>
-                    <div class="f12 cgey">2019-03-20 15:52</div>
+                    <div class="f17 mb10 cblack strong">{{vo.title}}</div>
+                    <div class="f12 cblack mb5">{{vo.sendUser}}：{{vo.msgContent}}</div>
+                    <div class="f12 cgey">{{vo.sendTime}}</div>
                 </div>
                 <!-- <div class="dis-flex flex-column l-end">
                     <div class="f13 clink">未读</div>
@@ -14,7 +14,7 @@
                 </div> -->
             </div>
         </div>
-        <div v-if="currentNavId===1" class="box plr10 pt15">
+        <!-- <div v-if="currentNavId===1" class="box plr10 pt15">
             <div class="item dis-flex bg-fff plr20 pt15 pb10">
                 <div class="flex-1">
                     <div class="f17 mb10 cblack strong">系统</div>
@@ -22,7 +22,7 @@
                     <div class="f12 cgey">2019-03-20 15:52</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -32,15 +32,46 @@ export default {
   data () {
     return {
       nav: ['未读', '已读'],
-      currentNavId: 0
+      currentNavId: 0,
+      page: 1,
+      list: []
     }
   },
   components: {
     navbar
   },
+  mounted () {
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
+    getList (page = 1) {
+      this.$api
+        .getMsgList(page, this.currentNavId + 1)
+        .then(res => {
+          res = JSON.parse(res.RetValue)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows || []
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0 && page !== 1) this.page = page
+          } else {
+            if (page === 1) {
+              this.list = []
+              this.page = page
+            }
+          }
+        })
+    },
     changeNav (nav) {
       this.currentNavId = nav
+      this.getList()
     }
   },
 
