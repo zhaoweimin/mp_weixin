@@ -42,317 +42,172 @@
         </div>
 
         <div class="msg-table" v-show="step === 0">
+            <comInput :type="1" fontSize="f14" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="1" fontSize="f14" :textRight="false" title="客户姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="客户性别" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="证件类型" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" fontSize="f14" :textRight="false" title="证件号码" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="婚姻状况" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="3" fontSize="f14" :textRight="false" title="出生年月" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="国际" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="生日关怀" :isSpecialBorderStyle="true" value=""></comInput>
+            <div class="table pr15 line">
+                <div class="flex-1">
+                    <div class="key f14 l-end w100">工作单位</div>
+                    <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
+                    <textarea class="text-val f14" placeholder="请输入工作单位" placeholder-class=""></textarea>
+                </div>
+            </div>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="职业" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="职位" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="常住省份" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="常住城市" :isSpecialBorderStyle="true" value=""></comInput>
+        </div>
+
+        <div class="msg-table" v-show="step === 1">
+            <comInput :type="1" fontSize="f14" :textRight="false" title="手机号码" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="电话类型" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" fontSize="f14" :textRight="false" title="紧急联系人" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" fontSize="f14" :textRight="false" title="紧急联系人电话" :isSpecialBorderStyle="true" value=""></comInput>
+
+            <div class="table pr15 pb20 line required">
+                <div class="flex-1">
+                    <div class="key f14 l-end w100">邮寄地址</div>
+                    <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
+                    <textarea class="text-val f14" placeholder="请输入邮寄地址" placeholder-class=""></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="msg-table" v-show="step === 2">
+            <comInput :type="2" fontSize="f14" :textRight="false" title="性别" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="年龄段" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="行业" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="投资占收入比" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" title="投资理财年限" :isSpecialBorderStyle="true" value=""></comInput>
             <div class="table">
                 <div class="line">
-                    <div class="key">客户编号</div>
-                    <div class="val dis-flex">
-                        <!-- <input v-show="isEdit" class="input" placeholder="请输入客户编号" placeholder-class="cplaceholder" type="text" v-model="code"> -->
-                        <div class="clink ta-l">A002</div>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">客户来源</div>
-                    <div class="val dis-flex">
-                        <picker class="flex-1 ta-l" @change="pickerSell" :value="sell" :range="sells" :disabled="!isEdit">
-                            {{sells[sell]}}
-                        </picker>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">客户来源明细</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">市场活动</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">市场活动</div>
-                    <div class="val dis-flex">
-                        <!-- <input v-show="isEdit" class="input" placeholder="请输入市场活动" placeholder-class="cplaceholder" type="text" v-model="code"> -->
-                        <div class="ta-l">活动</div>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">投诉次数</div>
-                    <div class="val dis-flex">
-                        <!-- <input v-show="isEdit" class="input" placeholder="请输入投诉次数" placeholder-class="cplaceholder" type="text" v-model="code"> -->
-                        <div class="ta-l">2次</div>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">证件类型</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">身份证</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">证件号码</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入证件号码" placeholder-class="cplaceholder" type="text" v-model="code">
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">婚姻状况</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">已婚</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">出生日期</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">1985.3.25</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">国籍</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">中国</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">生日关怀</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">晚宴</div>
-                        <span class="iconfont iconright"></span>
+                    <div class="flex-1">
+                        <div class="key">收入来源</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_income" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'income')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="line">
                     <div class="flex-1">
-                        <div class="key l-end w100">工作单位</div>
-                        <div class="text-val text-placeholder">
-                            <textarea v-show="isEdit" class="input" placeholder="请输入工作单位" placeholder-class="cplaceholder" type="text" v-model="code" />
+                        <div class="key">投资私募基金信息来源渠道</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_channel" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'channel')">{{vo.text}}</van-checkbox>
                             </div>
-          </div>
-        </div>
-        <div class="line required">
-          <div class="key">职业</div>
-            <div class="val dis-flex">
-                <div class="flex-1 ta-l">互联网</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line">
-            <div class="key">职位</div>
-            <div class="val dis-flex">
-                <div class="flex-1 ta-l">市场总监</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line required">
-          <div class="key">常住省份</div>
-          <div class="val dis-flex">
-                <div class="flex-1 ta-l">广东</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line required">
-          <div class="key">常住城市</div>
-           <div class="val dis-flex">
-                <div class="flex-1 ta-l">深圳</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="msg-table" v-show="step === 1">
-      <div class="table" >
-        <div class="line required">
-          <div class="key">手机号码</div>
-          <div class="val">
-            <input v-show="isEdit" class="input" placeholder="请输入手机号码" placeholder-class="cplaceholder" type="text" v-model="code">
-          </div>
-        </div>
-        <div class="line">
-          <div class="key">电话类型</div>
-          <div class="val dis-flex">
-                <div class="flex-1 ta-l">国内电话</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line">
-          <div class="key">紧急联系人</div>
-          <div class="val">
-            <input v-show="isEdit" class="input" placeholder="请输入紧急联系人" placeholder-class="cplaceholder" type="text" v-model="code">
-          </div>
-        </div>
-        <div class="line">
-          <div class="key">紧急联系人电话</div>
-          <div class="val">
-            <input v-show="isEdit" class="input" placeholder="请输入紧急联系人电话" placeholder-class="cplaceholder" type="text" v-model="code">
-          </div>
-        </div>
-        <div class="line required">
-          <div class="flex-1">
-            <div class="key">邮寄地址</div>
-            <div class="text-val text-placeholder">
-              <textarea v-show="isEdit" class="input" placeholder="请输入邮寄地址" placeholder-class="" type="text" v-model="code" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="msg-table" v-show="step === 2">
-      <div class="table">
-        <div class="line">
-          <div class="key">性别</div>
-          <div class="val dis-flex">
-                <div class="flex-1 ta-l">男</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line">
-          <div class="key">年龄段</div>
-          <div class="val dis-flex">
-                <div class="flex-1 ta-l">25岁以下</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line">
-          <div class="key">行业</div>
-          <div class="val dis-flex">
-                <div class="flex-1 ta-l">互联网行业</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line">
-          <div class="key">投资占收入比</div>
-           <div class="val dis-flex">
-                <div class="flex-1 ta-l">5%-20%</div>
-                <span class="iconfont iconright"></span>
-            </div>
-        </div>
-        <div class="line">
-          <div class="key">投资理财年限</div>
-          <div class="val dis-flex">
-                <div class="flex-1 ta-l">2-5年</div>
-                <span class="iconfont iconright"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">选择私募基金的关注点</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_point" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'point')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">运动健康</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_exercise" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'exercise')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">私享会</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_enjoy" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'enjoy')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">沙龙分享</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_salon" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'salon')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">女性专享手作</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_hands" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'hands')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">亲子/单人手作</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_selfHands" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'selfHands')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">美食专享</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_food" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'food')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="flex-1">
+                        <div class="key">旅行</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_travel" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'travel')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">收入来源</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_income" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'income')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
+        <div class="line-bar">
+            <van-button type="info" @click="submit" v-if="step === 2">确认</van-button>
+            <van-button type="info" @click="setStep(1)" v-if="step < 2">下一步</van-button>
+            <van-button plain type="info" @click="setStep(0)" v-if="step > 0">上一步</van-button>
         </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">投资私募基金信息来源渠道</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_channel" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'channel')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">选择私募基金的关注点</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_point" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'point')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">运动健康</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_exercise" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'exercise')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">私享会</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_enjoy" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'enjoy')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">沙龙分享</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_salon" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'salon')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">女性专享手作</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_hands" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'hands')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">亲子/单人手作</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_selfHands" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'selfHands')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">美食专享</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_food" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'food')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="line">
-          <div class="flex-1">
-            <div class="key">旅行</div>
-            <div class="check-bok">
-              <div v-for="(vo, key) in souce_travel" :key="key">
-                <van-checkbox :value="vo.val" @change="onChange(key, 'travel')">{{vo.text}}</van-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-
-    <div class="line-bar">
-        <van-button type="info" @click="submit" v-if="step === 2">确认</van-button>
-        <van-button type="info" @click="setStep(1)" v-if="step < 2">下一步</van-button>
-        <van-button plain type="info" @click="setStep(0)" v-if="step > 0">上一步</van-button>
-    </div>
-  </div>
 </template>
 
 <script>
 import card from '@/components/card'
+import comInput from '@/components/comInput'
 
 export default {
   components: {
-    card
+    card,
+    comInput
   },
   computed: {
     updateSource () {

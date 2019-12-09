@@ -1,6 +1,6 @@
 <template>
     <div class="pl15 bg-fff border-box" :class="{'pr15':!isSpecialBorderStyle}">
-        <div class="inputItem dis-flex l-start ptb10 rel" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
+        <div class="inputItem dis-flex l-center ptb10 rel" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
             <div v-if="isRequired" class="required">*</div>
             <div class="label" :class="[titleDark?'cblack':'cgey',fontSize]">{{title}}</div>
             <div class="flex-1 dis-flex flex-column pl20">
