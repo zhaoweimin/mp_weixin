@@ -43,7 +43,7 @@
 
         <div class="msg-table" v-show="step === 0">
             <comInput :type="1" fontSize="f14" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
             <comInput :type="2" fontSize="f14" :textRight="false" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
             <comInput :type="1" fontSize="f14" :textRight="false" title="客户姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
             <comInput :type="2" fontSize="f14" :textRight="false" title="客户性别" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
@@ -203,6 +203,7 @@
 <script>
 import card from '@/components/card'
 import comInput from '@/components/comInput'
+import Options from '@/utils/Options.js'
 
 export default {
   components: {
@@ -216,6 +217,7 @@ export default {
   },
   data () {
     return {
+      options: Options,
       info: {
         avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
         name: '张耀扬',
@@ -364,6 +366,9 @@ export default {
     pickerSell (e) {
       console.log(e)
       this.seel = e.mp.detail.value
+    },
+    getSelect (data) {
+      console.log(data)
     }
   }
 }
