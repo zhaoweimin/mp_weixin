@@ -43,51 +43,48 @@
 
         <div class="msg-table" v-show="step === 0">
             <comInput :type="1" fontSize="f14" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="1" fontSize="f14" :textRight="false" title="客户姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="客户性别" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="证件类型" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" fontSize="f14" :textRight="false" title="证件号码" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="婚姻状况" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="3" fontSize="f14" :textRight="false" title="出生年月" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="国际" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="生日关怀" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FTranType" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FtranTypeEntry" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FName" :textRight="false" title="客户姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="客户性别" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FDocumentType" :textRight="false" :options="options.certType" @getSelect="getSelect" title="证件类型" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FIDNumber" :textRight="false" title="证件号码" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FMaritalStatus" :textRight="false" :options="options.marriage" @getSelect="getSelect" title="婚姻状况" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="3" fontSize="f14" paramkey="FBirthDate" :textRight="false" title="出生年月" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNationality" :textRight="false" title="国籍" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="Fbthmis" :textRight="false" :options="options.birthCare" @getSelect="getSelect" title="生日关怀" :isSpecialBorderStyle="true" value=""></comInput>
             <div class="table pr15 line">
                 <div class="flex-1">
                     <div class="key f14 l-end w100">工作单位</div>
-                    <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
-                    <textarea class="text-val f14" placeholder="请输入工作单位" placeholder-class=""></textarea>
+                    <textarea v-model="datas.Fcompany" class="text-val f14" placeholder="请输入工作单位" placeholder-class=""></textarea>
                 </div>
             </div>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="职业" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="职位" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="常住省份" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="常住城市" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FOccupation" :textRight="false" :options="options.job" @getSelect="getSelect" title="职业" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="Fposition" :textRight="false" title="职位" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FPermanentProvinces" :textRight="false" :options="options.province" @getSelect="getSelect" title="常住省份" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FPermanentCity" :textRight="false" title="常住城市" :isSpecialBorderStyle="true" value=""></comInput>
         </div>
 
         <div class="msg-table" v-show="step === 1">
-            <comInput :type="1" fontSize="f14" :textRight="false" title="手机号码" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="电话类型" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" fontSize="f14" :textRight="false" title="紧急联系人" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" fontSize="f14" :textRight="false" title="紧急联系人电话" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMobilePhone" :textRight="false" title="手机号码" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FPhoneType" :textRight="false" :options="options.phoneType" @getSelect="getSelect" title="电话类型" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FEmergencyName" :textRight="false" title="紧急联系人" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FEmergencyPhone" :textRight="false" title="紧急联系人电话" :isSpecialBorderStyle="true" value=""></comInput>
 
             <div class="table pr15 pb20 line required">
                 <div class="flex-1">
                     <div class="key f14 l-end w100">邮寄地址</div>
-                    <!-- <div class="val">深圳市xxx公司 <span class="iconfont iconright"></span></div> -->
-                    <textarea class="text-val f14" placeholder="请输入邮寄地址" placeholder-class=""></textarea>
+                    <textarea v-model="datas.FMailingAddress" class="text-val f14" placeholder="请输入邮寄地址" placeholder-class=""></textarea>
                 </div>
             </div>
-
         </div>
 
         <div class="msg-table" v-show="step === 2">
-            <comInput :type="2" fontSize="f14" :textRight="false" title="性别" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="年龄段" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="行业" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="投资占收入比" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" :textRight="false" title="投资理财年限" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FChoGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FChoold" :textRight="false" :options="options.ageRange" @getSelect="getSelect" title="年龄段" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="Findustry" :textRight="false" :options="options.industry" @getSelect="getSelect" title="行业" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FInvestment" :textRight="false" :options="options.investmentRate" @getSelect="getSelect" title="投资占收入比" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FYearInvest" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="投资理财年限" :isSpecialBorderStyle="true" value=""></comInput>
             <div class="table">
                 <div class="line">
                     <div class="flex-1">
@@ -234,7 +231,7 @@ export default {
         { val: false, text: '工资，劳务报酬' },
         { val: false, text: '生产经营所得' },
         { val: false, text: '利息、股息，转让证券等金融性资产收入' },
-        { val: false, text: '出租、出售房地产等非金融性资产收入 ' }
+        { val: false, text: '出租、出售房地产等非金融性资产收入' }
       ],
       souce_channel: [
         { val: false, text: '互联网' },
@@ -247,23 +244,29 @@ export default {
       souce_point: [
         { val: false, text: '私募基金管理机构的品牌' },
         { val: false, text: '基金销售机构的宣传和推介' },
-        { val: false, text: '私募基金的业绩表现 ' },
+        { val: false, text: '私募基金的业绩表现' },
         { val: false, text: '综合考虑私募基金管理机构的管理能力' }
       ],
       souce_exercise: [
         { val: false, text: '马术运动' },
         { val: false, text: '帆船/游艇出海' },
-        { val: false, text: '高尔夫赛事/体验场' },
+        { val: false, text: '室内高尔夫' },
         { val: false, text: '网球' },
         { val: false, text: '射箭' },
         { val: false, text: '羽毛球' },
         { val: false, text: '其他' }
       ],
-      souce_enjoy: [{ val: false, text: '红酒品鉴' }, { val: false, text: '形象提升' }, { val: false, text: '美体/形体培训' }, { val: false, text: '珠宝鉴赏' }, { val: false, text: '其他' }],
+      souce_enjoy: [
+        { val: false, text: '红酒品鉴' },
+        { val: false, text: '形象提升（男/女）' },
+        { val: false, text: '美体/形体培训' },
+        { val: false, text: '珠宝鉴赏' },
+        { val: false, text: '其他' }
+      ],
       souce_salon: [{ val: false, text: '摄影分享' }, { val: false, text: '花艺沙龙' }, { val: false, text: '投资策略' }, { val: false, text: '茶艺沙龙' }, { val: false, text: '其他' }],
       souce_hands: [
         { val: false, text: '香水手作' },
-        { val: false, text: '小黑裙手作 ' },
+        { val: false, text: '小黑裙手作' },
         { val: false, text: '包包手作' },
         { val: false, text: '香薰干花蜡烛手作' },
         { val: false, text: '口红手作' },
@@ -287,11 +290,93 @@ export default {
         { val: false, text: '其他' }
       ],
 
-      sells: ['直销', '代理'],
-      sexs: ['男', '女'],
+      reqParams: {
+        id: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
+        formdata: {
+          formid: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
+          UrlParams: '',
+          HeadFields: [
+            { Field: 'FTranType', Value: '' },
+            { Field: 'FtranTypeEntry', Value: '' },
+            { Field: 'FName', Value: '' },
+            { Field: 'FGender', Value: '' },
+            { Field: 'FDocumentType', Value: '' },
+            { Field: 'FIDNumber', Value: '' },
+            { Field: 'FMaritalStatus', Value: '' },
+            { Field: 'FBirthDate', Value: '' },
+            { Field: 'FNationality', Value: '' },
+            { Field: 'Fbthmis', Value: '' },
+            { Field: 'Fcompany', Value: '' },
+            { Field: 'FOccupation', Value: '' },
+            { Field: 'Fposition', Value: '' },
+            { Field: 'FPermanentProvinces', Value: '' },
+            { Field: 'FPermanentCity', Value: '' },
 
-      sell: 0,
-      sex: 0
+            { Field: 'FMobilePhone', Value: '' },
+            { Field: 'FPhoneType', Value: '' },
+            { Field: 'FEmergencyName', Value: '' },
+            { Field: 'FEmergencyPhone', Value: '' },
+            { Field: 'FMailingAddress', Value: '' },
+
+            { Field: 'FChoGender', Value: '' },
+            { Field: 'FChoold', Value: '' },
+            { Field: 'Findustry', Value: '' },
+            { Field: 'FInvestment', Value: '' },
+            { Field: 'FYearInvest', Value: '' },
+
+            { Field: 'FChoIncom', Value: '' },
+            { Field: 'FwhereFund', Value: '' },
+            { Field: 'FFollowFund', Value: '' },
+            { Field: 'Fhealthy', Value: '' },
+            { Field: 'FprivateMeet', Value: '' },
+            { Field: 'FsalonMeet', Value: '' },
+            { Field: 'Fwomenhandwork', Value: '' },
+            { Field: 'Fhumanhandwork', Value: '' },
+            { Field: 'Fdeliciousfood', Value: '' },
+            { Field: 'FTourism', Value: '' }
+          ]
+        }
+      },
+      datas: {
+        FTranType: '',
+        FtranTypeEntry: '',
+        FName: '',
+        FGender: '',
+        FDocumentType: '',
+        FIDNumber: '',
+        FMaritalStatus: '',
+        FBirthDate: '',
+        FNationality: '',
+        Fbthmis: '',
+        Fcompany: '',
+        FOccupation: '',
+        Fposition: '',
+        FPermanentProvinces: '',
+        FPermanentCity: '',
+
+        FMobilePhone: '',
+        FPhoneType: '',
+        FEmergencyName: '',
+        FEmergencyPhone: '',
+        FMailingAddress: '',
+
+        FChoGender: '',
+        FChoold: '',
+        Findustry: '',
+        FInvestment: '',
+        FYearInvest: '',
+
+        FChoIncom: [],
+        FwhereFund: [],
+        FFollowFund: [],
+        Fhealthy: [],
+        FprivateMeet: [],
+        FsalonMeet: [],
+        Fwomenhandwork: [],
+        Fhumanhandwork: [],
+        Fdeliciousfood: [],
+        FTourism: []
+      }
     }
   },
   created () {},
@@ -319,6 +404,10 @@ export default {
     },
     submit () {
       this.isEdit = false
+      Object.keys(this.datas).forEach((item, index) => {
+        this.reqParams.formdata.HeadFields[index].Value = this.datas[item]
+      })
+      console.log('11111=====', this.reqParams.formdata.HeadFields)
     },
     cancle () {
       this.isEdit = false
@@ -328,47 +417,95 @@ export default {
         switch (type) {
           case 'income':
             this.souce_income[key].val = !this.souce_income[key].val
+            if (this.souce_income[key].val) {
+              this.datas.FChoIncom.push(this.souce_income[key].text)
+            } else {
+              this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
+            }
             break
           case 'channel':
             this.souce_channel[key].val = !this.souce_channel[key].val
+            if (this.souce_channel[key].val) {
+              this.datas.FwhereFund.push(this.souce_channel[key].text)
+            } else {
+              this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
+            }
             break
           case 'point':
             this.souce_point[key].val = !this.souce_point[key].val
+            if (this.souce_point[key].val) {
+              this.datas.FFollowFund.push(this.souce_point[key].text)
+            } else {
+              this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
+            }
             break
           case 'exercise':
             this.souce_exercise[key].val = !this.souce_exercise[key].val
+            if (this.souce_exercise[key].val) {
+              this.datas.Fhealthy.push(this.souce_exercise[key].text)
+            } else {
+              this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
+            }
             break
           case 'enjoy':
             this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+            if (this.souce_enjoy[key].val) {
+              this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
+            } else {
+              this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
+            }
             break
           case 'salon':
             this.souce_salon[key].val = !this.souce_salon[key].val
+            if (this.souce_salon[key].val) {
+              this.datas.FsalonMeet.push(this.souce_salon[key].text)
+            } else {
+              this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
+            }
             break
           case 'hands':
             this.souce_hands[key].val = !this.souce_hands[key].val
+            if (this.souce_hands[key].val) {
+              this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
+            } else {
+              this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
+            }
             break
           case 'selfHands':
             this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+            if (this.souce_selfHands[key].val) {
+              this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
+            } else {
+              this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
+            }
             break
           case 'food':
             this.souce_food[key].val = !this.souce_food[key].val
+            if (this.souce_food[key].val) {
+              this.datas.Fdeliciousfood.push(this.souce_food[key].text)
+            } else {
+              this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
+            }
             break
           case 'travel':
             this.souce_travel[key].val = !this.souce_travel[key].val
+            if (this.souce_travel[key].val) {
+              this.datas.FTourism.push(this.souce_travel[key].text)
+            } else {
+              this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
+            }
             break
         }
         this.$forceUpdate()
       }
     },
-    onSexChange (e) {
-      console.log(e)
-    },
-    pickerSell (e) {
-      console.log(e)
-      this.seel = e.mp.detail.value
-    },
     getSelect (data) {
       console.log(data)
+      this.datas[data.key] = data.value
+    },
+    getInputVal (data) {
+      console.log(data)
+      this.datas[data.key] = data.value
     }
   }
 }
