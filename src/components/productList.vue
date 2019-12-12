@@ -1,23 +1,23 @@
 <template>
     <div class="product-list">
-        <div class="title">
-            <div class="left-color bg1" v-if="info.type == 0"></div>
-            <div class="left-color bg2" v-if="info.type == 1"></div>
-            <div class="left-color bg3" v-if="info.type == 2"></div>
-            <div class="left-color bg4" v-if="info.type == 3"></div>
-            <span class="strong">{{info.title}}</span>
-            <span class="right">更多</span>
-        </div>
+        <!-- <div class="title">
+          <div class="left-color bg1" v-if="info.type == 0"></div>
+          <div class="left-color bg2" v-if="info.type == 1"></div>
+          <div class="left-color bg3" v-if="info.type == 2"></div>
+          <div class="left-color bg4" v-if="info.type == 3"></div>
+          <span class="strong">{{info.title}}</span>
+          <span class="right">更多</span>
+        </div> -->
         <div class="items">
-            <div class="item" v-for="(vo, key) in info.list" :key="key">
+            <div class="item" v-for="(vo, key) in info" :key="key">
                 <div class="top">
                     <div class="line dis-flex">
                         <div class="flex-1">
-                            <span class="name">产品名称</span>
+                            <span class="name">{{vo['产品名称']}}</span>
                             <span class="tag" v-if="vo.type == 0">自行发行</span>
                             <span class="tag tag-2" v-if="vo.type == 1">代销产品</span>
                         </div>
-                        <div class="more cgey" @click="detail(vo.id)">查看简介<span class="iconfont iconright"></span></div>
+                        <div class="more cgey" @click="detail(key)">查看简介<span class="iconfont iconright"></span></div>
                     </div>
                     <!-- <div class="line">
                         <span class="strong">产品限期：2018-03-20至2019-5-20</span><span class="cgey">（14个月）</span>
@@ -26,14 +26,14 @@
                 <div class="foot dis-flex">
                     <div class="flex-1">
                         <!-- <div class="line">募集开始时间：<span class="cblack">2018-03-20</span></div> -->
-                        <div class="line">产品限期：<span class="cblack">12个月</span></div>
+                        <div class="line">产品限期：<span class="cblack">{{vo['产品期限']}}个月</span></div>
                     </div>
                 </div>
                 <div class="foot dis-flex">
                     <div class="flex-1"></div>
                     <div class="right">
-                        <div class="btn" @click="booking(id)" v-if="type == 0">我要预约</div>
-                        <div class="btn" @click="bookingRes(id)" v-if="type == 1">查看结果</div>
+                        <div class="btn" @click="booking(key)" v-if="type == 0">我要预约</div>
+                        <div class="btn" @click="bookingRes(key)" v-if="type == 1">查看结果</div>
                     </div>
                 </div>
             </div>
@@ -45,16 +45,19 @@
 export default {
   props: ['info', 'type'],
   methods: {
-    detail (id) {
-      let url = `../detail/main?id=${id}`
+    detail (key) {
+      let url = `../detail/main?id=${key}`
+      mpvue.setStorageSync('product_info', this.info[key])
       mpvue.navigateTo({ url })
     },
-    booking (id) {
-      let url = `../booking/main?id=${id}&isEdit=1`
+    booking (key) {
+      let url = `../booking/main?id=${key}&isEdit=1`
+      mpvue.setStorageSync('product_info', this.info[key])
       mpvue.navigateTo({ url })
     },
-    bookingRes (id) {
-      let url = `../booking/main?id=${id}&isEdit=0`
+    bookingRes (key) {
+      let url = `../booking/main?id=${key}&isEdit=0`
+      mpvue.setStorageSync('product_info', this.info[key])
       // let url = `../bookingRes/main?id=${id}`
       mpvue.navigateTo({ url })
     }

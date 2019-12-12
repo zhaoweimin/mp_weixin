@@ -8,11 +8,11 @@
                 </div>
                 <div class="msg">
                     <div class="title"><span class="strong">{{vo['客户名称']}}</span> <span class="sex">{{vo.sex ? '先生' : '女士'}}</span></div>
-                    <div class="tags level-1" v-if="vo.level == 1">
-                        <div class="tag">历史成交客户</div>
-                        <div class="tag level">A级</div>
+                    <div class="tags level-1">
+                        <div class="tag">{{vo['客户类型']}}</div>
+                        <!-- <div class="tag level">A级</div> -->
                     </div>
-                    <div class="tags level-2" v-if="vo.level == 2">
+                    <!-- <div class="tags level-2" v-if="vo.level == 2">
                         <div class="tag">成交客户</div>
                         <div class="tag level">B级</div>
                     </div>
@@ -23,7 +23,7 @@
                     <div class="tags level-4" v-if="vo.level == 4">
                         <div class="tag">潜在客户</div>
                         <div class="tag level">D级</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="base more">

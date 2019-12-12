@@ -38,6 +38,17 @@ export default {
 
   components: {},
 
+  onLoad () {
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'product_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
+  },
+
   methods: {
     changeNav (nav) {
       console.log(nav)

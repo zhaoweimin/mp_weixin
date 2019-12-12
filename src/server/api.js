@@ -43,6 +43,42 @@ export default {
     return this.post(obj)
   },
 
+  // 客户跟进本周需跟进客户接口查询
+  getProductList (page, r) {
+    // r- 0 客户跟进历史跟进客 3- 客户跟进超过30天未跟进客户 2- 客户跟进本周需跟进客户
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        userid: '',
+        index: page - 1,
+        Parameter: `escontain=true&deptid=1&r=${r}&userid=10183`,
+        rightvalueid: '59bd9d7b-c6c9-046b-36b0-39eb71be4e6c',
+        formid: '59bd9d7b-c6c9-046b-36b0-39eb71be4e6c',
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 产品预约接口查询
+  getProductBookingList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+      data: {
+        id: '438a4934-0715-5104-a95e-39eb821771d2',
+        index: page - 1,
+        Parameter: 'escontain=true&deptid=1&s=3',
+        filter: '{}',
+        rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
+      }
+    }
+    return this.post(obj)
+  },
+
   // 消息列表
   getMsgList (page, type, userId) {
     let obj = {
@@ -84,6 +120,67 @@ export default {
         Parameter: `escontain=true&deptid=1${type === '1' ? '&r=1' : ''}`,
         filter: '{}',
         rightvalueid: '37db7883-a615-ea11-b397-39f1dd0a73a7'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 待审批邀约活动接口查询
+  getDaiDiscoverMarkerExerciseList (page, type = 0) {
+    // type  1 历史邀约 0 可邀约
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        userId: 10183,
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        rightvalueid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
+        formid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
+        index: page - 1,
+        Parameter: `escontain=true&deptid=1&r=3`,
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 拒绝邀约活动接口查询
+  getRejectDiscoverMarkerExerciseList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        userId: 10183,
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        rightvalueid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
+        formid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
+        index: page - 1,
+        Parameter: `escontain=true&deptid=1&r=2`,
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 同意邀约活动接口查询
+  getAgreatDiscoverMarkerExerciseList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        userId: 10183,
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        rightvalueid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
+        formid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
+        index: page - 1,
+        Parameter: `escontain=true&deptid=1&r=1`,
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
       }
     }
     return this.post(obj)

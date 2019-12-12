@@ -59,54 +59,54 @@
                 <div class="from">
                     <div class="line">
                         <div class="key">产品类别</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">股权类</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品类别']}}</div>
                     </div>
                     <div class="line">
                         <div class="key">产品编号</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">54186585</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品编号']}}</div>
                     </div>
                     <div class="line">
                         <div class="key">产品名称</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">名称</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品名称']}}</div>
                     </div>
                     <div class="line">
                         <div class="key">产品期限 </div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">24个月</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品期限']}}个月</div>
                     </div>
                     <div class="line">
                         <div class="key">募集账户 </div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">XXXXXXXXXXX</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['募集账户']}}</div>
                     </div>
                     <div class="line">
                         <div class="key">已募集份数</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">500份</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['已募集份数']}}</div>
                     </div>
                     <div class="line">
                         <div class="key">已募集金额</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">5亿</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['已募集金额']}}</div>
                     </div>
                     <div class="line">
                         <div class="key">剩余募集金额</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">2千万</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['剩余募集金额']}}</div>
                     </div>
 
                     <div class="line">
                         <div class="key">已预约人数</div>
                         <div class="val" :class="{'ta-r': isEdit == 0}">
                             <!-- <div class="icon"><span class="iconfont iconright"></span></div> -->
-                            <div>10人</div>
+                            <div>{{info['已预约人数']}}</div>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">已预约金额</div>
                         <div class="val" :class="{'ta-r': isEdit == 0}">
                             <!-- <div class="icon"><span class="iconfont iconright"></span></div> -->
-                            <div>4亿8千万</div>
+                            <div>{{info['已预约金额']}}</div>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">剩余可预约</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">2万</div>
+                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['剩余可预约']}}</div>
                     </div>
 
                 </div>
@@ -183,8 +183,16 @@ export default {
     }
   },
   onLoad (option) {
-    console.log(option)
     this.isEdit = option.isEdit
+    // console.log(option)
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'product_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
   },
   components: {},
   methods: {

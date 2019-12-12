@@ -154,6 +154,12 @@
 					"pathName": "pages/discover/message/main",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "客户跟进",
+					"pathName": "pages/customer/follow/main",
+					"scene": null
 				}
 			]
 		}

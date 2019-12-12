@@ -49,7 +49,30 @@ export default {
     console.log(this.status)
   },
 
+  onLoad (option) {
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
+    getList (page = 1) {
+      this.$api
+        .getProductBookingList(page, this.type)
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          }
+        })
+    },
     changeNav (nav) {
       this.nav_num = nav
     },

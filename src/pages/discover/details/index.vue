@@ -4,27 +4,27 @@
             <div class="pl15">
                 <div class="ptb15 f16 strong border-b">
                     <div class="dis-flex l-baseline mb5">
-                        <div class="f18 strong pr5">张耀阳</div>
-                        <div class="f12 cgey">先生</div>
+                        <div class="f18 strong pr5">{{info['邀约审批人']}}</div>
+                        <div class="f12 cgey">{{info['性别']}}</div>
                     </div>
                     <div class="dis-flex">
-                        <div class="label-yellow-outline mr10">历史成交客户</div>
-                        <div class="label-yellow">A级</div>
+                        <div class="label-yellow-outline mr10">{{info['客户类型']}}</div>
+                        <div class="label-yellow" v-if="info['客户级别']">{{info['客户级别']}}</div>
                     </div>
                 </div>
             </div>
-            <comInput :type="0" :titleDark="false" title="活动名称" value="自带"></comInput>
-            <comInput :type="0" :titleDark="false" title="邀约日期" value="默认当前"></comInput>
+            <comInput :type="0" :titleDark="false" title="活动名称" :value="info['活动名称']"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约日期" :value="info['邀约时间']"></comInput>
             <comInput :type="0" :titleDark="false" title="审批状态" :isSpecialColorTxt="true" :value="status"></comInput>
-            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="手机号码" value="15000000000"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户投资总额" value="100万"></comInput>
-            <comInput :type="0" :titleDark="false" title="邀约审批人" value="自带"></comInput>
-            <comInput :type="0" :titleDark="false" title="所属部门" value="商务部门"></comInput>
-            <comInput :type="0" :titleDark="false" title="邀约审批状态" value="自动判断状态"></comInput>
-            <comInput :type="0" :titleDark="false" title="备注" value="XXXXXXXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="理财经理" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="归属部门" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" :value="info['备注1']"></comInput>
+            <comInput :type="0" :titleDark="false" title="手机号码" :value="info['手机号码']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户投资总额" :value="info['客户投资总额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批人" :value="info['邀约审批人']"></comInput>
+            <comInput :type="0" :titleDark="false" title="所属部门" :value="info['创建部门']"></comInput>
+            <comInput :type="0" :titleDark="false" title="邀约审批状态" :value="info['邀约审批状态']"></comInput>
+            <comInput :type="0" :titleDark="false" title="备注" :value="info['备注2']"></comInput>
+            <comInput :type="0" :titleDark="false" title="理财经理" :value="info['理财经理']"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" :value="info['归属部门']"></comInput>
         </div>
     </div>
 </template>
@@ -51,15 +51,22 @@ export default {
       status: ''
     }
   },
+  onLoad (options) {
+    this.status = titles.get(options.type)
+    wx.getStorage({
+      // 获取本地缓存
+      key: 'action_detail_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
+  },
   methods: {
     addInvitation () {
       mpvue.navigateTo({ url: `/pages/discover/invitation/main` })
     }
-  },
-  onLoad (options) {
-    this.status = titles.get(options.type)
-  },
-  created () {}
+  }
 }
 </script>
 

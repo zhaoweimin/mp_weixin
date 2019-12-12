@@ -2,9 +2,9 @@
     <div class="main ">
         <div class="has-header" v-if="tag == 0">
             <navbar :info="nav" @changeNav="changeNav"></navbar>
-            <block v-for="(vo, key) in info" :key="key">
-                <product :info="vo" :type="nav_num"></product>
-            </block>
+            <!-- <block v-for="(vo, key) in info" :key="key">
+            </block> -->
+            <product :info="list" :type="nav_num"></product>
         </div>
 
         <div v-if="tag == 1">
@@ -55,7 +55,9 @@ export default {
           type: 3,
           list: [{ type: 0 }, { type: 1 }, { type: 0 }, { type: 0 }]
         }
-      ]
+      ],
+      list: [],
+      page: 1
     }
   },
 
@@ -66,7 +68,29 @@ export default {
     booking
   },
 
+  onLoad (option) {
+    this.getList()
+  },
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
+    getList (page = 1) {
+      this.$api
+        .getProductBookingList(page, this.type)
+        .then(res => {
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          }
+        })
+    },
     changeNav (nav) {
       this.nav_num = nav
     },

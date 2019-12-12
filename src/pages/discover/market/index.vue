@@ -12,23 +12,23 @@
             </div>
         </div>
         <div class="items" v-if="active!==0">
-            <div class="item ptb">
+            <div class="item ptb" v-for="(vo, key) in marketList" :key="key">
                 <div class="dis-flex l-baseline">
-                    <div class="f18 strong pr5">张耀阳</div>
-                    <div class="f12 cgey">先生</div>
+                    <div class="f18 strong pr5">{{vo['邀约审批人']}}</div>
+                    <div class="f12 cgey">{{vo['性别']}}</div>
                 </div>
                 <div class="dis-flex mb10">
-                    <div class="label-yellow-outline mr10">历史成交客户</div>
-                    <div class="label-yellow">A级</div>
+                    <div class="label-yellow-outline mr10">{{vo['客户类型']}}</div>
+                    <div class="label-yellow" v-if="vo['客户级别']">{{vo['客户级别']}}</div>
                 </div>
                 <div class="foot dis-flex l-end">
                     <div class="flex-1">
-                        <div class="cgey">活动名称：<span class="cblack">陈伟</span></div>
-                        <div class="cgey mb10">邀约日期：<span class="cblack">默认当前</span></div>
-                        <div class="cgey">审批状态：<span class="clink">{{status}}</span></div>
+                        <div class="cgey">活动名称：<span class="cblack">{{vo['活动名称']}}</span></div>
+                        <div class="cgey mb10">邀约日期：<span class="cblack">{{vo['邀约时间']}}</span></div>
+                        <div class="cgey">审批状态：<span class="clink">{{vo['邀约审批状态']}}</span></div>
                     </div>
                     <div class="right">
-                        <div class="clink f12" @click="link(`/pages/discover/details/main?type=${active}`)">查看更多</div>
+                        <div class="clink f12" @click="detail(key)">查看更多</div>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,9 @@ export default {
         { name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0` },
         { name: '历史活动', url: `/pages/discover/marketAction/main?type=1` },
         { name: '历史邀约客户', url: `/pages/discover/marketCustomer/main?type=2` }
-      ]
+      ],
+      marketList: [],
+      page: 1
     }
   },
   methods: {
@@ -65,10 +67,44 @@ export default {
     },
     onChange (event) {
       this.active = event.mp.detail
+      console.log(this.active)
       this.status = titles.get(String(event.mp.detail))
       wx.setNavigationBarTitle({
         title: titles.get(String(event.mp.detail))
       })
+      this.getList()
+    },
+    onReachBottom () {
+      this.getList(this.page + 1)
+    },
+    getList (page = 1) {
+      let active = this.active
+      this._page = page
+      if (active === 1) {
+        this.$api.getDaiDiscoverMarkerExerciseList(page).then(this.resList)
+      } else if (active === 2) {
+        this.$api.getAgreatDiscoverMarkerExerciseList(page).then(this.resList)
+      } else if (active === 3) {
+        this.$api.getRejectDiscoverMarkerExerciseList(page).then(this.resList)
+      }
+    },
+    resList (res) {
+      let page = this._page
+      res = JSON.parse(res.RetValue)
+      console.log(res)
+      if (res.success) {
+        if (page === 1) {
+          this.marketList = res.rows
+        } else {
+          this.marketList = this.marketList.concat(res.rows)
+        }
+        if (res.rows.length > 0) this.page = page
+      }
+    },
+    detail (key) {
+      let url = `/pages/discover/details/main?type=${this.active}`
+      mpvue.setStorageSync('action_detail_info', this.marketList[key])
+      mpvue.navigateTo({ url })
     }
   }
 }

@@ -2,17 +2,17 @@
     <div class="main has-header">
         <search placeholder="搜索"></search>
         <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key">
-            <div class="dis-flex l-center mb15 plr10" @click="isShowForm=!isShowForm">
+            <div class="dis-flex l-center mb15 plr10">
                 <div class="avatar">
-                    <img class="img" :src="vo.avatar" mode="aspectFill">
+                    <img class="img" :src="avatar" mode="aspectFill">
                 </div>
                 <div class="msg">
-                    <div class="title"><span class="strong">{{vo.name}}</span> <span class="sex">{{vo.sex ? '先生' : '女士'}}</span></div>
-                    <div class="tags level-1" v-if="vo.level == 1">
-                        <div class="tag">历史成交客户</div>
-                        <div class="tag level">A级</div>
+                    <div class="title"><span class="strong">{{vo['客户姓名']}}</span> <span class="sex">{{vo['客户性别']}}</span></div>
+                    <div class="tags level-1">
+                        <div class="tag">{{vo['客户类型']}}</div>
+                        <div class="tag level" v-if="vo['客户级别']">{{vo['客户级别']}}</div>
                     </div>
-                    <div class="tags level-2" v-if="vo.level == 2">
+                    <!-- <div class="tags level-2" v-if="vo.level == 2">
                         <div class="tag">成交客户</div>
                         <div class="tag level">B级</div>
                     </div>
@@ -23,57 +23,57 @@
                     <div class="tags level-4" v-if="vo.level == 4">
                         <div class="tag">潜在客户</div>
                         <div class="tag level">D级</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="right"><span class="iconfont iconxiangxiajiantou f12"></span></div>
             </div>
-            <div v-if="isShowForm">
-                <comInput :type="0" :titleDark="false" title="跟进编号" :isSpecialColorTxt="true" value="12312313123123"></comInput>
-                <comInput :type="0" :titleDark="false" title="客户编号" :isSpecialColorTxt="true" value="12312311"></comInput>
-                <comInput :type="0" :titleDark="false" title="跟进方式" value="亲自拜访"></comInput>
-                <!-- <comInput :type="2" :titleDark="false" title="跟进方式" placeholder="请选择" value="" @getSelect="getSelect" :options="['亲自拜访']"></comInput> -->
-                <comInput :type="0" :titleDark="false" title="上次跟进时间" value="2019-07-08"></comInput>
-                <!-- <comInput :type="3" :titleDark="false" title="上次跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
-                <comInput :type="0" :titleDark="false" title="计划跟进时间" value="2019-08-08"></comInput>
-                <!-- <comInput :type="3" :titleDark="false" title="计划跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
-                <comInput :type="0" :titleDark="false" title="客户类型" value="成交类型"></comInput>
-                <!-- <comInput :type="2" :titleDark="false" title="客户类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['成交类型']"></comInput> -->
-                <comInput :type="0" :titleDark="false" title="投资总额" value="100万元"></comInput>
-                <comInput :type="0" :titleDark="false" title="累计投资总额" value="200万元"></comInput>
+            <div v-if="vo['跟进编号'] !== ''">
+                <comInput :type="0" :titleDark="false" title="跟进编号" :isSpecialColorTxt="true" :value="vo['跟进编号']"></comInput>
+                <comInput :type="0" :titleDark="false" title="客户编号" :isSpecialColorTxt="true" :value="vo['客户编号']"></comInput>
+                <comInput :type="0" :titleDark="false" title="跟进方式" :value="vo['跟进方式']"></comInput>
+                <!-- <comInput :type="2" :titleDark="false" title="跟进方式" placeholder="请选择" :value="" @getSelect="getSelect" :options="['亲自拜访']"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="上次跟进时间" :value="vo['上次跟进时间']"></comInput>
+                <!-- <comInput :type="3" :titleDark="false" title="上次跟进时间" :value="" @getSelectDate="getSelectDate"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="计划跟进时间" :value="vo['计划跟进时间']"></comInput>
+                <!-- <comInput :type="3" :titleDark="false" title="计划跟进时间" :value="" @getSelectDate="getSelectDate"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="客户类型" :value="vo['客户类型']"></comInput>
+                <!-- <comInput :type="2" :titleDark="false" title="客户类型" placeholder="请选择" :value="" @getSelect="getSelect" :options="['成交类型']"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="投资总额" :value="vo['投资总额']"></comInput>
+                <comInput :type="0" :titleDark="false" title="累计投资总额" :value="vo['累计投资总额']"></comInput>
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进主题</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="主题内容XXX"></textarea>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['跟进主题']"></textarea>
                 </div>
-                <comInput :type="0" :titleDark="false" title="跟进类型" value="客情维护"></comInput>
-                <!-- <comInput :type="2" :titleDark="false" title="跟进类型" placeholder="请选择" value="" @getSelect="getSelect" :options="['客情维护']"></comInput> -->
+                <comInput :type="0" :titleDark="false" title="跟进类型" :value="vo['跟进类型']"></comInput>
+                <!-- <comInput :type="2" :titleDark="false" title="跟进类型" placeholder="请选择" :value="" @getSelect="getSelect" :options="['客情维护']"></comInput> -->
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进内容</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="沟通签署合同事宜"></textarea>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['跟进内容']"></textarea>
                 </div>
-                <comInput v-if="type==='1'" :type="0" :titleDark="false" title="今日跟进时间" value="2019-11-09"></comInput>
-                <comInput v-else :type="0" :titleDark="false" title="跟进时间" value="2019-11-09"></comInput>
-                <!-- <comInput :type="3" :titleDark="false" title="今日跟进时间" value="" @getSelectDate="getSelectDate"></comInput> -->
+                <comInput v-if="type==='1'" :type="0" :titleDark="false" title="今日跟进时间" :value="vo['今日跟进时间']"></comInput>
+                <comInput v-else :type="0" :titleDark="false" title="跟进时间" :value="vo['跟进时间']"></comInput>
+                <!-- <comInput :type="3" :titleDark="false" title="今日跟进时间" :value="" @getSelectDate="getSelectDate"></comInput> -->
                 <div v-if="type==='1'" class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">今日跟进计划</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="执行签署合同事宜"></textarea>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['今日跟进计划']"></textarea>
                 </div>
                 <div v-else class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进计划</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" value="执行签署合同事宜"></textarea>
+                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['跟进计划']"></textarea>
                 </div>
-                <comInput :type="0" :titleDark="false" title="跟进人" value="小张"></comInput>
-                <comInput :type="0" :titleDark="false" title="跟进部门" value="小王"></comInput>
+                <comInput :type="0" :titleDark="false" title="跟进人" :value="小张"></comInput>
+                <comInput :type="0" :titleDark="false" title="跟进部门" :value="小王"></comInput>
             </div>
             <div v-else class="more dis-flex flex-column a-center plr15">
-                <div class="line"><span>跟进类型-</span><span class="cblack">转化成交</span></div>
+                <div class="line"><span>跟进类型-</span><span class="cblack">{{vo['跟进类型']}}</span></div>
                 <div class="line">
-                    <span>跟进内容-</span><span class="cblack">沟通签署合同事宜</span>
+                    <span>跟进内容-</span><span class="cblack">{{vo['跟进内容']}}</span>
                 </div>
             </div>
         </div>
-        <div v-if="isShowForm" class="ptb25 plr15 ">
+        <!-- <div v-if="vo['跟进编号']" class="ptb25 plr15 ">
             <van-button type="info" size="large">跟进</van-button>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -90,44 +90,10 @@ export default {
   data () {
     return {
       type: 0,
-      list: [
-        {
-          name: '张耀阳',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 1,
-          sex: 1
-        }
-        // {
-        //   name: '刘世勋',
-        //   avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        //   id: 0,
-        //   level: 4,
-        //   sex: 1
-        // },
-        // {
-        //   name: '方世伟',
-        //   avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        //   id: 0,
-        //   level: 2,
-        //   sex: 1
-        // },
-        // {
-        //   name: '董颖',
-        //   avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        //   id: 0,
-        //   level: 3,
-        //   sex: 0
-        // }
-      ],
-      isShowForm: false
-    }
-  },
-
-  methods: {
-    detail (id) {
-      let url = `../followDetail/main?id=${id}`
-      mpvue.navigateTo({ url })
+      r: 0,
+      avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+      list: [],
+      page: 1
     }
   },
 
@@ -135,7 +101,42 @@ export default {
     let type = option.type
     this.type = type
     let title = ['今日需跟进', '历史跟进', '本周需跟进', '超过30天未跟进']
+    let rArr = ['1', '0', '2', '3']
+    this.r = rArr[type - 1]
     mpvue.setNavigationBarTitle({ title: title[type - 1] })
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
+  methods: {
+    getList (page = 1) {
+      this.$api
+        .getProductList(page, this.r)
+        .then(res => {
+          res = JSON.parse(res.RetValue)
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows || []
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0 && page !== 1) this.page = page
+          } else {
+            if (page === 1) {
+              this.list = []
+              this.page = page
+            }
+          }
+        })
+    },
+    detail (id) {
+      let url = `../followDetail/main?id=${id}`
+      mpvue.navigateTo({ url })
+    }
   }
 }
 </script>
