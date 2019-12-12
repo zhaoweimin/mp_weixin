@@ -5,9 +5,12 @@ const config = {
 }
 
 function request (url, method, data, header = {}) {
-  data.pageIndex = data.index
-  data.pageSize = config.pageSize
-  data.size = config.pageSize
+  // 有index的查询接口才去加页码
+  if (typeof data.index !== 'undefined') {
+    data.pageIndex = data.index
+    data.pageSize = config.pageSize
+    data.size = config.pageSize
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: config.host + config.version + url,
