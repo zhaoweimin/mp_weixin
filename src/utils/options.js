@@ -75,6 +75,9 @@ let Options = {
     '香港特别行政区',
     '澳门特别行政区'
   ],
+  followWay: ['电话', '邮件', '亲自拜访', '微信', '短信', '其它'],
+  followType: ['转化成交', '客情维护'],
+  customerType: ['潜在客户', '成交客户'],
   nianjianyouxiao: ['是', '否']
 }
 export default Options

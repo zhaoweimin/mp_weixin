@@ -1,4 +1,5 @@
-import WXrequest from './WXrequest'
+// eslint-disable-next-line semi
+import WXrequest from './WXrequest';
 
 export default {
   // base action
@@ -211,11 +212,27 @@ export default {
           formid: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
           UrlParams: '',
           HeadFields: params,
-          Fentrys: [
-          ],
+          Fentrys: [],
           PluginName: null,
           PluginId: null
         }
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 客户跟进新增
+  addFollow (params) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '73a617ba-31f2-c3a3-1d0e-39e80b23f04c', // 固定id 不变
+        content: 'text/html',
+        AutoSend: 1, // ( 0表示起草不发送  1表示起草并发送下一环节  2表示起草后如果下一处理人与当前处理人是一个人，则连续发送) （必录）
+        StarterID: 10183,
+        FlowName: '客户跟进单', // 跟进单标题
+        FlowModelID: '59bd9d7b-c6c9-046b-36b0-39eb71be4e6c', // 客户跟进id
+        HeadFields: params
       }
     }
     return this.post(obj)

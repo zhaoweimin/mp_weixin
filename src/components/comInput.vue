@@ -17,7 +17,7 @@
                     <div v-else class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue}}</div>
                 </div>
                 <!-- 日期 -->
-                <picker v-if="type===3" mode="date" class="w-full rel pr20" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" :value="resultValue" start="2015-09-01" end="2017-09-01" @change="onDateChange">
+                <picker v-if="type===3" mode="date" class="w-full rel pr20" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" :value="resultValue" @change="onDateChange">
                     <span :class="[resultValue?'cblack':'clight',fontSize]">{{resultValue||'请选择'}}</span>
                     <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                 </picker>

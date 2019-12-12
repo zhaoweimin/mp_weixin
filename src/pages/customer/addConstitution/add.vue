@@ -416,7 +416,7 @@ export default {
           wx.showToast({
             title: res.PromptMsg,
             icon: 'success',
-            duration: 1500,
+            duration: 3000,
             success: () => {
               mpvue.switchTab({ url: '/pages/home/main' })
             }
@@ -424,7 +424,7 @@ export default {
         } else {
           wx.showToast({
             title: res.PromptMsg,
-            duration: 1500
+            duration: 3000
           })
         }
       })

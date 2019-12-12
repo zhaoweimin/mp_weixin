@@ -215,17 +215,8 @@ export default {
   data () {
     return {
       options: Options,
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      },
-      code: '',
       step: 0,
 
-      open: [false, false, false, false, false],
-      check: [true, true, false, false],
       souce_income: [
         { val: false, text: '工资，劳务报酬' },
         { val: false, text: '生产经营所得' },
@@ -395,10 +386,6 @@ export default {
   },
   created () {},
   methods: {
-    setOpen (key) {
-      this.open[key] = !this.open[key]
-      this.$forceUpdate()
-    },
     setStep (type) {
       if (type) {
         this.step += 1
