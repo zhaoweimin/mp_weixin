@@ -74,6 +74,7 @@ let Options = {
     '新疆维吾尔自治区',
     '香港特别行政区',
     '澳门特别行政区'
-  ]
+  ],
+  nianjianyouxiao: ['是', '否']
 }
 export default Options

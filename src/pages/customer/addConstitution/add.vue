@@ -42,212 +42,52 @@
         </div>
 
         <div class="msg-table" v-show="step === 0">
-            <div class="table">
-                <div class="line">
-                    <div class="key">客户编号</div>
-                    <div class="val dis-flex">
-                        <!-- <input v-show="isEdit" class="input" placeholder="请输入客户编号" placeholder-class="cplaceholder" type="text" v-model="code"> -->
-                        <div class="clink ta-l">A002</div>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">客户来源</div>
-                    <div class="val dis-flex">
-                        <picker class="flex-1 ta-l" @change="pickerSell" :value="sell" :range="sells" :disabled="!isEdit">
-                            {{sells[sell]}}
-                        </picker>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">客户来源明细</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">市场活动</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">机构名称</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入机构名称" placeholder-class="cplaceholder" type="text" v-model="code">
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">机构性质</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">性质</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">执照类型</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">营业执照</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">执照号码</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入执照号码" placeholder-class="cplaceholder" type="text" v-model="code">
-                    </div>
-                </div>
-
-                <div class="line ">
-                    <div class="key">有效期限</div>
-                    <div class="val">
-                        <div class=""></div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line ">
-                    <div class="key">年检有效</div>
-                    <div class="val"> <span class="iconfont iconright"></span></div>
-                </div>
-
-                <div class="line">
-                    <div class="flex-1">
-                        <div class="key l-end w100">注册地址</div>
-                        <div class="text-val text-placeholder">
-                            <textarea v-show="isEdit" class="input" placeholder="" placeholder-class="cplaceholder" type="text" value="广东省深圳市*******************" />
-                            </div>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">注册资本</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入注册资本（万元）" placeholder-class="cplaceholder" type="text">
-                    </div>
-                </div>
-            </div>
-             <!-- <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNumber" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNumber" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
             <comInput :type="2" fontSize="f14" paramkey="FTranType" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
             <comInput :type="2" fontSize="f14" paramkey="FtranTypeEntry" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FName" :textRight="false" title="客户姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="客户性别" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FDocumentType" :textRight="false" :options="options.certType" @getSelect="getSelect" title="证件类型" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FIDNumber" :textRight="false" title="证件号码" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FMaritalStatus" :textRight="false" :options="options.marriage" @getSelect="getSelect" title="婚姻状况" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="3" fontSize="f14" paramkey="FBirthDate" :textRight="false" title="出生年月" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNationality" :textRight="false" title="国籍" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="Fbthmis" :textRight="false" :options="options.birthCare" @getSelect="getSelect" title="生日关怀" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FName" :textRight="false" title="机构名称" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FInstitutional" :textRight="false" :options="options.institutionXinzhi" @getSelect="getSelect" title="机构性质" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FLicenseType" :textRight="false" :options="options.zhizhaoType" @getSelect="getSelect" title="执照类型" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FLicenseNumber" :textRight="false" title="执照号码" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FValidTerm" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="有效期限" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FYearCheck" :textRight="false" :options="options.nianjianyouxiao" @getSelect="getSelect" title="年检有效" :isSpecialBorderStyle="true" value=""></comInput>
             <div class="table pr15 line">
                 <div class="flex-1">
-                    <div class="key f14 l-end w100">工作单位</div>
-                    <textarea v-model="datas.Fcompany" class="text-val f14" placeholder="请输入工作单位" placeholder-class=""></textarea>
-                        </div>
-                    </div>
-                    <comInput :type="2" fontSize="f14" paramkey="FOccupation" :textRight="false" :options="options.job" @getSelect="getSelect" title="职业" :isSpecialBorderStyle="true" value=""></comInput>
-                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="Fposition" :textRight="false" title="职位" :isSpecialBorderStyle="true" value=""></comInput>
-                    <comInput :type="2" fontSize="f14" paramkey="FPermanentProvinces" :textRight="false" :options="options.province" @getSelect="getSelect" title="常住省份" :isSpecialBorderStyle="true" value=""></comInput>
-                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FPermanentCity" :textRight="false" title="常住城市" :isSpecialBorderStyle="true" value=""></comInput> -->
-                </div>
-
-                <div class="msg-table" v-show="step === 1">
-                    <div class="table">
-                        <div class="line required">
-                            <div class="key">主联系人</div>
-                            <div class="val">
-                                <input v-show="isEdit" class="input" placeholder="请输入主联系人" placeholder-class="cplaceholder" type="text" value="陈嘉尚">
-                            </div>
-                        </div>
-                        <div class="line required">
-                            <div class="key">性别</div>
-                            <div class="val dis-flex">
-                                <div class="flex-1 ta-l">男</div>
-                                <span class="iconfont iconright"></span>
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="key">年龄</div>
-                            <div class="val">
-                                <input v-show="isEdit" class="input" placeholder="请输入年龄" placeholder-class="cplaceholder" type="text" value="42">
-                            </div>
-                        </div>
-                        <div class="line required">
-                            <div class="key">主联系人电话</div>
-                            <div class="val">
-                                <input v-show="isEdit" class="input" placeholder="请输入紧急联系人电话" placeholder-class="cplaceholder" type="text" value="15501806521">
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="key">主联系人传真</div>
-                            <div class="val">
-                                <input v-show="isEdit" class="input" placeholder="请输入主联系人传真" placeholder-class="cplaceholder" type="text">
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="key">主联系人邮箱</div>
-                            <div class="val">
-                                <input v-show="isEdit" class="input" placeholder="请输入主联系人邮箱" placeholder-class="cplaceholder" type="text">
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="flex-1">
-                                <div class="key">通讯地址</div>
-                                <div class="text-val text-placeholder">
-                                    <textarea v-show="isEdit" class="input" placeholder="请输入通讯地址" placeholder-class="cplaceholder" type="text" value="深圳市南山向南村东二巷*坊*号" />
-                                    </div>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">法定代表人</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入法定代表人" placeholder-class="cplaceholder" type="text" value="陈嘉尚">
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">法定代表人性别</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">男</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
+                    <div class="key f14 l-end w100">注册地址</div>
+                    <textarea v-model="datas.FRegisteredAddress" class="text-val f14" placeholder="请输入注册地址" placeholder-class=""></textarea>
                 </div>
             </div>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FRegisteredCapital" :textRight="false" title="注册资本" :isSpecialBorderStyle="true" value=""></comInput>
+        </div>
+
+        <div class="msg-table" v-show="step === 1">
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainName" :textRight="false" title="主联系人姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FMGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FAge" :textRight="false" title="年龄" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainPhone" :textRight="false" title="主联系人手机" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainFax" :textRight="false" title="主联系人传真" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainEmail" :textRight="false" title="主联系人邮箱" :isSpecialBorderStyle="true" value=""></comInput>
+            <div class="table pr15 pb20 line required">
+                <div class="flex-1">
+                    <div class="key f14 l-end w100">通讯地址</div>
+                    <textarea v-model="datas.FAddress" class="text-val f14" placeholder="请输入通讯地址" placeholder-class=""></textarea>
+                </div>
+            </div>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="Frepresentative" :textRight="false" title="法定代表人" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FrepresentativeG" :textRight="false" :options="options.sex" @getSelect="getSelect" title="法定代表人性别" :isSpecialBorderStyle="true" value=""></comInput>
         </div>
 
         <div class="msg-table" v-show="step === 2">
+            <comInput :type="2" fontSize="f14" paramkey="FChoGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FChoold" :textRight="false" :options="options.ageRange" @getSelect="getSelect" title="年龄段" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="Findustry" :textRight="false" :options="options.industry" @getSelect="getSelect" title="行业" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FInvestment" :textRight="false" :options="options.investmentRate" @getSelect="getSelect" title="投资占收入比" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FYearInvest" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="投资理财年限" :isSpecialBorderStyle="true" value=""></comInput>
             <div class="table">
-                <div class="line">
-                    <div class="key">性别</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">男</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">年龄段</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">35岁以下</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">行业</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">互联网行业</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">投资占收入比</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">5%-20%</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">投资理财年限</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">2-5年</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-
                 <div class="line">
                     <div class="flex-1">
                         <div class="key">收入来源</div>
-                            <div class="check-bok">
+                        <div class="check-bok">
                             <div v-for="(vo, key) in souce_income" :key="key">
                                 <van-checkbox :value="vo.val" @change="onChange(key, 'income')">{{vo.text}}</van-checkbox>
                             </div>
@@ -255,94 +95,94 @@
                     </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">投资私募基金信息来源渠道</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_channel" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'channel')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">投资私募基金信息来源渠道</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_channel" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'channel')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">选择私募基金的关注点</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_point" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'point')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">选择私募基金的关注点</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_point" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'point')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">运动健康</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_exercise" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'exercise')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">运动健康</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_exercise" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'exercise')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">私享会</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_enjoy" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'enjoy')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">私享会</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_enjoy" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'enjoy')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">沙龙分享</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_salon" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'salon')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">沙龙分享</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_salon" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'salon')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">女性专享手作</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_hands" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'hands')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">女性专享手作</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_hands" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'hands')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">亲子/单人手作</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_selfHands" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'selfHands')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">亲子/单人手作</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_selfHands" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'selfHands')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">美食专享</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_food" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'food')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">美食专享</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_food" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'food')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
                 <div class="line">
-                <div class="flex-1">
-                    <div class="key">旅行</div>
-                    <div class="check-bok">
-                    <div v-for="(vo, key) in souce_travel" :key="key">
-                        <van-checkbox :value="vo.val" @change="onChange(key, 'travel')">{{vo.text}}</van-checkbox>
+                    <div class="flex-1">
+                        <div class="key">旅行</div>
+                        <div class="check-bok">
+                            <div v-for="(vo, key) in souce_travel" :key="key">
+                                <van-checkbox :value="vo.val" @change="onChange(key, 'travel')">{{vo.text}}</van-checkbox>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -358,6 +198,7 @@
 <script>
 import card from '@/components/card'
 import comInput from '@/components/comInput'
+import Options from '@/utils/Options.js'
 
 export default {
   components: {
@@ -371,17 +212,9 @@ export default {
   },
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      },
-      code: '',
+      options: Options,
       step: 0,
 
-      open: [false, false, false, false, false],
-      isEdit: true,
       check: [true, true, false, false],
       souce_income: [
         { val: false, text: '工资，劳务报酬' },
@@ -450,31 +283,31 @@ export default {
         { Field: 'FNumber', Value: '' },
         { Field: 'FTranType', Value: '' },
         { Field: 'FtranTypeEntry', Value: '' },
-        { Field: 'FName', Value: '客户姓名' }, // 客户姓名/机构姓名  机构客户两个name都需要填写
-        { Field: 'FName1', Value: '客户姓名' }, // 客户姓名/机构姓名
-        { Field: 'FInstitutional', Value: '机构性质' },
-        { Field: 'FLicenseType', Value: '执照类型' },
-        { Field: 'FLicenseNumber', Value: '执照号码' },
-        { Field: 'FValidTerm', Value: '有效期限' },
-        { Field: 'FYearCheck', Value: '年检有效' },
-        { Field: 'FRegisteredAddress', Value: '注册地址' },
-        { Field: 'FRegisteredCapital', Value: '注册资本' },
+        { Field: 'FName', Value: '' }, // 客户姓名/机构姓名  机构客户两个name都需要填写
+        { Field: 'FName1', Value: '' }, // 客户姓名/机构姓名
+        { Field: 'FInstitutional', Value: '' },
+        { Field: 'FLicenseType', Value: '' },
+        { Field: 'FLicenseNumber', Value: '' },
+        { Field: 'FValidTerm', Value: '' },
+        { Field: 'FYearCheck', Value: '' },
+        { Field: 'FRegisteredAddress', Value: '' },
+        { Field: 'FRegisteredCapital', Value: '' },
 
-        { Field: 'FMainName', Value: '主联系人姓名' },
-        { Field: 'FMGender', Value: '主联系人性别' },
-        { Field: 'FAge', Value: '年龄' },
-        { Field: 'FMainPhone', Value: '主联系人手机' },
-        { Field: 'FMainFax', Value: '主联系人传真' },
-        { Field: 'FMainEmail', Value: '主联系Email' },
-        { Field: 'FAddress', Value: '通讯地址' },
-        { Field: 'Frepresentative', Value: '法定代表人' },
-        { Field: 'FrepresentativeG', Value: '法定代表人性别' },
+        { Field: 'FMainName', Value: '' },
+        { Field: 'FMGender', Value: '' },
+        { Field: 'FAge', Value: '' },
+        { Field: 'FMainPhone', Value: '' },
+        { Field: 'FMainFax', Value: '' },
+        { Field: 'FMainEmail', Value: '' },
+        { Field: 'FAddress', Value: '' },
+        { Field: 'Frepresentative', Value: '' },
+        { Field: 'FrepresentativeG', Value: '' },
 
-        { Field: 'FChoGender', Value: '男' },
-        { Field: 'FChoold', Value: '年龄段' },
-        { Field: 'Findustry', Value: '行业' },
-        { Field: 'FInvestment', Value: '投资占收入比' },
-        { Field: 'FYearInvest', Value: '投资理财年限' },
+        { Field: 'FChoGender', Value: '' },
+        { Field: 'FChoold', Value: '' },
+        { Field: 'Findustry', Value: '' },
+        { Field: 'FInvestment', Value: '' },
+        { Field: 'FYearInvest', Value: '' },
 
         { Field: 'FChoIncom', Value: '' },
         { Field: 'FwhereFund', Value: '' },
@@ -521,24 +354,24 @@ export default {
         FTranType: '',
         FtranTypeEntry: '',
         FName: '',
-        FGender: '',
-        FDocumentType: '',
-        FIDNumber: '',
-        FMaritalStatus: '',
-        FBirthDate: '',
-        FNationality: '',
-        Fbthmis: '',
-        Fcompany: '',
-        FOccupation: '',
-        Fposition: '',
-        FPermanentProvinces: '',
-        FPermanentCity: '',
+        FName1: '',
+        FInstitutional: '',
+        FLicenseType: '',
+        FLicenseNumber: '',
+        FValidTerm: '',
+        FYearCheck: '',
+        FRegisteredAddress: '',
+        FRegisteredCapital: '',
 
-        FMobilePhone: '',
-        FPhoneType: '',
-        FEmergencyName: '',
-        FEmergencyPhone: '',
-        FMailingAddress: '',
+        FMainName: '',
+        FMGender: '',
+        FAge: '',
+        FMainPhone: '',
+        FMainFax: '',
+        FMainEmail: '',
+        FAddress: '',
+        Frepresentative: '',
+        FrepresentativeG: '',
 
         FChoGender: '',
         FChoold: '',
@@ -556,21 +389,11 @@ export default {
         Fhumanhandwork: [],
         Fdeliciousfood: [],
         FTourism: []
-      },
-
-      sells: ['直销', '代理'],
-      sexs: ['男', '女'],
-
-      sell: 0,
-      sex: 0
+      }
     }
   },
   created () {},
   methods: {
-    setOpen (key) {
-      this.open[key] = !this.open[key]
-      this.$forceUpdate()
-    },
     setStep (type) {
       if (type) {
         this.step += 1
@@ -578,65 +401,129 @@ export default {
         this.step -= 1
       }
     },
-    edit () {
-      // console.log(1)
-      if (!this.isEdit) {
-        this.isEdit = true
-      }
-    },
     lingQuestion (e) {
       let url = `../quetions/main?type=2`
       mpvue.navigateTo({ url })
     },
     submit () {
-      this.isEdit = false
-    },
-    cancle () {
-      this.isEdit = false
+      Object.keys(this.datas).forEach((item, index) => {
+        this.reqParams[index].Value = Array.isArray(this.datas[item]) ? this.datas[item].join(',') : this.datas[item]
+      })
+      console.log('reqParams=====', this.reqParams)
+      this.$api.UploadServerice(this.reqParams).then(res => {
+        console.log(res)
+        if (res.Result === 1) {
+          wx.showToast({
+            title: res.PromptMsg,
+            icon: 'success',
+            duration: 1500,
+            success: () => {
+              mpvue.switchTab({ url: '/pages/home/main' })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: res.PromptMsg,
+            duration: 1500
+          })
+        }
+      })
     },
     onChange (key, type) {
-      if (this.isEdit) {
-        switch (type) {
-          case 'income':
-            this.souce_income[key].val = !this.souce_income[key].val
-            break
-          case 'channel':
-            this.souce_channel[key].val = !this.souce_channel[key].val
-            break
-          case 'point':
-            this.souce_point[key].val = !this.souce_point[key].val
-            break
-          case 'exercise':
-            this.souce_exercise[key].val = !this.souce_exercise[key].val
-            break
-          case 'enjoy':
-            this.souce_enjoy[key].val = !this.souce_enjoy[key].val
-            break
-          case 'salon':
-            this.souce_salon[key].val = !this.souce_salon[key].val
-            break
-          case 'hands':
-            this.souce_hands[key].val = !this.souce_hands[key].val
-            break
-          case 'selfHands':
-            this.souce_selfHands[key].val = !this.souce_selfHands[key].val
-            break
-          case 'food':
-            this.souce_food[key].val = !this.souce_food[key].val
-            break
-          case 'travel':
-            this.souce_travel[key].val = !this.souce_travel[key].val
-            break
-        }
-        this.$forceUpdate()
+      switch (type) {
+        case 'income':
+          this.souce_income[key].val = !this.souce_income[key].val
+          if (this.souce_income[key].val) {
+            this.datas.FChoIncom.push(this.souce_income[key].text)
+          } else {
+            this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
+          }
+          break
+        case 'channel':
+          this.souce_channel[key].val = !this.souce_channel[key].val
+          if (this.souce_channel[key].val) {
+            this.datas.FwhereFund.push(this.souce_channel[key].text)
+          } else {
+            this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
+          }
+          break
+        case 'point':
+          this.souce_point[key].val = !this.souce_point[key].val
+          if (this.souce_point[key].val) {
+            this.datas.FFollowFund.push(this.souce_point[key].text)
+          } else {
+            this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
+          }
+          break
+        case 'exercise':
+          this.souce_exercise[key].val = !this.souce_exercise[key].val
+          if (this.souce_exercise[key].val) {
+            this.datas.Fhealthy.push(this.souce_exercise[key].text)
+          } else {
+            this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
+          }
+          break
+        case 'enjoy':
+          this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+          if (this.souce_enjoy[key].val) {
+            this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
+          } else {
+            this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
+          }
+          break
+        case 'salon':
+          this.souce_salon[key].val = !this.souce_salon[key].val
+          if (this.souce_salon[key].val) {
+            this.datas.FsalonMeet.push(this.souce_salon[key].text)
+          } else {
+            this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
+          }
+          break
+        case 'hands':
+          this.souce_hands[key].val = !this.souce_hands[key].val
+          if (this.souce_hands[key].val) {
+            this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
+          } else {
+            this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
+          }
+          break
+        case 'selfHands':
+          this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+          if (this.souce_selfHands[key].val) {
+            this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
+          } else {
+            this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
+          }
+          break
+        case 'food':
+          this.souce_food[key].val = !this.souce_food[key].val
+          if (this.souce_food[key].val) {
+            this.datas.Fdeliciousfood.push(this.souce_food[key].text)
+          } else {
+            this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
+          }
+          break
+        case 'travel':
+          this.souce_travel[key].val = !this.souce_travel[key].val
+          if (this.souce_travel[key].val) {
+            this.datas.FTourism.push(this.souce_travel[key].text)
+          } else {
+            this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
+          }
+          break
       }
+      this.$forceUpdate()
     },
-    onSexChange (e) {
-      console.log(e)
+    getSelect (data) {
+      console.log(data)
+      this.datas[data.key] = data.value
     },
-    pickerSell (e) {
-      console.log(e)
-      this.seel = e.mp.detail.value
+    getInputVal (data) {
+      console.log(data)
+      if (data.key === 'FName') {
+        this.datas.FName1 = data.value
+      }
+      this.datas[data.key] = data.value
     }
   }
 }
