@@ -42,7 +42,7 @@
         </div>
 
         <div class="msg-table" v-show="step === 0">
-            <comInput :type="1" fontSize="f14" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNumber" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
             <comInput :type="2" fontSize="f14" paramkey="FTranType" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
             <comInput :type="2" fontSize="f14" paramkey="FtranTypeEntry" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FName" :textRight="false" title="客户姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
@@ -225,7 +225,6 @@ export default {
       step: 0,
 
       open: [false, false, false, false, false],
-      isEdit: true,
       check: [true, true, false, false],
       souce_income: [
         { val: false, text: '工资，劳务报酬' },
@@ -290,54 +289,69 @@ export default {
         { val: false, text: '其他' }
       ],
 
-      reqParams: {
-        id: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
-        formdata: {
-          formid: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
-          UrlParams: '',
-          HeadFields: [
-            { Field: 'FTranType', Value: '' },
-            { Field: 'FtranTypeEntry', Value: '' },
-            { Field: 'FName', Value: '' },
-            { Field: 'FGender', Value: '' },
-            { Field: 'FDocumentType', Value: '' },
-            { Field: 'FIDNumber', Value: '' },
-            { Field: 'FMaritalStatus', Value: '' },
-            { Field: 'FBirthDate', Value: '' },
-            { Field: 'FNationality', Value: '' },
-            { Field: 'Fbthmis', Value: '' },
-            { Field: 'Fcompany', Value: '' },
-            { Field: 'FOccupation', Value: '' },
-            { Field: 'Fposition', Value: '' },
-            { Field: 'FPermanentProvinces', Value: '' },
-            { Field: 'FPermanentCity', Value: '' },
+      reqParams: [
+        { Field: 'FNumber', Value: '' },
+        { Field: 'FTranType', Value: '' },
+        { Field: 'FtranTypeEntry', Value: '' },
+        { Field: 'FName', Value: '' },
+        { Field: 'FGender', Value: '' },
+        { Field: 'FDocumentType', Value: '' },
+        { Field: 'FIDNumber', Value: '' },
+        { Field: 'FMaritalStatus', Value: '' },
+        { Field: 'FBirthDate', Value: '' },
+        { Field: 'FNationality', Value: '' },
+        { Field: 'Fbthmis', Value: '' },
+        { Field: 'Fcompany', Value: '' },
+        { Field: 'FOccupation', Value: '' },
+        { Field: 'Fposition', Value: '' },
+        { Field: 'FPermanentProvinces', Value: '' },
+        { Field: 'FPermanentCity', Value: '' },
 
-            { Field: 'FMobilePhone', Value: '' },
-            { Field: 'FPhoneType', Value: '' },
-            { Field: 'FEmergencyName', Value: '' },
-            { Field: 'FEmergencyPhone', Value: '' },
-            { Field: 'FMailingAddress', Value: '' },
+        { Field: 'FMobilePhone', Value: '' },
+        { Field: 'FPhoneType', Value: '' },
+        { Field: 'FEmergencyName', Value: '' },
+        { Field: 'FEmergencyPhone', Value: '' },
+        { Field: 'FMailingAddress', Value: '' },
 
-            { Field: 'FChoGender', Value: '' },
-            { Field: 'FChoold', Value: '' },
-            { Field: 'Findustry', Value: '' },
-            { Field: 'FInvestment', Value: '' },
-            { Field: 'FYearInvest', Value: '' },
+        { Field: 'FChoGender', Value: '' },
+        { Field: 'FChoold', Value: '' },
+        { Field: 'Findustry', Value: '' },
+        { Field: 'FInvestment', Value: '' },
+        { Field: 'FYearInvest', Value: '' },
 
-            { Field: 'FChoIncom', Value: '' },
-            { Field: 'FwhereFund', Value: '' },
-            { Field: 'FFollowFund', Value: '' },
-            { Field: 'Fhealthy', Value: '' },
-            { Field: 'FprivateMeet', Value: '' },
-            { Field: 'FsalonMeet', Value: '' },
-            { Field: 'Fwomenhandwork', Value: '' },
-            { Field: 'Fhumanhandwork', Value: '' },
-            { Field: 'Fdeliciousfood', Value: '' },
-            { Field: 'FTourism', Value: '' }
-          ]
-        }
-      },
+        { Field: 'FChoIncom', Value: '' },
+        { Field: 'FwhereFund', Value: '' },
+        { Field: 'FFollowFund', Value: '' },
+        { Field: 'Fhealthy', Value: '' },
+        { Field: 'FprivateMeet', Value: '' },
+        { Field: 'FsalonMeet', Value: '' },
+        { Field: 'Fwomenhandwork', Value: '' },
+        { Field: 'Fhumanhandwork', Value: '' },
+        { Field: 'Fdeliciousfood', Value: '' },
+        { Field: 'FTourism', Value: '' },
+
+        // 默认必传的字段
+        { Field: 'FPublic', Value: '否' },
+        { Field: 'FCreateUserId', Value: '管理员' },
+        { Field: 'FCreateTime', Value: '当前时间' },
+        { Field: 'GSbumen', Value: '天玑财富' },
+        { Field: 'string17', Value: '1' },
+        { Field: 'FupdateUserId', Value: '管理员' },
+        { Field: 'FUpdateTime', Value: '当前时间' },
+        { Field: 'FIsstatic', Value: '未导入' },
+        { Field: 'Fchangestatic', Value: '否' },
+        { Field: 'FoverPerson', Value: '否' },
+        { Field: 'string3', Value: '1' },
+        { Field: 'string6', Value: '否' },
+        { Field: 'string7', Value: '否' },
+        { Field: 'string11', Value: '否' },
+        { Field: 'string15', Value: '1' },
+        { Field: 'string16', Value: 0 },
+        { Field: 'string8', Value: '10183' },
+        { Field: 'string21', Value: '0' }
+      ],
       datas: {
+        FNumber: '',
         FTranType: '',
         FtranTypeEntry: '',
         FName: '',
@@ -392,112 +406,117 @@ export default {
         this.step -= 1
       }
     },
-    edit () {
-      // console.log(1)
-      if (!this.isEdit) {
-        this.isEdit = true
-      }
-    },
     lingQuestion (e) {
       let url = `../quetions/main?type=1`
       mpvue.navigateTo({ url })
     },
     submit () {
-      this.isEdit = false
       Object.keys(this.datas).forEach((item, index) => {
-        this.reqParams.formdata.HeadFields[index].Value = this.datas[item]
+        this.reqParams[index].Value = Array.isArray(this.datas[item]) ? this.datas[item].join(',') : this.datas[item]
       })
-      console.log('11111=====', this.reqParams.formdata.HeadFields)
-    },
-    cancle () {
-      this.isEdit = false
+      console.log('11111=====', this.reqParams)
+      this.$api.UploadServerice(this.reqParams).then(res => {
+        console.log(res)
+        if (res.Result === 1) {
+          wx.showToast({
+            title: res.PromptMsg,
+            icon: 'success',
+            duration: 1000
+          })
+          mpvue.switchTab({ url: '/pages/home/main' })
+        } else {
+          wx.showToast({
+            title: res.PromptMsg,
+            duration: 1000
+          })
+        }
+        // if(res.Result)
+      })
     },
     onChange (key, type) {
-      if (this.isEdit) {
-        switch (type) {
-          case 'income':
-            this.souce_income[key].val = !this.souce_income[key].val
-            if (this.souce_income[key].val) {
-              this.datas.FChoIncom.push(this.souce_income[key].text)
-            } else {
-              this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
-            }
-            break
-          case 'channel':
-            this.souce_channel[key].val = !this.souce_channel[key].val
-            if (this.souce_channel[key].val) {
-              this.datas.FwhereFund.push(this.souce_channel[key].text)
-            } else {
-              this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
-            }
-            break
-          case 'point':
-            this.souce_point[key].val = !this.souce_point[key].val
-            if (this.souce_point[key].val) {
-              this.datas.FFollowFund.push(this.souce_point[key].text)
-            } else {
-              this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
-            }
-            break
-          case 'exercise':
-            this.souce_exercise[key].val = !this.souce_exercise[key].val
-            if (this.souce_exercise[key].val) {
-              this.datas.Fhealthy.push(this.souce_exercise[key].text)
-            } else {
-              this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
-            }
-            break
-          case 'enjoy':
-            this.souce_enjoy[key].val = !this.souce_enjoy[key].val
-            if (this.souce_enjoy[key].val) {
-              this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
-            } else {
-              this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
-            }
-            break
-          case 'salon':
-            this.souce_salon[key].val = !this.souce_salon[key].val
-            if (this.souce_salon[key].val) {
-              this.datas.FsalonMeet.push(this.souce_salon[key].text)
-            } else {
-              this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
-            }
-            break
-          case 'hands':
-            this.souce_hands[key].val = !this.souce_hands[key].val
-            if (this.souce_hands[key].val) {
-              this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
-            } else {
-              this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
-            }
-            break
-          case 'selfHands':
-            this.souce_selfHands[key].val = !this.souce_selfHands[key].val
-            if (this.souce_selfHands[key].val) {
-              this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
-            } else {
-              this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
-            }
-            break
-          case 'food':
-            this.souce_food[key].val = !this.souce_food[key].val
-            if (this.souce_food[key].val) {
-              this.datas.Fdeliciousfood.push(this.souce_food[key].text)
-            } else {
-              this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
-            }
-            break
-          case 'travel':
-            this.souce_travel[key].val = !this.souce_travel[key].val
-            if (this.souce_travel[key].val) {
-              this.datas.FTourism.push(this.souce_travel[key].text)
-            } else {
-              this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
-            }
-            break
-        }
-        this.$forceUpdate()
+      switch (type) {
+        case 'income':
+          this.souce_income[key].val = !this.souce_income[key].val
+          if (this.souce_income[key].val) {
+            this.datas.FChoIncom.push(this.souce_income[key].text)
+          } else {
+            this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
+          }
+          break
+        case 'channel':
+          this.souce_channel[key].val = !this.souce_channel[key].val
+          if (this.souce_channel[key].val) {
+            this.datas.FwhereFund.push(this.souce_channel[key].text)
+          } else {
+            this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
+          }
+          break
+        case 'point':
+          this.souce_point[key].val = !this.souce_point[key].val
+          if (this.souce_point[key].val) {
+            this.datas.FFollowFund.push(this.souce_point[key].text)
+          } else {
+            this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
+          }
+          break
+        case 'exercise':
+          this.souce_exercise[key].val = !this.souce_exercise[key].val
+          if (this.souce_exercise[key].val) {
+            this.datas.Fhealthy.push(this.souce_exercise[key].text)
+          } else {
+            this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
+          }
+          break
+        case 'enjoy':
+          this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+          if (this.souce_enjoy[key].val) {
+            this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
+          } else {
+            this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
+          }
+          break
+        case 'salon':
+          this.souce_salon[key].val = !this.souce_salon[key].val
+          if (this.souce_salon[key].val) {
+            this.datas.FsalonMeet.push(this.souce_salon[key].text)
+          } else {
+            this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
+          }
+          break
+        case 'hands':
+          this.souce_hands[key].val = !this.souce_hands[key].val
+          if (this.souce_hands[key].val) {
+            this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
+          } else {
+            this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
+          }
+          break
+        case 'selfHands':
+          this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+          if (this.souce_selfHands[key].val) {
+            this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
+          } else {
+            this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
+          }
+          break
+        case 'food':
+          this.souce_food[key].val = !this.souce_food[key].val
+          if (this.souce_food[key].val) {
+            this.datas.Fdeliciousfood.push(this.souce_food[key].text)
+          } else {
+            this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
+          }
+          break
+        case 'travel':
+          this.souce_travel[key].val = !this.souce_travel[key].val
+          if (this.souce_travel[key].val) {
+            this.datas.FTourism.push(this.souce_travel[key].text)
+          } else {
+            this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
+          }
+          break
       }
+      this.$forceUpdate()
     },
     getSelect (data) {
       console.log(data)

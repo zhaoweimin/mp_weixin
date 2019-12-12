@@ -120,53 +120,74 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="msg-table" v-show="step === 1">
-            <div class="table" >
-                <div class="line required">
-                    <div class="key">主联系人</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入主联系人" placeholder-class="cplaceholder" type="text" value="陈嘉尚">
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">性别</div>
-                    <div class="val dis-flex">
-                        <div class="flex-1 ta-l">男</div>
-                        <span class="iconfont iconright"></span>
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">年龄</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入年龄" placeholder-class="cplaceholder" type="text" value="42">
-                    </div>
-                </div>
-                <div class="line required">
-                    <div class="key">主联系人电话</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入紧急联系人电话" placeholder-class="cplaceholder" type="text" value="15501806521">
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">主联系人传真</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入主联系人传真" placeholder-class="cplaceholder" type="text">
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="key">主联系人邮箱</div>
-                    <div class="val">
-                        <input v-show="isEdit" class="input" placeholder="请输入主联系人邮箱" placeholder-class="cplaceholder" type="text">
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="flex-1">
-                        <div class="key">通讯地址</div>
-                        <div class="text-val text-placeholder">
-                        <textarea v-show="isEdit" class="input" placeholder="请输入通讯地址" placeholder-class="cplaceholder" type="text" value="深圳市南山向南村东二巷*坊*号" />
+             <!-- <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNumber" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FTranType" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FtranTypeEntry" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FName" :textRight="false" title="客户姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="客户性别" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FDocumentType" :textRight="false" :options="options.certType" @getSelect="getSelect" title="证件类型" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FIDNumber" :textRight="false" title="证件号码" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="FMaritalStatus" :textRight="false" :options="options.marriage" @getSelect="getSelect" title="婚姻状况" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="3" fontSize="f14" paramkey="FBirthDate" :textRight="false" title="出生年月" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNationality" :textRight="false" title="国籍" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" paramkey="Fbthmis" :textRight="false" :options="options.birthCare" @getSelect="getSelect" title="生日关怀" :isSpecialBorderStyle="true" value=""></comInput>
+            <div class="table pr15 line">
+                <div class="flex-1">
+                    <div class="key f14 l-end w100">工作单位</div>
+                    <textarea v-model="datas.Fcompany" class="text-val f14" placeholder="请输入工作单位" placeholder-class=""></textarea>
                         </div>
+                    </div>
+                    <comInput :type="2" fontSize="f14" paramkey="FOccupation" :textRight="false" :options="options.job" @getSelect="getSelect" title="职业" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="Fposition" :textRight="false" title="职位" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="2" fontSize="f14" paramkey="FPermanentProvinces" :textRight="false" :options="options.province" @getSelect="getSelect" title="常住省份" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FPermanentCity" :textRight="false" title="常住城市" :isSpecialBorderStyle="true" value=""></comInput> -->
+                </div>
+
+                <div class="msg-table" v-show="step === 1">
+                    <div class="table">
+                        <div class="line required">
+                            <div class="key">主联系人</div>
+                            <div class="val">
+                                <input v-show="isEdit" class="input" placeholder="请输入主联系人" placeholder-class="cplaceholder" type="text" value="陈嘉尚">
+                            </div>
+                        </div>
+                        <div class="line required">
+                            <div class="key">性别</div>
+                            <div class="val dis-flex">
+                                <div class="flex-1 ta-l">男</div>
+                                <span class="iconfont iconright"></span>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="key">年龄</div>
+                            <div class="val">
+                                <input v-show="isEdit" class="input" placeholder="请输入年龄" placeholder-class="cplaceholder" type="text" value="42">
+                            </div>
+                        </div>
+                        <div class="line required">
+                            <div class="key">主联系人电话</div>
+                            <div class="val">
+                                <input v-show="isEdit" class="input" placeholder="请输入紧急联系人电话" placeholder-class="cplaceholder" type="text" value="15501806521">
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="key">主联系人传真</div>
+                            <div class="val">
+                                <input v-show="isEdit" class="input" placeholder="请输入主联系人传真" placeholder-class="cplaceholder" type="text">
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="key">主联系人邮箱</div>
+                            <div class="val">
+                                <input v-show="isEdit" class="input" placeholder="请输入主联系人邮箱" placeholder-class="cplaceholder" type="text">
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="flex-1">
+                                <div class="key">通讯地址</div>
+                                <div class="text-val text-placeholder">
+                                    <textarea v-show="isEdit" class="input" placeholder="请输入通讯地址" placeholder-class="cplaceholder" type="text" value="深圳市南山向南村东二巷*坊*号" />
+                                    </div>
                     </div>
                 </div>
                 <div class="line">
@@ -336,10 +357,12 @@
 
 <script>
 import card from '@/components/card'
+import comInput from '@/components/comInput'
 
 export default {
   components: {
-    card
+    card,
+    comInput
   },
   computed: {
     updateSource () {
@@ -364,7 +387,7 @@ export default {
         { val: false, text: '工资，劳务报酬' },
         { val: false, text: '生产经营所得' },
         { val: false, text: '利息、股息，转让证券等金融性资产收入' },
-        { val: false, text: '出租、出售房地产等非金融性资产收入 ' }
+        { val: false, text: '出租、出售房地产等非金融性资产收入' }
       ],
       souce_channel: [
         { val: false, text: '互联网' },
@@ -377,23 +400,29 @@ export default {
       souce_point: [
         { val: false, text: '私募基金管理机构的品牌' },
         { val: false, text: '基金销售机构的宣传和推介' },
-        { val: false, text: '私募基金的业绩表现 ' },
+        { val: false, text: '私募基金的业绩表现' },
         { val: false, text: '综合考虑私募基金管理机构的管理能力' }
       ],
       souce_exercise: [
         { val: false, text: '马术运动' },
         { val: false, text: '帆船/游艇出海' },
-        { val: false, text: '高尔夫赛事/体验场' },
+        { val: false, text: '室内高尔夫' },
         { val: false, text: '网球' },
         { val: false, text: '射箭' },
         { val: false, text: '羽毛球' },
         { val: false, text: '其他' }
       ],
-      souce_enjoy: [{ val: false, text: '红酒品鉴' }, { val: false, text: '形象提升' }, { val: false, text: '美体/形体培训' }, { val: false, text: '珠宝鉴赏' }, { val: false, text: '其他' }],
+      souce_enjoy: [
+        { val: false, text: '红酒品鉴' },
+        { val: false, text: '形象提升（男/女）' },
+        { val: false, text: '美体/形体培训' },
+        { val: false, text: '珠宝鉴赏' },
+        { val: false, text: '其他' }
+      ],
       souce_salon: [{ val: false, text: '摄影分享' }, { val: false, text: '花艺沙龙' }, { val: false, text: '投资策略' }, { val: false, text: '茶艺沙龙' }, { val: false, text: '其他' }],
       souce_hands: [
         { val: false, text: '香水手作' },
-        { val: false, text: '小黑裙手作 ' },
+        { val: false, text: '小黑裙手作' },
         { val: false, text: '包包手作' },
         { val: false, text: '香薰干花蜡烛手作' },
         { val: false, text: '口红手作' },
@@ -416,6 +445,118 @@ export default {
         { val: false, text: '海滨海岛' },
         { val: false, text: '其他' }
       ],
+
+      reqParams: [
+        { Field: 'FNumber', Value: '' },
+        { Field: 'FTranType', Value: '' },
+        { Field: 'FtranTypeEntry', Value: '' },
+        { Field: 'FName', Value: '客户姓名' }, // 客户姓名/机构姓名  机构客户两个name都需要填写
+        { Field: 'FName1', Value: '客户姓名' }, // 客户姓名/机构姓名
+        { Field: 'FInstitutional', Value: '机构性质' },
+        { Field: 'FLicenseType', Value: '执照类型' },
+        { Field: 'FLicenseNumber', Value: '执照号码' },
+        { Field: 'FValidTerm', Value: '有效期限' },
+        { Field: 'FYearCheck', Value: '年检有效' },
+        { Field: 'FRegisteredAddress', Value: '注册地址' },
+        { Field: 'FRegisteredCapital', Value: '注册资本' },
+
+        { Field: 'FMainName', Value: '主联系人姓名' },
+        { Field: 'FMGender', Value: '主联系人性别' },
+        { Field: 'FAge', Value: '年龄' },
+        { Field: 'FMainPhone', Value: '主联系人手机' },
+        { Field: 'FMainFax', Value: '主联系人传真' },
+        { Field: 'FMainEmail', Value: '主联系Email' },
+        { Field: 'FAddress', Value: '通讯地址' },
+        { Field: 'Frepresentative', Value: '法定代表人' },
+        { Field: 'FrepresentativeG', Value: '法定代表人性别' },
+
+        { Field: 'FChoGender', Value: '男' },
+        { Field: 'FChoold', Value: '年龄段' },
+        { Field: 'Findustry', Value: '行业' },
+        { Field: 'FInvestment', Value: '投资占收入比' },
+        { Field: 'FYearInvest', Value: '投资理财年限' },
+
+        { Field: 'FChoIncom', Value: '' },
+        { Field: 'FwhereFund', Value: '' },
+        { Field: 'FFollowFund', Value: '' },
+        { Field: 'Fhealthy', Value: '' },
+        { Field: 'FprivateMeet', Value: '' },
+        { Field: 'FsalonMeet', Value: '' },
+        { Field: 'Fwomenhandwork', Value: '' },
+        { Field: 'Fhumanhandwork', Value: '' },
+        { Field: 'Fdeliciousfood', Value: '' },
+        { Field: 'FTourism', Value: '' },
+
+        // 默认
+        { Field: 'Fassessment', Value: 100 },
+        { Field: 'FRiskLevel', Value: 'C5' },
+        { Field: 'Fbear', Value: '进取型' },
+        { Field: 'FproductLevel', Value: 'R1、R2、R3、R4、R5' },
+        { Field: 'date1', Value: '2019-12-09' },
+
+        // 默认必传的字段
+        { Field: 'FApplySubject', Value: '机构客户' }, // 默认
+        { Field: 'FCustomerType', Value: '潜在客户' }, // 默认
+        { Field: 'FPublic', Value: '否' },
+        { Field: 'FCreateUserId', Value: '管理员' },
+        { Field: 'FCreateTime', Value: '当前时间' },
+        { Field: 'GSbumen', Value: '天玑财富' },
+        { Field: 'string17', Value: '1' },
+        { Field: 'FupdateUserId', Value: '管理员' },
+        { Field: 'FUpdateTime', Value: '当前时间' },
+        { Field: 'FIsstatic', Value: '未导入' },
+        { Field: 'Fchangestatic', Value: '否' },
+        { Field: 'FoverPerson', Value: '否' },
+        { Field: 'string3', Value: '1' },
+        { Field: 'string6', Value: '否' },
+        { Field: 'string7', Value: '否' },
+        { Field: 'string11', Value: '否' },
+        { Field: 'string15', Value: '1' },
+        { Field: 'string16', Value: 0 },
+        { Field: 'string8', Value: '10183' },
+        { Field: 'string21', Value: '0' }
+      ],
+      datas: {
+        FNumber: '',
+        FTranType: '',
+        FtranTypeEntry: '',
+        FName: '',
+        FGender: '',
+        FDocumentType: '',
+        FIDNumber: '',
+        FMaritalStatus: '',
+        FBirthDate: '',
+        FNationality: '',
+        Fbthmis: '',
+        Fcompany: '',
+        FOccupation: '',
+        Fposition: '',
+        FPermanentProvinces: '',
+        FPermanentCity: '',
+
+        FMobilePhone: '',
+        FPhoneType: '',
+        FEmergencyName: '',
+        FEmergencyPhone: '',
+        FMailingAddress: '',
+
+        FChoGender: '',
+        FChoold: '',
+        Findustry: '',
+        FInvestment: '',
+        FYearInvest: '',
+
+        FChoIncom: [],
+        FwhereFund: [],
+        FFollowFund: [],
+        Fhealthy: [],
+        FprivateMeet: [],
+        FsalonMeet: [],
+        Fwomenhandwork: [],
+        Fhumanhandwork: [],
+        Fdeliciousfood: [],
+        FTourism: []
+      },
 
       sells: ['直销', '代理'],
       sexs: ['男', '女'],

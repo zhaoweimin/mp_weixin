@@ -104,8 +104,23 @@ export default {
     return this.post(obj)
   },
 
-  // 阿卢
-  alu () {
-
+  // 客户新增
+  UploadServerice (params) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=SaveForm',
+      data: {
+        id: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
+        formdata: {
+          formid: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
+          UrlParams: '',
+          HeadFields: params,
+          Fentrys: [
+          ],
+          PluginName: null,
+          PluginId: null
+        }
+      }
+    }
+    return this.post(obj)
   }
 }
