@@ -236,5 +236,22 @@ export default {
       }
     }
     return this.post(obj)
+  },
+
+  // 产品预约-新建预约提交审核
+  addBooking (params) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '73a617ba-31f2-c3a3-1d0e-39e80b23f04c',
+        content: 'text/html',
+        AutoSend: 1,
+        StarterID: 10183,
+        FlowName: '产品预约',
+        FlowModelID: '84abc643-3ddf-c85b-1555-39eb67fca24f',
+        HeadFields: params
+      }
+    }
+    return this.post(obj)
   }
 }

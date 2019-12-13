@@ -1,185 +1,180 @@
 <template>
     <div class="main">
-        <div class="booking" :class="{noEdit: isEdit == 0}">
+        <div class="booking">
             <div class="block">
                 <div class="title">客户信息</div>
                 <div class="from">
-                    <div class="line">
-                        <div class="key">预约编号</div>
-                        <div class="val" v-if="isEdit == 1">
-                            <span class="clink">201903201530326548</span>
-                        </div>
-                        <div class="val ta-r" v-if="isEdit == 0">
-                            <span>201903201530326548</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">客户姓名</div>
-                        <div class="val" v-if="isEdit == 1">
-                            <input type="text" placeholder="请输入客户姓名" placeholder-class="cgey">
-                        </div>
-                        <div class="val ta-r" v-if="isEdit == 0">
-                            <span>客户姓名</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">证件类型</div>
-                        <div class="val" v-if="isEdit == 1">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择证件类型
-                                </div>
-                            </picker>
-                        </div>
-                        <div class="val ta-r" v-if="isEdit == 0">
-                            <span>身份证</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">证件号码</div>
-                        <div class="val" v-if="isEdit == 1">
-                            <input type="text" placeholder="请输入证件号码" placeholder-class="cgey">
-                        </div>
-                        <div class="val ta-r" v-if="isEdit == 0">
-                            <span>xxxxxxxxxxx</span>
-                        </div>
-                    </div>
-
+                    <comInput :type="1" title="预约编号" paramkey="string1" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="1" title="客户姓名" paramkey="string13" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="2" title="证件类型" paramkey="string3" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
+                    <comInput :type="1" title="证件号码" paramkey="string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
                 </div>
             </div>
         </div>
-
         <div class="booking">
             <div class="block">
                 <div class="title">产品信息</div>
                 <div class="from">
-                    <div class="line">
-                        <div class="key">产品类别</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品类别']}}</div>
-                    </div>
-                    <div class="line">
-                        <div class="key">产品编号</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品编号']}}</div>
-                    </div>
-                    <div class="line">
-                        <div class="key">产品名称</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品名称']}}</div>
-                    </div>
-                    <div class="line">
-                        <div class="key">产品期限 </div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['产品期限']}}个月</div>
-                    </div>
-                    <div class="line">
-                        <div class="key">募集账户 </div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['募集账户']}}</div>
-                    </div>
-                    <div class="line">
-                        <div class="key">已募集份数</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['已募集份数']}}</div>
-                    </div>
-                    <div class="line">
-                        <div class="key">已募集金额</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['已募集金额']}}</div>
-                    </div>
-                    <div class="line">
-                        <div class="key">剩余募集金额</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['剩余募集金额']}}</div>
-                    </div>
-
-                    <div class="line">
-                        <div class="key">已预约人数</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">
-                            <!-- <div class="icon"><span class="iconfont iconright"></span></div> -->
-                            <div>{{info['已预约人数']}}</div>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">已预约金额</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">
-                            <!-- <div class="icon"><span class="iconfont iconright"></span></div> -->
-                            <div>{{info['已预约金额']}}</div>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">剩余可预约</div>
-                        <div class="val" :class="{'ta-r': isEdit == 0}">{{info['剩余可预约']}}</div>
-                    </div>
-
+                    <comInput :type="0" title="产品类别" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="产品编号" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="产品名称" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="产品期限" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="募集账户" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="已募集份数" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="已募集金额" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="剩余募集金额" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="已预约人数" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="已预约金额" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <comInput :type="0" title="剩余可预约" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
                 </div>
             </div>
         </div>
-
         <div class="booking">
             <div class="block">
                 <div class="title">付款信息</div>
                 <div class="from">
-                    <div class="line">
-                        <div class="key">预约付款日期</div>
-                        <div class="val" v-if="isEdit == 1">
-                            <picker mode="date" :value="booking_date" start="1990-09-01" end="2050-09-01" @change="bindBookingChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="booking_date != ''">
-                                    {{booking_date}}
-                                </div>
-                                <div class="picker cgey" v-if="booking_date == ''">
-                                    请选择预约付款日期
-                                </div>
-                            </picker>
-                        </div>
-                        <div class="val ta-r" v-if="isEdit == 0">
-                            <span>2018-10-09</span>
-                        </div>
-                    </div>
-                    <!-- <div class="line">
-            <div class="key">实际付款日期</div>
-            <div class="val" v-if="isEdit == 1">
-              <picker mode="date" :value="pay_date" start="1990-09-01" end="2050-09-01"  @change="bindPayChange">
-                <div class="icon"><span class="iconfont iconright"></span></div>
-                <div class="picker" v-if="pay_date != ''">
-                  {{pay_date}}
-                </div>
-                <div class="picker cgey" v-if="pay_date == ''">
-                  请选择实际付款日期
-                </div>
-              </picker>
-            </div>
-            <div class="val ta-r" v-if="isEdit == 0">
-              <span>2018-10-09</span>
-            </div>
-          </div> -->
-                    <div class="line">
-                        <div class="key">出资金额 </div>
-                        <div class="val" v-if="isEdit == 1">
-                            <input type="text" placeholder="请输入出资金额（元）" placeholder-class="cgey">
-                        </div>
-                        <div class="val ta-r" v-if="isEdit == 0">
-                            <span>XXXXX元</span>
-                        </div>
-                    </div>
-
+                    <comInput :type="3" title="预约打款日期" paramkey="FBirthDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+                    <!-- <comInput :type="3" title="实际打款日期" paramkey="FBirthDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput> -->
+                    <comInput :type="1" title="出资金额" paramkey="FNumber" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
                 </div>
             </div>
         </div>
-
-        <button class="btn-submit" @click="send()" v-if="isEdit == 1">提交审核</button>
-
+        <button class="btn-submit" @click="send()">提交审核</button>
     </div>
 </template>
 
 <script>
+import comInput from '@/components/comInput'
+import Options from '@/utils/Options.js'
 export default {
   data () {
     return {
-      isEdit: 0,
+      options: Options,
       info: {},
       type_range: ['身份证', '护照'],
       type: '',
       booking_date: '',
-      pay_date: ''
+      pay_date: '',
+      reqParam: [
+        {
+          Field: 'string1', // 预约编码
+          Value: '66666666666666666' // 值
+        },
+        {
+          Field: 'string13', // 客户姓名
+          Value: 'TJ-00110220190821CRM'
+        },
+        {
+          Field: 'string3', // 证件类型
+          Value: '证件类型'
+        },
+        {
+          Field: 'string2', // 证件号码
+          Value: '证件号码'
+        },
+        {
+          Field: 'date2', // 预约打款日期
+          Value: '预约打款日期'
+        },
+        {
+          Field: 'number2', // 出资金额
+          Value: '出资金额'
+        },
+        // --------带入 ------
+        {
+          Field: 'string35', // 产品类别
+          Value: '产品类别'
+        },
+        {
+          Field: 'string33', // 产品编号
+          Value: '产品编号'
+        },
+        {
+          Field: 'string34', // 产品名称有两个产品名称     值一样-------特殊-------
+          Value: '产品名称'
+        },
+        {
+          Field: 'string16', // 产品名称            值一样-------特殊-------
+          Value: '产品名称'
+        },
+        {
+          Field: 'string17', // 产品期限
+          Value: '产品期限'
+        },
+        {
+          Field: 'string3', // 募集账户
+          Value: '募集账户'
+        },
+        {
+          Field: 'string18', // 已募集份数
+          Value: '已募集份数'
+        },
+        {
+          Field: 'string19', // 已募集金额
+          Value: '已募集金额'
+        },
+        {
+          Field: 'string20', // 剩余募集金额
+          Value: '剩余募集金额'
+        },
+        {
+          Field: 'string21', // 已预约人数
+          Value: '已预约人数'
+        },
+        {
+          Field: 'string22', // 已预约金额
+          Value: '已预约金额'
+        },
+        {
+          Field: 'string23', // 剩余预约金额
+          Value: '剩余可预约'
+        },
+        // --------默认 ------
+        {
+          Field: 'string6', // 客户编码
+          Value: '客户编码'
+        },
+        {
+          Field: 'string7', // 理财经理
+          Value: '管理员'
+        },
+        {
+          Field: 'string8', // 所属部门
+          Value: '天玑财富'
+        },
+        {
+          Field: 'string25', // 最后修改人
+          Value: '管理员'
+        },
+        {
+          Field: 'string24', // 最后修改部门
+          Value: '天玑财富'
+        },
+        {
+          Field: 'date4', // 最后修改时间
+          Value: '2019-12-10'
+        },
+        {
+          Field: 'string27', // 创建人
+          Value: '管理员'
+        },
+        {
+          Field: 'string26', // 创建部门
+          Value: '天玑财富'
+        },
+        {
+          Field: 'date5', // 创建时间
+          Value: '2019-12-10'
+        },
+        {
+          Field: 'string12',
+          Value: '0'
+        },
+        {
+          Field: 'string15',
+          Value: '10183'
+        }
+      ]
     }
   },
   onLoad (option) {
@@ -194,8 +189,12 @@ export default {
       }
     })
   },
-  components: {},
+  components: { comInput },
   methods: {
+    getInputVal (data) {
+      console.log(data)
+      //   this.datas[data.key] = data.value
+    },
     bindTypeChange (e) {
       let val = e.mp.detail.value
       this.type = val
@@ -223,13 +222,12 @@ export default {
 	background: #ffffff;
 	margin-bottom: 10px;
 }
-.noEdit {
-}
+
 .block .title {
 	line-height: 40px;
 	height: 40px;
 	padding: 0 15px;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 }
 .noEdit .block .title {

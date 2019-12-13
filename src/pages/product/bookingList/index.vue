@@ -1,5 +1,6 @@
 <template>
     <div class="main ">
+        <!-- 新建 -->
         <div class="has-header" v-if="tag == 0">
             <navbar :info="nav" @changeNav="changeNav"></navbar>
             <!-- <block v-for="(vo, key) in info" :key="key">
@@ -7,12 +8,15 @@
             <product :info="list" :type="nav_num"></product>
         </div>
 
+        <!-- 审核中 -->
         <div v-if="tag == 1">
             <booking :status="0"></booking>
         </div>
+        <!-- 预约成功 -->
         <div v-if="tag == 2">
             <booking :status="1"></booking>
         </div>
+        <!-- 预约失败 -->
         <div v-if="tag == 3">
             <booking :status="2"></booking>
         </div>
@@ -77,19 +81,17 @@ export default {
 
   methods: {
     getList (page = 1) {
-      this.$api
-        .getProductBookingList(page, this.type)
-        .then(res => {
-          console.log(res)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0) this.page = page
+      this.$api.getProductBookingList(page, this.type).then(res => {
+        console.log(res)
+        if (res.success) {
+          if (page === 1) {
+            this.list = res.rows
+          } else {
+            this.list = this.list.concat(res.rows)
           }
-        })
+          if (res.rows.length > 0) this.page = page
+        }
+      })
     },
     changeNav (nav) {
       this.nav_num = nav
