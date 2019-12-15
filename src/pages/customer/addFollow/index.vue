@@ -205,7 +205,7 @@ export default {
           icon: 'success',
           duration: 3000,
           success: () => {
-            mpvue.navigasteTo({ url: '../follow/main' })
+            mpvue.navigateTo({ url: '../follow/main' })
           }
         })
       })
