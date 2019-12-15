@@ -2,25 +2,25 @@
     <div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">基本信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" :titleDark="false" title="业绩单号" value="2322115565512223664"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户姓名" value="方周文"></comInput>
-            <comInput :type="0" :titleDark="false" title="证件号码" value="521456984564858547"></comInput>
-            <comInput :type="0" :titleDark="false" title="购买产品" value="某某某某"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品期限" value="14个月"></comInput>
-            <comInput :type="0" :titleDark="false" title="合同编号" value="574152429642"></comInput>
-            <comInput :type="0" :titleDark="false" title="认购金额" value="18000"></comInput>
-            <comInput :type="0" :titleDark="false" title="预期年化收益率" value="0.21"></comInput>
-            <comInput :type="0" :titleDark="false" title="出资认缴日" value="18000"></comInput>
-            <comInput :type="0" :titleDark="false" title="到账日" value="2019-5-30"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品成立日" value="2019-6-30"></comInput>
-            <comInput :type="0" :titleDark="false" title="起息日" value="2019-6-30"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品到期日" value="2019-6-30"></comInput>
+            <comInput :type="0" :titleDark="false" title="业绩单号" :value="info['业绩单']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户姓名" :value="info['客户姓名']"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件号码" :value="info['证件号码']"></comInput>
+            <comInput :type="0" :titleDark="false" title="购买产品" :value="info['购买产品']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" :value="info['产品期限'] + '个月'"></comInput>
+            <comInput :type="0" :titleDark="false" title="合同编号" :value="info['合同编号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="认购金额" :value="info['认购金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="预期年化收益率" :value="info['预期年化收益率']"></comInput>
+            <comInput :type="0" :titleDark="false" title="出资认缴日" :value="info['出资认缴日']"></comInput>
+            <comInput :type="0" :titleDark="false" title="到账日" :value="info['到账日']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品成立日" :value="info['产品成立日']"></comInput>
+            <comInput :type="0" :titleDark="false" title="起息日" :value="info['起息日']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品到期日" :value="info['产品到期日']"></comInput>
         </div>
 
         <div class="bg-fff mt10 pb20">
             <div class="plr15 ptb15 f16 clink strong">财务信息 <span class="iconfont iconliaotianduihua"></span></div>
-            <comInput :type="0" :titleDark="false" title="本息总额" value="1363445" :border="false"></comInput>
-            <comInput :type="0" :titleDark="false" title="总计息天数" value="365天" :border="false"></comInput>
+            <comInput :type="0" :titleDark="false" title="本息总额" :value="info['本息总额']" :border="false"></comInput>
+            <comInput :type="0" :titleDark="false" title="总计息天数" :value="info['总计息天数'] + '天'" :border="false"></comInput>
             <div class="f12 ta-c pt10 pb15">展开<span class="iconfont iconxiangxiajiantou"></span></div>
             <div class="bg-color mlr10">
                 <div class="list ta-c dis-flex l-center">
@@ -30,13 +30,14 @@
                     <div class="item f12">派息日</div>
                     <div class="item f12">是否派息</div>
                 </div>
-                <div class="list ta-c dis-flex l-center">
-                    <div class="item f12">第一次</div>
-                    <div class="item f12">2019-06-06</div>
-                    <div class="item f12">523452</div>
-                    <div class="item f12">2019-06-09</div>
-                    <div class="item f12">✓</div>
+                <div class="list ta-c dis-flex l-center" v-for="(vo, key) in list" :key="key">
+                    <div class="item f12">{{vo.string22}}</div>
+                    <div class="item f12">{{vo.date5}}</div>
+                    <div class="item f12">{{vo.number5}}</div>
+                    <div class="item f12">{{vo.date6}}</div>
+                    <div class="item f12">{{vo.cuts ? '✓' : '--'}}</div>
                 </div>
+                <!-- 
                 <div class="list ta-c dis-flex l-center">
                     <div class="item f12">第二次</div>
                     <div class="item f12">2019-06-06</div>
@@ -64,12 +65,12 @@
                     <div class="item f12">523452</div>
                     <div class="item f12">2019-06-09</div>
                     <div class="item f12">✓</div>
-                </div>
+                </div> -->
             </div>
             <div class="plr15 pb20">
                 <div class="cgey f16 ptb15">说明</div>
                 <div class="bg-color">
-                    <textarea class="f16 ptb10 plr10" name="" id="" cols="30" rows="10" value="说明内容XXXX"></textarea>
+                    <textarea class="f16 ptb10 plr10" name="" id="" cols="30" rows="10" :value="info['说明']"></textarea>
                 </div>
             </div>
         </div>
@@ -88,16 +89,35 @@ export default {
 
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      }
+      info: {},
+      list: []
     }
   },
 
-  created () {}
+  onLoad (options) {
+    this.id = options.id
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'interest_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
+    this.getInfo()
+    console.log(this.id)
+  },
+
+  methods: {
+    getInfo () {
+      this.$api.getInterestDetail(this.id)
+        .then(res => {
+          res = JSON.parse(res.RetValue)
+          console.log(res)
+          this.list = res.rows
+        })
+    }
+  }
 }
 </script>
 

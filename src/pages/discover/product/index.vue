@@ -39,9 +39,8 @@ export default {
   methods: {
     getList (page = 1) {
       this.$api
-        .getDiscoverProductList(page)
+        .getDiscoverProductList(page, this.nav_num)
         .then(res => {
-          console.log(res)
           if (res.success) {
             if (page === 1) {
               this.list = res.rows
@@ -54,6 +53,7 @@ export default {
     },
     changeNav (nav) {
       this.nav_num = nav
+      this.getList()
     }
   },
 

@@ -9,16 +9,16 @@
         </div>
 
         <!-- 审核中 -->
-        <div v-if="tag == 1">
-            <booking :status="0"></booking>
+        <div>
+            <booking ref="rBooking" :status="0"  v-if="tag == 1"></booking>
         </div>
         <!-- 预约成功 -->
-        <div v-if="tag == 2">
-            <booking :status="1"></booking>
+        <div >
+            <booking ref="sBooking" :status="1" v-if="tag == 2"></booking>
         </div>
         <!-- 预约失败 -->
-        <div v-if="tag == 3">
-            <booking :status="2"></booking>
+        <div >
+            <booking ref="gBooking" :status="2" v-if="tag == 3"></booking>
         </div>
 
         <footerIcon @change="changeTag"></footerIcon>
@@ -76,13 +76,29 @@ export default {
     this.getList()
   },
   onReachBottom () {
-    this.getList(this.page + 1)
+    switch (this.tag) {
+      case 0:
+        if (this.nav_num === 0) {
+          this.getList(this.page + 1)
+        } else {
+          this.getHistoryList(this.page + 1)
+        }
+        break
+      case 1:
+        // this.$refs.rBooking.upData()
+        break
+      case 2:
+        // this.$refs.sBooking.upData()
+        break
+      case 3:
+        // this.$refs.fBooking.upData()
+        break
+    }
   },
 
   methods: {
     getList (page = 1) {
-      this.$api.getProductBookingList(page, this.type).then(res => {
-        console.log(res)
+      this.$api.getProductBookingList(page).then(res => {
         if (res.success) {
           if (page === 1) {
             this.list = res.rows
@@ -90,11 +106,37 @@ export default {
             this.list = this.list.concat(res.rows)
           }
           if (res.rows.length > 0) this.page = page
+        } else {
+          if (page === 1) {
+            this.list = []
+          }
+        }
+      })
+    },
+    getHistoryList (page = 1) {
+      this.$api.getHistoryProductBookingList(page).then(res => {
+        res = JSON.parse(res.RetValue)
+        if (res.success) {
+          if (page === 1) {
+            this.list = res.rows
+          } else {
+            this.list = this.list.concat(res.rows)
+          }
+          if (res.rows.length > 0) this.page = page
+        } else {
+          if (page === 1) {
+            this.list = []
+          }
         }
       })
     },
     changeNav (nav) {
       this.nav_num = nav
+      if (nav === 0) {
+        this.getList()
+      } else {
+        this.getHistoryList()
+      }
     },
     changeTag (tag) {
       this.tag = tag

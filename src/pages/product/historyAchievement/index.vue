@@ -48,20 +48,8 @@ export default {
     return {
       nav: ['销售新增', '财务新增', '业绩打回'],
       nav_num: 0,
-      list: [
-        {
-          name: '张耀阳'
-        },
-        {
-          name: '刘世勋'
-        },
-        {
-          name: '方世伟'
-        },
-        {
-          name: '董颖'
-        }
-      ]
+      list: [],
+      page: 1
     }
   },
 
@@ -70,7 +58,31 @@ export default {
     search
   },
 
+  mounted () {
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
+    getList (page = 1) {
+      this.$api.getHistoryAchievementList(page).then(res => {
+        if (res.success) {
+          if (page === 1) {
+            this.list = res.rows
+          } else {
+            this.list = this.list.concat(res.rows)
+          }
+          if (res.rows.length > 0) this.page = page
+        } else {
+          if (page === 1) {
+            this.list = []
+          }
+        }
+      })
+    },
     changeNav (nav) {
       this.nav_num = nav
     },
@@ -82,9 +94,7 @@ export default {
       let url = `../historyDetail/main?id=${id}`
       mpvue.navigateTo({ url })
     }
-  },
-
-  created () {}
+  }
 }
 </script>
 

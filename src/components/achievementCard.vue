@@ -137,14 +137,14 @@
             </div>
         </div>
 
-        <div class="contract-card" v-if="type == 4" @click="interstDetail('interest',id)">
+        <div class="contract-card" v-if="type == 4" @click="interstDetail('interest', info.flowid)">
             <div class="order">
-                <div class="bg">业绩单号：201265849215</div>
+                <div class="bg">业绩单号：{{info['业绩单']}}</div>
             </div>
-            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>周方文</div>
+            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{info['客户姓名']}}</div>
             <div class="msg no-boder">
                 <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
-                <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
+                <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['产品期限']}}个月</div>
                 <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
             </div>
             <div class="dis-flex a-between plr15 pb10">
@@ -153,17 +153,17 @@
             </div>
         </div>
 
-        <div class="contract-card" v-if="type == 41" @click="interstDetail('redeem',id)">
+        <div class="contract-card" v-if="type == 41" @click="interstDetail('redeem', id)">
             <div class="order">
-                <div class="bg">赎回编号：201265849215</div>
+                <div class="bg">赎回编号：{{info['赎回编号']}}</div>
             </div>
-            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>周方文</div>
+            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{info['客户姓名']}}</div>
             <div class="dis-flex l-end">
                 <div class="msg no-boder flex-1">
-                    <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
-                    <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
-                    <div class="f13"><span class="cgey">赎回金额：</span>2万</div>
-                    <div class="f13 cgey">赎回日期：2019-03-31</div>
+                    <div class="f13"><span class="cgey">产品名称：</span>{{info['产品名称']}}</div>
+                    <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['产品期限']}}个月</div>
+                    <div class="f13"><span class="cgey">赎回金额：</span>{{info['赎回金额']}}</div>
+                    <div class="f13 cgey">赎回日期：{{info['赎回日期']}}</div>
                 </div>
                 <div class="dis-flex a-between plr15 pb10">
                     <div class="f13 clink">查看更多</div>
@@ -174,17 +174,17 @@
         <div class="contract-card" v-if="type == 5" @click="royaltyDetail(id)">
             <img class="img-status" src="../img/status_1.png" alt="">
             <div class="order">
-                <div class="bg">业绩单号：201265849215</div>
+                <div class="bg">业绩单号：{{info['业绩单号']}}</div>
             </div>
-            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>周方文</div>
+            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{info['客户姓名']}}</div>
             <div class="msg no-boder">
-                <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
-                <div class="f13 mb10"><span class="cgey">产品期限：</span>14个月</div>
+                <div class="f13"><span class="cgey">产品名称：</span>{{info['客户姓名']}}</div>
+                <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['客户姓名']}}个月</div>
                 <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
-                <div class="f13"><span class="cgey">本次提奖：</span>20万</div>
+                <div class="f13"><span class="cgey">本次提奖：</span>{{info['本次提奖金额']}}万</div>
             </div>
             <div class="dis-flex a-between plr15 pb10">
-                <div class="f13 cgey">申请日期：2019-03-31</div>
+                <div class="f13 cgey">申请日期：{{info['申请时间']}}</div>
                 <div class="f13 clink">更多信息</div>
             </div>
         </div>
@@ -213,15 +213,15 @@
 
         <div class="contract-card" v-if="type == 7">
             <div class="dis-flex l-baseline ptb10 plr15 border-b">
-                <div class="name f16 strong mr10">标题</div>
-                <div class="f13 cgey">类型</div>
+                <div class="name f16 strong mr10">{{info['标题']}}</div>
+                <div class="f13 cgey">{{info['类型']}}</div>
             </div>
             <div class="msg no-boder">
-                <div class="line f13 mb10"><span class="key cgey">所属目录：</span>目录名称</div>
-                <div class="line f13"><span class="key cgey">上传人：</span>陈成</div>
-                <div class="line f13"><span class="key cgey">上传部门：</span>合约部</div>
+                <div class="line f13 mb10"><span class="key cgey">所属目录：</span>{{info['所属目录']}}</div>
+                <div class="line f13"><span class="key cgey">上传人：</span>{{info['上传人']}}</div>
+                <div class="line f13"><span class="key cgey">上传部门：</span>{{info['上传部门']}}</div>
                 <div class="line dis-flex a-between">
-                    <div class="key f13"><span class="key cgey">上传时间：</span>2019-03-15</div>
+                    <div class="key f13"><span class="key cgey">上传时间：</span>{{info['上传时间']}}</div>
                     <div @click="openDoc" class="f13 clink">查看更多</div>
                 </div>
             </div>
@@ -251,10 +251,16 @@ export default {
   methods: {
     interstDetail (type, id) {
       let url = `/pages/${type}/detail/main?id=${id}`
+      if (type === 'redeem') {
+        mpvue.setStorageSync('redeem_info', this.info)
+      } else {
+        mpvue.setStorageSync('interest_info', this.info)
+      }
       mpvue.navigateTo({ url })
     },
     royaltyDetail (id) {
       let url = `/pages/royalty/detail/main?id=${id}`
+      mpvue.setStorageSync('royalty_info', this.info)
       mpvue.navigateTo({ url })
     },
     actionDetail () {
@@ -271,6 +277,7 @@ export default {
       wx.showLoading({
         title: '请稍后..'
       })
+      console.log(this.info['附件'])
       wx.downloadFile({
         url: 'http://video.317hu.com/917b3140-3da6-47d5-911c-a15462fcdeb2.pdf',
         success: function (res) {

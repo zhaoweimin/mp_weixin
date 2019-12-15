@@ -2,28 +2,28 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">赎回信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" :titleDark="false" title="赎回编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
-            <comInput :type="0" :titleDark="false" title="赎回日期" value="2019-03-03"></comInput>
-            <comInput :type="0" :titleDark="false" title="赎回金额" value="2千万"></comInput>
-            <comInput :type="0" :titleDark="false" title="浮动收益率" value="12%"></comInput>
-            <comInput :type="0" :titleDark="false" title="剩余金额" value="2千万"></comInput>
-            <comInput :type="0" :titleDark="false" title="后端提奖金额" value="123123"></comInput>
+            <comInput :type="0" :titleDark="false" title="赎回编号" :isSpecialColorTxt="true" :value="info['赎回编号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="赎回日期" :value="info['赎回日期']"></comInput>
+            <comInput :type="0" :titleDark="false" title="赎回金额" :value="info['赎回金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="浮动收益率" :value="info['浮动收益率']"></comInput>
+            <comInput :type="0" :titleDark="false" title="剩余金额" :value="info['剩余金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="后端提奖金额" :value="info['后端提奖金额']"></comInput>
         </div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">业绩信息 <span class="iconfont iconjibenxinxi"></span></div>
-            <comInput :type="0" :titleDark="false" title="业绩单号" :isSpecialColorTxt="true" value="15565512"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户名称" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品名称" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品期限" value="XXX%"></comInput>
-            <comInput :type="0" :titleDark="false" title="证件类型" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="证件号码" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="银行账号" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="账号开户行" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="合同编号" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="合同金额" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="理财经理" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="归属部门" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="单据状态" value="XXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="业绩单号" :isSpecialColorTxt="true" :value="info['业绩单号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户名称" :value="info['客户姓名']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品名称" :value="info['产品名称']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" :value="info['产品期限']"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件类型" :value="info['证件类型']"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件号码" :value="info['证件号码']"></comInput>
+            <comInput :type="0" :titleDark="false" title="银行账号" :value="info['银行账号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="账号开户行" :value="info['账号开户行']"></comInput>
+            <comInput :type="0" :titleDark="false" title="合同编号" :value="info['合同编号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="合同金额" :value="info['合同金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="理财经理" :value="info['理财经理']"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" :value="info['归属部门']"></comInput>
+            <comInput :type="0" :titleDark="false" title="单据状态" :value="info['单据状态']"></comInput>
             <div class="plr15 ptb10 border-b">
                 <div class="f16 cgey mb10">附件</div>
                 <div class="dis-flex l-end">
@@ -56,7 +56,16 @@ export default {
     }
   },
 
-  created () {}
+  onLoad () {
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'redeem_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
+  }
 }
 </script>
 

@@ -1,24 +1,24 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <comInput :type="0" title="单据编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
-            <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" value="265512223664"></comInput>
-            <comInput :type="0" title="客户姓名" value="周方文"></comInput>
-            <comInput :type="0" title="购买产品" value="某某某某"></comInput>
-            <comInput :type="0" title="产品期限" value="12个月"></comInput>
-            <comInput :type="0" title="认购金额" value="2千万"></comInput>
-            <comInput :type="0" title="出资认缴日" value="2019-3-18"></comInput>
-            <comInput :type="0" title="到账日" value="2019-3-18"></comInput>
-            <comInput :type="0" title="到期日" value="2019-3-18"></comInput>
-            <comInput :type="0" title="认购费" value="2千万"></comInput>
-            <comInput :type="0" title="提成方式" value="一次"></comInput>
-            <comInput :type="0" title="提成率" value="80%"></comInput>
-            <comInput :type="0" title="本次提奖" value="50万"></comInput>
-            <comInput :type="0" title="提成总额" value="150万"></comInput>
-            <comInput :type="0" title="理财经理" value="李维嘉"></comInput>
-            <comInput :type="0" title="归属部门" value="市场部"></comInput>
-            <comInput :type="0" title="申请时间" value="2019-3-18"></comInput>
-            <comInput :type="0" title="状态" value="审核中"></comInput>
+            <comInput :type="0" title="单据编号" :isSpecialColorTxt="true" :value="info['单据编号']"></comInput>
+            <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" :value="info['业绩单号']"></comInput>
+            <comInput :type="0" title="客户姓名" :value="info['客户姓名']"></comInput>
+            <comInput :type="0" title="购买产品" :value="info['购买产品']"></comInput>
+            <comInput :type="0" title="产品期限" :value="info['产品期限'] + '个月'"></comInput>
+            <comInput :type="0" title="认购金额" :value="info['认购金额']"></comInput>
+            <comInput :type="0" title="出资认缴日" :value="info['出资认缴日']"></comInput>
+            <comInput :type="0" title="到账日" :value="info['到账日']"></comInput>
+            <comInput :type="0" title="到期日" :value="info['到期日']"></comInput>
+            <comInput :type="0" title="认购费" :value="info['认购费']"></comInput>
+            <comInput :type="0" title="提成方式" :value="info['提奖方式']"></comInput>
+            <comInput :type="0" title="提成率" :value="info['提奖率']"></comInput>
+            <comInput :type="0" title="本次提奖" :value="info['本次提奖金额']"></comInput>
+            <comInput :type="0" title="提成总额" :value="info['提成总额']"></comInput>
+            <comInput :type="0" title="理财经理" :value="info['理财经理']"></comInput>
+            <comInput :type="0" title="归属部门" :value="info['归属部门']"></comInput>
+            <comInput :type="0" title="申请时间" :value="info['申请时间']"></comInput>
+            <comInput :type="0" title="状态" :value="info['单据状态']"></comInput>
         </div>
     </div>
 </template>
@@ -35,16 +35,20 @@ export default {
 
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      }
+      info: {}
     }
   },
 
-  created () {}
+  onLoad () {
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'royalty_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
+  }
 }
 </script>
 

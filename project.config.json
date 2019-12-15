@@ -159,6 +159,34 @@
 					"id": -1,
 					"name": "客户跟进",
 					"pathName": "pages/customer/follow/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "业绩赎回",
+					"pathName": "pages/redeem/list/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "客户计息",
+					"pathName": "pages/interest/list/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品提成",
+					"pathName": "pages/royalty/list/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "知识库",
+					"pathName": "pages/discover/lore/main",
 					"scene": null
 				}
 			]

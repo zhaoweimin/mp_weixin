@@ -30,7 +30,8 @@ export default {
         {
           name: '董颖'
         }
-      ]
+      ],
+      page: 1
     }
   },
 
@@ -40,7 +41,33 @@ export default {
     search
   },
 
+  mounted () {
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
+    getList (page = 1) {
+      this.$api.getInterestList(page).then(res => {
+        res = JSON.parse(res.RetValue)
+        console.log(res)
+        if (res.success) {
+          if (page === 1) {
+            this.list = res.rows
+          } else {
+            this.list = this.list.concat(res.rows)
+          }
+          if (res.rows.length > 0) this.page = page
+        } else {
+          if (page === 1) {
+            this.list = []
+          }
+        }
+      })
+    },
     changeNav (nav) {
       this.nav_num = nav
     }

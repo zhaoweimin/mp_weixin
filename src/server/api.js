@@ -30,15 +30,126 @@ export default {
   },
 
   // 在售产品接口查询
-  getDiscoverProductList (page) {
+  getDiscoverProductList (page, type) {
     let obj = {
       url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
       data: {
         id: '438a4934-0715-5104-a95e-39eb821771d2',
         index: page - 1,
-        Parameter: 'escontain=true&deptid=1',
+        Parameter: `escontain=true&deptid=1${type ? '&s=4' : ''}`,
         filter: '{}',
         rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 业绩赎回
+  getRedeemList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        userid: '',
+        index: page - 1,
+        Parameter: ``,
+        rightvalueid: '4eb26c86-23ad-4fde-d17b-39ed60d117a8',
+        formid: '4eb26c86-23ad-4fde-d17b-39ed60d117a8',
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 历史赎回
+  getHistoryAchievementList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        userid: '',
+        index: page - 1,
+        Parameter: ``,
+        rightvalueid: 'ee0ccdcc-5668-69e5-d62a-39eb6d640e49',
+        formid: 'ee0ccdcc-5668-69e5-d62a-39eb6d640e49',
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 客户计息
+  getInterestList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        userid: '',
+        index: page - 1,
+        Parameter: ``,
+        rightvalueid: '9ec5f9a0-b2d8-1eff-be50-39eb7260201c',
+        formid: '9ec5f9a0-b2d8-1eff-be50-39eb7260201c',
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 客户计息
+  getInterestDetail (id) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '82108958-7d38-4e49-aa6c-51b90211245e',
+        index: 1,
+        Parameter: ``,
+        formid: '9ec5f9a0-b2d8-1eff-be50-39eb7260201c',
+        value: id
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 产品提成
+  getRoyaltyList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        userid: '',
+        index: page - 1,
+        Parameter: ``,
+        rightvalueid: 'd7a8d228-55ae-3b98-2f34-39eb723ecfd9',
+        formid: 'd7a8d228-55ae-3b98-2f34-39eb723ecfd9',
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 知识库
+  getLoreList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+      data: {
+        id: '2e961f6b-30f2-b88d-5cc6-39eb6cfee6c4',
+        userid: '',
+        index: page - 1,
+        Parameter: `escontain=true&deptid=1`,
+        rightvalueid: '2e961f6b-30f2-b88d-5cc6-39eb6cfee6c4',
+        filter: '{}'
       }
     }
     return this.post(obj)
@@ -75,6 +186,32 @@ export default {
         Parameter: 'escontain=true&deptid=1&s=3',
         filter: '{}',
         rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 历史产品预约接口查询
+  getHistoryProductBookingList (page, r) {
+    let ParameterMap = {
+      0: '', // 历史预约
+      1: '&r=1', // 审核中预约
+      2: '&r=2', // 预约成功
+      3: '&r=3' // 预约失败
+    }
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        rightvalueid: '84abc643-3ddf-c85b-1555-39eb67fca24f',
+        formid: '84abc643-3ddf-c85b-1555-39eb67fca24f',
+        userid: '',
+        index: page - 1,
+        Parameter: ParameterMap[r],
+        urlpara: '',
+        sortField: '',
+        sortOrder: '',
+        filter: '{}'
       }
     }
     return this.post(obj)
