@@ -3,16 +3,16 @@
         <navbar :info="nav" @changeNav="changeNav"></navbar>
         <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
         <block v-for="(vo, key) in list" :key="key">
-            <div class="customer-card report-card" @click="detail(vo.id)">
+            <div class="customer-card report-card" @click="detail(key)">
                 <div class="tle">客户</div>
                 <div class="dis-flex">
                     <div class="msg">
-                        <div class="title"><span class="srtong">{{vo.name}}</span> <span class="sex">{{vo.sex ? '先生' : '女士'}}</span></div>
-                        <div class="tags level-1" v-if="vo.level == 1">
-                            <div class="tag">历史成交客户</div>
-                            <div class="tag level">A级</div>
+                        <div class="title"><span class="srtong">{{vo['客户姓名']}}</span> <span class="sex">{{vo.sex ? '先生' : '女士'}}</span></div>
+                        <div class="tags level-1">
+                            <div class="tag">{{vo['客户类型']}}</div>
+                            <div class="tag level" v-if="vo['客户级别']">{{vo['客户级别']}}</div>
                         </div>
-                        <div class="tags level-2" v-if="vo.level == 2">
+                        <!-- <div class="tags level-2" v-if="vo.level == 2">
                             <div class="tag">成交客户</div>
                             <div class="tag level">B级</div>
                         </div>
@@ -23,7 +23,7 @@
                         <div class="tags level-4" v-if="vo.level == 4">
                             <div class="tag">潜在客户</div>
                             <div class="tag level">D级</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="line dis-flex">
@@ -37,8 +37,8 @@
                     </div> -->
                     <div class="msg">
                         <div class="title dis-flex">
-                            <span class="strong">杨文超</span>
-                            <span class="time cgey">2019-03-20 15:30被投诉</span>
+                            <span class="strong">{{vo['被投诉人']}}</span>
+                            <span class="time cgey">{{vo['投诉日期']}}被投诉</span>
                         </div>
                         <!-- <div class="title"><span class="tag-grey">投诉单号：20190320153023654</span></div> -->
                     </div>
@@ -60,36 +60,8 @@ export default {
     return {
       nav: ['待处理', '已处理'],
       curNavId: 0,
-      list: [
-        {
-          name: '张耀阳',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 1,
-          sex: 1
-        },
-        {
-          name: '刘世勋',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 4,
-          sex: 1
-        },
-        {
-          name: '方世伟',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 2,
-          sex: 1
-        },
-        {
-          name: '董颖',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 3,
-          sex: 0
-        }
-      ]
+      list: [],
+      page: 1
     }
   },
 
@@ -99,14 +71,44 @@ export default {
     search
   },
 
+  mounted () {
+    this.getList()
+  },
+
+  onReachBottom () {
+    this.getList(this.page + 1)
+  },
+
   methods: {
-    detail (id) {
-      let url = `../reportDetail/main?type=${this.curNavId}&id=${id}`
+    getList (page = 1) {
+      this.$api
+        .getReportList(page, this.curNavId + 1)
+        .then(res => {
+          res = JSON.parse(res.RetValue)
+          console.log(res)
+          if (res.success) {
+            if (page === 1) {
+              this.list = res.rows
+            } else {
+              this.list = this.list.concat(res.rows)
+            }
+            if (res.rows.length > 0) this.page = page
+          } else {
+            if (page === 1) {
+              this.list = []
+            }
+          }
+        })
+    },
+    detail (key) {
+      let url = `../reportDetail/main?type=${this.curNavId}&id=${key}`
+      mpvue.setStorageSync('report_info', this.list[key])
       mpvue.navigateTo({ url })
     },
     changeNav (e) {
       this.curNavId = e
       console.log(e)
+      this.getList()
     }
   },
 

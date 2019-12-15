@@ -187,6 +187,20 @@
 					"id": -1,
 					"name": "知识库",
 					"pathName": "pages/discover/lore/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "待办",
+					"pathName": "pages/task/list/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "客户投诉",
+					"pathName": "pages/customer/report/main",
 					"scene": null
 				}
 			]

@@ -155,6 +155,23 @@ export default {
     return this.post(obj)
   },
 
+  // 待办
+  getTaskList (page) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: 'd0ccb1c4-687f-47b7-a20a-05d0a55251b5',
+        UserID: '10818',
+        PageSize: 10,
+        PageIndex: page - 1,
+        Types: `assembly`,
+        FlowTypeId: '074edcaf-ac1d-b498-98ec-39e65ad5de13',
+        filter: '{}'
+      }
+    }
+    return this.post(obj)
+  },
+
   // 客户跟进本周需跟进客户接口查询
   getProductList (page, r) {
     // r- 0 客户跟进历史跟进客 3- 客户跟进超过30天未跟进客户 2- 客户跟进本周需跟进客户
@@ -167,6 +184,31 @@ export default {
         Parameter: `escontain=true&deptid=1&r=${r}&userid=10183`,
         rightvalueid: '59bd9d7b-c6c9-046b-36b0-39eb71be4e6c',
         formid: '59bd9d7b-c6c9-046b-36b0-39eb71be4e6c',
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 客户投诉
+  getReportList (page, r) {
+    // r 1-待处理 2-已处理
+    let rMap = {
+      1: '&r=1',
+      2: '$r=2'
+    }
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        userid: '',
+        index: page - 1,
+        Parameter: rMap[r],
+        rightvalueid: 'b42343ac-4b20-734d-35bb-39eb71be6a41',
+        formid: 'b42343ac-4b20-734d-35bb-39eb71be6a41',
         filter: '{}',
         urlpara: '',
         sortField: '',

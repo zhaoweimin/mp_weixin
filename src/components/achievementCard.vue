@@ -277,7 +277,6 @@ export default {
       wx.showLoading({
         title: '请稍后..'
       })
-      console.log(this.info['附件'])
       wx.downloadFile({
         url: 'http://video.317hu.com/917b3140-3da6-47d5-911c-a15462fcdeb2.pdf',
         success: function (res) {

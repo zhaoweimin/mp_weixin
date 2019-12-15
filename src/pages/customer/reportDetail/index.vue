@@ -2,7 +2,7 @@
     <div class="customer" :class="{'has-footer':type===1}">
         <div class="customer-card dis-flex l-center">
             <div class="msg">
-                <div class="title"><span class="strong">{{info.name}}</span> <span class="sex">2019-03-20 15:30被投诉</span></div>
+                <div class="title"><span class="strong">{{info['被投诉人']}}</span> <span class="sex">{{info['投诉日期']}}被投诉</span></div>
             </div>
         </div>
 
@@ -11,31 +11,31 @@
             <div class="table">
                 <div class="line-2">
                     <div class="key">投诉单号</div>
-                    <div class="val ta-r clink">20190320153023654</div>
+                    <div class="val ta-r clink">{{info['投诉单号'] || '--'}}</div>
                 </div>
                 <div class="line-2">
                     <div class="key">客户姓名</div>
-                    <div class="val ta-r">周方文</div>
+                    <div class="val ta-r">{{info['客户姓名'] || '--'}}</div>
                 </div>
                 <div class="line-2">
                     <div class="key">证件号码</div>
-                    <div class="val ta-r">521365846951234452361</div>
+                    <div class="val ta-r">{{info['证件号码'] || '--'}}</div>
                 </div>
                 <div class="line-2">
                     <div class="key">邮箱</div>
-                    <div class="val ta-r">19855625@163.com</div>
+                    <div class="val ta-r">{{info['邮箱'] || '--'}}</div>
                 </div>
                 <div class="line-2">
                     <div class="key">被投诉人</div>
-                    <div class="val ta-r">杨文超</div>
+                    <div class="val ta-r">{{info['被投诉人'] || '--'}}</div>
                 </div>
                 <div class="line-2">
                     <div class="key">被投诉部门</div>
-                    <div class="val ta-r">销售部</div>
+                    <div class="val ta-r">{{info['被投诉人部门'] || '--'}}</div>
                 </div>
                 <div class="line-2">
                     <div class="key">购买产品</div>
-                    <div class="val ta-r">产品名</div>
+                    <div class="val ta-r">{{info['购买产品'] || '--'}}</div>
                 </div>
 
             </div>
@@ -46,29 +46,29 @@
             <div class="table">
                 <div class="line-2 line">
                     <div class="key">投诉项目</div>
-                    <div class="val">项目名称</div>
+                    <div class="val">{{info['投诉项目'] || '--'}}</div>
                 </div>
                 <div class="line-2 line">
                     <div class="key">投诉日期</div>
-                    <div class="val">2019-03-20 15:30</div>
+                    <div class="val">{{info['投诉日期'] || '--'}}</div>
                 </div>
 
                 <div class="line-3 line">
                     <div class="key">投诉原因</div>
                     <div class="val ta-l">
-                        <text>投诉原因</text>
+                        <text>{{info['投诉原因'] || '--'}}</text>
                     </div>
                 </div>
                 <div class="line-3 line">
                     <div class="key">投诉内容</div>
                     <div class="val ta-l">
-                        <text>投诉内容</text>
+                        <text>{{info['投诉内容'] || '--'}}</text>
                     </div>
                 </div>
 
                 <div class="line-2 line">
                     <div class="key">要求回复电话</div>
-                    <div class="val">未回复</div>
+                    <div class="val">{{info['要求回复电话'] || '--'}}</div>
                 </div>
 
             </div>
@@ -79,12 +79,12 @@
             <div class="table">
                 <div class="line">
                     <div class="key flex-1">处理状态</div>
-                    <div class="val">处理中 <span class="iconfont iconright"></span></div>
+                    <div class="val">{{info['处理状态'] || '--'}} <span class="iconfont iconright"></span></div>
                 </div>
                 <div class="line-3 line has-pd-b">
                     <div class="key">处理批注</div>
                     <div class="val ta-l">
-                        <text>请求协调处理</text>
+                        <text>{{info['处理批注'] || '--'}}</text>
                     </div>
                 </div>
             </div>
@@ -136,16 +136,18 @@ export default {
   },
   onLoad (option) {
     this.type = option.type * 1
-    console.log(this.type)
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'report_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
   },
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      },
+      info: {},
       type: 0
     }
   },
