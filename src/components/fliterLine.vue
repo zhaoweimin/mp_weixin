@@ -1,7 +1,7 @@
 <template>
-    <div class="filter">
+    <div class="filter ptb15 plr15">
         <div class="dis-flex">
-            <div class="nav flex-1">
+            <!-- <div class="nav flex-1">
                 综合 <span class="iconfont iconxiangxiajiantou"></span>
             </div>
             <div class="nav flex-1">
@@ -9,8 +9,8 @@
             </div>
             <div class="nav flex-1">
                 级别 <span class="iconfont iconxiangxiajiantou"></span>
-            </div>
-            <div class="nav flex-1 clink" @click="setShowFilter()">
+            </div> -->
+            <div class="nav flex a-right flex-1 clink" @click="setShowFilter()">
                 <span class="iconfont iconshaixuan clink"></span> 筛选
             </div>
         </div>
@@ -84,7 +84,7 @@ export default {
       this.setShowFilter()
       for (let item in this.filter) {
         if (!this.filter[item]) {
-          delete this.filter[item]
+          this.filter[item] = ''
         }
       }
       this.$emit('getData', this.filter)
@@ -134,20 +134,17 @@ export default {
 }
 .filter {
 	position: fixed;
-	height: 50px;
 	left: 0;
 	top: 50px;
 	right: 0;
 	text-align: center;
 	background: #ffffff;
 	z-index: 11;
+	/* height: 50px; */
 }
 
 .filter .nav {
 	font-size: 12px;
-	height: 30px;
-	line-height: 30px;
-	margin: 10px 0;
 	position: relative;
 }
 .iconxiangxiajiantou {
@@ -162,7 +159,7 @@ export default {
 	left: 20%;
 	top: 0;
 	bottom: 0;
-	background: #ffffff;
+	/* background: #ffffff; */
 	text-align: left;
 	z-index: 12;
 }

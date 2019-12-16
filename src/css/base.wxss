@@ -358,29 +358,29 @@ page {
 .flex-column {
   flex-direction: column;
 }
+.l-start {
+	align-items: flex-start;
+}
 .l-center {
-  align-items: center;
+	align-items: center;
 }
 .l-end {
-  align-items: flex-end;
+	align-items: flex-end;
 }
 .l-baseline {
-  align-items: baseline;
-}
-.l-start {
-  align-items: flex-start;
+	align-items: baseline;
 }
 .a-center {
-  justify-content: center;
-}
-.a-right {
-  justify-content: right;
+	justify-content: center;
 }
 .a-left {
-  justify-content: left;
+	justify-content: flex-start;
+}
+.a-right {
+	justify-content: flex-end;
 }
 .a-between {
-  justify-content: space-between;
+	justify-content: space-between;
 }
 .border-b {
   border-bottom: 1px solid #f5f5f5;

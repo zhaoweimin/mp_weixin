@@ -28,7 +28,20 @@ export default {
     }
     return this.post(obj)
   },
-
+  // 获取 客户/机构 档案列表
+  getAchiveList (page, fliter) {
+    let obj = {
+      url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+      data: {
+        id: '0a68d672-aa11-ea11-b397-39f1c2ed5a99',
+        index: page - 1,
+        Parameter: 'escontain=true&deptid=1', // 参数 sql中有动态参数时需设置
+        filter: fliter,
+        rightvalueid: '0a68d672-aa11-ea11-b397-39f1c2ed5a99'
+      }
+    }
+    return this.post(obj)
+  },
   // 在售产品接口查询
   getDiscoverProductList (page, type) {
     let obj = {
