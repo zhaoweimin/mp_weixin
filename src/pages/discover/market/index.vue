@@ -25,7 +25,7 @@
                     <div class="flex-1">
                         <div class="cgey">活动名称：<span class="cblack">{{vo['活动名称']}}</span></div>
                         <div class="cgey mb10">邀约日期：<span class="cblack">{{vo['邀约时间']}}</span></div>
-                        <div class="cgey">审批状态：<span class="clink">{{vo['邀约审批状态']}}</span></div>
+                        <div class="cgey">审批状态：<span class="clink">{{vo['审批状态']}}</span></div>
                     </div>
                     <div class="right">
                         <div class="clink f12" @click="detail(key)">查看更多</div>
@@ -57,6 +57,9 @@ export default {
       marketList: [],
       page: 1
     }
+  },
+  onLoad () {
+    Object.assign(this.$data, this.$options.data())
   },
   methods: {
     link (url) {

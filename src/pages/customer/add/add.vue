@@ -321,6 +321,8 @@ export default {
         { Field: 'FTourism', Value: '' },
 
         // 默认必传的字段
+        { Field: 'FApplySubject', Value: '个人客户' }, // 默认
+        { Field: 'FCustomerType', Value: '潜在客户' }, // 默认
         { Field: 'FPublic', Value: '否' },
         { Field: 'FCreateUserId', Value: '管理员' },
         { Field: 'FCreateTime', Value: '当前时间' },
