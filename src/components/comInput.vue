@@ -179,19 +179,21 @@ export default {
       this.$emit('getClickItems', { key: this.paramkey })
     },
     onBlur () {
-      let Fn = this.validType ? (!(this.validType * 1) ? this.validType : 'numberFloatLimitValid') : 'emptyValid'
-      if (Fn !== 'none') {
-        Verify[Fn](
-          '',
-          this.resultValue,
-          res => {
-            this.isShowErr = !!res
-            if (this.isShowErr) {
-              this.errTxt = res
-            }
-          },
-          this.validType
-        )
+      if (this.isRequired) {
+        let Fn = this.validType ? (!(this.validType * 1) ? this.validType : 'numberFloatLimitValid') : 'emptyValid'
+        if (Fn !== 'none') {
+          Verify[Fn](
+            '',
+            this.resultValue,
+            res => {
+              this.isShowErr = !!res
+              if (this.isShowErr) {
+                this.errTxt = res
+              }
+            },
+            this.validType
+          )
+        }
       }
       this.resultValue = this.isShowErr ? '' : this.resultValue
       this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
@@ -232,7 +234,7 @@ export default {
 .inputItem .required {
 	position: absolute;
 	left: -8px;
-	top: 14px;
+	/* top: 14px; */
 	font-size: 12px;
 }
 input:disabled,
