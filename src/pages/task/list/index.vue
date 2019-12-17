@@ -22,6 +22,7 @@ export default {
   data () {
     return {
       nav: ['新待办', '历史待办'],
+      nav_num: 0,
       list: [
         {
           theme: '提成申请',
@@ -104,6 +105,8 @@ export default {
     },
     changeNav (nav) {
       console.log(nav)
+      this.nav_num = nav
+      this.getList()
     },
     send () {
       let url = '/pages/task/detail/main?id='

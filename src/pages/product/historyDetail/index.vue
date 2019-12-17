@@ -7,74 +7,74 @@
                     <div class="line">
                         <div class="key">业绩单号</div>
                         <div class="val ta-r">
-                            <span class="clink">201903201530326548</span>
+                            <span class="clink">{{info['业绩单号'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">客户姓名</div>
                         <div class="val ta-r">
-                            <span>客户姓名</span>
+                            <span>{{info['客户姓名'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">证件类型</div>
                         <div class="val ta-r">
-                            <span>身份证</span>
+                            <span>{{info['证件类型'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">证件号码</div>
                         <div class="val ta-r">
-                            <span>xxxxxxxxxxx</span>
+                            <span>{{info['证件号码'] || '--'}}</span>
                         </div>
                     </div>
 
                     <div class="line">
                         <div class="key">产品名称</div>
                         <div class="val ta-r">
-                            <span>xxxxxxxxxxx</span>
+                            <span>{{info['产品名称'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">产品类型</div>
                         <div class="val ta-r">
-                            <span>股权类</span>
+                            <span>{{info['产品类型'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">产品限期</div>
                         <div class="val ta-r">
-                            <span>12个月</span>
+                            <span>{{info['产品期限'] || '--'}}个月</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">合同编号</div>
                         <div class="val ta-r">
-                            <span>523256654555444</span>
+                            <span>{{info['合同编号'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">预约编号</div>
                         <div class="val ta-r">
-                            <span>201903202156984</span>
+                            <span>{{info['预约编号'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">理财经理</div>
                         <div class="val ta-r">
-                            <span>李方圆</span>
+                            <span>{{info['理财经理'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">所属部门</div>
                         <div class="val ta-r">
-                            <span>市场部</span>
+                            <span>{{info['所属部门'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">录单员</div>
                         <div class="val ta-r">
-                            <span>陈欧</span>
+                            <span>{{info['录单员'] || '--'}}</span>
                         </div>
                     </div>
                 </div>
@@ -88,86 +88,87 @@
                     <div class="line">
                         <div class="key">打款日期</div>
                         <div class="val ta-r">
-                            <span class="clink">2019-03-31 </span>
+                            <span class="clink">{{info['打款日期'] || '--'}} </span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">合同金额</div>
                         <div class="val ta-r">
-                            <span>20万</span>
+                            <span>{{info['合同金额'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">付款方式</div>
                         <div class="val ta-r">
-                            <span>网银转账</span>
+                            <span>{{info['付款方式'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">付款账户开户行</div>
                         <div class="val ta-r">
-                            <span>招商银行</span>
+                            <span>{{info['付款开户行'] || '--'}}</span>
                         </div>
                     </div>
 
                     <div class="line">
                         <div class="key">付款账号</div>
                         <div class="val ta-r">
-                            <span>622623261235896</span>
+                            <span>{{info['付款账号'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">累计缴款金额</div>
                         <div class="val ta-r">
-                            <span>500万</span>
+                            <span>{{info['累计缴款金额'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">确认收款日</div>
                         <div class="val ta-r">
-                            <span>营销支持维护某日期</span>
+                            <span>{{info['确认收款日'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">起息日</div>
                         <div class="val ta-r">
-                            <span>默认收款日期第二天<span style="font-size: 10px;">(管理版为成立日当天)</span></span>
+                            {{info['起息日'] || '--'}}  
+                            <!-- <span>默认收款日期第二天<span style="font-size: 10px;">(管理版为成立日当天)</span></span> -->
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">产品到期日 </div>
                         <div class="val ta-r">
-                            <span>产品成立后再维护此字段</span>
+                            <span>{{info['产品到期日'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">年化系数</div>
                         <div class="val ta-r">
-                            <span>0.21</span>
+                            <span>{{info['年化系数'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">年化业绩</div>
                         <div class="val ta-r">
-                            <span>105万</span>
+                            <span>{{info['年化业绩'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">收益分配账户</div>
                         <div class="val ta-r">
-                            <span>6321254555468499854</span>
+                            <span>{{info['收益分配账户'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">收益分配账户开户行</div>
                         <div class="val ta-r">
-                            <span>XXXX</span>
+                            <span>{{info['收益分配账户开户行'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">资产证明上传时间</div>
                         <div class="val ta-r">
-                            <span>2019-02-22</span>
+                            <span>{{info['资产证明上传时间'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line auto mt5">
@@ -195,19 +196,19 @@
                     <div class="line">
                         <div class="key">到账日期</div>
                         <div class="val ta-r">
-                            <span class="clink">2019-06-06</span>
+                            <span class="clink">{{info['到账日期'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">业绩比较基准</div>
                         <div class="val ta-r">
-                            <span>0.3</span>
+                            <span>{{info['业绩比较基准'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">产品提奖率</div>
                         <div class="val ta-r">
-                            <span>0.5</span>
+                            <span>{{info['产品提奖率'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="desc">
@@ -235,55 +236,55 @@
                     <div class="line">
                         <div class="key">受让人</div>
                         <div class="val ta-r">
-                            <span>周方文</span>
+                            <span>{{info['受让人'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">证件类型</div>
                         <div class="val ta-r">
-                            <span>身份证</span>
+                            <span>{{info['证件类型'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">证件号码</div>
                         <div class="val ta-r">
-                            <span>36645645854964896</span>
+                            <span>{{info['证件号码'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">银行账号</div>
                         <div class="val ta-r">
-                            <span>XXXXXXX</span>
+                            <span>{{info['银行账号'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">开户行</div>
                         <div class="val ta-r">
-                            <span>股权类</span>
+                            <span>{{info['开户行'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">转让份额</div>
                         <div class="val ta-r">
-                            <span>12个月</span>
+                            <span>{{info['转让份额'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">转让金额</div>
                         <div class="val ta-r">
-                            <span>3千万</span>
+                            <span>{{info['转让金额'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">转让时间</div>
                         <div class="val ta-r">
-                            <span>2018-06-03</span>
+                            <span>{{info['转让时间'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
                         <div class="key">转让费</div>
                         <div class="val ta-r">
-                            <span>李方圆</span>
+                            <span>{{info['转让费'] || '--'}}</span>
                         </div>
                     </div>
                 </div>
@@ -311,6 +312,14 @@ export default {
   onLoad (option) {
     console.log(option)
     this.isEdit = option.isEdit
+    mpvue.getStorage({
+      // 获取本地缓存
+      key: 'history_achievenment_info',
+      success: res => {
+        this.info = res.data
+        console.log(this.info)
+      }
+    })
   },
   components: {},
   methods: {

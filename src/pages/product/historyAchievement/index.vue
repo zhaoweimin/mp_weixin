@@ -8,24 +8,24 @@
             <!-- <card :info="vo" :type="3"></card> -->
             <div class="contract-card history" @click="detail(key)">
                 <div class="order">
-                    <div class="bg">业绩单号：201265849215</div>
+                    <div class="bg">业绩单号：{{vo['业绩单号']}}</div>
                 </div>
                 <div class="msg no-boder">
                     <div class="line">
-                        <span class="key">客户姓名：周方文</span>
+                        <span class="key">客户姓名：{{vo['客户姓名']}}</span>
                     </div>
                 </div>
                 <div class="msg">
-                    <div class="line"><span class="key pr10 strong">产品名称</span><span class="label-blue-outline">股权类</span></div>
+                    <div class="line"><span class="key pr10 strong">{{vo['产品名称']}}</span><span class="label-blue-outline">{{vo['产品类型']}}</span></div>
                 </div>
                 <div class="msg no-boder">
-                    <div class="line"><span class="key">产品期限：14个月</span></div>
-                    <div class="line"><span class="key">合同金额：20万</span></div>
-                    <div class="line"><span class="key">确认收款日：2019-3-21</span></div>
+                    <div class="line"><span class="key">产品期限：{{vo['产品期限']}}个月</span></div>
+                    <div class="line"><span class="key">合同金额：{{vo['合同金额']}}</span></div>
+                    <div class="line"><span class="key">确认收款日：{{vo['确认收款日']}}</span></div>
                 </div>
                 <div class="msg no-boder">
-                    <div class="line"><span class="key">起息日：2019-4-1</span></div>
-                    <div class="line"><span class="key">产品到期日：2019-10-1</span></div>
+                    <div class="line"><span class="key">起息日：{{vo['起息日']}}</span></div>
+                    <div class="line"><span class="key">产品到期日：{{vo['产品到期日']}}</span></div>
                 </div>
                 <div class="add" @click="add(key)">追加</div>
                 <div class="status">
@@ -69,6 +69,8 @@ export default {
   methods: {
     getList (page = 1) {
       this.$api.getHistoryAchievementList(page).then(res => {
+        res = JSON.parse(res.RetValue)
+        console.log(res)
         if (res.success) {
           if (page === 1) {
             this.list = res.rows
@@ -90,8 +92,9 @@ export default {
       let url = `../addAchievement/main`
       mpvue.navigateTo({ url })
     },
-    detail (id) {
-      let url = `../historyDetail/main?id=${id}`
+    detail (key) {
+      let url = `../historyDetail/main?id=${key}`
+      mpvue.setStorageSync('history_achievenment_info', this.list[key])
       mpvue.navigateTo({ url })
     }
   }

@@ -77,7 +77,7 @@ export default {
     return this.post(obj)
   },
 
-  // 历史赎回
+  // 历史业绩
   getHistoryAchievementList (page) {
     let obj = {
       url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
@@ -178,8 +178,27 @@ export default {
         PageSize: 10,
         PageIndex: page - 1,
         Types: `assembly`,
-        FlowTypeId: '074edcaf-ac1d-b498-98ec-39e65ad5de13',
-        filter: '{}'
+        FlowTypeId: '074edcaf-ac1d-b498-98ec-39e65ad5de13'
+      }
+    }
+    return this.post(obj)
+  },
+
+  // 待办详情
+  getTaskInfo (id) {
+    let obj = {
+      url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+      data: {
+        id: '27458a0c-3000-4f36-8b93-81a82f59093f',
+        userid: '',
+        index: 0,
+        Parameter: ``,
+        rightvalueid: id,
+        formid: id,
+        filter: '{}',
+        urlpara: '',
+        sortField: '',
+        sortOrder: ''
       }
     }
     return this.post(obj)
