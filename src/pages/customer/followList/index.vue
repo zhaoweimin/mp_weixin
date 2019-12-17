@@ -2,7 +2,7 @@
     <div class="main has-header">
         <search placeholder="搜索"></search>
         <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key">
-            <div class="dis-flex l-center mb15 plr10">
+            <div class="dis-flex l-center mb15 plr10" @click="vo.isShow=!vo.isShow">
                 <div class="avatar">
                     <img class="img" :src="avatar" mode="aspectFill">
                 </div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="right"><span class="iconfont iconxiangxiajiantou f12"></span></div>
             </div>
-            <div v-if="vo['跟进编号'] !== ''">
+            <div v-if="vo.isShow">
                 <comInput :type="0" :titleDark="false" title="跟进编号" :isSpecialColorTxt="true" :value="vo['跟进编号']"></comInput>
                 <comInput :type="0" :titleDark="false" title="客户编号" :isSpecialColorTxt="true" :value="vo['客户编号']"></comInput>
                 <comInput :type="0" :titleDark="false" title="跟进方式" :value="vo['跟进方式']"></comInput>
@@ -42,33 +42,34 @@
                 <comInput :type="0" :titleDark="false" title="累计投资总额" :value="vo['累计投资总额']"></comInput>
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进主题</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['跟进主题']"></textarea>
+                    <textarea disabled :value="vo['跟进主题']"></textarea>
                 </div>
                 <comInput :type="0" :titleDark="false" title="跟进类型" :value="vo['跟进类型']"></comInput>
                 <!-- <comInput :type="2" :titleDark="false" title="跟进类型" placeholder="请选择" :value="" @getSelect="getSelect" :options="['客情维护']"></comInput> -->
                 <div class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进内容</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['跟进内容']"></textarea>
+                    <textarea disabled :value="vo['跟进内容']"></textarea>
                 </div>
                 <comInput v-if="type==='1'" :type="0" :titleDark="false" title="今日跟进时间" :value="vo['今日跟进时间']"></comInput>
                 <comInput v-else :type="0" :titleDark="false" title="跟进时间" :value="vo['跟进时间']"></comInput>
                 <!-- <comInput :type="3" :titleDark="false" title="今日跟进时间" :value="" @getSelectDate="getSelectDate"></comInput> -->
                 <div v-if="type==='1'" class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">今日跟进计划</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['今日跟进计划']"></textarea>
+                    <textarea disabled :value="vo['今日跟进计划']"></textarea>
                 </div>
                 <div v-else class="mlr15 ptb10 border-b">
                     <div class="cgey f16 mb10">跟进计划</div>
-                    <textarea disabled name="" id="" cols="30" rows="10" placeholder="" :value="vo['跟进计划']"></textarea>
+                    <textarea disabled :value="vo['跟进计划']"></textarea>
                 </div>
                 <comInput :type="0" :titleDark="false" title="跟进人" :value="小张"></comInput>
                 <comInput :type="0" :titleDark="false" title="跟进部门" :value="小王"></comInput>
             </div>
             <div v-else class="more dis-flex flex-column a-center plr15">
-                <div class="line"><span>跟进类型-</span><span class="cblack">{{vo['跟进类型']}}</span></div>
-                <div class="line">
-                    <span>跟进内容-</span><span class="cblack">{{vo['跟进内容']}}</span>
-                </div>
+                <div class="line"><span>上次跟进时间：</span><span class="cblack">{{vo['上次跟进时间']}}</span></div>
+                <div class="line"><span>计划跟进时间：</span><span class="cblack">{{vo['计划跟进时间']}}</span></div>
+            </div>
+            <div v-if="vo.isShow" class="ptb25 plr15 ">
+                <van-button type="info" size="large">跟进</van-button>
             </div>
         </div>
         <!-- <div v-if="vo['跟进编号']" class="ptb25 plr15 ">
@@ -98,6 +99,8 @@ export default {
   },
 
   onLoad (option) {
+    // 首次加载清空所有data
+    Object.assign(this.$data, this.$options.data())
     let type = option.type
     this.type = type
     let title = ['今日需跟进', '历史跟进', '本周需跟进', '超过30天未跟进']
@@ -113,25 +116,29 @@ export default {
 
   methods: {
     getList (page = 1) {
-      this.$api
-        .getProductList(page, this.r)
-        .then(res => {
-          res = JSON.parse(res.RetValue)
-          console.log(res)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows || []
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0 && page !== 1) this.page = page
-          } else {
-            if (page === 1) {
-              this.list = []
-              this.page = page
-            }
-          }
+      console.log('=>', 111)
+      this.$api.getProductList(page, this.r).then(res => {
+        console.log('=>', 222)
+        res = JSON.parse(res.RetValue)
+        res.rows = res.rows.map(m => {
+          return { ...m, ...{ isShow: false } }
         })
+        console.log('=>', 333)
+        console.log('=>', res)
+        if (res.success) {
+          if (page === 1) {
+            this.list = res.rows || []
+          } else {
+            this.list = this.list.concat(res.rows)
+          }
+          if (res.rows.length > 0 && page !== 1) this.page = page
+        } else {
+          if (page === 1) {
+            this.list = []
+            this.page = page
+          }
+        }
+      })
     },
     detail (id) {
       let url = `../followDetail/main?id=${id}`

@@ -17,7 +17,8 @@ export default {
       searchValue: '',
       type: 0,
       list: [],
-      page: 1
+      page: 1,
+      apiArr: ['getDiscoverMarkerExerciseList', 'getDiscoverMarkerHistoryExerciseList']
     }
   },
 
@@ -27,7 +28,9 @@ export default {
   },
 
   onLoad (option) {
+    Object.assign(this.$data, this.$options.data())
     let type = option.type
+    console.log('option', option)
     this.type = type
     let title = ['可邀约活动', '历史活动']
     mpvue.setNavigationBarTitle({ title: title[type] })
@@ -41,19 +44,17 @@ export default {
 
   methods: {
     getList (page = 1) {
-      this.$api
-        .getDiscoverMarkerExerciseList(page, this.type)
-        .then(res => {
-          console.log(res)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0) this.page = page
+      this.$api[this.apiArr[this.type]](page, this.type).then(res => {
+        console.log(res)
+        if (res.success) {
+          if (page === 1) {
+            this.list = res.rows
+          } else {
+            this.list = this.list.concat(res.rows)
           }
-        })
+          if (res.rows.length > 0) this.page = page
+        }
+      })
     },
     changeNav (nav) {
       this.nav_num = nav

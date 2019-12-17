@@ -11,7 +11,7 @@
                 <!-- 选择 -->
                 <div v-if="type===2">
                     <picker v-if="!disabled" class="w-full rel" :class="[textRight?'ta-r':'ta-l',!disabled?'pr20':'']" @change="onPickerChange" :value="index" :range="options">
-                        <span :class="[resultValue?'cblack':'clight',fontSize]">{{options[resultValue]||'请选择'}}</span>
+                        <span :class="[resultValue?'cblack':'clight',fontSize]">{{resultValue||'请选择'}}</span>
                         <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                     </picker>
                     <div v-else class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue}}</div>
@@ -179,19 +179,21 @@ export default {
       this.$emit('getClickItems', { key: this.paramkey })
     },
     onBlur () {
-      let Fn = this.validType ? (!(this.validType * 1) ? this.validType : 'numberFloatLimitValid') : 'emptyValid'
-      if (Fn !== 'none') {
-        Verify[Fn](
-          '',
-          this.resultValue,
-          res => {
-            this.isShowErr = !!res
-            if (this.isShowErr) {
-              this.errTxt = res
-            }
-          },
-          this.validType
-        )
+      if (this.isRequired) {
+        let Fn = this.validType ? (!(this.validType * 1) ? this.validType : 'numberFloatLimitValid') : 'emptyValid'
+        if (Fn !== 'none') {
+          Verify[Fn](
+            '',
+            this.resultValue,
+            res => {
+              this.isShowErr = !!res
+              if (this.isShowErr) {
+                this.errTxt = res
+              }
+            },
+            this.validType
+          )
+        }
       }
       this.resultValue = this.isShowErr ? '' : this.resultValue
       this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
@@ -232,7 +234,7 @@ export default {
 .inputItem .required {
 	position: absolute;
 	left: -8px;
-	top: 14px;
+	/* top: 14px; */
 	font-size: 12px;
 }
 input:disabled,
