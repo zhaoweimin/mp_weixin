@@ -185,7 +185,7 @@ export default {
   },
 
   // 待办详情
-  getTaskInfo (id) {
+  getTaskInfo (id, filter) {
     let obj = {
       url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
       data: {
@@ -195,7 +195,7 @@ export default {
         Parameter: ``,
         rightvalueid: id,
         formid: id,
-        filter: '{}',
+        filter: filter,
         urlpara: '',
         sortField: '',
         sortOrder: ''

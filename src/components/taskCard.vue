@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     detail (id) {
-      this.$api.getTaskInfo(this.info.FlowModelID)
+      this.$api.getTaskInfo(this.info.FlowModelID, { flowid: id })
         .then(res => {
           res = JSON.parse(res.RetValue)
           console.log(res)
