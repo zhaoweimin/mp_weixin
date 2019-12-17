@@ -42,47 +42,47 @@
         </div>
 
         <div class="msg-table" v-show="step === 0">
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FNumber" :textRight="false" title="客户编号" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FTranType" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FtranTypeEntry" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" title="客户来源明细" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FName" :textRight="false" title="机构名称" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FInstitutional" :textRight="false" :options="options.institutionXinzhi" @getSelect="getSelect" title="机构性质" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FLicenseType" :textRight="false" :options="options.zhizhaoType" @getSelect="getSelect" title="执照类型" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FLicenseNumber" :textRight="false" title="执照号码" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FValidTerm" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="有效期限" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FYearCheck" :textRight="false" :options="options.nianjianyouxiao" @getSelect="getSelect" title="年检有效" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumber" paramkey="FNumber" :textRight="false" title="客户编号" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" ref="FTranType" :value="datas.FTranType" paramkey="FTranType" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" ref="FtranTypeEntry" :value="datas.FtranTypeEntry" paramkey="FtranTypeEntry" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" title="客户来源明细" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FName" :value="datas.FName" paramkey="FName" :textRight="false" title="机构名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FInstitutional" paramkey="FInstitutional" :textRight="false" :options="options.institutionXinzhi" @getSelect="getSelect" title="机构性质" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FLicenseType" paramkey="FLicenseType" :textRight="false" :options="options.zhizhaoType" @getSelect="getSelect" title="执照类型" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FLicenseNumber" paramkey="FLicenseNumber" :textRight="false" title="执照号码" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FValidTerm" paramkey="FValidTerm" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="有效期限" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FYearCheck" paramkey="FYearCheck" :textRight="false" :options="options.nianjianyouxiao" @getSelect="getSelect" title="年检有效" :isSpecialBorderStyle="true"></comInput>
             <div class="table pr15 line">
                 <div class="flex-1">
                     <div class="key f14 l-end w100">注册地址</div>
                     <textarea v-model="datas.FRegisteredAddress" class="text-val f14" placeholder="请输入注册地址" placeholder-class=""></textarea>
                 </div>
             </div>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FRegisteredCapital" :textRight="false" title="注册资本" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FRegisteredCapital" paramkey="FRegisteredCapital" :textRight="false" title="注册资本" :isSpecialBorderStyle="true"></comInput>
         </div>
 
         <div class="msg-table" v-show="step === 1">
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainName" :textRight="false" title="主联系人姓名" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FMGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FAge" :textRight="false" title="年龄" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainPhone" :textRight="false" title="主联系人手机" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainFax" :textRight="false" title="主联系人传真" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="FMainEmail" :textRight="false" title="主联系人邮箱" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FMainName" :value="datas.FMainName" paramkey="FMainName" :textRight="false" title="主联系人姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FMGender" paramkey="FMGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FAge" paramkey="FAge" :textRight="false" title="年龄" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FMainPhone" :value="datas.FMainPhone" paramkey="FMainPhone" :textRight="false" title="主联系人手机" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FMainFax" paramkey="FMainFax" :textRight="false" title="主联系人传真" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FMainEmail" paramkey="FMainEmail" :textRight="false" title="主联系人邮箱" :isSpecialBorderStyle="true"></comInput>
             <div class="table pr15 pb20 line required">
                 <div class="flex-1">
                     <div class="key f14 l-end w100">通讯地址</div>
                     <textarea v-model="datas.FAddress" class="text-val f14" placeholder="请输入通讯地址" placeholder-class=""></textarea>
                 </div>
             </div>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" paramkey="Frepresentative" :textRight="false" title="法定代表人" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FrepresentativeG" :textRight="false" :options="options.sex" @getSelect="getSelect" title="法定代表人性别" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.Frepresentative" paramkey="Frepresentative" :textRight="false" title="法定代表人" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FrepresentativeG" paramkey="FrepresentativeG" :textRight="false" :options="options.sex" @getSelect="getSelect" title="法定代表人性别" :isSpecialBorderStyle="true"></comInput>
         </div>
 
         <div class="msg-table" v-show="step === 2">
-            <comInput :type="2" fontSize="f14" paramkey="FChoGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FChoold" :textRight="false" :options="options.ageRange" @getSelect="getSelect" title="年龄段" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="Findustry" :textRight="false" :options="options.industry" @getSelect="getSelect" title="行业" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FInvestment" :textRight="false" :options="options.investmentRate" @getSelect="getSelect" title="投资占收入比" :isSpecialBorderStyle="true" value=""></comInput>
-            <comInput :type="2" fontSize="f14" paramkey="FYearInvest" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="投资理财年限" :isSpecialBorderStyle="true" value=""></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FChoGender" paramkey="FChoGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FChoold" paramkey="FChoold" :textRight="false" :options="options.ageRange" @getSelect="getSelect" title="年龄段" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.Findustry" paramkey="Findustry" :textRight="false" :options="options.industry" @getSelect="getSelect" title="行业" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FInvestment" paramkey="FInvestment" :textRight="false" :options="options.investmentRate" @getSelect="getSelect" title="投资占收入比" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="2" fontSize="f14" :value="datas.FYearInvest" paramkey="FYearInvest" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="投资理财年限" :isSpecialBorderStyle="true"></comInput>
             <div class="table">
                 <div class="line">
                     <div class="flex-1">
@@ -209,6 +209,10 @@ export default {
     updateSource () {
       return this.source
     }
+  },
+  onLoad () {
+    Object.assign(this.$data, this.$options.data())
+    console.log('ref=>', this.datas)
   },
   data () {
     return {
@@ -406,9 +410,19 @@ export default {
       mpvue.navigateTo({ url })
     },
     submit () {
-      Object.keys(this.datas).forEach((item, index) => {
-        this.reqParams[index].Value = Array.isArray(this.datas[item]) ? this.datas[item].join(',') : this.datas[item]
-      })
+      let keys = Object.keys(this.datas)
+      for (let index = 0; index < keys.length - 1; index++) {
+        let _key = keys[index]
+        let _item = this.$refs[`${_key}`]
+        if (!!_item && _item.isRequired && !this.datas[`${_key}`]) {
+          return wx.showToast({
+            title: `${_item.title}不能为空`,
+            icon: 'none',
+            duration: 1500
+          })
+        }
+        this.reqParams[index].Value = Array.isArray(this.datas[_key]) ? this.datas[_key].join(',') : this.datas[_key]
+      }
       console.log('reqParams=====', this.reqParams)
       this.$api.UploadServerice(this.reqParams).then(res => {
         console.log(res)

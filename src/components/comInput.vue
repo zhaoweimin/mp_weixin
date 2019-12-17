@@ -11,7 +11,7 @@
                 <!-- 选择 -->
                 <div v-if="type===2">
                     <picker v-if="!disabled" class="w-full rel" :class="[textRight?'ta-r':'ta-l',!disabled?'pr20':'']" @change="onPickerChange" :value="index" :range="options">
-                        <span :class="[resultValue?'cblack':'clight',fontSize]">{{options[resultValue]||'请选择'}}</span>
+                        <span :class="[resultValue?'cblack':'clight',fontSize]">{{resultValue||'请选择'}}</span>
                         <span v-if="!disabled" class="icon-r iconfont iconright"></span>
                     </picker>
                     <div v-else class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue}}</div>
