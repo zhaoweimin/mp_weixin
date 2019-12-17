@@ -143,9 +143,9 @@
             </div>
             <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{info['客户姓名']}}</div>
             <div class="msg no-boder">
-                <div class="f13"><span class="cgey">产品名称：</span>某某某</div>
+                <div class="f13"><span class="cgey">产品名称：</span>{{info['购买产品']}}</div>
                 <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['产品期限']}}个月</div>
-                <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
+                <div class="f13"><span class="cgey">合同金额：</span>{{info['认购金额']}}(打款日期：{{info['打款日'] || '--'}})</div>
             </div>
             <div class="dis-flex a-between plr15 pb10">
                 <div class="f13 cgey">成立日：2019-03-31</div>
@@ -236,8 +236,8 @@
                     <div class="mb5 f13"><span class="cgey">活动时间：</span>{{info['活动时间']}}</div>
                     <div class="mb5 f13"><span class="cgey">活动目的：</span>{{info['活动目的']}}</div>
                     <div class="mb5 f13"><span class="cgey">活动范围：</span>{{info['活动范围']}}</div>
-                    <div class="mb5 f13"><span class="cgey">活动发起人：</span>{{info['活动发起人']}}</div>
-                    <div class="f13"><span class="cgey">活动发起部门：</span>{{info['活动发起部门']}}</div>
+                    <div class="mb5 f13"><span class="cgey">活动发起人：</span>{{info['发起人']}}</div>
+                    <div class="f13"><span class="cgey">活动发起部门：</span>{{info['所属部门']}}</div>
                 </div>
                 <div class="clink f13">查看更多</div>
             </div>
