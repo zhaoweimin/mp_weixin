@@ -53,26 +53,39 @@ export default {
   onReachBottom () {
     this.getList(this.page + 1)
   },
-
+  watch: {
+    list: {
+      handler (newV) {
+        if (newV.length === 0) {
+          this.getList(this.page + 1)
+        }
+      }
+    }
+  },
   methods: {
     changeNav (nav) {
       console.log(nav)
       this.nav = nav
+      this.page = 1
+      this.list = []
+      this.getList()
     },
     getList (page = 1) {
-      this.$api
-        .getContractList(page)
-        .then(res => {
-          console.log(res)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0) this.page = page
+      this.$api.getContractList(page).then(res => {
+        console.log(res)
+        if (res.success) {
+          let resUsing = res.rows.filter(m => m['状态'] === '已发放')
+          let resUsed = res.rows.filter(m => m['状态'] === '已成单' || m['状态'] === '追加成单')
+          console.log('可使用=>', resUsing)
+          console.log('已使用=>', resUsed)
+          if (page === 1) {
+            this.list = this.nav === 0 ? resUsing : resUsed
+          } else {
+            this.list = this.nav === 0 ? this.list.concat(resUsing) : this.list.concat(resUsed)
           }
-        })
+          if (res.rows.length > 0) this.page = page
+        }
+      })
     }
   },
 
@@ -81,6 +94,9 @@ export default {
 </script>
 
 <style scoped>
+page {
+	height: 100%;
+}
 .con-list {
 	margin: 30rpx;
 	border-radius: 4rpx;
@@ -97,7 +113,6 @@ export default {
 	color: #020202;
 	font-size: 17px;
 	font-weight: bold;
-
 }
 .con-list .left .used {
 	color: #9d9d9d;
