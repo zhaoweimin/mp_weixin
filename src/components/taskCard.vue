@@ -40,10 +40,13 @@ export default {
 		detail(id) {
 			this.$api.getTaskInfo(this.info.FlowModelID, { flowid: id }).then(res => {
 				res = JSON.parse(res.RetValue)
-				console.log(res)
-				// let url = `/pages/task/detail0/main?id=${id}`
-				// mpvue.setStorageSync('task_info', this.info)
-				// mpvue.navigateTo({ url })
+                console.log(res)
+                let id = ''
+                if(this.info.name==='业绩管理'){
+                    id = 2
+                }
+                mpvue.setStorageSync(`detail${id}`, res.rows[0])
+                mpvue.navigateTo({ url:`/pages/task/detail${id}/main` })
 			})
 		}
 	}

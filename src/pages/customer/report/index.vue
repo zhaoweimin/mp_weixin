@@ -111,7 +111,9 @@ export default {
       this.getList()
     }
   },
-
+  onLoad(){
+    Object.assign(this.$data, this.$options.data())
+  },
   created () {
     // let app = getApp()
   }

@@ -2,10 +2,11 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">销售信息</div>
-            <comInput :type="1" title="业绩单号" :titleDark="false" :isSpecialColorTxt="true" value="XXXXXXXXX"></comInput>
-            <comInput :type="1" :isRequired="true" title="客户姓名" :titleDark="false" value="XXX"></comInput>
-            <comInput :type="2" title="证件类型" :titleDark="false" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
-            <comInput :type="1" title="证件号码" :titleDark="false" value="XXXXXXXXX"></comInput>
+            <comInput :type="0" title="业绩单号" :titleDark="false" :isSpecialColorTxt="true" :value="info['业绩单号']"></comInput>
+            <comInput :type="0" :isRequired="true" title="客户姓名" :titleDark="false" :value="info['客户姓名']"></comInput>
+            <comInput :type="0" title="证件类型" :titleDark="false" :value="info['证件类型']"></comInput>
+            <!-- <comInput :type="2" title="证件类型" :titleDark="false" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput> -->
+            <comInput :type="1" title="证件号码" :titleDark="false" :value="info['证件号码']"></comInput>
             <comInput :type="2" :isRequired="true" title="产品名称" :titleDark="false" placeholder="请选择" value="" @getSelect="getSelect" :options="['通过','未通过','等待审核中']"></comInput>
             <comInput :type="1" title="产品分类" :titleDark="false" value="XXX"></comInput>
             <comInput :type="3" title="产品期限" :titleDark="false" value="" @getSelectDate="getSelectDate"></comInput>
@@ -76,16 +77,15 @@ export default {
 
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      },
+      info: {},
       checked: true
     }
   },
-
+  onLoad(){
+    this.info = mpvue.getStorageSync('detail2')
+    console.log('=>>',mpvue.getStorageSync('detail2'))
+    
+  },
   created () {},
   methods: {
     onChange (e) {

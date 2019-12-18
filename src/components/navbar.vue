@@ -14,6 +14,9 @@ export default {
     }
   },
   props: ['info'],
+  onLoad(){
+    Object.assign(this.$data, this.$options.data())
+  },
   methods: {
     tabNav (nav) {
       this.nav = nav
