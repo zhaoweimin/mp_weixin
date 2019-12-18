@@ -12,60 +12,60 @@ import card from '@/components/achievementCard'
 import search from '@/components/search'
 
 export default {
-  data () {
-    return {
-      searchValue: '',
-      type: 0,
-      list: [],
-      page: 1,
-      apiArr: ['getDiscoverMarkerExerciseList', 'getDiscoverMarkerHistoryExerciseList']
-    }
-  },
+	data() {
+		return {
+			searchValue: '',
+			type: 0,
+			list: [],
+			page: 1,
+			apiArr: ['getDiscoverMarkerExerciseList', 'getDiscoverMarkerHistoryExerciseList']
+		}
+	},
 
-  components: {
-    card,
-    search
-  },
+	components: {
+		card,
+		search
+	},
 
-  onLoad (option) {
-    Object.assign(this.$data, this.$options.data())
-    let type = option.type
-    console.log('option', option)
-    this.type = type
-    let title = ['可邀约活动', '历史活动']
-    mpvue.setNavigationBarTitle({ title: title[type] })
+	onLoad(option) {
+		Object.assign(this.$data, this.$options.data())
+		let type = option.type
+		console.log('option', option)
+		this.type = type
+		let title = ['可邀约活动', '历史活动']
+		mpvue.setNavigationBarTitle({ title: title[type] })
 
-    this.getList()
-  },
+		this.getList()
+	},
 
-  onReachBottom () {
-    this.getList(this.page + 1)
-  },
+	onReachBottom() {
+		this.getList(this.page + 1)
+	},
 
-  methods: {
-    getList (page = 1) {
-      this.$api[this.apiArr[this.type]](page, this.type).then(res => {
-        console.log(res)
-        if (res.success) {
-          if (page === 1) {
-            this.list = res.rows
-          } else {
-            this.list = this.list.concat(res.rows)
-          }
-          if (res.rows.length > 0) this.page = page
-        }
-      })
-    },
-    changeNav (nav) {
-      this.nav_num = nav
-    },
-    onSearch () {
-      console.log(111)
-    },
-    onCancel () {}
-  },
+	methods: {
+		getList(page = 1) {
+			this.$api[this.apiArr[this.type]](page).then(res => {
+				console.log(res)
+				if (res.success) {
+					if (page === 1) {
+						this.list = res.rows
+					} else {
+						this.list = this.list.concat(res.rows)
+					}
+					if (res.rows.length > 0) this.page = page
+				}
+			})
+		},
+		changeNav(nav) {
+			this.nav_num = nav
+		},
+		onSearch() {
+			console.log(111)
+		},
+		onCancel() {}
+	},
 
-  created () {}
+	created() {}
 }
 </script>
 

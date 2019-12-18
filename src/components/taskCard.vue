@@ -23,32 +23,30 @@
                 <span class="time">登记时间：2019-03-16 10:30</span>
             </div>
         </div>
-
     </div>
 </template>
 
 <script>
 export default {
-  props: {
-    info: {
-      type: Object,
-      default () {
-        return {}
-      }
-    }
-  },
-  methods: {
-    detail (id) {
-      this.$api.getTaskInfo(this.info.FlowModelID, { flowid: id })
-        .then(res => {
-          res = JSON.parse(res.RetValue)
-          console.log(res)
-          // let url = `/pages/task/detail0/main?id=${id}`
-          // mpvue.setStorageSync('task_info', this.info)
-          // mpvue.navigateTo({ url })
-        })
-    }
-  }
+	props: {
+		info: {
+			type: Object,
+			default() {
+				return {}
+			}
+		}
+	},
+	methods: {
+		detail(id) {
+			this.$api.getTaskInfo(this.info.FlowModelID, { flowid: id }).then(res => {
+				res = JSON.parse(res.RetValue)
+				console.log(res)
+				// let url = `/pages/task/detail0/main?id=${id}`
+				// mpvue.setStorageSync('task_info', this.info)
+				// mpvue.navigateTo({ url })
+			})
+		}
+	}
 }
 </script>
 

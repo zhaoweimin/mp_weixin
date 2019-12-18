@@ -19,102 +19,100 @@ import card from '@/components/taskCard'
 import search from '@/components/search'
 
 export default {
-  data () {
-    return {
-      nav: ['新待办', '历史待办'],
-      nav_num: 0,
-      list: [
-        {
-          theme: '提成申请',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 0,
-          level: 1,
-          sex: 1
-        },
-        {
-          theme: '活动邀约',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 1,
-          level: 4,
-          sex: 1
-        },
-        {
-          theme: '业绩管理',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 2,
-          level: 2,
-          sex: 1
-        },
-        {
-          theme: '活动申请',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 3,
-          level: 3,
-          sex: 0
-        },
-        {
-          theme: '产品预约',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 4,
-          level: 3,
-          sex: 0
-        },
-        {
-          theme: '业绩赎回',
-          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-          id: 5,
-          level: 3,
-          sex: 0
-        }
-      ],
-      page: 1
-    }
-  },
+	data() {
+		return {
+			nav: ['新待办', '历史待办'],
+			nav_num: 0,
+			list: [
+				{
+					theme: '提成申请',
+					avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+					id: 0,
+					level: 1,
+					sex: 1
+				},
+				{
+					theme: '活动邀约',
+					avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+					id: 1,
+					level: 4,
+					sex: 1
+				},
+				{
+					theme: '业绩管理',
+					avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+					id: 2,
+					level: 2,
+					sex: 1
+				},
+				{
+					theme: '活动申请',
+					avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+					id: 3,
+					level: 3,
+					sex: 0
+				},
+				{
+					theme: '产品预约',
+					avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+					id: 4,
+					level: 3,
+					sex: 0
+				},
+				{
+					theme: '业绩赎回',
+					avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+					id: 5,
+					level: 3,
+					sex: 0
+				}
+			],
+			page: 1
+		}
+	},
 
-  components: {
-    navbar,
-    fliter,
-    card,
-    search
-  },
+	components: {
+		navbar,
+		fliter,
+		card,
+		search
+	},
 
-  mounted () {
-    this.getList()
-  },
+	mounted() {
+		this.getList()
+	},
 
-  onReachBottom () {
-    this.getList(this.page + 1)
-  },
+	onReachBottom() {
+		this.getList(this.page + 1)
+	},
 
-  methods: {
-    getList (page = 1) {
-      this.$api
-        .getTaskList(page)
-        .then(res => {
-          res = JSON.parse(res.RetValue)
-          console.log(res)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0) this.page = page
-          }
-        })
-    },
-    changeNav (nav) {
-      console.log(nav)
-      this.nav_num = nav
-      this.getList()
-    },
-    send () {
-      let url = '/pages/task/detail/main?id='
-      mpvue.navigateTo({ url })
-    }
-  },
+	methods: {
+		getList(page = 1) {
+			this.$api.getTaskList(page).then(res => {
+				res = JSON.parse(res.RetValue)
+				console.log(res)
+				if (res.success) {
+					if (page === 1) {
+						this.list = res.rows
+					} else {
+						this.list = this.list.concat(res.rows)
+					}
+					if (res.rows.length > 0) this.page = page
+				}
+			})
+		},
+		changeNav(nav) {
+			console.log(nav)
+			this.nav_num = nav
+			this.getList()
+		},
+		send() {
+			let url = '/pages/task/detail/main?id='
+			mpvue.navigateTo({ url })
+		}
+	},
 
-  created () {}
+	created() {}
 }
 </script>
 

@@ -236,7 +236,7 @@
                     <div class="mb5 f13"><span class="cgey">活动时间：</span>{{info['活动时间']}}</div>
                     <div class="mb5 f13"><span class="cgey">活动目的：</span>{{info['活动目的']}}</div>
                     <div class="mb5 f13"><span class="cgey">活动范围：</span>{{info['活动范围']}}</div>
-                    <div class="mb5 f13"><span class="cgey">活动发起人：</span>{{info['发起人']}}</div>
+                    <div class="mb5 f13"><span class="cgey">活动发起人：</span>{{info['活动发起人']}}</div>
                     <div class="f13"><span class="cgey">活动发起部门：</span>{{info['所属部门']}}</div>
                 </div>
                 <div class="clink f13">查看更多</div>
@@ -247,50 +247,50 @@
 
 <script>
 export default {
-  props: ['info', 'type', 'status', 'actionType'],
-  methods: {
-    interstDetail (type, id) {
-      let url = `/pages/${type}/detail/main?id=${id}`
-      if (type === 'redeem') {
-        mpvue.setStorageSync('redeem_info', this.info)
-      } else {
-        mpvue.setStorageSync('interest_info', this.info)
-      }
-      mpvue.navigateTo({ url })
-    },
-    royaltyDetail (id) {
-      let url = `/pages/royalty/detail/main?id=${id}`
-      mpvue.setStorageSync('royalty_info', this.info)
-      mpvue.navigateTo({ url })
-    },
-    actionDetail () {
-      let url = `/pages/discover/actionDetail/main?type=${this.actionType}`
-      mpvue.setStorageSync('action_detail_info', this.info)
-      mpvue.navigateTo({ url })
-    },
-    productDetail () {
-      let url = `/pages/discover/productDetail/main`
-      mpvue.setStorageSync('discover_product_info', this.info)
-      mpvue.navigateTo({ url })
-    },
-    openDoc () {
-      wx.showLoading({
-        title: '请稍后..'
-      })
-      wx.downloadFile({
-        url: 'http://video.317hu.com/917b3140-3da6-47d5-911c-a15462fcdeb2.pdf',
-        success: function (res) {
-          var filePath = res.tempFilePath
-          wx.openDocument({
-            filePath: filePath,
-            success: function (res) {
-              wx.hideLoading()
-            }
-          })
-        }
-      })
-    }
-  }
+	props: ['info', 'type', 'status', 'actionType'],
+	methods: {
+		interstDetail(type, id) {
+			let url = `/pages/${type}/detail/main?id=${id}`
+			if (type === 'redeem') {
+				mpvue.setStorageSync('redeem_info', this.info)
+			} else {
+				mpvue.setStorageSync('interest_info', this.info)
+			}
+			mpvue.navigateTo({ url })
+		},
+		royaltyDetail(id) {
+			let url = `/pages/royalty/detail/main?id=${id}`
+			mpvue.setStorageSync('royalty_info', this.info)
+			mpvue.navigateTo({ url })
+		},
+		actionDetail() {
+			let url = `/pages/discover/actionDetail/main?type=${this.actionType}`
+			mpvue.setStorageSync('action_detail_info', this.info)
+			mpvue.navigateTo({ url })
+		},
+		productDetail() {
+			let url = `/pages/discover/productDetail/main`
+			mpvue.setStorageSync('discover_product_info', this.info)
+			mpvue.navigateTo({ url })
+		},
+		openDoc() {
+			wx.showLoading({
+				title: '请稍后..'
+			})
+			wx.downloadFile({
+				url: 'http://video.317hu.com/917b3140-3da6-47d5-911c-a15462fcdeb2.pdf',
+				success: function(res) {
+					var filePath = res.tempFilePath
+					wx.openDocument({
+						filePath: filePath,
+						success: function(res) {
+							wx.hideLoading()
+						}
+					})
+				}
+			})
+		}
+	}
 }
 </script>
 
@@ -342,10 +342,10 @@ export default {
 .contract-card .title .name {
 	font-size: 16px;
 	font-weight: bold;
-  max-width: 70%;
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
+	max-width: 70%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .contract-card .title .name .small {
 	font-size: 13px;
