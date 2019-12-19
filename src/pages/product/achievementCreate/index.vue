@@ -7,7 +7,7 @@
             <div class="block">
                 <div class="from">
                     <div class="line">
-                        <div class="key">业绩单号</div>
+                        <div class="key">业绩单号111</div>
                         <div class="val">
                             <span class="clink">XXXXXXXXXX</span>
                         </div>
@@ -294,49 +294,49 @@
 import upload from '@/components/upload'
 
 export default {
-  data () {
-    return {
-      step: 0,
-      info: {},
-      type_range: ['身份证', '护照'],
-      type: '',
-      booking_date: '',
-      pay_date: ''
-    }
-  },
-  onLoad (option) {
-    console.log(option)
-  },
-  components: {
-    upload
-  },
-  methods: {
-    bindTypeChange (e) {
-      let val = e.mp.detail.value
-      this.type = val
-    },
-    bindBookingChange (e) {
-      let val = e.mp.detail.value
-      this.booking_date = val
-    },
-    bindPayChange (e) {
-      let val = e.mp.detail.value
-      this.pay_date = val
-    },
-    send () {
-      let url = '/pages/success/main'
-      mpvue.navigateTo({ url })
-    },
-    setStep (type) {
-      if (type) {
-        this.step += 1
-      } else {
-        this.step -= 1
-      }
-    }
-  },
+	data() {
+		return {
+			step: 0,
+			info: {},
+			type_range: ['身份证', '护照'],
+			type: '',
+			booking_date: '',
+			pay_date: ''
+		}
+	},
+	onLoad(option) {
+		console.log(option)
+	},
+	components: {
+		upload
+	},
+	methods: {
+		bindTypeChange(e) {
+			let val = e.mp.detail.value
+			this.type = val
+		},
+		bindBookingChange(e) {
+			let val = e.mp.detail.value
+			this.booking_date = val
+		},
+		bindPayChange(e) {
+			let val = e.mp.detail.value
+			this.pay_date = val
+		},
+		send() {
+			let url = '/pages/success/main'
+			mpvue.navigateTo({ url })
+		},
+		setStep(type) {
+			if (type) {
+				this.step += 1
+			} else {
+				this.step -= 1
+			}
+		}
+	},
 
-  created () {}
+	created() {}
 }
 </script>
 

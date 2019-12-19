@@ -40,13 +40,19 @@ export default {
 		detail(id) {
 			this.$api.getTaskInfo(this.info.FlowModelID, { flowid: id }).then(res => {
 				res = JSON.parse(res.RetValue)
-                console.log(res)
-                let id = ''
-                if(this.info.name==='业绩管理'){
-                    id = 2
-                }
-                mpvue.setStorageSync(`detail${id}`, res.rows[0])
-                mpvue.navigateTo({ url:`/pages/task/detail${id}/main` })
+				console.log(res)
+				let id = ''
+				if (this.info.name === '提成申请') {
+					id = 0
+				} else if (this.info.name === '活动邀约') {
+					id = 1
+				} else if (this.info.name === '业绩管理') {
+					id = 2
+				} else if (this.info.name === '产品预约') {
+					id = 4
+				}
+				mpvue.setStorageSync(`detail${id}`, res.rows[0])
+				mpvue.navigateTo({ url: `/pages/task/detail${id}/main` })
 			})
 		}
 	}

@@ -1,22 +1,22 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <comInput :type="0" :titleDark="false" title="单据编号" :isSpecialColorTxt="true" value="53456762312313"></comInput>
-            <comInput :type="0" :titleDark="false" title="业绩单号" :isSpecialColorTxt="true" value="1312245423"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户姓名" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="购买产品" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品期限" value="12个月"></comInput>
-            <comInput :type="0" :titleDark="false" title="认购金额" value="12万"></comInput>
-            <comInput :type="0" :titleDark="false" title="出资认缴日" value="2019-09-08"></comInput>
-            <comInput :type="0" :titleDark="false" title="到账日" value="2019-09-08"></comInput>
-            <comInput :type="0" :titleDark="false" title="到期日" value="2019-09-08"></comInput>
-            <comInput :type="0" :titleDark="false" title="认购费" value="关联产品发布"></comInput>
-            <comInput :type="0" :titleDark="false" title="提成方式" value="一次"></comInput>
-            <comInput :type="0" :titleDark="false" title="提奖率" value="80%"></comInput>
-            <comInput :type="0" :titleDark="false" title="本次提奖" value="50万"></comInput>
-            <comInput :type="0" :titleDark="false" title="部门经理" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="归属部门" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="申请时间" value="2019-09-08"></comInput>
+            <comInput :type="0" :titleDark="false" title="单据编号" :isSpecialColorTxt="true" :value="info['单据编号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="业绩单号" :isSpecialColorTxt="true" :value="info['业绩单号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户姓名" :value="info['客户姓名']"></comInput>
+            <comInput :type="0" :titleDark="false" title="购买产品" :value="info['购买产品']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" :value="info['产品期限']"></comInput>
+            <comInput :type="0" :titleDark="false" title="认购金额" :value="info['认购金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="出资认缴日" :value="info['出资认缴日']"></comInput>
+            <comInput :type="0" :titleDark="false" title="到账日" :value="info['到账日']"></comInput>
+            <comInput :type="0" :titleDark="false" title="到期日" :value="info['到期日']"></comInput>
+            <comInput :type="0" :titleDark="false" title="认购费" :value="info['认购费']"></comInput>
+            <comInput :type="0" :titleDark="false" title="提成方式" :value="info['提成方式']"></comInput>
+            <comInput :type="0" :titleDark="false" title="提奖率" :value="info['提奖率']"></comInput>
+            <comInput :type="0" :titleDark="false" title="本次提奖" :value="info['本次提奖金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="部门经理" :value="info['理财经理']"></comInput>
+            <comInput :type="0" :titleDark="false" title="归属部门" :value="info['归属部门']"></comInput>
+            <comInput :type="0" :titleDark="false" title="申请时间" :value="info['申请时间']"></comInput>
         </div>
         <div class="plr15 mt25 pb20">
             <van-button type="info" size="large" @click="link">进入审批</van-button>
@@ -29,28 +29,27 @@ import card from '@/components/card'
 import comInput from '@/components/comInput'
 
 export default {
-  components: {
-    card,
-    comInput
-  },
+	components: {
+		card,
+		comInput
+	},
 
-  data () {
-    return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      }
-    }
-  },
-  methods: {
-    link () {
-      let url = '/pages/task/approval/main?id='
-      mpvue.navigateTo({ url })
-    }
-  },
-  created () {}
+	data() {
+		return {
+			info: {}
+		}
+	},
+	methods: {
+		link() {
+			let url = '/pages/task/approval/main?id='
+			mpvue.navigateTo({ url })
+		}
+	},
+	onLoad() {
+		this.info = mpvue.getStorageSync('detail0')
+		console.log('=>>', mpvue.getStorageSync('detail0'))
+	},
+	created() {}
 }
 </script>
 

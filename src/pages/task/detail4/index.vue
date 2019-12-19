@@ -2,30 +2,30 @@
     <div class="customer">
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">客户信息</div>
-            <comInput :type="0" :titleDark="false" title="预约编号" :isSpecialColorTxt="true" value="2322115565512223664"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户姓名" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="证件类型" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="证件号码" value="XXXXXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="预约编号" :isSpecialColorTxt="true" :value="info['预约编号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户姓名" :value="info['客户姓名']"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件类型" :value="info['证件类型']"></comInput>
+            <comInput :type="0" :titleDark="false" title="证件号码" :value="info['证件号码']"></comInput>
         </div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">产品信息</div>
-            <comInput :type="0" :titleDark="false" title="产品类别" value="股权类"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品编号" value="523446322"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品名称" value="名车"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品期限" value="12个月"></comInput>
-            <comInput :type="0" :titleDark="false" title="募集账户" value="XXX"></comInput>
-            <comInput :type="0" :titleDark="false" title="已募集份数" value="5万份"></comInput>
-            <comInput :type="0" :titleDark="false" title="已募集金额" value="5万"></comInput>
-            <comInput :type="0" :titleDark="false" title="剩余募集金额" value="2万"></comInput>
-            <comInput :type="0" :titleDark="false" title="已预约人数" value="10人"></comInput>
-            <comInput :type="0" :titleDark="false" title="已预约金额" value="8万"></comInput>
-            <comInput :type="0" :titleDark="false" title="剩余可预约" value="2万"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品类别" :value="info['产品类别']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品编号" :value="info['产品编号']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品名称" :value="info['产品名称']"></comInput>
+            <comInput :type="0" :titleDark="false" title="产品期限" :value="info['产品期限']"></comInput>
+            <comInput :type="0" :titleDark="false" title="募集账户" :value="info['募集账户']"></comInput>
+            <comInput :type="0" :titleDark="false" title="已募集份数" :value="info['已募集份数']"></comInput>
+            <comInput :type="0" :titleDark="false" title="已募集金额" :value="info['已募集金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="剩余募集金额" :value="info['剩余募集金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="已预约人数" :value="info['已预约人数']"></comInput>
+            <comInput :type="0" :titleDark="false" title="已预约金额" :value="info['已预约金额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="剩余可预约" :value="info['剩余可预约']"></comInput>
         </div>
         <div class="bg-fff mt10">
             <div class="plr15 ptb15 f16 clink strong">付款信息</div>
-            <comInput :type="0" :titleDark="false" title="预打款日期" value="2019-09-09"></comInput>
-            <comInput :type="0" :titleDark="false" title="实际打款日期" value="系统自动关联"></comInput>
-            <comInput :type="0" :titleDark="false" title="出资金额" value="XXXXXXXXX"></comInput>
+            <comInput :type="0" :titleDark="false" title="预打款日期" :value="info['预约付款日期']"></comInput>
+            <comInput :type="0" :titleDark="false" title="实际打款日期" :value="info['实际打款日期']"></comInput>
+            <comInput :type="0" :titleDark="false" title="出资金额" :value="info['出资金额']"></comInput>
         </div>
         <div class="plr15 mt25 pb20">
             <van-button type="info" size="large">进入审批</van-button>
@@ -38,23 +38,21 @@ import card from '@/components/card'
 import comInput from '@/components/comInput'
 
 export default {
-  components: {
-    card,
-    comInput
-  },
+	components: {
+		card,
+		comInput
+	},
 
-  data () {
-    return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      }
-    }
-  },
-
-  created () {}
+	data() {
+		return {
+			info: {}
+		}
+	},
+	onLoad() {
+		this.info = mpvue.getStorageSync('detail4')
+		console.log('=>>', mpvue.getStorageSync('detail4'))
+	},
+	created() {}
 }
 </script>
 
