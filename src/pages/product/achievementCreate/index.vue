@@ -6,72 +6,17 @@
             </div>
             <div class="block">
                 <div class="from">
-                    <div class="line">
-                        <div class="key">业绩单号111</div>
-                        <div class="val">
-                            <span class="clink">XXXXXXXXXX</span>
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">客户姓名</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">证件类型</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择证件类型
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">证件号码</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入证件号码" placeholder-class="cgey">
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">产品名称</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择产品
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">产品分类</div>
-                        <div class="val">
-                            <span>XXXXX（选择产品自动带出）</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">产品期限</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入产品期限" placeholder-class="cgey">
-                        </div>
-                    </div>
+                    <comInput :type="2" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" :options="achievementOptions" @getSelect="getSelect" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :options="customerOptions" @getSelect="getSelect" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.string36" paramkey="string36" :textRight="false" title="证件类型" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.string37" paramkey="string37" :textRight="false" title="证件号码" :isSpecialBorderStyle="true"></comInput>
+                    <!-- <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumber" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput> -->
+                    <comInput :type="2" fontSize="f14" :value="datas.string6" paramkey="string6" :textRight="false" :options="productOptions" @getSelect="getSelect" title="产品名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.string7" paramkey="string7" :textRight="false" title="产品分类" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.string5" paramkey="string5" :textRight="false" title="产品期限" :isSpecialBorderStyle="true"></comInput>
+                    
+                
+
                     <div class="line required">
                         <div class="key">合同编号</div>
                         <div class="val">
@@ -292,6 +237,8 @@
 
 <script>
 import upload from '@/components/upload'
+import comInput from '@/components/comInput'
+import Options from '@/utils/Options.js'
 
 export default {
 	data() {
@@ -301,16 +248,242 @@ export default {
 			type_range: ['身份证', '护照'],
 			type: '',
 			booking_date: '',
-			pay_date: ''
+            pay_date: '',
+            customers:[],
+            customerOptions:[],
+            products:[],
+            productOptions:[],
+            achievementOptions:[],
+            reqParams:[
+                {
+                    Field: "string1",				//单据编号							
+                    Value: "业绩单号"			
+                },
+                {
+                    Field: "string2",				//业绩单号						
+                    Value: "客户姓名"
+                },
+                {
+                    Field: "string6",					//客户姓名		
+                    Value: "产品名称"
+                },
+                {
+                    Field: "string7",					//购买产品		
+                    Value: "产品分类"
+                },
+                {
+                    Field: "string5",					//产品期限		
+                    Value: "产品期限"
+                },
+                {
+                    Field: "string36",					//证件类型					
+                    Value: "证件类型"
+                },
+                {
+                    Field: "string37",					//证件号	
+                    Value: "证件号"
+                },
+                {
+                    Field: "string9",					//合同编号		
+                    Value: "合同编号"
+                },
+                {
+                    Field: "string10",					//预约编号
+                    Value: "预约编号"
+                },
+                {
+                    Field: "string13",					//理财经理		
+                    Value: "理财经理"
+                },
+                {
+                    Field: "string14",					//所属部门			
+                    Value: "所属部门"
+                },
+                {
+                    Field: "string74",				//部门编号		
+                    Value: "部门编号"
+                },
+                {
+                    Field: "string15",				//录单员	
+                    Value: "录单员"
+                },
+                {
+                    Field: "string69",			//录单员id					
+                    Value: "录单员id"
+                },
+                {
+                    Field: "string34",				//录单员归属部门		
+                    Value: "录单员归属部门"	
+                },
+                {
+                    Field: "string28",				//附件		
+                    Value: "附件"	
+                },
+                {
+                    Field: "date100",				//资产证明上传时间		
+                    Value: "资产证明上传时间"	
+                },
+                {
+                    Field: "date1",				//打款日期	
+                    Value: "打款日期"	
+                },
+                {
+                    Field: "string16",				//合同金额		
+                    Value: "合同金额"	
+                },
+                {
+                    Field: "string17",				//付款方式		
+                    Value: "付款方式"	
+                },
+                {
+                    Field: "string18",				//付款开户行
+                    Value: "付款开户行"	
+                },
+                {
+                    Field: "string19",				//付款账号
+                    Value: "付款账号"	
+                },
+                {
+                    Field: "string20",				//累计缴款金额
+                    Value: "累计缴款金额"	
+                },
+                {
+                    Field: "date2",				//确认收款日期
+                    Value: "确认收款日期"	
+                },
+                {
+                    Field: "date3",				//起息日
+                    Value: "起息日"	
+                },
+                {
+                    Field: "date4",				//产品到期日
+                    Value: "产品到期日"	
+                },
+                {
+                    Field: "date7",				//产品成立日
+                    Value: "产品成立日"	
+                },
+                {
+                    Field: "number1",				//年化系数
+                    Value: "年化系数"	
+                },
+                {
+                    Field: "number2",				//年化业绩（合同金额*年化系数=年化业绩）
+                    Value: "年化业绩"	
+                },
+                {
+                    Field: "string21",				//收益分配账户开户行
+                    Value: "收益分配账户开户行"	
+                },
+                {
+                    Field: "string22",				//收益分配账户
+                    Value: "收益分配账户"	
+                },
+                {
+                    Field: "date8",					//冷静期（当前系统时间二十四小时之后的时间）
+                    Value: "冷静期"	
+                },
+                {
+                    Field: "date9",					//到账日期 （和确认收款日期一样）		
+                    Value: "到账日期"	
+                },
+                {
+                    Field: "string49",				
+                    Value: "否"	
+                },
+                {
+                    Field: "string50",				
+                    Value: "否"	
+                },
+                {
+                    Field: "string76",				
+                    Value: "未提奖"	
+                },
+                {
+                    Field: "string79",				
+                    Value: "0"	
+                },
+                {
+                    Field: "string38",				
+                    Value: "0"	
+                },
+                {
+                    Field: "string29",				
+                    Value: "创建人"	
+                },
+                {
+                    Field: "string27",				
+                    Value: "天玑财富"	
+                },
+                {
+                    Field: "date5",				
+                    Value: "创建时间"	
+                },
+                {
+                    Field: "string26",				
+                    Value: "最后修改人"	
+                },
+                {
+                    Field: "string24",				
+                    Value: "最后修改部门"	
+                },
+                {
+                    Field: "date6",				
+                    Value: "最后修改时间"	
+                }
+            ],
+            datas:{
+                string1:'',
+                string2:'',
+                string36:'',
+                string37:'',
+                string6:'',
+                string7:'',
+                string5:''
+            }
 		}
 	},
 	onLoad(option) {
-		console.log(option)
+        console.log(option)
+        this.getHistoryAchievementList()
+        this.getCustomers()
+        this.getProducts()
 	},
 	components: {
-		upload
+        upload,
+        comInput
 	},
 	methods: {
+        getCustomers(){
+            this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
+                console.log('res=>>',res)
+                this.customerOptions= res.rows.map(m=>m.FName)
+                this.customers = res.rows.map(m=>{
+                    return {
+                        FDocumentType: m.FDocumentType,
+                        FIDNumber: m.FIDNumber
+                    }
+                })
+            })
+        },
+        getProducts(){
+            this.$api.getDiscoverProductList('', '', true).then(res => {
+                this.productOptions = res.rows.map(m=>m.FName)
+                this.products = res.rows.map(m=>{
+                    return {
+                        FTypeId: m.FTypeId,
+                        FInvestment: m.FInvestment
+                    }
+                })
+                console.log('res=>>',res)
+            })
+        },
+        getHistoryAchievementList(){
+            this.$api.getHistoryAchievementList('',true).then(res=>{
+                res = JSON.parse(res.RetValue)
+                this.achievementOptions = res.rows.map(m=>m['业绩单号'])
+            })
+        },
 		bindTypeChange(e) {
 			let val = e.mp.detail.value
 			this.type = val
@@ -333,7 +506,26 @@ export default {
 			} else {
 				this.step -= 1
 			}
-		}
+        },
+        getSelect (data) {
+            console.log(data)
+
+              this.datas[data.key] = data.value
+              if(data.key === 'string2'){
+                  console.log(111)
+                  this.datas.string36 = this.customers[data.index].FDocumentType
+                  this.datas.string37 = this.customers[data.index].FIDNumber
+              }
+              if(data.key === 'string6'){
+                  console.log(222)
+                  this.datas.string7 = this.products[data.index].FTypeId
+                  this.datas.string5 = this.products[data.index].FInvestment
+              }
+        },
+        getInputVal (data) {
+            console.log(data)
+              this.datas[data.key] = data.value
+        }
 	},
 
 	created() {}

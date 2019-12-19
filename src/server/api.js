@@ -29,13 +29,15 @@ export default {
         return this.post(obj)
     },
     // 获取 客户/机构 档案列表
-    getAchiveList(page, fliter) {
+    getAchiveList(page, fliter ,Parameter, isGetAll) {
         let obj = {
             url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
             data: {
                 id: '0a68d672-aa11-ea11-b397-39f1c2ed5a99',
-                index: page - 1,
-                Parameter: 'escontain=true&deptid=1', // 参数 sql中有动态参数时需设置
+                index: page?page - 1:0,
+                // 查全部
+                isGetAll: isGetAll,
+                Parameter: Parameter?Parameter:'escontain=true&deptid=1', // 参数 sql中有动态参数时需设置
                 filter: fliter,
                 rightvalueid: '0a68d672-aa11-ea11-b397-39f1c2ed5a99'
             }
@@ -43,12 +45,14 @@ export default {
         return this.post(obj)
     },
     // 在售产品接口查询
-    getDiscoverProductList(page, type) {
+    getDiscoverProductList(page, type, isGetAll) {
         let obj = {
             url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
             data: {
                 id: '438a4934-0715-5104-a95e-39eb821771d2',
-                index: page - 1,
+                index: page?page - 1:0,
+                // 查全部
+                isGetAll: isGetAll,
                 Parameter: `escontain=true&deptid=1${type ? '&s=4' : ''}`,
                 filter: '{}',
                 rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
@@ -93,13 +97,15 @@ export default {
     },
 
     // 历史业绩
-    getHistoryAchievementList(page) {
+    getHistoryAchievementList(page,isGetAll) {
         let obj = {
             url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
             data: {
                 id: '27458a0c-3000-4f36-8b93-81a82f59093f',
                 userid: '',
-                index: page - 1,
+                index: page?page - 1:0,
+                // 查全部
+                isGetAll: isGetAll,
                 Parameter: ``,
                 rightvalueid: 'ee0ccdcc-5668-69e5-d62a-39eb6d640e49',
                 formid: 'ee0ccdcc-5668-69e5-d62a-39eb6d640e49',
