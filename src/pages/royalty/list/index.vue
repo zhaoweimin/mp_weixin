@@ -45,7 +45,6 @@ export default {
         .getRoyaltyList(page)
         .then(res => {
           res = JSON.parse(res.RetValue)
-          console.log(res)
           if (res.success) {
             if (page === 1) {
               this.list = res.rows
@@ -73,7 +72,8 @@ export default {
 	position: fixed;
 	right: 15px;
 	bottom: 50px;
-	z-index: 999;
+  z-index: 999;
+  /* box-shadow: 0 0 5px rgba(0,0,0,0.3) */
 }
 .icon-create {
 	width: 60px;

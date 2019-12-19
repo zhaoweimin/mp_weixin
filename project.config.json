@@ -201,6 +201,13 @@
 					"id": -1,
 					"name": "客户投诉",
 					"pathName": "pages/customer/report/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "产品提成新建",
+					"pathName": "pages/royalty/newList/main",
 					"scene": null
 				}
 			]

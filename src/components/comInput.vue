@@ -31,6 +31,11 @@
                 <div v-if="type===6" class="picker flex1 flex a-left l-center">
                     <div class="chooseItem mr15 f12" :class="[resultValue==item.key?'bg-main c-fff':'bg-color c-999']" v-for="(item,index) in dataList" :key="index" @click="getTabChoose(index)">{{item.value}}</div>
                 </div>
+                <!-- 文字 -->
+                <div v-if="type===7" class="w-full rel pr20" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]" @click="onBtnClick">
+                  <span :class="[resultValue?'cblack':'clight',fontSize]">{{ value || '请选择' }}</span>
+                  <span v-if="!disabled" class="icon-r iconfont iconright"></span>
+                </div>
                 <!-- 错误提示 -->
                 <div class="error-tip" :class="[textRight?'ta-r':'ta-l']" v-if="isShowErr&&enableInputErr">{{errTxt}}</div>
             </div>
@@ -169,14 +174,17 @@ export default {
     onPickerChange (e) {
       this.resultValue = e.mp.detail.value
       this.$emit('getSelect', { key: this.paramkey, value: this.options[e.mp.detail.value], index: e.mp.detail.value })
+      this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
     },
     onDateChange (e) {
       this.resultValue = e.mp.detail.value
       this.$emit('getSelectDate', { key: this.paramkey, value: e.mp.detail.value })
+      this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
     },
     onBtnClick () {
       this.isShowErr = false
       this.$emit('getClickItems', { key: this.paramkey })
+      // this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
     },
     onBlur () {
       if (this.isRequired) {

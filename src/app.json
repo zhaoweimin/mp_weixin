@@ -32,6 +32,7 @@
     "pages/royalty/list/main",
     "pages/royalty/detail/main",
     "pages/royalty/newList/main",
+    "pages/royalty/customer/main",
     "pages/redeem/list/main",
     "pages/redeem/detail/main",
     "pages/redeem/newList/main",

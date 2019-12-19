@@ -1,31 +1,31 @@
 <template>
     <div class="main">
         <div class="bg-fff mt10">
-            <comInput :type="1" :titleDark="true" title="跟进编号" paramkey="string8" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
-            <comInput :type="1" :titleDark="true" title="客户编号" paramkey="string10" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
-            <comInput :type="1" :titleDark="true" title="客户姓名" paramkey="string1" @getInputVal="getInputVal" :textRight="false"></comInput>
-            <comInput :type="2" :titleDark="true" title="跟进方式" paramkey="string2" :options="options.followWay" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
-            <comInput :type="3" :titleDark="true" title="跟进开始时间" paramkey="date1" @getSelectDate="getSelectDate" :textRight="false"></comInput>
-            <comInput :type="3" :titleDark="true" title="跟进结束时间" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false"></comInput>
-            <comInput :type="2" :titleDark="true" title="客户类型" paramkey="string16" :options="options.customerType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
-            <comInput :type="1" :titleDark="true" title="投资总额" paramkey="string24" @getInputVal="getInputVal" :textRight="false"></comInput>
-            <comInput :type="1" :titleDark="true" title="累计投资总额" paramkey="string25" @getInputVal="getInputVal" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="跟进编号" :value="datas.string8" paramkey="string8" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="客户编号" :value="datas.string10" paramkey="string10" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" @getInputVal="getInputVal" :textRight="false"></comInput>
+            <comInput :type="2" :titleDark="true" title="跟进方式" :value="datas.string2" paramkey="string2" :options="options.followWay" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
+            <comInput :type="3" :titleDark="true" title="跟进开始时间" :value="datas.date1" paramkey="date1" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+            <comInput :type="3" :titleDark="true" title="跟进结束时间" :value="datas.date2" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+            <comInput :type="2" :titleDark="true" title="客户类型" :value="datas.string16" paramkey="string16" :options="options.customerType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="投资总额" :value="datas.string24" paramkey="string24" @getInputVal="getInputVal" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="累计投资总额" :value="datas.string25" paramkey="string25" @getInputVal="getInputVal" :textRight="false"></comInput>
             <div class="mlr15 ptb10 border-b">
                 <div class="cblack f16 mb10">跟进主题</div>
                 <textarea v-model="datas.string3" placeholder="请输入跟进主题"></textarea>
             </div>
-            <comInput :type="2" :titleDark="true" title="跟进类型" paramkey="string4" :options="options.followType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
+            <comInput :type="2" :titleDark="true" title="跟进类型" :value="datas.string4" paramkey="string4" :options="options.followType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
             <div class="mlr15 ptb10 border-b">
                 <div class="cblack f16 mb10">跟进内容</div>
                 <textarea v-model="datas.string26" placeholder="请输入跟进内容"></textarea>
             </div>
-            <comInput :type="3" :titleDark="true" title="下次跟进时间" paramkey="date3" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+            <comInput :type="3" :titleDark="true" title="下次跟进时间" :value="datas.date3" paramkey="date3" @getSelectDate="getSelectDate" :textRight="false"></comInput>
             <div class="mlr15 ptb10 border-b">
                 <div class="cblack f16 mb10">下次跟进计划</div>
                 <textarea v-model="datas.string5" placeholder="请输入下次跟进计划"></textarea>
             </div>
-            <comInput :type="1" :titleDark="true" title="跟进人" paramkey="string7" @getInputVal="getInputVal" :textRight="false"></comInput>
-            <comInput :type="1" :titleDark="true" title="跟进部门" paramkey="string6" @getInputVal="getInputVal" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="跟进人" :value="datas.string7" paramkey="string7" @getInputVal="getInputVal" :textRight="false"></comInput>
+            <comInput :type="1" :titleDark="true" title="跟进部门" :value="datas.string6" paramkey="string6" @getInputVal="getInputVal" :textRight="false"></comInput>
         </div>
         <div class="ptb25 plr15 ">
             <van-button type="info" size="large" @click="submit">确认</van-button>
@@ -212,7 +212,32 @@ export default {
     }
   },
 
-  onLoad () {
+  onLoad (options) {
+    let { is_follow } = options
+    console.log(is_follow)
+    if (is_follow) {
+      let info = mpvue.getStorageSync('follow_info')
+      console.log(info)
+      this.datas = {
+        string8: info['跟进编号'],
+        string10: info['客户编号'],
+        string1: info['客户姓名'],
+        string2: info['跟进方式'],
+        date1: '',
+        date2: '',
+        string16: info['客户类型'],
+        string24: info['投资总额'],
+        string25: info['累计投资总额'],
+        string3: info['跟进主题'],
+        string4: info['跟进类型'],
+        string26: info['请输入跟进内容'],
+        date3: '',
+        string5: '',
+        string7: '',
+        string6: ''
+      }
+      mpvue.removeStorageSync('follow_info')
+    }
     mpvue.setNavigationBarTitle({ title: '新增跟进' })
   }
 }

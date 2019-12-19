@@ -69,7 +69,7 @@
                 <div class="line"><span>计划跟进时间：</span><span class="cblack">{{vo['计划跟进时间']}}</span></div>
             </div>
             <div v-if="vo.isShow" class="ptb25 plr15 ">
-                <van-button type="info" size="large">跟进</van-button>
+                <van-button type="info" size="large" @click="follow(key)">跟进</van-button>
             </div>
         </div>
         <!-- <div v-if="vo['跟进编号']" class="ptb25 plr15 ">
@@ -139,6 +139,12 @@ export default {
           }
         }
       })
+    },
+    follow (key) {
+      let item = this.list[key]
+      let url = `/pages/customer/addFollow/main?is_follow=1`
+      mpvue.setStorageSync('follow_info', item)
+      mpvue.navigateTo({ url })
     },
     detail (id) {
       let url = `../followDetail/main?id=${id}`

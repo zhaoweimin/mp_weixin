@@ -57,6 +57,21 @@ export default {
         return this.post(obj)
     },
 
+    // 产品基础资料查询
+    getProductBaseList(page) {
+      let obj = {
+          url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+          data: {
+              id: '438a4934-0715-5104-a95e-39eb821771d2',
+              index: page - 1,
+              Parameter: `escontain=true&deptid=1`,
+              filter: '{}',
+              rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
+          }
+      }
+      return this.post(obj)
+  },
+
     // 业绩赎回
     getRedeemList(page) {
         let obj = {
@@ -151,6 +166,23 @@ export default {
         }
         return this.post(obj)
     },
+
+    // 产品提成
+    creatRoyaltyList (params) {
+      let obj = {
+          url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+          data: {
+              id: '73a617ba-31f2-c3a3-1d0e-39e80b23f04c',
+              content: 'text/html',
+              AutoSend: 1,
+              StarterID: '10183',
+              FlowName: '产品提成',
+              FlowModelID: 'd7a8d228-55ae-3b98-2f34-39eb723ecfd9',
+              HeadFields: params,
+          }
+      }
+      return this.post(obj)
+  },
 
     // 知识库
     getLoreList(page) {
