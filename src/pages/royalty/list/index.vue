@@ -16,54 +16,52 @@ import card from '@/components/achievementCard'
 import search from '@/components/search'
 
 export default {
-  data () {
-    return {
-      nav: ['销售新增', '财务新增', '业绩打回'],
-      nav_num: 0,
-      list: [],
-      page: 1
-    }
-  },
+	data() {
+		return {
+			nav: ['销售新增', '财务新增', '业绩打回'],
+			nav_num: 0,
+			list: [],
+			page: 1
+		}
+	},
 
-  components: {
-    navbar,
-    card,
-    search
-  },
+	components: {
+		navbar,
+		card,
+		search
+	},
 
-  mounted () {
-    this.getList()
-  },
+	mounted() {
+		this.getList()
+	},
 
-  onReachBottom () {
-    this.getList(this.page + 1)
-  },
+	onReachBottom() {
+		this.getList(this.page + 1)
+	},
 
-  methods: {
-    getList (page = 1) {
-      this.$api
-        .getRoyaltyList(page)
-        .then(res => {
-          res = JSON.parse(res.RetValue)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0) this.page = page
-          }
-        })
-    },
-    changeNav (nav) {
-      this.nav_num = nav
-    },
-    link () {
-      mpvue.navigateTo({ url: `/pages/royalty/newList/main` })
-    }
-  },
+	methods: {
+		getList(page = 1) {
+			this.$api.getRoyaltyList(page).then(res => {
+				res = JSON.parse(res.RetValue)
+				if (res.success) {
+					if (page === 1) {
+						this.list = res.rows
+					} else {
+						this.list = this.list.concat(res.rows)
+					}
+					if (res.rows.length > 0) this.page = page
+				}
+			})
+		},
+		changeNav(nav) {
+			this.nav_num = nav
+		},
+		link() {
+			mpvue.navigateTo({ url: `/pages/royalty/newList/main` })
+		}
+	},
 
-  created () {}
+	created() {}
 }
 </script>
 
@@ -72,8 +70,8 @@ export default {
 	position: fixed;
 	right: 15px;
 	bottom: 50px;
-  z-index: 999;
-  /* box-shadow: 0 0 5px rgba(0,0,0,0.3) */
+	z-index: 999;
+	/* box-shadow: 0 0 5px rgba(0,0,0,0.3) */
 }
 .icon-create {
 	width: 60px;

@@ -29,15 +29,15 @@ export default {
         return this.post(obj)
     },
     // 获取 客户/机构 档案列表
-    getAchiveList(page, fliter ,Parameter, isGetAll) {
+    getAchiveList(page, fliter, Parameter, isGetAll) {
         let obj = {
             url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
             data: {
                 id: '0a68d672-aa11-ea11-b397-39f1c2ed5a99',
-                index: page?page - 1:0,
+                index: page ? page - 1 : 0,
                 // 查全部
                 isGetAll: isGetAll,
-                Parameter: Parameter?Parameter:'escontain=true&deptid=1', // 参数 sql中有动态参数时需设置
+                Parameter: Parameter ? Parameter : 'escontain=true&deptid=1', // 参数 sql中有动态参数时需设置
                 filter: fliter,
                 rightvalueid: '0a68d672-aa11-ea11-b397-39f1c2ed5a99'
             }
@@ -50,7 +50,7 @@ export default {
             url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
             data: {
                 id: '438a4934-0715-5104-a95e-39eb821771d2',
-                index: page?page - 1:0,
+                index: page ? page - 1 : 0,
                 // 查全部
                 isGetAll: isGetAll,
                 Parameter: `escontain=true&deptid=1${type ? '&s=4' : ''}`,
@@ -63,18 +63,18 @@ export default {
 
     // 产品基础资料查询
     getProductBaseList(page) {
-      let obj = {
-          url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
-          data: {
-              id: '438a4934-0715-5104-a95e-39eb821771d2',
-              index: page - 1,
-              Parameter: `escontain=true&deptid=1`,
-              filter: '{}',
-              rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
-          }
-      }
-      return this.post(obj)
-  },
+        let obj = {
+            url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+            data: {
+                id: '438a4934-0715-5104-a95e-39eb821771d2',
+                index: page - 1,
+                Parameter: `escontain=true&deptid=1`,
+                filter: '{}',
+                rightvalueid: '438a4934-0715-5104-a95e-39eb821771d2'
+            }
+        }
+        return this.post(obj)
+    },
 
     // 业绩赎回
     getRedeemList(page) {
@@ -97,13 +97,13 @@ export default {
     },
 
     // 历史业绩
-    getHistoryAchievementList(page,isGetAll) {
+    getHistoryAchievementList(page, isGetAll) {
         let obj = {
             url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
             data: {
                 id: '27458a0c-3000-4f36-8b93-81a82f59093f',
                 userid: '',
-                index: page?page - 1:0,
+                index: page ? page - 1 : 0,
                 // 查全部
                 isGetAll: isGetAll,
                 Parameter: ``,
@@ -174,21 +174,21 @@ export default {
     },
 
     // 产品提成
-    creatRoyaltyList (params) {
-      let obj = {
-          url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
-          data: {
-              id: '73a617ba-31f2-c3a3-1d0e-39e80b23f04c',
-              content: 'text/html',
-              AutoSend: 1,
-              StarterID: '10183',
-              FlowName: '产品提成',
-              FlowModelID: 'd7a8d228-55ae-3b98-2f34-39eb723ecfd9',
-              HeadFields: params,
-          }
-      }
-      return this.post(obj)
-  },
+    creatRoyaltyList(params) {
+        let obj = {
+            url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+            data: {
+                id: '73a617ba-31f2-c3a3-1d0e-39e80b23f04c',
+                content: 'text/html',
+                AutoSend: 1,
+                StarterID: '10183',
+                FlowName: '产品提成',
+                FlowModelID: 'd7a8d228-55ae-3b98-2f34-39eb723ecfd9',
+                HeadFields: params,
+            }
+        }
+        return this.post(obj)
+    },
 
     // 知识库
     getLoreList(page) {
@@ -345,14 +345,14 @@ export default {
     },
 
     // 合同管理查询
-    getContractList(page) {
+    getContractList(page, filter = {}) {
         let obj = {
             url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
             data: {
                 id: '14e54990-f1eb-e911-b38f-39f0cbb5fe1f',
-                index: page - 1,
+                index: page ? page - 1 : 0,
                 Parameter: 'escontain=true&deptid=1',
-                filter: '{}',
+                filter: filter,
                 rightvalueid: '14e54990-f1eb-e911-b38f-39f0cbb5fe1f'
             }
         }
@@ -514,6 +514,23 @@ export default {
                 StarterID: 10183,
                 FlowName: '产品预约',
                 FlowModelID: '84abc643-3ddf-c85b-1555-39eb67fca24f',
+                HeadFields: params
+            }
+        }
+        return this.post(obj)
+    },
+
+    // 业绩新增
+    addAchievement(params) {
+        let obj = {
+            url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+            data: {
+                id: "73a617ba-31f2-c3a3-1d0e-39e80b23f04c",
+                content: "text/html",
+                AutoSend: 0,
+                StarterID: 10183,
+                FlowName: "业绩单",
+                FlowModelID: "ee0ccdcc-5668-69e5-d62a-39eb6d640e49",
                 HeadFields: params
             }
         }

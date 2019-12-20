@@ -1,225 +1,56 @@
 <template>
     <div class="main">
-        <div class="booking" v-if="step === 0">
+        <div class="booking" v-show="step === 0">
             <div class="dis-flex ptb15 a-center">
                 <div class="label bg-blue">销售信息</div>
             </div>
             <div class="block">
                 <div class="from">
-                    <comInput :type="2" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" :options="achievementOptions" @getSelect="getSelect" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :options="customerOptions" @getSelect="getSelect" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="2" ref="string2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :options="customerOptions" @getSelect="getSelect" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
                     <comInput :type="0" fontSize="f14" :value="datas.string36" paramkey="string36" :textRight="false" title="证件类型" :isSpecialBorderStyle="true"></comInput>
                     <comInput :type="0" fontSize="f14" :value="datas.string37" paramkey="string37" :textRight="false" title="证件号码" :isSpecialBorderStyle="true"></comInput>
                     <!-- <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumber" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput> -->
-                    <comInput :type="2" fontSize="f14" :value="datas.string6" paramkey="string6" :textRight="false" :options="productOptions" @getSelect="getSelect" title="产品名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="2" ref="string6" fontSize="f14" :value="datas.string6" paramkey="string6" :textRight="false" :options="productOptions" @getSelect="getSelect" title="产品名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
                     <comInput :type="0" fontSize="f14" :value="datas.string7" paramkey="string7" :textRight="false" title="产品分类" :isSpecialBorderStyle="true"></comInput>
                     <comInput :type="0" fontSize="f14" :value="datas.string5" paramkey="string5" :textRight="false" title="产品期限" :isSpecialBorderStyle="true"></comInput>
-                    
-                
-
-                    <div class="line required">
-                        <div class="key">合同编号</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择合同编号
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">预约编号</div>
-                        <div class="val">
-                            <span>XXXXXXX（系统自动判断）</span>
-                        </div>
-                    </div>
-
-                    <div class="line required">
-                        <div class="key">理财经理</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择理财经理
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-
-                    <div class="line required">
-                        <div class="key">所属部门</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择其所属部门
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">录单员</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入录单员" placeholder-class="cgey">
-                        </div>
-                    </div>
-
-                    <div class="line">
-                        <div class="key">录单员所属部门</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择其所属部门
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-
-                    <div class="line">
-                        <div class="key">资产证明上传时间</div>
-                        <div class="val">
-                            <picker mode="date">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker cgey">
-                                    请选择资产证明上传时间
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-
+                    <comInput :type="2" ref="string9" fontSize="f14" :value="datas.string9" paramkey="string9" :textRight="false" :options="contractOptions" @getSelect="getSelect" title="合同编号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string10" paramkey="string10" :textRight="false" title="预约编号" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" ref="string13" fontSize="f14" :value="datas.string13" paramkey="string13" :textRight="false" title="理财经理" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="0" ref="string14" fontSize="f14" :value="datas.string14" paramkey="string14" :textRight="false" title="所属部门" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.string15" paramkey="string15" :textRight="false" title="录单员" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.string34" paramkey="string34" :textRight="false" title="录单员所属部门" :isSpecialBorderStyle="true"></comInput>
                     <div class="line line-big required">
                         <div class="key">上传附件（格式pdf或图片）</div>
                         <div class="val" style="padding-bottom: 10px;">
                             <upload></upload>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        <div class="booking" v-if="step === 1">
+        <div class="booking" v-show="step === 1">
             <div class="dis-flex ptb15 a-center">
                 <div class="label bg-blue">财务信息</div>
             </div>
             <div class="block">
                 <div class="from">
-                    <div class="line required">
-                        <div class="key">打款日期</div>
-                        <div class="val">
-                            <picker mode="date">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择打款日期
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">合同金额</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入合同金额" placeholder-class="cgey">
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">付款方式</div>
-                        <div class="val">
-                            <picker mode="selector" :value="type" :range="type_range" @change="bindTypeChange">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker" v-if="type != ''">
-                                    {{type_range[type]}}
-                                </div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择付款方式
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">付款账户开户行</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入付款账户开户行" placeholder-class="cgey">
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">付款账号</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入付款账号" placeholder-class="cgey">
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">累计缴款金额</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入累计缴款金额" placeholder-class="cgey">
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">确认收款日</div>
-                        <div class="val">
-                            <span>此字段由审核人员维护</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">起息日</div>
-                        <div class="val">
-                            <span>此字段由审核人员维护</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">产品到期日</div>
-                        <div class="val">
-                            <span>此字段由审核人员维护</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">年化系数</div>
-                        <div class="val">
-                            <span>此字段自动关联</span>
-                        </div>
-                    </div>
-                    <div class="line">
-                        <div class="key">年化业绩</div>
-                        <div class="val">
-                            <span>此字段自动计算</span>
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">收益分配账户</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入收益分配账户" placeholder-class="cgey">
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">收益分配账户开户行</div>
-                        <div class="val">
-                            <input type="text" placeholder="请输入收益分配账户开户行" placeholder-class="cgey">
-                        </div>
-                    </div>
-                    <div class="line required">
-                        <div class="key">冷静期</div>
-                        <div class="val">
-                            <picker mode="date">
-                                <div class="icon"><span class="iconfont iconright"></span></div>
-                                <div class="picker cgey" v-if="type == ''">
-                                    请选择冷静期
-                                </div>
-                            </picker>
-                        </div>
-                    </div>
+                    <comInput :type="3" ref="date1" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date1" paramkey="date1" :textRight="false" title="打款日期" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="1" ref="string16" @getInputVal="getInputVal" fontSize="f14" :value="datas.string16" paramkey="string16" :textRight="false" title="合同金额" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="2" fontSize="f14" :value="datas.string17" paramkey="string17" :textRight="false" :options="options.payWay" @getSelect="getSelect" title="付款方式" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="1" ref="string18" @getInputVal="getInputVal" fontSize="f14" :value="datas.string18" paramkey="string18" :textRight="false" title="付款账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="1" ref="string19" @getInputVal="getInputVal" fontSize="f14" :value="datas.string19" paramkey="string19" :textRight="false" title="付款账号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string20" paramkey="string20" :textRight="false" title="累计缴款金额" :isSpecialBorderStyle="true"></comInput>
+
+                    <comInput :type="0" fontSize="f14" :value="datas.date2" paramkey="date2" :textRight="false" title="确认收款日" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.date3" paramkey="date3" :textRight="false" title="起息日" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.date4" paramkey="date4" :textRight="false" title="产品到期日" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.number1" paramkey="number1" :textRight="false" title="年化系数" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="0" fontSize="f14" :value="datas.number2" paramkey="number2" :textRight="false" title="年化业绩" :isSpecialBorderStyle="true"></comInput>
+                    <comInput :type="1" ref="string22" @getInputVal="getInputVal" fontSize="f14" :value="datas.string22" paramkey="string22" :textRight="false" title="收益分配账户" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="1" ref="string21" @getInputVal="getInputVal" fontSize="f14" :value="datas.string21" paramkey="string21" :textRight="false" title="收益分配账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+                    <comInput :type="3" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date8" paramkey="date8" :textRight="false" title="冷静期" :isSpecialBorderStyle="true"></comInput>
                 </div>
             </div>
         </div>
@@ -243,247 +74,139 @@ import Options from '@/utils/Options.js'
 export default {
 	data() {
 		return {
+			options: Options,
 			step: 0,
 			info: {},
 			type_range: ['身份证', '护照'],
 			type: '',
 			booking_date: '',
-            pay_date: '',
-            customers:[],
-            customerOptions:[],
-            products:[],
-            productOptions:[],
-            achievementOptions:[],
-            reqParams:[
-                {
-                    Field: "string1",				//单据编号							
-                    Value: "业绩单号"			
-                },
-                {
-                    Field: "string2",				//业绩单号						
-                    Value: "客户姓名"
-                },
-                {
-                    Field: "string6",					//客户姓名		
-                    Value: "产品名称"
-                },
-                {
-                    Field: "string7",					//购买产品		
-                    Value: "产品分类"
-                },
-                {
-                    Field: "string5",					//产品期限		
-                    Value: "产品期限"
-                },
-                {
-                    Field: "string36",					//证件类型					
-                    Value: "证件类型"
-                },
-                {
-                    Field: "string37",					//证件号	
-                    Value: "证件号"
-                },
-                {
-                    Field: "string9",					//合同编号		
-                    Value: "合同编号"
-                },
-                {
-                    Field: "string10",					//预约编号
-                    Value: "预约编号"
-                },
-                {
-                    Field: "string13",					//理财经理		
-                    Value: "理财经理"
-                },
-                {
-                    Field: "string14",					//所属部门			
-                    Value: "所属部门"
-                },
-                {
-                    Field: "string74",				//部门编号		
-                    Value: "部门编号"
-                },
-                {
-                    Field: "string15",				//录单员	
-                    Value: "录单员"
-                },
-                {
-                    Field: "string69",			//录单员id					
-                    Value: "录单员id"
-                },
-                {
-                    Field: "string34",				//录单员归属部门		
-                    Value: "录单员归属部门"	
-                },
-                {
-                    Field: "string28",				//附件		
-                    Value: "附件"	
-                },
-                {
-                    Field: "date100",				//资产证明上传时间		
-                    Value: "资产证明上传时间"	
-                },
-                {
-                    Field: "date1",				//打款日期	
-                    Value: "打款日期"	
-                },
-                {
-                    Field: "string16",				//合同金额		
-                    Value: "合同金额"	
-                },
-                {
-                    Field: "string17",				//付款方式		
-                    Value: "付款方式"	
-                },
-                {
-                    Field: "string18",				//付款开户行
-                    Value: "付款开户行"	
-                },
-                {
-                    Field: "string19",				//付款账号
-                    Value: "付款账号"	
-                },
-                {
-                    Field: "string20",				//累计缴款金额
-                    Value: "累计缴款金额"	
-                },
-                {
-                    Field: "date2",				//确认收款日期
-                    Value: "确认收款日期"	
-                },
-                {
-                    Field: "date3",				//起息日
-                    Value: "起息日"	
-                },
-                {
-                    Field: "date4",				//产品到期日
-                    Value: "产品到期日"	
-                },
-                {
-                    Field: "date7",				//产品成立日
-                    Value: "产品成立日"	
-                },
-                {
-                    Field: "number1",				//年化系数
-                    Value: "年化系数"	
-                },
-                {
-                    Field: "number2",				//年化业绩（合同金额*年化系数=年化业绩）
-                    Value: "年化业绩"	
-                },
-                {
-                    Field: "string21",				//收益分配账户开户行
-                    Value: "收益分配账户开户行"	
-                },
-                {
-                    Field: "string22",				//收益分配账户
-                    Value: "收益分配账户"	
-                },
-                {
-                    Field: "date8",					//冷静期（当前系统时间二十四小时之后的时间）
-                    Value: "冷静期"	
-                },
-                {
-                    Field: "date9",					//到账日期 （和确认收款日期一样）		
-                    Value: "到账日期"	
-                },
-                {
-                    Field: "string49",				
-                    Value: "否"	
-                },
-                {
-                    Field: "string50",				
-                    Value: "否"	
-                },
-                {
-                    Field: "string76",				
-                    Value: "未提奖"	
-                },
-                {
-                    Field: "string79",				
-                    Value: "0"	
-                },
-                {
-                    Field: "string38",				
-                    Value: "0"	
-                },
-                {
-                    Field: "string29",				
-                    Value: "创建人"	
-                },
-                {
-                    Field: "string27",				
-                    Value: "天玑财富"	
-                },
-                {
-                    Field: "date5",				
-                    Value: "创建时间"	
-                },
-                {
-                    Field: "string26",				
-                    Value: "最后修改人"	
-                },
-                {
-                    Field: "string24",				
-                    Value: "最后修改部门"	
-                },
-                {
-                    Field: "date6",				
-                    Value: "最后修改时间"	
-                }
-            ],
-            datas:{
-                string1:'',
-                string2:'',
-                string36:'',
-                string37:'',
-                string6:'',
-                string7:'',
-                string5:''
-            }
+			pay_date: '',
+			customers: [],
+			customerOptions: [],
+			products: [],
+			productOptions: [],
+			contractOptions: [],
+			reqParams: [
+				{ Field: 'string1', Value: '' },
+				{ Field: 'string2', Value: '' },
+				{ Field: 'string36', Value: '' },
+				{ Field: 'string37', Value: '' },
+				{ Field: 'string6', Value: '' },
+				{ Field: 'string7', Value: '' },
+				{ Field: 'string5', Value: '' },
+				{ Field: 'string9', Value: '' },
+				{ Field: 'string10', Value: '' },
+				{ Field: 'string13', Value: '' },
+				{ Field: 'string14', Value: '' },
+				{ Field: 'string15', Value: '' },
+				{ Field: 'string34', Value: '' },
+
+				{ Field: 'date1', Value: '' },
+				{ Field: 'string16', Value: '' },
+				{ Field: 'string17', Value: '' },
+				{ Field: 'string18', Value: '' },
+				{ Field: 'string19', Value: '' },
+				{ Field: 'string20', Value: '' },
+				{ Field: 'date2', Value: '' },
+				{ Field: 'date3', Value: '' },
+				{ Field: 'date4', Value: '' },
+				{ Field: 'number1', Value: '年化系数' },
+				{ Field: 'number2', Value: '年化业绩' },
+				{ Field: 'string22', Value: '' },
+				{ Field: 'string21', Value: '' },
+				{ Field: 'date8', Value: '' },
+
+				{ Field: 'string74', Value: '部门编号' },
+				{ Field: 'string69', Value: '录单员id' },
+				{ Field: 'string28', Value: '附件' },
+				{ Field: 'date100', Value: '资产证明上传时间' },
+				{ Field: 'date7', Value: '产品成立日' },
+				{ Field: 'date9', Value: '到账日期' },
+				{ Field: 'string49', Value: '否' },
+				{ Field: 'string50', Value: '否' },
+				{ Field: 'string76', Value: '未提奖' },
+				{ Field: 'string79', Value: '0' },
+				{ Field: 'string38', Value: '0' },
+				{ Field: 'string29', Value: '创建人' },
+				{ Field: 'string27', Value: '天玑财富' },
+				{ Field: 'date5', Value: '创建时间' },
+				{ Field: 'string26', Value: '最后修改人' },
+				{ Field: 'string24', Value: '最后修改部门' },
+				{ Field: 'date6', Value: '最后修改时间' }
+			],
+			datas: {
+				string1: '',
+				string2: '',
+				string36: '',
+				string37: '',
+				string6: '',
+				string7: '',
+				string5: '',
+				string9: '',
+				string10: '',
+				string13: '管理员',
+				string14: '天玑财富',
+				string15: '管理员',
+				string34: '天玑财富',
+
+				date1: '',
+				string16: '',
+				string17: '',
+				string18: '',
+				string19: '',
+				string20: '',
+				date2: '此字段有审核人员维护',
+				date3: '此字段有审核人员维护',
+				date4: '此字段有审核人员维护',
+				number1: '自动关联',
+				number2: '自动计算',
+				string22: '',
+				string21: '',
+				date8: ''
+			}
 		}
 	},
 	onLoad(option) {
-        console.log(option)
-        this.getHistoryAchievementList()
-        this.getCustomers()
-        this.getProducts()
+		Object.assign(this.$data, this.$options.data())
+		console.log(option)
+		this.getCustomers()
+		this.getProducts()
+		this.getContractList()
 	},
 	components: {
-        upload,
-        comInput
+		upload,
+		comInput
 	},
 	methods: {
-        getCustomers(){
-            this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
-                console.log('res=>>',res)
-                this.customerOptions= res.rows.map(m=>m.FName)
-                this.customers = res.rows.map(m=>{
-                    return {
-                        FDocumentType: m.FDocumentType,
-                        FIDNumber: m.FIDNumber
-                    }
-                })
-            })
-        },
-        getProducts(){
-            this.$api.getDiscoverProductList('', '', true).then(res => {
-                this.productOptions = res.rows.map(m=>m.FName)
-                this.products = res.rows.map(m=>{
-                    return {
-                        FTypeId: m.FTypeId,
-                        FInvestment: m.FInvestment
-                    }
-                })
-                console.log('res=>>',res)
-            })
-        },
-        getHistoryAchievementList(){
-            this.$api.getHistoryAchievementList('',true).then(res=>{
-                res = JSON.parse(res.RetValue)
-                this.achievementOptions = res.rows.map(m=>m['业绩单号'])
-            })
-        },
+		getCustomers() {
+			this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
+				console.log('res=>>', res)
+				this.customerOptions = res.rows.map(m => m.FName)
+				this.customers = res.rows.map(m => {
+					return {
+						FDocumentType: m.FDocumentType,
+						FIDNumber: m.FIDNumber
+					}
+				})
+			})
+		},
+		getProducts() {
+			this.$api.getDiscoverProductList('', '', true).then(res => {
+				this.productOptions = res.rows.map(m => m.FName)
+				this.products = res.rows.map(m => {
+					return {
+						FTypeId: m.FTypeId,
+						FInvestment: m.FInvestment
+					}
+				})
+				console.log('res=>>', res)
+			})
+		},
+		getContractList() {
+			this.$api.getContractList('', { string5: '已发放' }).then(res => {
+				this.contractOptions = res.rows.map(m => m['编号'])
+			})
+		},
 		bindTypeChange(e) {
 			let val = e.mp.detail.value
 			this.type = val
@@ -506,26 +229,54 @@ export default {
 			} else {
 				this.step -= 1
 			}
-        },
-        getSelect (data) {
-            console.log(data)
+		},
+		submit() {
+			let keys = Object.keys(this.datas)
+			for (let index = 0; index < keys.length - 1; index++) {
+				let _key = keys[index]
+				let _item = this.$refs[`${_key}`]
+				if (!!_item && _item.isRequired && !this.datas[`${_key}`]) {
+					return wx.showToast({
+						title: `${_item.title}不能为空`,
+						icon: 'none',
+						duration: 1500
+					})
+				}
+				this.reqParams[index].Value = this.datas[_key]
+			}
+			this.$api.addAchievement(this.reqParams).then(res => {
+				console.log(res)
+				wx.showToast({
+					title: res.Msg,
+					icon: 'success',
+					duration: 1000
+				})
+				setTimeout(() => {
+					mpvue.navigateBack({ delta: 1 })
+				}, 1000)
+			})
+		},
+		getSelectDate(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		},
+		getSelect(data) {
+			console.log(data)
 
-              this.datas[data.key] = data.value
-              if(data.key === 'string2'){
-                  console.log(111)
-                  this.datas.string36 = this.customers[data.index].FDocumentType
-                  this.datas.string37 = this.customers[data.index].FIDNumber
-              }
-              if(data.key === 'string6'){
-                  console.log(222)
-                  this.datas.string7 = this.products[data.index].FTypeId
-                  this.datas.string5 = this.products[data.index].FInvestment
-              }
-        },
-        getInputVal (data) {
-            console.log(data)
-              this.datas[data.key] = data.value
-        }
+			this.datas[data.key] = data.value
+			if (data.key === 'string2') {
+				this.datas.string36 = this.customers[data.index].FDocumentType
+				this.datas.string37 = this.customers[data.index].FIDNumber
+			}
+			if (data.key === 'string6') {
+				this.datas.string7 = this.products[data.index].FTypeId
+				this.datas.string5 = this.products[data.index].FInvestment
+			}
+		},
+		getInputVal(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		}
 	},
 
 	created() {}
