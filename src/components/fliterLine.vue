@@ -24,9 +24,9 @@
                     </div>
                     <div class="title">客户类型</div>
                     <div class="con">
-                        <div class="type" :class="[radio_FCustomerType == 1 ? 'active' : '']" @click="setFilterType(1,'潜在')">潜在</div>
+                        <div class="type" :class="[radio_FCustomerType == 1 ? 'active' : '']" @click="setFilterType(1,'潜在')">潜在客户</div>
                         <div class="type" :class="[radio_FCustomerType  == 2 ? 'active' : '']" @click="setFilterType(2,'准客户')">准客户</div>
-                        <div class="type" :class="[radio_FCustomerType == 3 ? 'active' : '']" @click="setFilterType(3,'成交')">成交</div>
+                        <div class="type" :class="[radio_FCustomerType == 3 ? 'active' : '']" @click="setFilterType(3,'成交')">成交客户</div>
                         <div class="type" :class="[radio_FCustomerType == 4 ? 'active' : '']" @click="setFilterType(4,'历史成交客户')">历史成交客户</div>
                     </div>
                     <div class="title">客户级别</div>
@@ -59,66 +59,66 @@
 
 <script>
 export default {
-  data () {
-    return {
-      is_show: 0,
-      radio_FCustomerType: 0,
-      radio_FDealType: 0,
-      radio_FTranType: 0,
-      radio_FtranTypeEntry: 0,
-      filter: {
-        FNumber: '',
-        FCustomerType: 0,
-        FDealType: 0,
-        FTranType: 0,
-        FtranTypeEntry: 0
-      }
-    }
-  },
-  props: ['info'],
-  methods: {
-    setShowFilter () {
-      this.is_show = this.is_show ? 0 : 1
-    },
-    sure () {
-      this.setShowFilter()
-      for (let item in this.filter) {
-        if (!this.filter[item]) {
-          this.filter[item] = ''
-        }
-      }
-      this.$emit('getData', this.filter)
-    },
-    reSet () {
-      this.radio_FCustomerType = 0
-      this.radio_FDealType = 0
-      this.radio_FTranType = 0
-      this.radio_FtranTypeEntry = 0
-      this.filter = {
-        FNumber: '',
-        FCustomerType: 0,
-        FDealType: 0,
-        FTranType: 0,
-        FtranTypeEntry: 0
-      }
-    },
-    setFilterType (idx, val) {
-      this.radio_FCustomerType = idx
-      this.filter.FCustomerType = val
-    },
-    setFilterLevel (idx, val) {
-      this.radio_FDealType = idx
-      this.filter.FDealType = val
-    },
-    setFilterFrom (idx, val) {
-      this.radio_FTranType = idx
-      this.filter.FTranType = val
-    },
-    setFilterIntro (idx, val) {
-      this.radio_FtranTypeEntry = idx
-      this.filter.FtranTypeEntry = val
-    }
-  }
+	data() {
+		return {
+			is_show: 0,
+			radio_FCustomerType: 0,
+			radio_FDealType: 0,
+			radio_FTranType: 0,
+			radio_FtranTypeEntry: 0,
+			filter: {
+				FNumber: '',
+				FCustomerType: 0,
+				FDealType: 0,
+				FTranType: 0,
+				FtranTypeEntry: 0
+			}
+		}
+	},
+	props: ['info'],
+	methods: {
+		setShowFilter() {
+			this.is_show = this.is_show ? 0 : 1
+		},
+		sure() {
+			this.setShowFilter()
+			for (let item in this.filter) {
+				if (!this.filter[item]) {
+					this.filter[item] = ''
+				}
+			}
+			this.$emit('getData', this.filter)
+		},
+		reSet() {
+			this.radio_FCustomerType = 0
+			this.radio_FDealType = 0
+			this.radio_FTranType = 0
+			this.radio_FtranTypeEntry = 0
+			this.filter = {
+				FNumber: '',
+				FCustomerType: 0,
+				FDealType: 0,
+				FTranType: 0,
+				FtranTypeEntry: 0
+			}
+		},
+		setFilterType(idx, val) {
+			this.radio_FCustomerType = idx
+			this.filter.FCustomerType = val
+		},
+		setFilterLevel(idx, val) {
+			this.radio_FDealType = idx
+			this.filter.FDealType = val
+		},
+		setFilterFrom(idx, val) {
+			this.radio_FTranType = idx
+			this.filter.FTranType = val
+		},
+		setFilterIntro(idx, val) {
+			this.radio_FtranTypeEntry = idx
+			this.filter.FtranTypeEntry = val
+		}
+	}
 }
 </script>
 
@@ -159,7 +159,7 @@ export default {
 	left: 20%;
 	top: 0;
 	bottom: 0;
-	/* background: #ffffff; */
+	background: #ffffff;
 	text-align: left;
 	z-index: 12;
 }
