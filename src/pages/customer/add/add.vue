@@ -403,7 +403,8 @@ export default {
 		},
 		submit() {
 			let keys = Object.keys(this.datas)
-			for (let index = 0; index < keys.length - 1; index++) {
+			console.log('keys', keys)
+			for (let index = 0; index < keys.length; index++) {
 				let _key = keys[index]
 				let _item = this.$refs[`${_key}`]
 				if (!!_item && _item.isRequired && !this.datas[`${_key}`]) {

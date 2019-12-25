@@ -47,172 +47,172 @@
 import Verify from '@/utils/Verify.js'
 
 export default {
-  props: {
-    options: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
-    dataList: {
-      default () {
-        return []
-      }
-    },
-    type: {
-      type: Number,
-      default () {
-        return 1
-      }
-    },
-    title: {
-      type: String,
-      default () {
-        return ''
-      }
-    },
-    placeholder: {
-      type: String,
-      default () {
-        return '请输入内容'
-      }
-    },
-    value: {
-      type: String,
-      default () {
-        return ''
-      }
-    },
-    border: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
-    // 校验方法
-    validType: {
-      type: String,
-      default () {
-        return ''
-      }
-    },
-    paramkey: {
-      type: String,
-      default () {
-        return ''
-      }
-    },
-    // 启用错误提示开关（默认启用）
-    enableInputErr: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
-    disabled: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    },
-    textRight: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
-    titleDark: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
-    isSpecialColorTxt: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    },
-    isSpecialBorderStyle: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    },
-    isRequired: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    },
-    fontSize: {
-      type: String,
-      default () {
-        return 'f16'
-      }
-    }
-  },
-  created () {},
-  watch: {
-    value (newV) {
-      this.resultValue = newV
-    }
-  },
-  data () {
-    return {
-      resultValue: this.value,
-      isShowErr: false,
-      errTxt: '',
-      scrollTop: '',
-      focusDOMScrollTop: ''
-    }
-  },
-  methods: {
-    hidePiker () {
-      this.isShowPicker = false
-    },
-    onPickerChange (e) {
-      this.resultValue = e.mp.detail.value
-      this.$emit('getSelect', { key: this.paramkey, value: this.options[e.mp.detail.value], index: e.mp.detail.value })
-      this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
-    },
-    onDateChange (e) {
-      this.resultValue = e.mp.detail.value
-      this.$emit('getSelectDate', { key: this.paramkey, value: e.mp.detail.value })
-      this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
-    },
-    onBtnClick () {
-      this.isShowErr = false
-      this.$emit('getClickItems', { key: this.paramkey })
-      // this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
-    },
-    onBlur () {
-      if (this.isRequired) {
-        let Fn = this.validType ? (!(this.validType * 1) ? this.validType : 'numberFloatLimitValid') : 'emptyValid'
-        if (Fn !== 'none') {
-          Verify[Fn](
-            '',
-            this.resultValue,
-            res => {
-              this.isShowErr = !!res
-              if (this.isShowErr) {
-                this.errTxt = res
-              }
-            },
-            this.validType
-          )
-        }
-      }
-      this.resultValue = this.isShowErr ? '' : this.resultValue
-      this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
-    },
-    onFocus () {
-      this.isShowErr = false
-    },
-    getTabChoose (index) {
-      this.$emit('getTabChoose', this.dataList[index].key)
-    }
-  }
+	props: {
+		options: {
+			type: Array,
+			default() {
+				return []
+			}
+		},
+		dataList: {
+			default() {
+				return []
+			}
+		},
+		type: {
+			type: Number,
+			default() {
+				return 1
+			}
+		},
+		title: {
+			type: String,
+			default() {
+				return ''
+			}
+		},
+		placeholder: {
+			type: String,
+			default() {
+				return '请输入内容'
+			}
+		},
+		value: {
+			type: String,
+			default() {
+				return ''
+			}
+		},
+		border: {
+			type: Boolean,
+			default() {
+				return true
+			}
+		},
+		// 校验方法
+		validType: {
+			type: String,
+			default() {
+				return ''
+			}
+		},
+		paramkey: {
+			type: String,
+			default() {
+				return ''
+			}
+		},
+		// 启用错误提示开关（默认启用）
+		enableInputErr: {
+			type: Boolean,
+			default() {
+				return true
+			}
+		},
+		disabled: {
+			type: Boolean,
+			default() {
+				return false
+			}
+		},
+		textRight: {
+			type: Boolean,
+			default() {
+				return true
+			}
+		},
+		titleDark: {
+			type: Boolean,
+			default() {
+				return true
+			}
+		},
+		isSpecialColorTxt: {
+			type: Boolean,
+			default() {
+				return false
+			}
+		},
+		isSpecialBorderStyle: {
+			type: Boolean,
+			default() {
+				return false
+			}
+		},
+		isRequired: {
+			type: Boolean,
+			default() {
+				return false
+			}
+		},
+		fontSize: {
+			type: String,
+			default() {
+				return 'f16'
+			}
+		}
+	},
+	created() {},
+	watch: {
+		value(newV) {
+			this.resultValue = newV
+		}
+	},
+	data() {
+		return {
+			resultValue: this.value,
+			isShowErr: false,
+			errTxt: '',
+			scrollTop: '',
+			focusDOMScrollTop: ''
+		}
+	},
+	methods: {
+		hidePiker() {
+			this.isShowPicker = false
+		},
+		onPickerChange(e) {
+			this.resultValue = e.mp.detail.value
+			this.$emit('getSelect', { key: this.paramkey, value: this.options[e.mp.detail.value], index: e.mp.detail.value })
+			this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
+		},
+		onDateChange(e) {
+			this.resultValue = e.mp.detail.value
+			this.$emit('getSelectDate', { key: this.paramkey, value: e.mp.detail.value })
+			this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
+		},
+		onBtnClick() {
+			this.isShowErr = false
+			this.$emit('getClickItems', { key: this.paramkey })
+			// this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
+		},
+		onBlur() {
+			if (this.isRequired) {
+				let Fn = this.validType ? (!(this.validType * 1) ? this.validType : 'numberFloatLimitValid') : 'emptyValid'
+				if (Fn !== 'none') {
+					Verify[Fn](
+						'',
+						this.resultValue,
+						res => {
+							this.isShowErr = !!res
+							if (this.isShowErr) {
+								this.errTxt = res
+							}
+						},
+						this.validType
+					)
+				}
+			}
+			this.resultValue = this.isShowErr ? '' : this.resultValue
+			this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
+		},
+		onFocus() {
+			this.isShowErr = false
+		},
+		getTabChoose(index) {
+			this.$emit('getTabChoose', this.dataList[index].key)
+		}
+	}
 }
 </script>
 
