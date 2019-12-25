@@ -49,7 +49,7 @@
             <comInput :type="2" fontSize="f14" :value="datas.FInstitutional" paramkey="FInstitutional" :textRight="false" :options="options.institutionXinzhi" @getSelect="getSelect" title="机构性质" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="2" fontSize="f14" :value="datas.FLicenseType" paramkey="FLicenseType" :textRight="false" :options="options.zhizhaoType" @getSelect="getSelect" title="执照类型" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FLicenseNumber" paramkey="FLicenseNumber" :textRight="false" title="执照号码" :isSpecialBorderStyle="true"></comInput>
-            <comInput :type="2" fontSize="f14" :value="datas.FValidTerm" paramkey="FValidTerm" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="有效期限" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="3" fontSize="f14" :value="datas.FValidTerm" paramkey="FValidTerm" :textRight="false" @getSelectDate="getSelectDate" title="有效期限" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="2" fontSize="f14" :value="datas.FYearCheck" paramkey="FYearCheck" :textRight="false" :options="options.nianjianyouxiao" @getSelect="getSelect" title="年检有效" :isSpecialBorderStyle="true"></comInput>
             <div class="table pr15 line">
                 <div class="flex-1">
@@ -201,345 +201,349 @@ import comInput from '@/components/comInput'
 import Options from '@/utils/Options.js'
 
 export default {
-  components: {
-    card,
-    comInput
-  },
-  computed: {
-    updateSource () {
-      return this.source
-    }
-  },
-  onLoad () {
-    Object.assign(this.$data, this.$options.data())
-    console.log('ref=>', this.datas)
-  },
-  data () {
-    return {
-      options: Options,
-      step: 0,
+	components: {
+		card,
+		comInput
+	},
+	computed: {
+		updateSource() {
+			return this.source
+		}
+	},
+	onLoad() {
+		Object.assign(this.$data, this.$options.data())
+		console.log('ref=>', this.datas)
+	},
+	data() {
+		return {
+			options: Options,
+			step: 0,
 
-      check: [true, true, false, false],
-      souce_income: [
-        { val: false, text: '工资，劳务报酬' },
-        { val: false, text: '生产经营所得' },
-        { val: false, text: '利息、股息，转让证券等金融性资产收入' },
-        { val: false, text: '出租、出售房地产等非金融性资产收入' }
-      ],
-      souce_channel: [
-        { val: false, text: '互联网' },
-        { val: false, text: '微信、微博等手机App' },
-        { val: false, text: '亲戚朋友' },
-        { val: false, text: '银行、证券、信托公司' },
-        { val: false, text: '私募基金管理机构' },
-        { val: false, text: '第三方理财机构' }
-      ],
-      souce_point: [
-        { val: false, text: '私募基金管理机构的品牌' },
-        { val: false, text: '基金销售机构的宣传和推介' },
-        { val: false, text: '私募基金的业绩表现' },
-        { val: false, text: '综合考虑私募基金管理机构的管理能力' }
-      ],
-      souce_exercise: [
-        { val: false, text: '马术运动' },
-        { val: false, text: '帆船/游艇出海' },
-        { val: false, text: '室内高尔夫' },
-        { val: false, text: '网球' },
-        { val: false, text: '射箭' },
-        { val: false, text: '羽毛球' },
-        { val: false, text: '其他' }
-      ],
-      souce_enjoy: [
-        { val: false, text: '红酒品鉴' },
-        { val: false, text: '形象提升（男/女）' },
-        { val: false, text: '美体/形体培训' },
-        { val: false, text: '珠宝鉴赏' },
-        { val: false, text: '其他' }
-      ],
-      souce_salon: [{ val: false, text: '摄影分享' }, { val: false, text: '花艺沙龙' }, { val: false, text: '投资策略' }, { val: false, text: '茶艺沙龙' }, { val: false, text: '其他' }],
-      souce_hands: [
-        { val: false, text: '香水手作' },
-        { val: false, text: '小黑裙手作' },
-        { val: false, text: '包包手作' },
-        { val: false, text: '香薰干花蜡烛手作' },
-        { val: false, text: '口红手作' },
-        { val: false, text: '其他' }
-      ],
-      souce_selfHands: [
-        { val: false, text: '油画创作手作' },
-        { val: false, text: '鸡尾酒/精酿啤酒手作' },
-        { val: false, text: '咖啡手作' },
-        { val: false, text: '永生花＆永生花团扇手作' },
-        { val: false, text: '蛋糕/粽子/饼干手作' },
-        { val: false, text: '其他' }
-      ],
-      souce_food: [{ val: false, text: '西餐' }, { val: false, text: '自助餐' }, { val: false, text: '中餐' }, { val: false, text: '日料' }, { val: false, text: '日料' }],
-      souce_travel: [
-        { val: false, text: '繁华都市' },
-        { val: false, text: '名胜古迹' },
-        { val: false, text: '自然景观' },
-        { val: false, text: '水乡古镇' },
-        { val: false, text: '海滨海岛' },
-        { val: false, text: '其他' }
-      ],
+			check: [true, true, false, false],
+			souce_income: [
+				{ val: false, text: '工资，劳务报酬' },
+				{ val: false, text: '生产经营所得' },
+				{ val: false, text: '利息、股息，转让证券等金融性资产收入' },
+				{ val: false, text: '出租、出售房地产等非金融性资产收入' }
+			],
+			souce_channel: [
+				{ val: false, text: '互联网' },
+				{ val: false, text: '微信、微博等手机App' },
+				{ val: false, text: '亲戚朋友' },
+				{ val: false, text: '银行、证券、信托公司' },
+				{ val: false, text: '私募基金管理机构' },
+				{ val: false, text: '第三方理财机构' }
+			],
+			souce_point: [
+				{ val: false, text: '私募基金管理机构的品牌' },
+				{ val: false, text: '基金销售机构的宣传和推介' },
+				{ val: false, text: '私募基金的业绩表现' },
+				{ val: false, text: '综合考虑私募基金管理机构的管理能力' }
+			],
+			souce_exercise: [
+				{ val: false, text: '马术运动' },
+				{ val: false, text: '帆船/游艇出海' },
+				{ val: false, text: '室内高尔夫' },
+				{ val: false, text: '网球' },
+				{ val: false, text: '射箭' },
+				{ val: false, text: '羽毛球' },
+				{ val: false, text: '其他' }
+			],
+			souce_enjoy: [
+				{ val: false, text: '红酒品鉴' },
+				{ val: false, text: '形象提升（男/女）' },
+				{ val: false, text: '美体/形体培训' },
+				{ val: false, text: '珠宝鉴赏' },
+				{ val: false, text: '其他' }
+			],
+			souce_salon: [{ val: false, text: '摄影分享' }, { val: false, text: '花艺沙龙' }, { val: false, text: '投资策略' }, { val: false, text: '茶艺沙龙' }, { val: false, text: '其他' }],
+			souce_hands: [
+				{ val: false, text: '香水手作' },
+				{ val: false, text: '小黑裙手作' },
+				{ val: false, text: '包包手作' },
+				{ val: false, text: '香薰干花蜡烛手作' },
+				{ val: false, text: '口红手作' },
+				{ val: false, text: '其他' }
+			],
+			souce_selfHands: [
+				{ val: false, text: '油画创作手作' },
+				{ val: false, text: '鸡尾酒/精酿啤酒手作' },
+				{ val: false, text: '咖啡手作' },
+				{ val: false, text: '永生花＆永生花团扇手作' },
+				{ val: false, text: '蛋糕/粽子/饼干手作' },
+				{ val: false, text: '其他' }
+			],
+			souce_food: [{ val: false, text: '西餐' }, { val: false, text: '自助餐' }, { val: false, text: '中餐' }, { val: false, text: '日料' }, { val: false, text: '日料' }],
+			souce_travel: [
+				{ val: false, text: '繁华都市' },
+				{ val: false, text: '名胜古迹' },
+				{ val: false, text: '自然景观' },
+				{ val: false, text: '水乡古镇' },
+				{ val: false, text: '海滨海岛' },
+				{ val: false, text: '其他' }
+			],
 
-      reqParams: [
-        { Field: 'FNumber', Value: '' },
-        { Field: 'FTranType', Value: '' },
-        { Field: 'FtranTypeEntry', Value: '' },
-        { Field: 'FName', Value: '' }, // 客户姓名/机构姓名  机构客户两个name都需要填写
-        { Field: 'FName1', Value: '' }, // 客户姓名/机构姓名
-        { Field: 'FInstitutional', Value: '' },
-        { Field: 'FLicenseType', Value: '' },
-        { Field: 'FLicenseNumber', Value: '' },
-        { Field: 'FValidTerm', Value: '' },
-        { Field: 'FYearCheck', Value: '' },
-        { Field: 'FRegisteredAddress', Value: '' },
-        { Field: 'FRegisteredCapital', Value: '' },
+			reqParams: [
+				{ Field: 'FNumber', Value: '' },
+				{ Field: 'FTranType', Value: '' },
+				{ Field: 'FtranTypeEntry', Value: '' },
+				{ Field: 'FName', Value: '' }, // 客户姓名/机构姓名  机构客户两个name都需要填写
+				{ Field: 'FName1', Value: '' }, // 客户姓名/机构姓名
+				{ Field: 'FInstitutional', Value: '' },
+				{ Field: 'FLicenseType', Value: '' },
+				{ Field: 'FLicenseNumber', Value: '' },
+				{ Field: 'FValidTerm', Value: '' },
+				{ Field: 'FYearCheck', Value: '' },
+				{ Field: 'FRegisteredAddress', Value: '' },
+				{ Field: 'FRegisteredCapital', Value: '' },
 
-        { Field: 'FMainName', Value: '' },
-        { Field: 'FMGender', Value: '' },
-        { Field: 'FAge', Value: '' },
-        { Field: 'FMainPhone', Value: '' },
-        { Field: 'FMainFax', Value: '' },
-        { Field: 'FMainEmail', Value: '' },
-        { Field: 'FAddress', Value: '' },
-        { Field: 'Frepresentative', Value: '' },
-        { Field: 'FrepresentativeG', Value: '' },
+				{ Field: 'FMainName', Value: '' },
+				{ Field: 'FMGender', Value: '' },
+				{ Field: 'FAge', Value: '' },
+				{ Field: 'FMainPhone', Value: '' },
+				{ Field: 'FMainFax', Value: '' },
+				{ Field: 'FMainEmail', Value: '' },
+				{ Field: 'FAddress', Value: '' },
+				{ Field: 'Frepresentative', Value: '' },
+				{ Field: 'FrepresentativeG', Value: '' },
 
-        { Field: 'FChoGender', Value: '' },
-        { Field: 'FChoold', Value: '' },
-        { Field: 'Findustry', Value: '' },
-        { Field: 'FInvestment', Value: '' },
-        { Field: 'FYearInvest', Value: '' },
+				{ Field: 'FChoGender', Value: '' },
+				{ Field: 'FChoold', Value: '' },
+				{ Field: 'Findustry', Value: '' },
+				{ Field: 'FInvestment', Value: '' },
+				{ Field: 'FYearInvest', Value: '' },
 
-        { Field: 'FChoIncom', Value: '' },
-        { Field: 'FwhereFund', Value: '' },
-        { Field: 'FFollowFund', Value: '' },
-        { Field: 'Fhealthy', Value: '' },
-        { Field: 'FprivateMeet', Value: '' },
-        { Field: 'FsalonMeet', Value: '' },
-        { Field: 'Fwomenhandwork', Value: '' },
-        { Field: 'Fhumanhandwork', Value: '' },
-        { Field: 'Fdeliciousfood', Value: '' },
-        { Field: 'FTourism', Value: '' },
+				{ Field: 'FChoIncom', Value: '' },
+				{ Field: 'FwhereFund', Value: '' },
+				{ Field: 'FFollowFund', Value: '' },
+				{ Field: 'Fhealthy', Value: '' },
+				{ Field: 'FprivateMeet', Value: '' },
+				{ Field: 'FsalonMeet', Value: '' },
+				{ Field: 'Fwomenhandwork', Value: '' },
+				{ Field: 'Fhumanhandwork', Value: '' },
+				{ Field: 'Fdeliciousfood', Value: '' },
+				{ Field: 'FTourism', Value: '' },
 
-        // 默认
-        { Field: 'Fassessment', Value: 100 },
-        { Field: 'FRiskLevel', Value: 'C5' },
-        { Field: 'Fbear', Value: '进取型' },
-        { Field: 'FproductLevel', Value: 'R1、R2、R3、R4、R5' },
-        { Field: 'date1', Value: '2019-12-09' },
+				// 默认
+				{ Field: 'Fassessment', Value: 100 },
+				{ Field: 'FRiskLevel', Value: 'C5' },
+				{ Field: 'Fbear', Value: '进取型' },
+				{ Field: 'FproductLevel', Value: 'R1、R2、R3、R4、R5' },
+				{ Field: 'date1', Value: '2019-12-09' },
 
-        // 默认必传的字段
-        { Field: 'FApplySubject', Value: '机构客户' }, // 默认
-        { Field: 'FCustomerType', Value: '潜在客户' }, // 默认
-        { Field: 'FPublic', Value: '否' },
-        { Field: 'FCreateUserId', Value: '管理员' },
-        { Field: 'FCreateTime', Value: '当前时间' },
-        { Field: 'GSbumen', Value: '天玑财富' },
-        { Field: 'string17', Value: '1' },
-        { Field: 'FupdateUserId', Value: '管理员' },
-        { Field: 'FUpdateTime', Value: '当前时间' },
-        { Field: 'FIsstatic', Value: '未导入' },
-        { Field: 'Fchangestatic', Value: '否' },
-        { Field: 'FoverPerson', Value: '否' },
-        { Field: 'string3', Value: '1' },
-        { Field: 'string6', Value: '否' },
-        { Field: 'string7', Value: '否' },
-        { Field: 'string11', Value: '否' },
-        { Field: 'string15', Value: '1' },
-        { Field: 'string16', Value: 0 },
-        { Field: 'string8', Value: '10183' },
-        { Field: 'string21', Value: '0' }
-      ],
-      datas: {
-        FNumber: '',
-        FTranType: '',
-        FtranTypeEntry: '',
-        FName: '',
-        FName1: '',
-        FInstitutional: '',
-        FLicenseType: '',
-        FLicenseNumber: '',
-        FValidTerm: '',
-        FYearCheck: '',
-        FRegisteredAddress: '',
-        FRegisteredCapital: '',
+				// 默认必传的字段
+				{ Field: 'FApplySubject', Value: '机构客户' }, // 默认
+				{ Field: 'FCustomerType', Value: '潜在客户' }, // 默认
+				{ Field: 'FPublic', Value: '否' },
+				{ Field: 'FCreateUserId', Value: '管理员' },
+				{ Field: 'FCreateTime', Value: '当前时间' },
+				{ Field: 'GSbumen', Value: '天玑财富' },
+				{ Field: 'string17', Value: '1' },
+				{ Field: 'FupdateUserId', Value: '管理员' },
+				{ Field: 'FUpdateTime', Value: '当前时间' },
+				{ Field: 'FIsstatic', Value: '未导入' },
+				{ Field: 'Fchangestatic', Value: '否' },
+				{ Field: 'FoverPerson', Value: '否' },
+				{ Field: 'string3', Value: '1' },
+				{ Field: 'string6', Value: '否' },
+				{ Field: 'string7', Value: '否' },
+				{ Field: 'string11', Value: '否' },
+				{ Field: 'string15', Value: '1' },
+				{ Field: 'string16', Value: 0 },
+				{ Field: 'string8', Value: '10183' },
+				{ Field: 'string21', Value: '0' }
+			],
+			datas: {
+				FNumber: '',
+				FTranType: '',
+				FtranTypeEntry: '',
+				FName: '',
+				FName1: '',
+				FInstitutional: '',
+				FLicenseType: '',
+				FLicenseNumber: '',
+				FValidTerm: '',
+				FYearCheck: '',
+				FRegisteredAddress: '',
+				FRegisteredCapital: '',
 
-        FMainName: '',
-        FMGender: '',
-        FAge: '',
-        FMainPhone: '',
-        FMainFax: '',
-        FMainEmail: '',
-        FAddress: '',
-        Frepresentative: '',
-        FrepresentativeG: '',
+				FMainName: '',
+				FMGender: '',
+				FAge: '',
+				FMainPhone: '',
+				FMainFax: '',
+				FMainEmail: '',
+				FAddress: '',
+				Frepresentative: '',
+				FrepresentativeG: '',
 
-        FChoGender: '',
-        FChoold: '',
-        Findustry: '',
-        FInvestment: '',
-        FYearInvest: '',
+				FChoGender: '',
+				FChoold: '',
+				Findustry: '',
+				FInvestment: '',
+				FYearInvest: '',
 
-        FChoIncom: [],
-        FwhereFund: [],
-        FFollowFund: [],
-        Fhealthy: [],
-        FprivateMeet: [],
-        FsalonMeet: [],
-        Fwomenhandwork: [],
-        Fhumanhandwork: [],
-        Fdeliciousfood: [],
-        FTourism: []
-      }
-    }
-  },
-  created () {},
-  methods: {
-    setStep (type) {
-      if (type) {
-        this.step += 1
-      } else {
-        this.step -= 1
-      }
-    },
-    lingQuestion (e) {
-      let url = `../quetions/main?type=2`
-      mpvue.navigateTo({ url })
-    },
-    submit () {
-      let keys = Object.keys(this.datas)
-      for (let index = 0; index < keys.length - 1; index++) {
-        let _key = keys[index]
-        let _item = this.$refs[`${_key}`]
-        if (!!_item && _item.isRequired && !this.datas[`${_key}`]) {
-          return wx.showToast({
-            title: `${_item.title}不能为空`,
-            icon: 'none',
-            duration: 1500
-          })
-        }
-        this.reqParams[index].Value = Array.isArray(this.datas[_key]) ? this.datas[_key].join(',') : this.datas[_key]
-      }
-      console.log('reqParams=====', this.reqParams)
-      this.$api.UploadServerice(this.reqParams).then(res => {
-        console.log(res)
-        if (res.Result === 1) {
-          wx.showToast({
-            title: res.PromptMsg,
-            icon: 'success',
-            duration: 3000,
-            success: () => {
-              mpvue.switchTab({ url: '/pages/home/main' })
-            }
-          })
-        } else {
-          wx.showToast({
-            title: res.PromptMsg,
-            duration: 3000
-          })
-        }
-      })
-    },
-    onChange (key, type) {
-      switch (type) {
-        case 'income':
-          this.souce_income[key].val = !this.souce_income[key].val
-          if (this.souce_income[key].val) {
-            this.datas.FChoIncom.push(this.souce_income[key].text)
-          } else {
-            this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
-          }
-          break
-        case 'channel':
-          this.souce_channel[key].val = !this.souce_channel[key].val
-          if (this.souce_channel[key].val) {
-            this.datas.FwhereFund.push(this.souce_channel[key].text)
-          } else {
-            this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
-          }
-          break
-        case 'point':
-          this.souce_point[key].val = !this.souce_point[key].val
-          if (this.souce_point[key].val) {
-            this.datas.FFollowFund.push(this.souce_point[key].text)
-          } else {
-            this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
-          }
-          break
-        case 'exercise':
-          this.souce_exercise[key].val = !this.souce_exercise[key].val
-          if (this.souce_exercise[key].val) {
-            this.datas.Fhealthy.push(this.souce_exercise[key].text)
-          } else {
-            this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
-          }
-          break
-        case 'enjoy':
-          this.souce_enjoy[key].val = !this.souce_enjoy[key].val
-          if (this.souce_enjoy[key].val) {
-            this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
-          } else {
-            this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
-          }
-          break
-        case 'salon':
-          this.souce_salon[key].val = !this.souce_salon[key].val
-          if (this.souce_salon[key].val) {
-            this.datas.FsalonMeet.push(this.souce_salon[key].text)
-          } else {
-            this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
-          }
-          break
-        case 'hands':
-          this.souce_hands[key].val = !this.souce_hands[key].val
-          if (this.souce_hands[key].val) {
-            this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
-          } else {
-            this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
-          }
-          break
-        case 'selfHands':
-          this.souce_selfHands[key].val = !this.souce_selfHands[key].val
-          if (this.souce_selfHands[key].val) {
-            this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
-          } else {
-            this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
-          }
-          break
-        case 'food':
-          this.souce_food[key].val = !this.souce_food[key].val
-          if (this.souce_food[key].val) {
-            this.datas.Fdeliciousfood.push(this.souce_food[key].text)
-          } else {
-            this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
-          }
-          break
-        case 'travel':
-          this.souce_travel[key].val = !this.souce_travel[key].val
-          if (this.souce_travel[key].val) {
-            this.datas.FTourism.push(this.souce_travel[key].text)
-          } else {
-            this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
-          }
-          break
-      }
-      this.$forceUpdate()
-    },
-    getSelect (data) {
-      console.log(data)
-      this.datas[data.key] = data.value
-    },
-    getInputVal (data) {
-      console.log(data)
-      if (data.key === 'FName') {
-        this.datas.FName1 = data.value
-      }
-      this.datas[data.key] = data.value
-    }
-  }
+				FChoIncom: [],
+				FwhereFund: [],
+				FFollowFund: [],
+				Fhealthy: [],
+				FprivateMeet: [],
+				FsalonMeet: [],
+				Fwomenhandwork: [],
+				Fhumanhandwork: [],
+				Fdeliciousfood: [],
+				FTourism: []
+			}
+		}
+	},
+	created() {},
+	methods: {
+		setStep(type) {
+			if (type) {
+				this.step += 1
+			} else {
+				this.step -= 1
+			}
+		},
+		lingQuestion(e) {
+			let url = `../quetions/main?type=2`
+			mpvue.navigateTo({ url })
+		},
+		submit() {
+			let keys = Object.keys(this.datas)
+			for (let index = 0; index < keys.length - 1; index++) {
+				let _key = keys[index]
+				let _item = this.$refs[`${_key}`]
+				if (!!_item && _item.isRequired && !this.datas[`${_key}`]) {
+					return wx.showToast({
+						title: `${_item.title}不能为空`,
+						icon: 'none',
+						duration: 1500
+					})
+				}
+				this.reqParams[index].Value = Array.isArray(this.datas[_key]) ? this.datas[_key].join(',') : this.datas[_key]
+			}
+			console.log('reqParams=====', this.reqParams)
+			this.$api.UploadServerice(this.reqParams).then(res => {
+				console.log(res)
+				if (res.Result === 1) {
+					wx.showToast({
+						title: res.PromptMsg,
+						icon: 'success',
+						duration: 3000,
+						success: () => {
+							mpvue.switchTab({ url: '/pages/home/main' })
+						}
+					})
+				} else {
+					wx.showToast({
+						title: res.PromptMsg,
+						duration: 3000
+					})
+				}
+			})
+		},
+		onChange(key, type) {
+			switch (type) {
+				case 'income':
+					this.souce_income[key].val = !this.souce_income[key].val
+					if (this.souce_income[key].val) {
+						this.datas.FChoIncom.push(this.souce_income[key].text)
+					} else {
+						this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
+					}
+					break
+				case 'channel':
+					this.souce_channel[key].val = !this.souce_channel[key].val
+					if (this.souce_channel[key].val) {
+						this.datas.FwhereFund.push(this.souce_channel[key].text)
+					} else {
+						this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
+					}
+					break
+				case 'point':
+					this.souce_point[key].val = !this.souce_point[key].val
+					if (this.souce_point[key].val) {
+						this.datas.FFollowFund.push(this.souce_point[key].text)
+					} else {
+						this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
+					}
+					break
+				case 'exercise':
+					this.souce_exercise[key].val = !this.souce_exercise[key].val
+					if (this.souce_exercise[key].val) {
+						this.datas.Fhealthy.push(this.souce_exercise[key].text)
+					} else {
+						this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
+					}
+					break
+				case 'enjoy':
+					this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+					if (this.souce_enjoy[key].val) {
+						this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
+					} else {
+						this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
+					}
+					break
+				case 'salon':
+					this.souce_salon[key].val = !this.souce_salon[key].val
+					if (this.souce_salon[key].val) {
+						this.datas.FsalonMeet.push(this.souce_salon[key].text)
+					} else {
+						this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
+					}
+					break
+				case 'hands':
+					this.souce_hands[key].val = !this.souce_hands[key].val
+					if (this.souce_hands[key].val) {
+						this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
+					} else {
+						this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
+					}
+					break
+				case 'selfHands':
+					this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+					if (this.souce_selfHands[key].val) {
+						this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
+					} else {
+						this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
+					}
+					break
+				case 'food':
+					this.souce_food[key].val = !this.souce_food[key].val
+					if (this.souce_food[key].val) {
+						this.datas.Fdeliciousfood.push(this.souce_food[key].text)
+					} else {
+						this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
+					}
+					break
+				case 'travel':
+					this.souce_travel[key].val = !this.souce_travel[key].val
+					if (this.souce_travel[key].val) {
+						this.datas.FTourism.push(this.souce_travel[key].text)
+					} else {
+						this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
+					}
+					break
+			}
+			this.$forceUpdate()
+		},
+		getSelect(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		},
+		getSelectDate(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		},
+		getInputVal(data) {
+			console.log(data)
+			if (data.key === 'FName') {
+				this.datas.FName1 = data.value
+			}
+			this.datas[data.key] = data.value
+		}
+	}
 }
 </script>
 

@@ -6,7 +6,7 @@
         </div>
         <block v-for="(vo, key) in list" :key="key">
             <!-- <card :info="vo" :type="3"></card> -->
-            <div class="contract-card history" @click="detail(key)">
+            <div class="contract-card history">
                 <div class="order">
                     <div class="bg">业绩单号：{{vo['业绩单号']}}</div>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="msg">
                     <div class="line"><span class="key pr10 strong">{{vo['产品名称']}}</span><span class="label-blue-outline">{{vo['产品类型']}}</span></div>
                 </div>
-                <div class="msg no-boder">
+                <div class="msg no-boder" @click="detail(key)">
                     <div class="line"><span class="key">产品期限：{{vo['产品期限']}}个月</span></div>
                     <div class="line"><span class="key">合同金额：{{vo['合同金额']}}</span></div>
                     <div class="line"><span class="key">确认收款日：{{vo['确认收款日']}}</span></div>
@@ -44,60 +44,60 @@ import card from '@/components/achievementCard'
 import search from '@/components/search'
 
 export default {
-  data () {
-    return {
-      nav: ['销售新增', '财务新增', '业绩打回'],
-      nav_num: 0,
-      list: [],
-      page: 1
-    }
-  },
+	data() {
+		return {
+			nav: ['销售新增', '财务新增', '业绩打回'],
+			nav_num: 0,
+			list: [],
+			page: 1
+		}
+	},
 
-  components: {
-    card,
-    search
-  },
+	components: {
+		card,
+		search
+	},
 
-  mounted () {
-    this.getList()
-  },
+	mounted() {
+		this.getList()
+	},
 
-  onReachBottom () {
-    this.getList(this.page + 1)
-  },
+	onReachBottom() {
+		this.getList(this.page + 1)
+	},
 
-  methods: {
-    getList (page = 1) {
-      this.$api.getHistoryAchievementList(page).then(res => {
-        res = JSON.parse(res.RetValue)
-        console.log(res)
-        if (res.success) {
-          if (page === 1) {
-            this.list = res.rows
-          } else {
-            this.list = this.list.concat(res.rows)
-          }
-          if (res.rows.length > 0) this.page = page
-        } else {
-          if (page === 1) {
-            this.list = []
-          }
-        }
-      })
-    },
-    changeNav (nav) {
-      this.nav_num = nav
-    },
-    add () {
-      let url = `../addAchievement/main`
-      mpvue.navigateTo({ url })
-    },
-    detail (key) {
-      let url = `../historyDetail/main?id=${key}`
-      mpvue.setStorageSync('history_achievenment_info', this.list[key])
-      mpvue.navigateTo({ url })
-    }
-  }
+	methods: {
+		getList(page = 1) {
+			this.$api.getHistoryAchievementList(page).then(res => {
+				res = JSON.parse(res.RetValue)
+				console.log(res)
+				if (res.success) {
+					if (page === 1) {
+						this.list = res.rows
+					} else {
+						this.list = this.list.concat(res.rows)
+					}
+					if (res.rows.length > 0) this.page = page
+				} else {
+					if (page === 1) {
+						this.list = []
+					}
+				}
+			})
+		},
+		changeNav(nav) {
+			this.nav_num = nav
+		},
+		add() {
+			let url = `../addAchievement/main`
+			mpvue.navigateTo({ url })
+		},
+		detail(key) {
+			let url = `../historyDetail/main?id=${key}`
+			mpvue.setStorageSync('history_achievenment_info', this.list[key])
+			mpvue.navigateTo({ url })
+		}
+	}
 }
 </script>
 
