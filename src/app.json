@@ -59,7 +59,10 @@
     "pages/task/detail5/main",
 
     "pages/success/main",
-    "pages/statis/main"
+    "pages/statis/main",
+
+    "pages/login/main"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,6 +1,10 @@
 <template>
-    <div class="main has-header">
-        <search placeholder="搜索应用、待办、报表"></search>
+    <div class="main">
+        <div class="bg-fff info f14 flex l-center a-right pr10 mt10">
+          <div class="mr10 f12 cgey">当前尚未登陆</div> 
+          <div class="btn-login bg-blue cfff flex l-center a-center f12" @click="login">去登陆</div> 
+        </div>
+        <search :fixed="false" placeholder="搜索应用、待办、报表"></search>
         <div class="application">
             <block v-for="(vo, key) in data" :key="key">
                 <item :info="vo" text="文字"></item>
@@ -97,9 +101,8 @@ export default {
   },
 
   methods: {
-    link (url) {
-      console.log(url)
-      // mpvue.navigateTo({ url })
+    login () {
+      mpvue.navigateTo({ url:'../login/main' })
     }
   },
 
@@ -108,4 +111,14 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .info{
+    height: 40px;
+  }
+  .btn-login{
+    width: 50px;
+    height: 20px;
+    border-radius: 3px;
+  }
+</style>
 
