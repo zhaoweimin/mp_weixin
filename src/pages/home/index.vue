@@ -113,7 +113,7 @@ export default {
 </script>
 <style scoped>
   .info{
-    height: 40px;
+    height: 36px;
   }
   .btn-login{
     width: 50px;
