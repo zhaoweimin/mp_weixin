@@ -64,7 +64,7 @@
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FMainName" :value="datas.FMainName" paramkey="FMainName" :textRight="false" title="主联系人姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
             <comInput :type="2" fontSize="f14" :value="datas.FMGender" paramkey="FMGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FAge" paramkey="FAge" :textRight="false" title="年龄" :isSpecialBorderStyle="true"></comInput>
-            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FMainPhone" :value="datas.FMainPhone" paramkey="FMainPhone" :textRight="false" title="主联系人手机" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FMainPhone" validType="phoneValid" :value="datas.FMainPhone" paramkey="FMainPhone" :textRight="false" title="主联系人手机" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FMainFax" paramkey="FMainFax" :textRight="false" title="主联系人传真" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FMainEmail" paramkey="FMainEmail" :textRight="false" title="主联系人邮箱" :isSpecialBorderStyle="true"></comInput>
             <div class="table pr15 pb20 line required">
@@ -445,86 +445,86 @@ export default {
 		},
 		onChange(key, type) {
 			switch (type) {
-				case 'income':
-					this.souce_income[key].val = !this.souce_income[key].val
-					if (this.souce_income[key].val) {
-						this.datas.FChoIncom.push(this.souce_income[key].text)
-					} else {
-						this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
-					}
-					break
-				case 'channel':
-					this.souce_channel[key].val = !this.souce_channel[key].val
-					if (this.souce_channel[key].val) {
-						this.datas.FwhereFund.push(this.souce_channel[key].text)
-					} else {
-						this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
-					}
-					break
-				case 'point':
-					this.souce_point[key].val = !this.souce_point[key].val
-					if (this.souce_point[key].val) {
-						this.datas.FFollowFund.push(this.souce_point[key].text)
-					} else {
-						this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
-					}
-					break
-				case 'exercise':
-					this.souce_exercise[key].val = !this.souce_exercise[key].val
-					if (this.souce_exercise[key].val) {
-						this.datas.Fhealthy.push(this.souce_exercise[key].text)
-					} else {
-						this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
-					}
-					break
-				case 'enjoy':
-					this.souce_enjoy[key].val = !this.souce_enjoy[key].val
-					if (this.souce_enjoy[key].val) {
-						this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
-					} else {
-						this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
-					}
-					break
-				case 'salon':
-					this.souce_salon[key].val = !this.souce_salon[key].val
-					if (this.souce_salon[key].val) {
-						this.datas.FsalonMeet.push(this.souce_salon[key].text)
-					} else {
-						this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
-					}
-					break
-				case 'hands':
-					this.souce_hands[key].val = !this.souce_hands[key].val
-					if (this.souce_hands[key].val) {
-						this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
-					} else {
-						this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
-					}
-					break
-				case 'selfHands':
-					this.souce_selfHands[key].val = !this.souce_selfHands[key].val
-					if (this.souce_selfHands[key].val) {
-						this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
-					} else {
-						this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
-					}
-					break
-				case 'food':
-					this.souce_food[key].val = !this.souce_food[key].val
-					if (this.souce_food[key].val) {
-						this.datas.Fdeliciousfood.push(this.souce_food[key].text)
-					} else {
-						this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
-					}
-					break
-				case 'travel':
-					this.souce_travel[key].val = !this.souce_travel[key].val
-					if (this.souce_travel[key].val) {
-						this.datas.FTourism.push(this.souce_travel[key].text)
-					} else {
-						this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
-					}
-					break
+			case 'income':
+				this.souce_income[key].val = !this.souce_income[key].val
+				if (this.souce_income[key].val) {
+					this.datas.FChoIncom.push(this.souce_income[key].text)
+				} else {
+					this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
+				}
+				break
+			case 'channel':
+				this.souce_channel[key].val = !this.souce_channel[key].val
+				if (this.souce_channel[key].val) {
+					this.datas.FwhereFund.push(this.souce_channel[key].text)
+				} else {
+					this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
+				}
+				break
+			case 'point':
+				this.souce_point[key].val = !this.souce_point[key].val
+				if (this.souce_point[key].val) {
+					this.datas.FFollowFund.push(this.souce_point[key].text)
+				} else {
+					this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
+				}
+				break
+			case 'exercise':
+				this.souce_exercise[key].val = !this.souce_exercise[key].val
+				if (this.souce_exercise[key].val) {
+					this.datas.Fhealthy.push(this.souce_exercise[key].text)
+				} else {
+					this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
+				}
+				break
+			case 'enjoy':
+				this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+				if (this.souce_enjoy[key].val) {
+					this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
+				} else {
+					this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
+				}
+				break
+			case 'salon':
+				this.souce_salon[key].val = !this.souce_salon[key].val
+				if (this.souce_salon[key].val) {
+					this.datas.FsalonMeet.push(this.souce_salon[key].text)
+				} else {
+					this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
+				}
+				break
+			case 'hands':
+				this.souce_hands[key].val = !this.souce_hands[key].val
+				if (this.souce_hands[key].val) {
+					this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
+				} else {
+					this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
+				}
+				break
+			case 'selfHands':
+				this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+				if (this.souce_selfHands[key].val) {
+					this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
+				} else {
+					this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
+				}
+				break
+			case 'food':
+				this.souce_food[key].val = !this.souce_food[key].val
+				if (this.souce_food[key].val) {
+					this.datas.Fdeliciousfood.push(this.souce_food[key].text)
+				} else {
+					this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
+				}
+				break
+			case 'travel':
+				this.souce_travel[key].val = !this.souce_travel[key].val
+				if (this.souce_travel[key].val) {
+					this.datas.FTourism.push(this.souce_travel[key].text)
+				} else {
+					this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
+				}
+				break
 			}
 			this.$forceUpdate()
 		},

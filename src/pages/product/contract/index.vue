@@ -1,29 +1,31 @@
 <template>
-    <div class="main has-big-header">
-        <navbar :info="navList" @changeNav="changeNav"></navbar>
-        <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
-        <block v-for="(vo, key) in list" :key="key">
-            <!-- <card :info="vo"></card> -->
-            <div class="con-list">
-                <div class="flex">
-                    <div class="flex-1 left">
-                        <div class="order over-flow-ellipsis" v-if="nav == 0">合同编号：<span class="clink">{{vo['合同编号']}}</span></div>
-                        <div class="order over-flow-ellipsis" v-if="nav == 1">合同编号：{{vo['合同编号']}}</div>
-                        <div class="order over-flow-ellipsis used" v-if="nav == 2">合同编号：{{vo['合同编号']}}</div>
+	<div class="main has-big-header">
+		<navbar :info="navList" @changeNav="changeNav"></navbar>
+		<search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
+		<block v-for="(vo, key) in list" :key="key">
+			<!-- <card :info="vo"></card> -->
+			<div class="con-list">
+				<div class="flex">
+					<div class="flex-1 left">
+						<div class="order over-flow-ellipsis" v-if="nav == 0">
+							合同编号：<span class="clink">{{ vo['合同编号'] }}</span>
+						</div>
+						<div class="order over-flow-ellipsis" v-if="nav == 1">合同编号：{{ vo['合同编号'] }}</div>
+						<div class="order over-flow-ellipsis used" v-if="nav == 2">合同编号：{{ vo['合同编号'] }}</div>
 
-                        <div class="mt10">
-                            <div class="time" v-if="nav == 1">业绩单号：6549846546</div>
-                            <div class="time">发放日期：{{vo['合同发放日期']}}</div>
-                        </div>
-                    </div>
-                    <div class="status">
-                        <img class="img" v-if="nav == 0" src="../../../img/status_using.png" alt="">
-                        <img class="img" v-if="nav == 1" src="../../../img/status_used.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </block>
-    </div>
+						<div class="mt10">
+							<div class="time" v-if="nav == 1">业绩单号：6549846546</div>
+							<div class="time">发放日期：{{ vo['合同发放日期'] }}</div>
+						</div>
+					</div>
+					<div class="status">
+						<img class="img" v-if="nav == 0" src="../../../img/status_using.png" alt="" />
+						<img class="img" v-if="nav == 1" src="../../../img/status_used.png" alt="" />
+					</div>
+				</div>
+			</div>
+		</block>
+	</div>
 </template>
 
 <script>
@@ -32,64 +34,55 @@ import card from '@/components/contractCard'
 import search from '@/components/search'
 
 export default {
-  data () {
-    return {
-      navList: ['可使用', '已使用'],
-      nav: 0,
-      list: []
-    }
-  },
+	data() {
+		return {
+			navList: ['可使用', '已使用'],
+			nav: 0,
+			list: []
+		}
+	},
 
-  components: {
-    navbar,
-    card,
-    search
-  },
+	components: {
+		navbar,
+		card,
+		search
+	},
 
-  mounted () {
-    this.getList()
-  },
+	mounted() {
+		this.getList()
+	},
 
-  onReachBottom () {
-    this.getList(this.page + 1)
-  },
-  watch: {
-    list: {
-      handler (newV) {
-        if (newV.length === 0) {
-          this.getList(this.page + 1)
-        }
-      }
-    }
-  },
-  methods: {
-    changeNav (nav) {
-      console.log(nav)
-      this.nav = nav
-      this.page = 1
-      this.list = []
-      this.getList()
-    },
-    getList (page = 1) {
-      this.$api.getContractList(page).then(res => {
-        console.log(res)
-        if (res.success) {
-          let resUsing = res.rows.filter(m => m['状态'] === '已发放')
-          let resUsed = res.rows.filter(m => m['状态'] === '已成单' || m['状态'] === '追加成单')
-          console.log('可使用=>', resUsing)
-          console.log('已使用=>', resUsed)
-          if (page === 1) {
-            this.list = this.nav === 0 ? resUsing : resUsed
-          } else {
-            this.list = this.nav === 0 ? this.list.concat(resUsing) : this.list.concat(resUsed)
-          }
-          if (res.rows.length > 0) this.page = page
-        }
-      })
-    }
-  },
+	onReachBottom() {
+		this.getList(this.page + 1)
+	},
+	methods: {
+		changeNav(nav) {
+			console.log(nav)
+			this.nav = nav
+			this.page = 1
+			this.list = []
+			this.getList()
+		},
+		getList(page = 1) {
+			this.$api.getContractList(page).then(res => {
+				console.log(res)
+				if (res.success) {
+					let resUsing = res.rows.filter(m => m['状态'] === '已发放')
+					let resUsed = res.rows.filter(m => m['状态'] === '已成单' || m['状态'] === '追加成单')
+					console.log('可使用=>', resUsing)
+					console.log('已使用=>', resUsed)
+					if (page === 1) {
+						this.list = this.nav === 0 ? resUsing : resUsed
+					} else {
+						this.list = this.nav === 0 ? this.list.concat(resUsing) : this.list.concat(resUsed)
+					}
+					if (res.rows.length > 0) this.page = page
+				}
+			})
+		}
+	},
 
-  created () {}
+	created() {}
 }
 </script>
 

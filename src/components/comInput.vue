@@ -7,7 +7,8 @@
                 <!-- 文字 -->
                 <div v-if="type===0" class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue||'--'}}</div>
                 <!-- 输入框 -->
-                <input v-if="type===1" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l',fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
+                <input v-if="type===1&&inputType==='text'" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l',fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
+                <input v-if="type===1&&inputType==='number'" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l',fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="number" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
                 <!-- 选择 -->
                 <div v-if="type===2">
                     <picker v-if="!disabled" class="w-full rel" :class="[textRight?'ta-r':'ta-l',!disabled?'pr20':'']" @change="onPickerChange" :value="index" :range="options">
@@ -149,6 +150,12 @@ export default {
 			type: String,
 			default() {
 				return 'f16'
+			}
+		},
+		inputType: {
+			type: String,
+			default() {
+				return 'text'
 			}
 		}
 	},

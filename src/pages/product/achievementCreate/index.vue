@@ -1,69 +1,69 @@
 <template>
-    <div class="main">
-        <div class="booking" v-show="step === 0">
-            <div class="dis-flex ptb15 a-center">
-                <div class="label bg-blue">销售信息</div>
-            </div>
-            <div class="block">
-                <div class="from">
-                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="2" ref="string2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :options="customerOptions" @getSelect="getSelect" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.string36" paramkey="string36" :textRight="false" title="证件类型" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.string37" paramkey="string37" :textRight="false" title="证件号码" :isSpecialBorderStyle="true"></comInput>
-                    <!-- <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumber" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput> -->
-                    <comInput :type="2" ref="string6" fontSize="f14" :value="datas.string6" paramkey="string6" :textRight="false" :options="productOptions" @getSelect="getSelect" title="产品名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.string7" paramkey="string7" :textRight="false" title="产品分类" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.string5" paramkey="string5" :textRight="false" title="产品期限" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="2" ref="string9" fontSize="f14" :value="datas.string9" paramkey="string9" :textRight="false" :options="contractOptions" @getSelect="getSelect" title="合同编号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string10" paramkey="string10" :textRight="false" title="预约编号" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" ref="string13" fontSize="f14" :value="datas.string13" paramkey="string13" :textRight="false" title="理财经理" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="0" ref="string14" fontSize="f14" :value="datas.string14" paramkey="string14" :textRight="false" title="所属部门" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.string15" paramkey="string15" :textRight="false" title="录单员" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.string34" paramkey="string34" :textRight="false" title="录单员所属部门" :isSpecialBorderStyle="true"></comInput>
-                    <div class="line line-big required">
-                        <div class="key">上传附件（格式pdf或图片）</div>
-                        <div class="val" style="padding-bottom: 10px;">
-                            <upload></upload>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<div class="main">
+		<div class="booking" v-show="step === 0">
+			<div class="dis-flex ptb15 a-center">
+				<div class="label bg-blue">销售信息</div>
+			</div>
+			<div class="block">
+				<div class="from">
+					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="2" ref="string2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :options="customerOptions" @getSelect="getSelect" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.string36" paramkey="string36" :textRight="false" title="证件类型" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.string37" paramkey="string37" :textRight="false" title="证件号码" :isSpecialBorderStyle="true"></comInput>
+					<!-- <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumber" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput> -->
+					<comInput :type="2" ref="string6" fontSize="f14" :value="datas.string6" paramkey="string6" :textRight="false" :options="productOptions" @getSelect="getSelect" title="产品名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.string7" paramkey="string7" :textRight="false" title="产品分类" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.string5" paramkey="string5" :textRight="false" title="产品期限" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="2" ref="string9" fontSize="f14" :value="datas.string9" paramkey="string9" :textRight="false" :options="contractOptions" @getSelect="getSelect" title="合同编号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string10" paramkey="string10" :textRight="false" title="预约编号" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" ref="string13" fontSize="f14" :value="datas.string13" paramkey="string13" :textRight="false" title="理财经理" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="0" ref="string14" fontSize="f14" :value="datas.string14" paramkey="string14" :textRight="false" title="所属部门" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.string15" paramkey="string15" :textRight="false" title="录单员" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.string34" paramkey="string34" :textRight="false" title="录单员所属部门" :isSpecialBorderStyle="true"></comInput>
+					<div class="line line-big required">
+						<div class="key">上传附件（格式pdf或图片）</div>
+						<div class="val" style="padding-bottom: 10px;">
+							<upload></upload>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="booking" v-show="step === 1">
-            <div class="dis-flex ptb15 a-center">
-                <div class="label bg-blue">财务信息</div>
-            </div>
-            <div class="block">
-                <div class="from">
-                    <comInput :type="3" ref="date1" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date1" paramkey="date1" :textRight="false" title="打款日期" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="1" ref="string16" @getInputVal="getInputVal" fontSize="f14" :value="datas.string16" paramkey="string16" :textRight="false" title="合同金额" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="2" fontSize="f14" :value="datas.string17" paramkey="string17" :textRight="false" :options="options.payWay" @getSelect="getSelect" title="付款方式" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="1" ref="string18" @getInputVal="getInputVal" fontSize="f14" :value="datas.string18" paramkey="string18" :textRight="false" title="付款账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="1" ref="string19" @getInputVal="getInputVal" fontSize="f14" :value="datas.string19" paramkey="string19" :textRight="false" title="付款账号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string20" paramkey="string20" :textRight="false" title="累计缴款金额" :isSpecialBorderStyle="true"></comInput>
+		<div class="booking" v-show="step === 1">
+			<div class="dis-flex ptb15 a-center">
+				<div class="label bg-blue">财务信息</div>
+			</div>
+			<div class="block">
+				<div class="from">
+					<comInput :type="3" ref="date1" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date1" paramkey="date1" :textRight="false" title="打款日期" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="1" ref="string16" @getInputVal="getInputVal" fontSize="f14" validType="numberFloatValid" :value="datas.string16" paramkey="string16" :textRight="false" title="合同金额" inputType="number" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="2" fontSize="f14" :value="datas.string17" paramkey="string17" :textRight="false" :options="options.payWay" @getSelect="getSelect" title="付款方式" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="1" ref="string18" @getInputVal="getInputVal" fontSize="f14" :value="datas.string18" paramkey="string18" :textRight="false" title="付款账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="1" ref="string19" @getInputVal="getInputVal" fontSize="f14" :value="datas.string19" paramkey="string19" :textRight="false" title="付款账号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string20" paramkey="string20" :textRight="false" title="累计缴款金额" :isSpecialBorderStyle="true"></comInput>
 
-                    <comInput :type="0" fontSize="f14" :value="datas.date2" paramkey="date2" :textRight="false" title="确认收款日" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.date3" paramkey="date3" :textRight="false" title="起息日" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.date4" paramkey="date4" :textRight="false" title="产品到期日" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.number1" paramkey="number1" :textRight="false" title="年化系数" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="0" fontSize="f14" :value="datas.number2" paramkey="number2" :textRight="false" title="年化业绩" :isSpecialBorderStyle="true"></comInput>
-                    <comInput :type="1" ref="string22" @getInputVal="getInputVal" fontSize="f14" :value="datas.string22" paramkey="string22" :textRight="false" title="收益分配账户" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="1" ref="string21" @getInputVal="getInputVal" fontSize="f14" :value="datas.string21" paramkey="string21" :textRight="false" title="收益分配账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-                    <comInput :type="3" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date8" paramkey="date8" :textRight="false" title="冷静期" :isSpecialBorderStyle="true"></comInput>
-                </div>
-            </div>
-        </div>
+					<comInput :type="0" fontSize="f14" :value="datas.date2" paramkey="date2" :textRight="false" title="确认收款日" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.date3" paramkey="date3" :textRight="false" title="起息日" :isSpecialBorderStyle="true"></comInput>
+					<!-- <comInput :type="0" fontSize="f14" :value="datas.date3" paramkey="date3" :textRight="false" title="产品成立日" :isSpecialBorderStyle="true"></comInput> -->
+					<comInput :type="0" fontSize="f14" :value="datas.date4" paramkey="date4" :textRight="false" title="产品到期日" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.number1" paramkey="number1" :textRight="false" title="年化系数" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.number2" paramkey="number2" :textRight="false" title="年化业绩" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="1" ref="string22" @getInputVal="getInputVal" fontSize="f14" :value="datas.string22" paramkey="string22" :textRight="false" title="收益分配账户" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="1" ref="string21" @getInputVal="getInputVal" fontSize="f14" :value="datas.string21" paramkey="string21" :textRight="false" title="收益分配账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="3" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date8" paramkey="date8" :textRight="false" title="冷静期" :isSpecialBorderStyle="true"></comInput>
+				</div>
+			</div>
+		</div>
 
-        <!-- <button class="btn-submit" @click="ser()">下一步</button> -->
+		<!-- <button class="btn-submit" @click="ser()">下一步</button> -->
 
-        <div class="line-bar">
-            <van-button type="info" @click="submit" v-if="step >0">确认新增</van-button>
-            <van-button v-if="step == 0" type="info" @click="setStep(1)">下一步</van-button>
-            <van-button v-if="step > 0" plain type="info" @click="setStep(0)">上一步</van-button>
-        </div>
-
-    </div>
+		<div class="line-bar">
+			<van-button type="info" @click="submit" v-if="step > 0">确认新增</van-button>
+			<van-button v-if="step == 0" type="info" @click="setStep(1)">下一步</van-button>
+			<van-button v-if="step > 0" plain type="info" @click="setStep(0)">上一步</van-button>
+		</div>
+	</div>
 </template>
 
 <script>
