@@ -145,7 +145,7 @@
             <div class="msg no-boder">
                 <div class="f13"><span class="cgey">产品名称：</span>{{info['购买产品']}}</div>
                 <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['产品期限']}}个月</div>
-                <div class="f13"><span class="cgey">合同金额：</span>{{info['认购金额']}}(打款日期：{{info['打款日'] || '--'}})</div>
+                <div class="f13"><span class="cgey">合同金额：</span>{{info['认购金额']}}(打款日期：{{info['打款日']}})</div>
             </div>
             <div class="dis-flex a-between plr15 pb10">
                 <div class="f13 cgey">成立日：2019-03-31</div>
@@ -247,7 +247,7 @@
 
 <script>
 export default {
-	props: ['info', 'type', 'status', 'actionType'],
+    props: ['info', 'type', 'status', 'actionType'],
 	methods: {
 		interstDetail(type, id) {
 			let url = `/pages/${type}/detail/main?id=${id}`

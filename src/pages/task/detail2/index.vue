@@ -92,6 +92,7 @@ export default {
 	},
 	onLoad() {
 		this.info = mpvue.getStorageSync('detail2')
+        this.info['年化系数'] = parseFloat(mpvue.getStorageSync('detail2')['年化系数'])
 		console.log('=>>', mpvue.getStorageSync('detail2'))
 	},
 	created() {},

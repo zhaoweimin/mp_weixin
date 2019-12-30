@@ -107,14 +107,18 @@ export default {
     this.getInfo()
     console.log(this.id)
   },
-
   methods: {
     getInfo () {
       this.$api.getInterestDetail(this.id)
         .then(res => {
           res = JSON.parse(res.RetValue)
           console.log(res)
-          this.list = res.rows
+          this.list = res.rows.map(m=>{
+              let info = m
+              info.date5 = m.date5.split(' ')[0]
+              info.date6 = m.date6.split(' ')[0]
+              return info
+            })
         })
     }
   }

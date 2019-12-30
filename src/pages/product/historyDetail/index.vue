@@ -317,6 +317,7 @@ export default {
       key: 'history_achievenment_info',
       success: res => {
         this.info = res.data
+        this.info['年化系数'] = parseFloat(res.data['年化系数'])
         console.log(this.info)
       }
     })

@@ -4,10 +4,10 @@
 			<div class="block">
 				<div class="title">客户信息</div>
 				<div class="from">
-					<comInput :type="1" title="预约编号" paramkey="string1" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
-					<comInput :type="1" title="客户姓名" paramkey="string13" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
-					<comInput :type="2" title="证件类型" paramkey="string3" value="" :textRight="false" :options="options.certType" @getSelect="getSelect" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-					<comInput :type="1" title="证件号码" paramkey="string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+					<comInput :type="1" title="预约编号" paramkey="string1" :value="datas.string1" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="1" title="客户姓名" paramkey="string13" :value="datas.string13"  @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="2" title="证件类型" paramkey="string3" :value="datas.string3" :textRight="false" :options="options.certType" @getSelect="getSelect" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="1" title="证件号码" paramkey="string2" :value="datas.string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 				</div>
 			</div>
 		</div>

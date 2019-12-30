@@ -56,9 +56,17 @@ export default {
         console.log(res)
         if (res.success) {
           if (page === 1) {
-            this.list = res.rows
+            this.list = res.rows.map(m=>{
+              let info = m
+              info['打款日'] = m['打款日'].split(' ')[0]
+              return info
+            })
           } else {
-            this.list = this.list.concat(res.rows)
+            this.list = this.list.concat(res.rows.map(m=>{
+              let info = m
+              info['打款日'] = m['打款日'].split(' ')[0]
+              return info
+            }))
           }
           if (res.rows.length > 0) this.page = page
         } else {

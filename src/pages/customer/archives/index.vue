@@ -3,7 +3,7 @@
         <navbar :info="nav" @changeNav="changeNav"></navbar>
         <fliter :info="nav" @getData="getFilterData"></fliter>
         <div v-if="list.length>0">
-            <card v-for="(vo, key) in list" :key="key" :type="0" :info="vo"></card>
+            <card v-for="(vo, key) in list" :key="key" :type="navId" :info="vo"></card>
         </div>
     </div>
 </template>

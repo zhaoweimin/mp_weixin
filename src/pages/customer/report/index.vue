@@ -7,7 +7,7 @@
                 <div class="tle">客户</div>
                 <div class="dis-flex">
                     <div class="msg">
-                        <div class="title"><span class="srtong">{{vo['客户姓名']}}</span> <span class="sex">{{vo.sex ? '先生' : '女士'}}</span></div>
+                        <div class="title"><span class="srtong">{{vo['客户姓名']}}</span> <span class="sex">{{vo['性别']}}</span></div>
                         <div class="tags level-1">
                             <div class="tag">{{vo['客户类型']}}</div>
                             <div class="tag level" v-if="vo['客户级别']">{{vo['客户级别']}}</div>

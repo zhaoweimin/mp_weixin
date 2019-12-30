@@ -1,7 +1,7 @@
 <template>
     <div class="main">
-        <div class="bg-fff info f14 flex l-center a-right pr10 mt10">
-          <div class="mr10 f12 cgey">您好{{account.Name}}</div> 
+        <div class="bg-fff info f14 flex l-end a-right pr10 pb10 mt10 border-box">
+          <div class="mr10 f12 cgey">您好~ </div> <div class="f16 cblack">{{account.Name}}</div>
           <!-- <div class="btn-login bg-blue cfff flex l-center a-center f12" @click="login">去登陆</div>  -->
         </div>
         <search :fixed="false" placeholder="搜索应用、待办、报表"></search>

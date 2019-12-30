@@ -27,6 +27,9 @@ Vue.filter('NumFormat', function(value) {
 		return intPartFormat
 	}
 })
+Vue.filter('dateFormat', function(str) {
+	return str ? str.split(' ')[0] : '--'
+})
 
 App.mpType = 'app'
 
