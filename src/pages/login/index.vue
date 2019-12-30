@@ -4,12 +4,12 @@
         <div class="ta-c mb30">天玑财富</div>
         <div class="w100">
           <div class="inputewrap flex l-center plr15 mb30">
-            <input class="input" placeholder-style="color:#d8d8d8" v-model="form.account" placeholder="请输入账号" type="text" >
+            <input class="input" placeholder-style="color:#d8d8d8" v-model="form.userName" placeholder="请输入账号" type="text" >
           </div>
           <div class="inputewrap flex l-center plr15 mb30">
-            <input class="input" placeholder-style="color:#d8d8d8" v-model="form.password" placeholder="请输入密码" type="password" >
+            <input class="input" placeholder-style="color:#d8d8d8" v-model="form.passWord" placeholder="请输入密码" type="password" >
           </div>
-          <van-button :round="true" type="info" size="large" @click="submit">登陆</van-button>
+          <van-button :round="true" type="info" size="large" @click="login">登陆</van-button>
         </div>
       </div>
     </div>
@@ -21,8 +21,10 @@ export default {
   data () {
     return {
       form:{
-        account:'',
-        password:''
+        userName: 'kingdee', // kingdee
+        passWord: '123456' // 123456
+        // userName:'', // kingdee
+        // passWord:'' // 123456
       },
     }
   },
@@ -35,9 +37,45 @@ export default {
   },
 
   methods: {
-    login (url) {
-      console.log(url)
+    login () {
+      console.log(222)
       // mpvue.navigateTo({ url })
+      let { form } = this
+      if(form.userName.trim() === ''){
+        mpvue.showToast({
+          title: '请输入用户名',
+          icon: 'none'
+        })
+        return
+      }
+      if(form.passWord.trim() === ''){
+        mpvue.showToast({
+          title: '请输入密码',
+          icon: 'none'
+        })
+        return
+      }
+      this.$api
+        .login(form)
+        .then(res => {
+          console.log(res)
+          if (res.Result !== 0) {
+            mpvue.showToast({
+              title: '登录成功',
+              icon: 'success'
+            })
+            this.$store.commit('setInfo', res)
+            console.log(this.$store.state)
+
+            mpvue.switchTab({ url:'/pages/home/main' })
+
+          } else {
+            mpvue.showToast({
+              title: res.PromptMsg,
+              icon: 'none'
+            })
+          }
+        })
     },
   
   },

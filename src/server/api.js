@@ -16,15 +16,13 @@ export default {
         return WXrequest.request(obj.url, 'DELETE', obj.data)
     },
 
-    // test
-    test: function () {
+    // login
+    login: function (data) {
         // 测试接口
+        console.log(data)
         let obj = {
             url: '/ashx/mobile/MoblieLogin.ashx?service=userlogin',
-            data: {
-                userName: 'admin',
-                passWord: ''
-            }
+            data
         }
         return this.post(obj)
     },

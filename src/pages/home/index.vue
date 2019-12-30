@@ -82,28 +82,13 @@ export default {
     console.log(this.$store.getters.getTest)
     // 测试直接在data 中赋值的store
     console.log(this.textStore)
-    this.$api
-      .test()
-      .then(res => {
-        console.log(res)
-      })
-      .then(res => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            console.log(2)
-            resolve()
-          }, 1000)
-        })
-      })
-      .then(res => {
-        console.log(3)
-      })
+    
   },
 
   methods: {
-    login () {
-      mpvue.navigateTo({ url:'../login/main' })
-    }
+    // login () {
+    //   mpvue.navigateTo({ url:'../login/main' })
+    // }
   },
 
   created () {
