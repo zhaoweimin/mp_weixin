@@ -530,6 +530,7 @@ export default {
 		getSelect(data) {
 			console.log(data)
 			this.datas[data.key] = data.value
+			console.log(this.datas)
 		},
 		getInputVal(data) {
 			console.log(data)

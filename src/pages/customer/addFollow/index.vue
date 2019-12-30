@@ -8,8 +8,8 @@
 			<comInput :type="3" :titleDark="true" title="跟进开始时间" :value="datas.date1" paramkey="date1" @getSelectDate="getSelectDate" :textRight="false"></comInput>
 			<comInput :type="3" :titleDark="true" title="跟进结束时间" :value="datas.date2" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false"></comInput>
 			<comInput :type="2" :titleDark="true" title="客户类型" :value="datas.string16" paramkey="string16" :options="options.customerType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
-			<comInput :type="1" :titleDark="true" title="投资总额" :value="datas.string24" paramkey="string24" @getInputVal="getInputVal" :textRight="false"></comInput>
-			<comInput :type="1" :titleDark="true" title="累计投资总额" :value="datas.string25" paramkey="string25" @getInputVal="getInputVal" :textRight="false"></comInput>
+			<comInput :type="1" :titleDark="true" title="投资总额" :value="datas.string24 | NumFormat" paramkey="string24" @getInputVal="getInputVal" :textRight="false"></comInput>
+			<comInput :type="1" :titleDark="true" title="累计投资总额" :value="datas.string25 | NumFormat" paramkey="string25" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<div class="mlr15 ptb10 border-b">
 				<div class="cblack f16 mb10">跟进主题</div>
 				<textarea v-model="datas.string3" placeholder="请输入跟进主题"></textarea>

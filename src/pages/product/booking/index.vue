@@ -1,272 +1,272 @@
 <template>
-    <div class="main">
-        <div class="booking">
-            <div class="block">
-                <div class="title">客户信息</div>
-                <div class="from">
-                    <comInput :type="1" title="预约编号" paramkey="string1" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
-                    <comInput :type="1" title="客户姓名" paramkey="string13" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
-                    <comInput :type="2" title="证件类型" paramkey="string3" :textRight="false" :options="options.certType" @getSelect="getSelect" :isSpecialBorderStyle="true" value="" :isRequired="true"></comInput>
-                    <comInput :type="1" title="证件号码" paramkey="string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
-                </div>
-            </div>
-        </div>
-        <div class="booking">
-            <div class="block">
-                <div class="title">产品信息</div>
-                <div class="from">
-                    <comInput :type="0" :title="Object.keys(info)[7]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[7]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[0]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[0]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[9]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[9]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[10]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[10]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[8]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[8]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[2]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[2]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[1]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[1]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[3]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[3]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[6]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[6]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[4]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[4]"></comInput>
-                    <comInput :type="0" :title="Object.keys(info)[5]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[5]"></comInput>
-                </div>
-            </div>
-        </div>
-        <div class="booking">
-            <div class="block">
-                <div class="title">付款信息</div>
-                <div class="from">
-                    <comInput :type="3" title="预约打款日期" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
-                    <!-- <comInput :type="3" title="实际打款日期" paramkey="FBirthDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput> -->
-                    <comInput :type="1" title="出资金额" paramkey="number2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
-                </div>
-            </div>
-        </div>
-        <button class="btn-submit" @click="submit">提交审核</button>
-    </div>
+	<div class="main">
+		<div class="booking">
+			<div class="block">
+				<div class="title">客户信息</div>
+				<div class="from">
+					<comInput :type="1" title="预约编号" paramkey="string1" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+					<comInput :type="1" title="客户姓名" paramkey="string13" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+					<comInput :type="2" title="证件类型" paramkey="string3" value="" :textRight="false" :options="options.certType" @getSelect="getSelect" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="1" title="证件号码" paramkey="string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+				</div>
+			</div>
+		</div>
+		<div class="booking">
+			<div class="block">
+				<div class="title">产品信息</div>
+				<div class="from">
+					<comInput :type="0" :title="Object.keys(info)[7]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[7]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[0]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[0]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[9]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[9]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[10]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[10]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[8]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[8]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[2]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[2]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[1]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[1]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[3]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[3]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[6]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[6]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[4]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[4]"></comInput>
+					<comInput :type="0" :title="Object.keys(info)[5]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[5]"></comInput>
+				</div>
+			</div>
+		</div>
+		<div class="booking">
+			<div class="block">
+				<div class="title">付款信息</div>
+				<div class="from">
+					<comInput :type="3" title="预约打款日期" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+					<!-- <comInput :type="3" title="实际打款日期" paramkey="FBirthDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput> -->
+					<comInput :type="1" title="出资金额" paramkey="number2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+				</div>
+			</div>
+		</div>
+		<button class="btn-submit" @click="submit">提交审核</button>
+	</div>
 </template>
 
 <script>
 import comInput from '@/components/comInput'
 import Options from '@/utils/Options.js'
 export default {
-  data () {
-    return {
-      options: Options,
-      info: {},
-      type_range: ['身份证', '护照'],
-      type: '',
-      booking_date: '',
-      pay_date: '',
-      reqParams: [
-        {
-          Field: 'string1', // 预约编码
-          Value: '' // 值
-        },
-        {
-          Field: 'string13', // 客户姓名
-          Value: ''
-        },
-        {
-          Field: 'string3', // 证件类型
-          Value: ''
-        },
-        {
-          Field: 'string2', // 证件号码
-          Value: ''
-        },
-        {
-          Field: 'date2', // 预约打款日期
-          Value: ''
-        },
-        {
-          Field: 'number2', // 出资金额
-          Value: ''
-        },
-        // --------带入 ------
-        {
-          Field: 'string35', // 产品类别
-          Value: ''
-        },
-        {
-          Field: 'string33', // 产品编号
-          Value: ''
-        },
-        {
-          Field: 'string34', // 产品名称有两个产品名称     值一样-------特殊-------
-          Value: ''
-        },
-        {
-          Field: 'string16', // 产品名称            值一样-------特殊-------
-          Value: ''
-        },
-        {
-          Field: 'string17', // 产品期限
-          Value: ''
-        },
-        {
-          Field: 'string3', // 募集账户
-          Value: ''
-        },
-        {
-          Field: 'string18', // 已募集份数
-          Value: ''
-        },
-        {
-          Field: 'string19', // 已募集金额
-          Value: ''
-        },
-        {
-          Field: 'string20', // 剩余募集金额
-          Value: ''
-        },
-        {
-          Field: 'string21', // 已预约人数
-          Value: ''
-        },
-        {
-          Field: 'string22', // 已预约金额
-          Value: ''
-        },
-        {
-          Field: 'string23', // 剩余预约金额
-          Value: ''
-        },
-        // --------默认 ------
-        {
-          Field: 'string6', // 客户编码
-          Value: '客户编码'
-        },
-        {
-          Field: 'string7', // 理财经理
-          Value: '管理员'
-        },
-        {
-          Field: 'string8', // 所属部门
-          Value: '天玑财富'
-        },
-        {
-          Field: 'string25', // 最后修改人
-          Value: '管理员'
-        },
-        {
-          Field: 'string24', // 最后修改部门
-          Value: '天玑财富'
-        },
-        {
-          Field: 'date4', // 最后修改时间
-          Value: '2019-12-10'
-        },
-        {
-          Field: 'string27', // 创建人
-          Value: '管理员'
-        },
-        {
-          Field: 'string26', // 创建部门
-          Value: '天玑财富'
-        },
-        {
-          Field: 'date5', // 创建时间
-          Value: '2019-12-10'
-        },
-        {
-          Field: 'string12',
-          Value: '0'
-        },
-        {
-          Field: 'string15',
-          Value: '10183'
-        }
-      ],
-      datas: {
-        string1: '',
-        string13: '',
-        string3: '',
-        string2: '',
-        date2: '',
-        number2: ''
-      }
-    }
-  },
-  onLoad (option) {
-    this.isEdit = option.isEdit
-    // console.log(option)
-    mpvue.getStorage({
-      // 获取本地缓存
-      key: 'product_info',
-      success: res => {
-        this.info = res.data
-        console.log('==>', Object.keys(this.info))
-        for (const key in this.info) {
-          if (key === '产品编号') {
-            this.reqParams[7].Value = this.info[key]
-          } else if (key === '已募集金额') {
-            this.reqParams[13].Value = this.info[key]
-          } else if (key === '已募集份数') {
-            this.reqParams[12].Value = this.info[key]
-          } else if (key === '已预约金额') {
-            this.reqParams[16].Value = this.info[key]
-          } else if (key === '剩余可预约') {
-            this.reqParams[17].Value = this.info[key]
-          } else if (key === '已预约人数') {
-            this.reqParams[15].Value = this.info[key]
-          } else if (key === '产品类型') {
-            this.reqParams[6].Value = this.info[key]
-          } else if (key === '募集账户') {
-            this.reqParams[11].Value = this.info[key]
-          } else if (key === '产品名称') {
-            this.reqParams[8].Value = this.info[key]
-            this.reqParams[9].Value = this.info[key]
-          } else if (key === '产品期限') {
-            this.reqParams[10].Value = this.info[key]
-          }
-        }
-        console.log('==>', this.reqParams)
-      }
-    })
-  },
-  components: { comInput },
-  methods: {
-    bindTypeChange (e) {
-      let val = e.mp.detail.value
-      this.type = val
-    },
-    bindBookingChange (e) {
-      let val = e.mp.detail.value
-      this.booking_date = val
-    },
-    bindPayChange (e) {
-      let val = e.mp.detail.value
-      this.pay_date = val
-    },
-    submit () {
-      Object.keys(this.datas).forEach((item, index) => {
-        this.reqParams[index].Value = this.datas[item]
-      })
-      this.$api.addBooking(this.reqParams).then(res => {
-        console.log(res)
-        wx.showToast({
-          title: '操作成功',
-          icon: 'success',
-          duration: 3000,
-          success: () => {
-            mpvue.navigateTo({ url: '/pages/success/main' })
-          }
-        })
-      })
-    },
-    getSelect (data) {
-      console.log(data)
-      this.datas[data.key] = data.value
-    },
-    getInputVal (data) {
-      console.log(data)
-      this.datas[data.key] = data.value
-    },
-    getSelectDate (data) {
-      console.log(data)
-      this.datas[data.key] = data.value
-    }
-  },
+	data() {
+		return {
+			options: Options,
+			info: {},
+			type_range: ['身份证', '护照'],
+			type: '',
+			booking_date: '',
+			pay_date: '',
+			reqParams: [
+				{
+					Field: 'string1', // 预约编码
+					Value: '' // 值
+				},
+				{
+					Field: 'string13', // 客户姓名
+					Value: ''
+				},
+				{
+					Field: 'string3', // 证件类型
+					Value: ''
+				},
+				{
+					Field: 'string2', // 证件号码
+					Value: ''
+				},
+				{
+					Field: 'date2', // 预约打款日期
+					Value: ''
+				},
+				{
+					Field: 'number2', // 出资金额
+					Value: ''
+				},
+				// --------带入 ------
+				{
+					Field: 'string35', // 产品类别
+					Value: ''
+				},
+				{
+					Field: 'string33', // 产品编号
+					Value: ''
+				},
+				{
+					Field: 'string34', // 产品名称有两个产品名称     值一样-------特殊-------
+					Value: ''
+				},
+				{
+					Field: 'string16', // 产品名称            值一样-------特殊-------
+					Value: ''
+				},
+				{
+					Field: 'string17', // 产品期限
+					Value: ''
+				},
+				{
+					Field: 'string3', // 募集账户
+					Value: ''
+				},
+				{
+					Field: 'string18', // 已募集份数
+					Value: ''
+				},
+				{
+					Field: 'string19', // 已募集金额
+					Value: ''
+				},
+				{
+					Field: 'string20', // 剩余募集金额
+					Value: ''
+				},
+				{
+					Field: 'string21', // 已预约人数
+					Value: ''
+				},
+				{
+					Field: 'string22', // 已预约金额
+					Value: ''
+				},
+				{
+					Field: 'string23', // 剩余预约金额
+					Value: ''
+				},
+				// --------默认 ------
+				{
+					Field: 'string6', // 客户编码
+					Value: '客户编码'
+				},
+				{
+					Field: 'string7', // 理财经理
+					Value: '管理员'
+				},
+				{
+					Field: 'string8', // 所属部门
+					Value: '天玑财富'
+				},
+				{
+					Field: 'string25', // 最后修改人
+					Value: '管理员'
+				},
+				{
+					Field: 'string24', // 最后修改部门
+					Value: '天玑财富'
+				},
+				{
+					Field: 'date4', // 最后修改时间
+					Value: '2019-12-10'
+				},
+				{
+					Field: 'string27', // 创建人
+					Value: '管理员'
+				},
+				{
+					Field: 'string26', // 创建部门
+					Value: '天玑财富'
+				},
+				{
+					Field: 'date5', // 创建时间
+					Value: '2019-12-10'
+				},
+				{
+					Field: 'string12',
+					Value: '0'
+				},
+				{
+					Field: 'string15',
+					Value: '10183'
+				}
+			],
+			datas: {
+				string1: '',
+				string13: '',
+				string3: '',
+				string2: '',
+				date2: '',
+				number2: ''
+			}
+		}
+	},
+	onLoad(option) {
+		this.isEdit = option.isEdit
+		// console.log(option)
+		mpvue.getStorage({
+			// 获取本地缓存
+			key: 'product_info',
+			success: res => {
+				this.info = res.data
+				console.log('==>', Object.keys(this.info))
+				for (const key in this.info) {
+					if (key === '产品编号') {
+						this.reqParams[7].Value = this.info[key]
+					} else if (key === '已募集金额') {
+						this.reqParams[13].Value = this.info[key]
+					} else if (key === '已募集份数') {
+						this.reqParams[12].Value = this.info[key]
+					} else if (key === '已预约金额') {
+						this.reqParams[16].Value = this.info[key]
+					} else if (key === '剩余可预约') {
+						this.reqParams[17].Value = this.info[key]
+					} else if (key === '已预约人数') {
+						this.reqParams[15].Value = this.info[key]
+					} else if (key === '产品类型') {
+						this.reqParams[6].Value = this.info[key]
+					} else if (key === '募集账户') {
+						this.reqParams[11].Value = this.info[key]
+					} else if (key === '产品名称') {
+						this.reqParams[8].Value = this.info[key]
+						this.reqParams[9].Value = this.info[key]
+					} else if (key === '产品期限') {
+						this.reqParams[10].Value = this.info[key]
+					}
+				}
+				console.log('==>', this.reqParams)
+			}
+		})
+	},
+	components: { comInput },
+	methods: {
+		bindTypeChange(e) {
+			let val = e.mp.detail.value
+			this.type = val
+		},
+		bindBookingChange(e) {
+			let val = e.mp.detail.value
+			this.booking_date = val
+		},
+		bindPayChange(e) {
+			let val = e.mp.detail.value
+			this.pay_date = val
+		},
+		submit() {
+			Object.keys(this.datas).forEach((item, index) => {
+				this.reqParams[index].Value = this.datas[item]
+			})
+			this.$api.addBooking(this.reqParams).then(res => {
+				console.log(res)
+				wx.showToast({
+					title: '操作成功',
+					icon: 'success',
+					duration: 3000,
+					success: () => {
+						mpvue.navigateTo({ url: '/pages/success/main' })
+					}
+				})
+			})
+		},
+		getSelect(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		},
+		getInputVal(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		},
+		getSelectDate(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		}
+	},
 
-  created () {}
+	created() {}
 }
 </script>
 

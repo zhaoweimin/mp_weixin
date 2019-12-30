@@ -1,47 +1,47 @@
 <template>
-    <div class="pl15 bg-fff border-box" :class="{'pr15':!isSpecialBorderStyle}">
-        <div class="inputItem dis-flex l-center ptb10 rel" :class="{'border-b':border,'pr15':isSpecialBorderStyle}">
-            <div v-if="isRequired" class="required">*</div>
-            <div class="label" :class="[titleDark?'cblack':'cgey',fontSize]">{{title}}</div>
-            <div class="flex-1 dis-flex flex-column pl20">
-                <!-- 文字 -->
-                <div v-if="type===0" class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue||'--'}}</div>
-                <!-- 输入框 -->
-                <input v-if="type===1&&inputType==='text'" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l',fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
-                <input v-if="type===1&&inputType==='number'" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight?'ta-r':'ta-l',fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="number" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)">
-                <!-- 选择 -->
-                <div v-if="type===2">
-                    <picker v-if="!disabled" class="w-full rel" :class="[textRight?'ta-r':'ta-l',!disabled?'pr20':'']" @change="onPickerChange" :value="index" :range="options">
-                        <span :class="[resultValue?'cblack':'clight',fontSize]">{{resultValue||'请选择'}}</span>
-                        <span v-if="!disabled" class="icon-r iconfont iconright"></span>
-                    </picker>
-                    <div v-else class="cblack" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]">{{resultValue}}</div>
-                </div>
-                <!-- 日期 -->
-                <picker v-if="type===3" mode="date" class="w-full rel pr20" :class="[textRight?'ta-r':'ta-l']" :disabled="disabled" :value="resultValue" @change="onDateChange">
-                    <span :class="[resultValue?'cblack':'clight',fontSize]">{{resultValue||'请选择'}}</span>
-                    <span v-if="!disabled" class="icon-r iconfont iconright"></span>
-                </picker>
-                <!-- 点击事件 -->
-                <div v-if=" type===4" class="btnItem dis-flex flex-1 a-right l-center">
-                    <!-- <div class="f16 mr5">{{resultValue}}</div> -->
-                    <input class="w-full cblack" :class="[textRight?'ta-r':'ta-l',fontSize]" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus">
-                    <!-- <img class="ml10" src="./img/icon_camera@3x.png" alt="" @click="onBtnClick"> -->
-                </div>
-                <!-- 选择项 -->
-                <div v-if="type===6" class="picker flex1 flex a-left l-center">
-                    <div class="chooseItem mr15 f12" :class="[resultValue==item.key?'bg-main c-fff':'bg-color c-999']" v-for="(item,index) in dataList" :key="index" @click="getTabChoose(index)">{{item.value}}</div>
-                </div>
-                <!-- 文字 -->
-                <div v-if="type===7" class="w-full rel pr20" :class="[textRight?'ta-r':'ta-l',isSpecialColorTxt?'clink':'cblack',fontSize]" @click="onBtnClick">
-                  <span :class="[resultValue?'cblack':'clight',fontSize]">{{ value || '请选择' }}</span>
-                  <span v-if="!disabled" class="icon-r iconfont iconright"></span>
-                </div>
-                <!-- 错误提示 -->
-                <div class="error-tip" :class="[textRight?'ta-r':'ta-l']" v-if="isShowErr&&enableInputErr">{{errTxt}}</div>
-            </div>
-        </div>
-    </div>
+	<div class="pl15 bg-fff border-box" :class="{ pr15: !isSpecialBorderStyle }">
+		<div class="inputItem dis-flex l-center ptb10 rel" :class="{ 'border-b': border, pr15: isSpecialBorderStyle }">
+			<div v-if="isRequired" class="required">*</div>
+			<div class="label" :class="[titleDark ? 'cblack' : 'cgey', fontSize]">{{ title }}</div>
+			<div class="flex-1 dis-flex flex-column pl20">
+				<!-- 文字 -->
+				<div v-if="type === 0" class="cblack" :class="[textRight ? 'ta-r' : 'ta-l', isSpecialColorTxt ? 'clink' : 'cblack', fontSize]">{{ resultValue || '--' }}</div>
+				<!-- 输入框 -->
+				<input v-if="type === 1 && inputType === 'text'" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight ? 'ta-r' : 'ta-l', fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)" />
+				<input v-if="type === 1 && inputType === 'number'" class="w-full" placeholder-style="color:#d8d8d8" :class="[textRight ? 'ta-r' : 'ta-l', fontSize]" :disabled="disabled" v-model="resultValue" :placeholder="placeholder" type="number" @blur="onBlur($event.target.value)" @focus="onFocus($event.target.value)" />
+				<!-- 选择 -->
+				<div v-if="type === 2">
+					<picker v-if="!disabled" class="w-full rel" :class="[textRight ? 'ta-r' : 'ta-l', !disabled ? 'pr20' : '']" @change="onPickerChange" :value="index" :range="options">
+						<span :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择' }}</span>
+						<span v-if="!disabled" class="icon-r iconfont iconright"></span>
+					</picker>
+					<div v-else class="cblack" :class="[textRight ? 'ta-r' : 'ta-l', isSpecialColorTxt ? 'clink' : 'cblack', fontSize]">{{ resultValue }}</div>
+				</div>
+				<!-- 日期 -->
+				<picker v-if="type === 3" mode="date" class="w-full rel pr20" :class="[textRight ? 'ta-r' : 'ta-l']" :disabled="disabled" :value="resultValue" @change="onDateChange">
+					<span :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择' }}</span>
+					<span v-if="!disabled" class="icon-r iconfont iconright"></span>
+				</picker>
+				<!-- 点击事件 -->
+				<div v-if="type === 4" class="btnItem dis-flex flex-1 a-right l-center">
+					<!-- <div class="f16 mr5">{{resultValue}}</div> -->
+					<input class="w-full cblack" :class="[textRight ? 'ta-r' : 'ta-l', fontSize]" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus" />
+					<!-- <img class="ml10" src="./img/icon_camera@3x.png" alt="" @click="onBtnClick"> -->
+				</div>
+				<!-- 选择项 -->
+				<div v-if="type === 6" class="picker flex1 flex a-left l-center">
+					<div class="chooseItem mr15 f12" :class="[resultValue == item.key ? 'bg-main c-fff' : 'bg-color c-999']" v-for="(item, index) in dataList" :key="index" @click="getTabChoose(index)">{{ item.value }}</div>
+				</div>
+				<!-- 文字 -->
+				<div v-if="type === 7" class="w-full rel pr20" :class="[textRight ? 'ta-r' : 'ta-l', isSpecialColorTxt ? 'clink' : 'cblack', fontSize]" @click="onBtnClick">
+					<span :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ value || '请选择' }}</span>
+					<span v-if="!disabled" class="icon-r iconfont iconright"></span>
+				</div>
+				<!-- 错误提示 -->
+				<div class="error-tip" :class="[textRight ? 'ta-r' : 'ta-l']" v-if="isShowErr && enableInputErr">{{ errTxt }}</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -163,6 +163,7 @@ export default {
 	watch: {
 		value(newV) {
 			this.resultValue = newV
+			console.log('newV=>', newV)
 		}
 	},
 	data() {
@@ -179,9 +180,9 @@ export default {
 			this.isShowPicker = false
 		},
 		onPickerChange(e) {
-			this.resultValue = e.mp.detail.value
+			// this.resultValue = e.mp.detail.value
 			this.$emit('getSelect', { key: this.paramkey, value: this.options[e.mp.detail.value], index: e.mp.detail.value })
-			this.$emit('getInputVal', { key: this.paramkey, value: this.resultValue, isErr: this.isShowErr })
+			// this.$emit('getInputVal', { key: this.paramkey, value: this.e.mp.detail.value, isErr: this.isShowErr })
 		},
 		onDateChange(e) {
 			this.resultValue = e.mp.detail.value
