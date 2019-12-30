@@ -1,8 +1,8 @@
 <template>
     <div class="main">
         <div class="bg-fff info f14 flex l-center a-right pr10 mt10">
-          <div class="mr10 f12 cgey">当前尚未登陆</div> 
-          <div class="btn-login bg-blue cfff flex l-center a-center f12" @click="login">去登陆</div> 
+          <div class="mr10 f12 cgey">您好{{account.Name}}</div> 
+          <!-- <div class="btn-login bg-blue cfff flex l-center a-center f12" @click="login">去登陆</div>  -->
         </div>
         <search :fixed="false" placeholder="搜索应用、待办、报表"></search>
         <div class="application">
@@ -21,6 +21,7 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
+      account: {},
       data: [
         {
           title: '客户管理',
@@ -82,7 +83,8 @@ export default {
     console.log(this.$store.getters.getTest)
     // 测试直接在data 中赋值的store
     console.log(this.textStore)
-    
+    this.account = this.$store.state.account.info.RetValue
+    console.log(this.account);
   },
 
   methods: {
