@@ -50,7 +50,7 @@
             <comInput :type="2" fontSize="f14" :value="datas.FLicenseType" paramkey="FLicenseType" :textRight="false" :options="options.zhizhaoType" @getSelect="getSelect" title="执照类型" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FLicenseNumber" paramkey="FLicenseNumber" :textRight="false" title="执照号码" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="3" fontSize="f14" :value="datas.FValidTerm" paramkey="FValidTerm" :textRight="false" @getSelectDate="getSelectDate" title="有效期限" :isSpecialBorderStyle="true"></comInput>
-            <comInput :type="2" fontSize="f14" :value="datas.FYearCheck" paramkey="FYearCheck" :textRight="false" :options="options.nianjianyouxiao" @getSelect="getSelect" title="年检有效" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FYearCheck" paramkey="FYearCheck" :textRight="false" title="年检有效" :isSpecialBorderStyle="true"></comInput>
             <div class="table pr15 line">
                 <div class="flex-1">
                     <div class="key f14 l-end w100">注册地址</div>

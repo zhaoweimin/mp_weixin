@@ -20,6 +20,7 @@
 					<comInput :type="0" ref="string14" fontSize="f14" :value="datas.string14" paramkey="string14" :textRight="false" title="所属部门" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string15" paramkey="string15" :textRight="false" title="录单员" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string34" paramkey="string34" :textRight="false" title="录单员所属部门" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" value="后台未提供字段名" paramkey="XXX" :textRight="false" title="资产证明上传时间" :isSpecialBorderStyle="true"></comInput>
 					<div class="line line-big required">
 						<div class="key">上传附件（格式pdf或图片）</div>
 						<div class="val" style="padding-bottom: 10px;">
@@ -45,6 +46,7 @@
 
 					<comInput :type="0" fontSize="f14" :value="datas.date2" paramkey="date2" :textRight="false" title="确认收款日" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.date3" paramkey="date3" :textRight="false" title="起息日" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" value="后台未提供字段名" paramkey="XXX" :textRight="false" title="产品成立日" :isSpecialBorderStyle="true"></comInput>
 					<!-- <comInput :type="0" fontSize="f14" :value="datas.date3" paramkey="date3" :textRight="false" title="产品成立日" :isSpecialBorderStyle="true"></comInput> -->
 					<comInput :type="0" fontSize="f14" :value="datas.date4" paramkey="date4" :textRight="false" title="产品到期日" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.number1" paramkey="number1" :textRight="false" title="年化系数" :isSpecialBorderStyle="true"></comInput>

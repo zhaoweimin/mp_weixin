@@ -1,7 +1,7 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <comInput :type="0" title="单据编号" :isSpecialColorTxt="true" :value="info['单据编号']"></comInput>
+            <!-- <comInput :type="0" title="单据编号" :isSpecialColorTxt="true" :value="info['单据编号']"></comInput> -->
             <comInput :type="0" title="业绩单号" :isSpecialColorTxt="true" :value="info['业绩单号']"></comInput>
             <comInput :type="0" title="客户姓名" :value="info['客户姓名']"></comInput>
             <comInput :type="0" title="购买产品" :value="info['购买产品']"></comInput>

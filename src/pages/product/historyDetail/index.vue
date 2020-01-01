@@ -77,6 +77,12 @@
                             <span>{{info['录单员'] || '--'}}</span>
                         </div>
                     </div>
+                    <div class="line">
+                        <div class="key">录单员部门</div>
+                        <div class="val ta-r">
+                            <span>{{info['录单员部门'] || '--'}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -187,7 +193,7 @@
         <div class="booking">
             <div class="block">
                 <div class="title flex">
-                    <div class="flex-1">客户信息</div>
+                    <div class="flex-1">销售确认</div>
                     <div style="padding-top: 4px">
                         <van-switch size="20px" :checked="isSwitch" @change="changeSwitch" />
                     </div>
@@ -227,7 +233,7 @@
             </div>
         </div>
 
-        <div class="booking">
+        <div class="booking" v-if="info['转让份额']">
             <div class="block">
                 <div class="title flex">
                     <div class="flex-1">份额转让</div>
@@ -306,7 +312,7 @@ export default {
       type: '',
       booking_date: '',
       pay_date: '',
-      isSwitch: true
+      isSwitch: false
     }
   },
   onLoad (option) {
@@ -318,6 +324,7 @@ export default {
       success: res => {
         this.info = res.data
         this.info['年化系数'] = parseFloat(res.data['年化系数'])
+        this.info['资产证明上传时间'] = res.data['资产证明上传时间']?res.data['资产证明上传时间'].split(' ')[0]:'--'
         console.log(this.info)
       }
     })

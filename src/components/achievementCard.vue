@@ -180,7 +180,7 @@
             <div class="msg no-boder">
                 <div class="f13"><span class="cgey">产品名称：</span>{{info['客户姓名']}}</div>
                 <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['客户姓名']}}个月</div>
-                <div class="f13"><span class="cgey">合同金额：</span>2万(打款日期：2019-03-30)</div>
+                <div class="f13"><span class="cgey">合同金额：</span>{{info['认购金额']}}(打款日期：{{info['打款日期']||'--'}})</div>
                 <div class="f13"><span class="cgey">本次提奖：</span>{{info['本次提奖金额']}}万</div>
             </div>
             <div class="dis-flex a-between plr15 pb10">

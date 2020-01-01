@@ -88,9 +88,17 @@ export default {
           console.log(res)
           if (res.success) {
             if (page === 1) {
-              this.list = res.rows
+              this.list = res.rows.map(m=>{
+                let item = m
+                item['投诉日期'] = m['投诉日期']?m['投诉日期'].split(' ')[0]:'--'
+                return item
+              })
             } else {
-              this.list = this.list.concat(res.rows)
+              this.list = this.list.concat(res.rows.map(m=>{
+                let item = m
+                item['投诉日期'] = m['投诉日期']?m['投诉日期'].split(' ')[0]:'--'
+                return item
+              }))
             }
             if (res.rows.length > 0) this.page = page
           } else {
