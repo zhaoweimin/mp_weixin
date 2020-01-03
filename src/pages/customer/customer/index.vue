@@ -94,6 +94,7 @@
             <div v-show="open[1]">
                 <comInput :type="0" fontSize="f14" title="手机号码" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FMobilePhone" :isRequired="true"></comInput>
                 <comInput :type="0" fontSize="f14" title="电话类型" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FPhoneType"></comInput>
+                <comInput :type="0" fontSize="f14" title="邮箱" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.email"></comInput>
                 <comInput :type="0" fontSize="f14" title="紧急联系人" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FEmergencyName"></comInput>
                 <comInput :type="0" fontSize="f14" title="紧急联系人电话" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FEmergencyPhone"></comInput>
                 <div class="table pr15 pb20 line required">

@@ -9,12 +9,12 @@
             <comInput :type="0" title="基金名称" :value="info.FName"></comInput>
             <comInput :type="0" title="基金类型" :value="info.Fundtype"></comInput>
             <comInput :type="0" title="合伙主体" :value="info.FpartnershipBody"></comInput>
-            <comInput :type="0" title="基金规模" :value="info.FundScale"></comInput>
-            <comInput :type="0" title="计划募集规模" :value="info.FRaiseScale"></comInput>
+            <comInput :type="0" title="基金规模" :value="info.FundScale | NumFormat"></comInput>
+            <comInput :type="0" title="计划募集规模" :value="info.FRaiseScale | NumFormat"></comInput>
             <comInput :type="0" title="基金份额" :value="info.FundShare"></comInput>
             <comInput :type="0" title="基金单位净值" :value="info.FNetfundUnitvalue"></comInput>
-            <comInput :type="0" title="退出期" :value="info.FNetfundUnitvalue"></comInput>
-            <comInput :type="0" title="投资期限" :value="info.FInvestment"></comInput>
+            <comInput :type="0" title="退出期" :value="null"></comInput>
+            <comInput :type="0" title="投资期限" :value="info.FInvestment?info.FInvestment+'个月':''"></comInput>
             <comInput :type="0" title="募集期" :value="info.FRaiseDate"></comInput>
             <comInput :type="0" title="托管方" :value="info.Fhoster"></comInput>
             <comInput :type="0" title="募集监督机构" :value="info.RSBody"></comInput>
@@ -61,6 +61,10 @@ export default {
       success: res => {
         console.log(res)
         this.info = res.data
+        this.info.FEstabDate = this.info.FEstabDate.split(' ')[0]
+        this.info.FDueDate = this.info.FDueDate.split(' ')[0]
+        this.info.Fcontractenddate = this.info.Fcontractenddate.split(' ')[0]
+        this.info.FCashpaymentdate = this.info.FCashpaymentdate.split(' ')[0]
       }
     })
   },

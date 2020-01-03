@@ -1,6 +1,7 @@
 <template>
-    <div class="main has-header">
+    <div class="main has-big-header">
         <navbar :info="nav" @changeNav="changeNav"></navbar>
+		    <search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
         <block v-if="nav_num===0">
             <card v-for="(vo, key) in list" :key="key" :info="vo" :type="6" :status="nav_num"></card>
         </block>
@@ -13,6 +14,7 @@
 <script>
 import navbar from '@/components/navbar'
 import card from '@/components/achievementCard'
+import search from '@/components/search'
 
 export default {
   data () {
@@ -25,7 +27,8 @@ export default {
 
   components: {
     navbar,
-    card
+    card,
+    search
   },
 
   mounted () {
@@ -33,6 +36,7 @@ export default {
   },
 
   onReachBottom () {
+    return false
     this.getList(this.page + 1)
   },
 

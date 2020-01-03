@@ -66,6 +66,7 @@ export default {
   },
 
   onReachBottom () {
+    return false
     this.getList(this.page + 1)
   },
 

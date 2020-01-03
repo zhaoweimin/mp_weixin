@@ -13,8 +13,10 @@ function request(url, method, data, header = {}) {
 	// isGetAll：true直接获取全部列表，不分页
 	if (typeof data.index !== 'undefined') {
 		data.pageIndex = data.index
-		data.pageSize = data.isGetAll ? 0 : config.pageSize
-		data.size = data.isGetAll ? 0 : config.pageSize
+		// data.pageSize = data.isGetAll ? 0 : config.pageSize
+		// data.size = data.isGetAll ? 0 : config.pageSize
+		data.pageSize = 0
+		data.size = 0
 	}
 	return new Promise((resolve, reject) => {
 		wx.request({

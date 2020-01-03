@@ -66,6 +66,10 @@ export default {
       mpvue.navigateTo({ url })
     },
     add () {
+        console.log(1)
+    mpvue.setStorageSync('follow_info', '')
+    console.log(mpvue.getStorageSync('follow_info'))
+        console.log(2)
       let url = `../addFollow/main`
       mpvue.navigateTo({ url })
     }

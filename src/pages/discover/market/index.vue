@@ -78,6 +78,7 @@ export default {
       this.getList()
     },
     onReachBottom () {
+		  return false
       this.getList(this.page + 1)
     },
     getList (page = 1) {

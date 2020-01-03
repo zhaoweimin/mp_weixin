@@ -1,7 +1,7 @@
 <template>
     <div class="customer">
         <div class="bg-fff mt10">
-            <div class="pl15 ptb15 f16 strong">活动名称</div>
+            <div class="pl15 ptb15 f16 strong">{{info['活动名称']}}</div>
             <comInput :type="0" :titleDark="false" :isSpecialColorTxt="true" title="活动编码" :value="info['活动编码']"></comInput>
             <comInput :type="0" :titleDark="false" title="活动开始时间" :value="info['活动开始时间']"></comInput>
             <comInput :type="0" :titleDark="false" title="活动结束时间" :value="info['活动结束时间']"></comInput>

@@ -66,6 +66,7 @@ export default {
     }
   },
   onReachBottom () {
+    return false
     this.getData(this.page + 1)
   }
 }
