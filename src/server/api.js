@@ -520,7 +520,7 @@ export default {
 
     // 产品预约-新建预约提交审核
     // pages/discover/invitation/main
-    addDiscoverInvitation(params) {
+    addDiscoverInvitation(params, Rows) {
       let obj = {
           url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
           data: {
@@ -530,7 +530,12 @@ export default {
               StarterID: 10818,
               FlowName: '活动邀约',
               FlowModelID: '82907d3f-4979-d0d0-1f50-39eb6765d115',
-              HeadFields: params
+              HeadFields: params,
+              Fentrys: [{
+                FentryIndex: 1,
+                FentryField: 'fentry1',
+                Rows: Rows
+              }]
           }
       }
       return this.post(obj)
