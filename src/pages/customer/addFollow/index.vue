@@ -1,7 +1,7 @@
 <template>
 	<div class="main">
 		<div class="bg-fff mt10">
-			<comInput :type="1" :titleDark="true" title="跟进编号" :value="datas.string8" paramkey="string8" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
+			<comInput v-if="is_follow" :type="1" :titleDark="true" title="跟进编号" :value="datas.string8" paramkey="string8" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="客户编号" :value="datas.string10" paramkey="string10" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<comInput :type="2" :titleDark="true" title="跟进方式" :value="datas.string2" paramkey="string2" :options="options.followWay" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
@@ -44,6 +44,7 @@ export default {
 
 	data() {
 		return {
+			is_follow: false,
 			options: Options,
 			type: 0,
 			isShowForm: false,
@@ -213,6 +214,8 @@ export default {
 	},
 
 	onLoad(options) {
+		Object.assign(this.$data, this.$options.data())
+		this.is_follow = options.is_follow
 		let { is_follow } = options
 		console.log(is_follow)
 		if (is_follow) {

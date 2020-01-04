@@ -76,6 +76,7 @@ export default {
 		this.getList()
 	},
 	onReachBottom() {
+		return false
 		switch (this.tag) {
 			case 0:
 				if (this.nav_num === 0) {

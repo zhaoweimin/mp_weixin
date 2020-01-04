@@ -68,6 +68,7 @@
         <div class="msg-table" v-show="step === 1">
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FMobilePhone" validType="phoneValid" :value="datas.FMobilePhone" paramkey="FMobilePhone" :textRight="false" title="手机号码" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
             <comInput :type="2" fontSize="f14" :value="datas.FPhoneType" paramkey="FPhoneType" :textRight="false" :options="options.phoneType" @getSelect="getSelect" title="电话类型" :isSpecialBorderStyle="true"></comInput>
+            <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" validType="emailValid" :value="datas.email" paramkey="email" :textRight="false" title="邮箱" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FEmergencyName" paramkey="FEmergencyName" :textRight="false" title="紧急联系人" :isSpecialBorderStyle="true"></comInput>
             <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumbFEmergencyPhoneer" paramkey="FEmergencyPhone" :textRight="false" title="紧急联系人电话" :isSpecialBorderStyle="true"></comInput>
             <div class="table pr15 pb20 line required">
@@ -299,6 +300,7 @@ export default {
 
 				{ Field: 'FMobilePhone', Value: '' },
 				{ Field: 'FPhoneType', Value: '' },
+				{ Field: 'email', Value: '' },
 				{ Field: 'FEmergencyName', Value: '' },
 				{ Field: 'FEmergencyPhone', Value: '' },
 				{ Field: 'FMailingAddress', Value: '' },
@@ -362,6 +364,8 @@ export default {
 
 				FMobilePhone: '',
 				FPhoneType: '',
+				// 新增
+				email:'',
 				FEmergencyName: '',
 				FEmergencyPhone: '',
 				FMailingAddress: '',

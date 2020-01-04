@@ -12,7 +12,7 @@ Vue.prototype.$api = api
 Vue.prototype.$store = store
 // 格式金额的过滤器
 Vue.filter('NumFormat', function(value) {
-	let num = value.split(',').join('')
+	let num = String(value).split(',').join('')
 	if (!num) return ''
 	/* 原来用的是Number(num).toFixed(0)，这样取整时有问题，例如0.51取整之后为1，感谢Nils指正 */
 	/* 后来改成了 Number(num)|0,但是输入超过十一位就为负数了，具体见评论 */

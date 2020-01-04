@@ -19,6 +19,7 @@
             <comInput :type="0" :titleDark="false" title="备注" :value="info['备注1']"></comInput>
             <comInput :type="0" :titleDark="false" title="手机号码" :value="info['手机号码']"></comInput>
             <comInput :type="0" :titleDark="false" title="客户投资总额" :value="info['客户投资总额']"></comInput>
+            <comInput :type="0" :titleDark="false" title="客户累计投资总额" :value="info['客户累计投资总额']"></comInput>
             <comInput :type="0" :titleDark="false" title="邀约审批人" :value="info['邀约审批人']"></comInput>
             <comInput :type="0" :titleDark="false" title="所属部门" :value="info['创建部门']"></comInput>
             <comInput :type="0" :titleDark="false" title="邀约审批状态" :value="info['邀约审批状态']"></comInput>
