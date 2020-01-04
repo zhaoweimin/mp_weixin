@@ -518,6 +518,26 @@ export default {
         return this.post(obj)
     },
 
+    // 产品预约-新建预约提交审核
+    // pages/discover/invitation/main
+    addDiscoverInvitation(params) {
+      let obj = {
+          url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+          data: {
+              id: '73a617ba-31f2-c3a3-1d0e-39e80b23f04c',
+              content: 'text/html',
+              AutoSend: 1,
+              StarterID: 10818,
+              FlowName: '活动邀约',
+              FlowModelID: '82907d3f-4979-d0d0-1f50-39eb6765d115',
+              HeadFields: params
+          }
+      }
+      return this.post(obj)
+  },
+
+
+
     // 业绩新增
     addAchievement(params) {
         let obj = {

@@ -208,6 +208,13 @@
 					"id": -1,
 					"name": "产品提成新建",
 					"pathName": "pages/royalty/newList/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新增活动邀约",
+					"pathName": "pages/discover/invitation/main",
 					"scene": null
 				}
 			]

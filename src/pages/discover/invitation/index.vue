@@ -18,6 +18,7 @@
             <comInput :type="1" title="备注" :titleDark="true" placeholder="请输入备注" value="" :textRight="false"></comInput>
             <comInput :type="2" title="理财经理" :titleDark="true" placeholder="请选择理财经理" value="" @getSelect="getSelect" :options="['小王','小李']" :textRight="false"></comInput>
             <comInput :type="2" title="归属部门" :titleDark="true" placeholder="请选择归属部门" value="" @getSelect="getSelect" :options="['市场部门','行政部门']" :textRight="false"></comInput>
+            
             <div v-for="(item, index) in customers" :key="index">
                 <div class="mlr15 ptb15 f16 strong clink border-b">邀约({{item.number+1}})</div>
                 <comInput :type="1" title="客户姓名" :titleDark="true" placeholder="请输入客户姓名" value="" :textRight="false"></comInput>
@@ -43,17 +44,78 @@ export default {
 
   data () {
     return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      },
+      info: {},
       customers: [],
-      customerNum: 1
+      customerNum: 1,
+      params: {
+        string1: '', //邀约编号
+        string2: '', //活动名称
+        string3: '', //活动编号
+        string4: '', //邀约理财经理
+        string8: '', //邀约理财经理编码
+        string36: '', //邀约理财经理所属部门
+        string20: '', //活动范围
+        string25: '', //活动类型
+        string39: '', //负责人
+        string43: '', //负责人编码
+        string31: '', //负责部门
+        string30: '', //邀约审批人
+        string9: '', //审批人编码
+        string44: '', //邀约审批人归属部门
+        date8: '', //邀约开始时间
+        date10: '', //邀约结束时间
+        date11: '', //活动开始时间
+        date12: '', //活动结束时间
+        string19: '', //创建人
+        string12: '', //创建人编码
+        date4: '', //创建日期
+        string17: '', //创建部门
+        string16: '', //最后修改人
+        date3: '', //最后修改日期
+        string14: '', //最后修改部门
+        date8: '', //邀约日期
+        string6: '', //审批状态
+        string7: '', //备注
+      },
+      Fentrys: [
+        {
+          FentryIndex: 1, // 第几个表体
+          FentryField: 'fentry1', // 表体ID
+          Rows: [
+            {
+              isAdd: true,
+              Fields: []
+            }
+
+          ]
+        }
+      ],
+      Fields: {
+        string15: '', //客户姓名
+        string35: '', // 客户姓名
+        string22: '', // 客户编码
+        string42: '', // 手机号码
+        string21: '', // 客户类型
+        string18: '', // 客户投资总额
+        string34: '', // 客户累计投资总额
+        string28: '', // 理财经理
+        string5: '', // 理财经理所属部门
+        string23: '', // 邀约审批状态
+        string24: '', // 备注
+      }
     }
   },
-
+  onLoad (option) {
+    console.log(1);
+    wx.getStorage({
+      // 获取本地缓存
+      key: 'market_customer_info',
+      success: res => {
+        this.info = res.data
+        console.log(res.data)
+      }
+    })
+  },
   created () {},
   methods: {
     getSelect (data) {
