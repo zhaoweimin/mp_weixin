@@ -1,6 +1,6 @@
 <template>
     <div class="main has-header">
-        <search placeholder="搜索"></search>
+        <search placeholder="搜索" :list="list" filterParam="客户姓名" @getFilterResult="getFilterResult"></search>
         <div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key">
             <div class="dis-flex l-center mb15 plr10" @click="vo.isShow=!vo.isShow">
                 <div class="avatar">
@@ -147,9 +147,17 @@ export default {
       mpvue.setStorageSync('follow_info', item)
       mpvue.navigateTo({ url })
     },
-    detail (id) {
+    detail (id) { 
       let url = `../followDetail/main?id=${id}`
       mpvue.navigateTo({ url })
+    },
+    getFilterResult(data){
+      console.log(data)
+      if(!data.reload){
+        this.list = data.result
+      }else{
+        this.getList()
+      }
     }
   }
 }

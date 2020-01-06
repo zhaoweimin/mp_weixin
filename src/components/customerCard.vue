@@ -30,9 +30,9 @@
                     </div>
                     <div class="more" @click="linkDetail">更多<span class="iconfont iconright"></span></div>
                 </div>
-                <div class="pl10 dis-flex" v-if="info.FnowInvestment">
-                    <div class="f12 mr20">投资总额 | <span :class="{'cyellow':info.FDealType==='A','clink':info.FDealType==='B','c-y':info.FDealType==='C','cgreen':info.FDealType==='D'}">{{info.FnowInvestment>10000?(info.FnowInvestment/10000)+'万':nfo.FnowInvestment}}</span></div>
-                    <div class="f12">累计投资总额 | <span :class="{'cyellow':info.FDealType==='A','clink':info.FDealType==='B','c-y':info.FDealType==='C','cgreen':info.FDealType==='D'}">{{info.FsumInvestment>10000?(info.FsumInvestment/10000)+'万':nfo.FsumInvestment}}</span></div>
+                <div class="pl10 dis-flex" v-if="info.FCustomerType==='成交客户'||info.FCustomerType==='历史成交客户'">
+                    <div class="f12 mr20">投资总额 | <span :class="{'cyellow':info.FDealType==='A','clink':info.FDealType==='B','c-y':info.FDealType==='C','cgreen':info.FDealType==='D'}">{{info.FnowInvestment>10000?(info.FnowInvestment/10000)+'万':info.FnowInvestment}}</span></div>
+                    <div class="f12">累计投资总额 | <span :class="{'cyellow':info.FDealType==='A','clink':info.FDealType==='B','c-y':info.FDealType==='C','cgreen':info.FDealType==='D'}">{{info.FsumInvestment>10000?(info.FsumInvestment/10000)+'万':info.FsumInvestment}}</span></div>
                 </div>
             </div>
         </div>

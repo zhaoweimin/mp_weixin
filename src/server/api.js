@@ -266,7 +266,7 @@ export default {
         // r 1-待处理 2-已处理
         let rMap = {
             1: '&r=1',
-            2: '$r=2'
+            2: '&r=2'
         }
         let obj = {
             url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',

@@ -2,7 +2,7 @@
     <div class="search dis-flex l-center" :class="[fixed?'fixed':'',isMainBg?'bg-blue':'bg-color']">
         <div class="input flex-1 bg-fff dis-flex l-center">
             <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
-            <input class="flex-1" type="text" :placeholder="placeholder">
+            <input class="flex-1 f14" type="text" :placeholder="placeholder" @input="oninput">
         </div>
         <div v-if="rightButton" class="f12 pl10" :class="[isMainBg?'cfff':'cgey']">取消</div>
     </div>
@@ -37,9 +37,34 @@ export default {
       default () {
         return true
       }
+    },
+    // 过滤待字段名
+    filterParam:  {
+      type: String,
+      default () {
+        return ''
+      }
+    },
+    // 传入的待过滤数组
+    list:{
+      type:Array,
+      default(){
+        return []
+      }
     }
   },
-  methods: {},
+  methods: {
+    oninput(value){
+      let result,txt=value.mp.detail.value,reload
+      if(txt){
+        result = this.list.filter(m=>m[this.filterParam].indexOf(txt)>-1)
+        reload = false
+      }else{
+        reload = true
+      }
+      this.$emit('getFilterResult', {reload,result})
+    }
+  },
   mounted () {
     console.log(this.rightButton)
   }

@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-		<div class="booking">
+		<div class="booking" v-if="isEdit==='1'">
 			<div class="block">
 				<div class="title">客户信息</div>
 				<div class="from">
@@ -15,21 +15,21 @@
 			<div class="block">
 				<div class="title">产品信息</div>
 				<div class="from">
-					<comInput :type="0" :title="Object.keys(info)[7]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[7]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[0]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[0]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[9]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[9]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[10]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[10]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[8]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[8]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[2]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[2]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[1]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[1]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[3]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[3]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[6]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[6]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[4]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[4]"></comInput>
-					<comInput :type="0" :title="Object.keys(info)[5]" :textRight="false" :isSpecialBorderStyle="true" :value="Object.values(info)[5]"></comInput>
+					<comInput :type="0" title="产品类别" :value="info['产品类别']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="产品编号" :value="info['产品编号']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="产品名称" :value="info['产品名称']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="产品期限" :value="info['产品期限']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="募集账户" :value="info['募集账户']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
+					<comInput :type="0" title="已募集份数" :value="info['已募集份数']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
+					<comInput :type="0" title="已募集金额" :value="info['已募集金额']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="剩余募集金额" :value="info['剩余募集金额']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
+					<comInput :type="0" title="已预约人数" :value="info['已预约人数']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
+					<comInput :type="0" title="已预约金额" :value="info['已预约金额']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
+					<comInput :type="0" title="剩余可预约" :value="info['剩余可预约']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 				</div>
 			</div>
 		</div>
-		<div class="booking">
+		<div class="booking" v-if="isEdit==='1'">
 			<div class="block">
 				<div class="title">付款信息</div>
 				<div class="from">
@@ -39,7 +39,7 @@
 				</div>
 			</div>
 		</div>
-		<button class="btn-submit" @click="submit">提交审核</button>
+		<button class="btn-submit" v-if="isEdit==='1'" @click="submit">提交审核</button>
 	</div>
 </template>
 
@@ -182,17 +182,18 @@ export default {
 				string2: '',
 				date2: '',
 				number2: ''
-			}
+			},
+			isEdit:''
 		}
 	},
 	onLoad(option) {
 		this.isEdit = option.isEdit
-		// console.log(option)
 		mpvue.getStorage({
 			// 获取本地缓存
 			key: 'product_info',
 			success: res => {
 				this.info = res.data
+				console.log('==>', this.info)
 				console.log('==>', Object.keys(this.info))
 				for (const key in this.info) {
 					if (key === '产品编号') {

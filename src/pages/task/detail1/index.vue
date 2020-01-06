@@ -13,7 +13,7 @@
             <comInput :type="0" :titleDark="false" title="客户投资总额" :value="info['客户投资总额']"></comInput>
             <comInput :type="0" :titleDark="false" title="邀约审批人" :value="info['邀约审批人']"></comInput>
             <comInput :type="0" :titleDark="false" title="所属活动" :value="info['活动名称']"></comInput>
-            <comInput :type="0" :titleDark="false" title="邀约审批状态" :value="info['邀约审批状态']"></comInput>
+            <comInput :type="2" :titleDark="false" title="客户来源明细" :value="datas['邀约审批状态']" paramkey="邀约审批状态" :options="options" @getSelect="getSelect" ></comInput>
             <comInput :type="0" :titleDark="false" title="备注" :value="info['备注2']"></comInput>
             <comInput :type="0" :titleDark="false" title="理财经理" :value="info['理财经理']"></comInput>
             <comInput :type="0" :titleDark="false" title="归属部门" :value="info['所属部门']"></comInput>
@@ -36,14 +36,23 @@ export default {
 
 	data() {
 		return {
-			info: {}
+            info: {},
+            options:['同意','拒绝'],
+            datas:{
+                '邀约审批状态':''
+            }
 		}
 	},
 	onLoad() {
 		this.info = mpvue.getStorageSync('detail1')
 		console.log('=>>', mpvue.getStorageSync('detail1'))
 	},
-	created() {}
+	methods:{
+        getSelect(data) {
+            console.log(data)
+            this.datas[data.key] = data.value
+		}
+    }
 }
 </script>
 

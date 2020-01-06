@@ -36,9 +36,9 @@
                         </div>
                     </div>
                     <div class="line">
-                        <div class="key">产品类型</div>
+                        <div class="key">产品类别</div>
                         <div class="val ta-r">
-                            <span>{{info['产品类型'] || '--'}}</span>
+                            <span>{{info['产品类别'] || '--'}}</span>
                         </div>
                     </div>
                     <div class="line">
@@ -80,7 +80,7 @@
                     <div class="line">
                         <div class="key">录单员部门</div>
                         <div class="val ta-r">
-                            <span>{{info['录单员部门'] || '--'}}</span>
+                            <span>{{info['string34'] || '--'}}</span>
                         </div>
                     </div>
                 </div>
