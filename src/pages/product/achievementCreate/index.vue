@@ -7,14 +7,14 @@
 			<div class="block">
 				<div class="from">
 					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
-					<comInput :type="2" ref="string2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :options="customerOptions" @getSelect="getSelect" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="6" ref="string2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :filterList="customerOptions" @getFilterSelet="getFilterSelet" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string36" paramkey="string36" :textRight="false" title="证件类型" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string37" paramkey="string37" :textRight="false" title="证件号码" :isSpecialBorderStyle="true"></comInput>
 					<!-- <comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumber" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput> -->
-					<comInput :type="2" ref="string6" fontSize="f14" :value="datas.string6" paramkey="string6" :textRight="false" :options="productOptions" @getSelect="getSelect" title="产品名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="6" ref="string6" fontSize="f14" :value="datas.string6" paramkey="string6" :textRight="false" :filterList="productOptions" @getFilterSelet="getFilterSelet" title="产品名称" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string7" paramkey="string7" :textRight="false" title="产品分类" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string5" paramkey="string5" :textRight="false" title="产品期限" :isSpecialBorderStyle="true"></comInput>
-					<comInput :type="2" ref="string9" fontSize="f14" :value="datas.string9" paramkey="string9" :textRight="false" :options="contractOptions" @getSelect="getSelect" title="合同编号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="6" ref="string9" fontSize="f14" :value="datas.string9" paramkey="string9" :textRight="false" :filterList="contractOptions" @getFilterSelet="getFilterSelet" title="合同编号" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string10" paramkey="string10" :textRight="false" title="预约编号" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" ref="string13" fontSize="f14" :value="datas.string13" paramkey="string13" :textRight="false" title="理财经理" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="0" ref="string14" fontSize="f14" :value="datas.string14" paramkey="string14" :textRight="false" title="所属部门" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
@@ -264,7 +264,14 @@ export default {
 		},
 		getSelect(data) {
 			console.log(data)
-
+			this.datas[data.key] = data.value
+		},
+		getInputVal(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		},
+		getFilterSelet(data){
+			console.log(data)
 			this.datas[data.key] = data.value
 			if (data.key === 'string2') {
 				this.datas.string36 = this.customers[data.index].FDocumentType
@@ -274,14 +281,8 @@ export default {
 				this.datas.string7 = this.products[data.index].FTypeId
 				this.datas.string5 = this.products[data.index].FInvestment
 			}
-		},
-		getInputVal(data) {
-			console.log(data)
-			this.datas[data.key] = data.value
 		}
-	},
-
-	created() {}
+	}
 }
 </script>
 

@@ -22,15 +22,10 @@
 					<span :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择' }}</span>
 					<span v-if="!disabled" class="icon-r iconfont iconright"></span>
 				</picker>
-				<!-- 点击事件 -->
-				<div v-if="type === 4" class="btnItem dis-flex flex-1 a-right l-center">
-					<!-- <div class="f16 mr5">{{resultValue}}</div> -->
-					<input class="w-full cblack" :class="[textRight ? 'ta-r' : 'ta-l', fontSize]" v-model="resultValue" :placeholder="placeholder" type="text" @blur="onBlur" @focus="onFocus" />
-					<!-- <img class="ml10" src="./img/icon_camera@3x.png" alt="" @click="onBtnClick"> -->
-				</div>
-				<!-- 选择项 -->
-				<div v-if="type === 6" class="picker flex1 flex a-left l-center">
-					<div class="chooseItem mr15 f12" :class="[resultValue == item.key ? 'bg-main c-fff' : 'bg-color c-999']" v-for="(item, index) in dataList" :key="index" @click="getTabChoose(index)">{{ item.value }}</div>
+				<!-- 过滤筛选选择 -->
+				<div v-if="type === 6" class="w-full rel pr20" @click="isShowFilter=true">
+					<div :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择'  }}</div>
+					<span class="icon-r iconfont iconright"></span>
 				</div>
 				<!-- 文字 -->
 				<div v-if="type === 7" class="w-full rel pr20" :class="[textRight ? 'ta-r' : 'ta-l', isSpecialColorTxt ? 'clink' : 'cblack', fontSize]" @click="onBtnClick">
@@ -41,11 +36,21 @@
 				<div class="error-tip" :class="[textRight ? 'ta-r' : 'ta-l']" v-if="isShowErr && enableInputErr">{{ errTxt }}</div>
 			</div>
 		</div>
+		<div v-if="isShowFilter" class="fliter has-header">
+        	<search placeholder="搜索" :list="filterList" @getFilterResult="getFilterResult" :rightButton="true" @cancel="isShowFilter=false"></search>
+			<div v-if="fList.length > 0" class="wrap"> 
+				<div v-for="(item, index) in fList" :key="index" class="fliter-item plr15 ptb10 flex l-center f16 cblack border-b" @click="getFilterSelet(item,index)">{{item}}</div>
+			</div>
+			<div v-else class="wrap">
+				<div class="ta-c pt20 cgey f14">暂无数据</div>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
 import Verify from '@/utils/Verify.js'
+import search from '@/components/search'
 
 export default {
 	props: {
@@ -157,14 +162,25 @@ export default {
 			default() {
 				return 'text'
 			}
+		},
+		filterList:{
+			type: Array,
+			default() {
+				return []
+			}
 		}
 	},
-	created() {},
 	watch: {
 		value(newV) {
 			this.resultValue = newV
 			console.log('newV=>', newV)
+		},
+		filterList(newV){
+			this.fList = newV 
 		}
+	},
+	components: {
+		search
 	},
 	data() {
 		return {
@@ -172,7 +188,9 @@ export default {
 			isShowErr: false,
 			errTxt: '',
 			scrollTop: '',
-			focusDOMScrollTop: ''
+			focusDOMScrollTop: '',
+			isShowFilter: false,
+			fList: []
 		}
 	},
 	methods: {
@@ -219,6 +237,17 @@ export default {
 		},
 		getTabChoose(index) {
 			this.$emit('getTabChoose', this.dataList[index].key)
+		},
+		getFilterResult(data){
+			if(!data.reload){
+				this.fList = data.result
+			}else{
+				this.fList = this.filterList
+			}
+		},
+		getFilterSelet(data,index){
+			this.$emit('getFilterSelet', { key: this.paramkey, value: data, index: index })
+			this.isShowFilter = false
 		}
 	}
 }
@@ -266,5 +295,25 @@ input[disabled] {
 	position: absolute;
 	right: 0;
 	top: 4px;
+}
+.fliter{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #fff;
+	z-index: 999;
+}
+.fliter .wrap{
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+}
+.fliter .wrap .fliter-item{
+	height: 50px;
+	width: 100%;
+	background: #fff;
+	box-sizing: border-box;
 }
 </style>

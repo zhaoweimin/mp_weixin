@@ -3,7 +3,8 @@
 		<div class="bg-fff mt10">
 			<comInput v-if="is_follow" :type="1" :titleDark="true" title="跟进编号" :value="datas.string8" paramkey="string8" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="客户编号" :value="datas.string10" paramkey="string10" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
-			<comInput :type="1" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" @getInputVal="getInputVal" :textRight="false"></comInput>
+			<comInput v-if="!is_follow" :type="6" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" :filterList="customerOptions" @getFilterSelet="getFilterSelet" :textRight="false"></comInput>
+			<comInput v-else :type="1" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<comInput :type="2" :titleDark="true" title="跟进方式" :value="datas.string2" paramkey="string2" :options="options.followWay" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
 			<comInput :type="3" :titleDark="true" title="跟进开始时间" :value="datas.date1" paramkey="date1" @getSelectDate="getSelectDate" :textRight="false"></comInput>
 			<comInput :type="3" :titleDark="true" title="跟进结束时间" :value="datas.date2" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false"></comInput>
@@ -173,11 +174,25 @@ export default {
 				string5: '',
 				string7: '',
 				string6: ''
-			}
+			},
+			customers: [],
+			customerOptions: []
 		}
 	},
 
 	methods: {
+		getCustomers() {
+			this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
+				console.log('res=>>', res)
+				this.customerOptions = res.rows.map(m => m.FName)
+				this.customers = res.rows.map(m => {
+					return {
+						FDocumentType: m.FDocumentType,
+						FIDNumber: m.FIDNumber
+					}
+				})
+			})
+		},
 		detail(id) {
 			let url = `../followDetail/main?id=${id}`
 			mpvue.navigateTo({ url })
@@ -210,6 +225,10 @@ export default {
 					}
 				})
 			})
+		},
+		getFilterSelet(data){
+			console.log(data)
+			this.datas[data.key] = data.value
 		}
 	},
 
@@ -240,6 +259,8 @@ export default {
 				string6: ''
 			}
 			mpvue.removeStorageSync('follow_info')
+		}else{
+			this.getCustomers()
 		}
 		mpvue.setNavigationBarTitle({ title: '新增跟进' })
 	}

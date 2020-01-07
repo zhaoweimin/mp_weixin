@@ -4,7 +4,7 @@
             <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
             <input class="flex-1 f14" type="text" :placeholder="placeholder" @input="oninput">
         </div>
-        <div v-if="rightButton" class="f12 pl10" :class="[isMainBg?'cfff':'cgey']">取消</div>
+        <div v-if="rightButton" class="f12 pl10" :class="[isMainBg?'cfff':'cgey']" @click="cancel">取消</div>
     </div>
 </template>
 
@@ -57,12 +57,15 @@ export default {
     oninput(value){
       let result,txt=value.mp.detail.value,reload
       if(txt){
-        result = this.list.filter(m=>m[this.filterParam].indexOf(txt)>-1)
+        result = this.filterParam?this.list.filter(m=>m[this.filterParam].indexOf(txt)>-1):this.list.filter(m=>m.indexOf(txt)>-1)
         reload = false
       }else{
         reload = true
       }
       this.$emit('getFilterResult', {reload,result})
+    },
+    cancel(){
+      this.$emit('cancel')
     }
   },
   mounted () {
