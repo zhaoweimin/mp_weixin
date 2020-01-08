@@ -3,7 +3,7 @@
 		<div class="bg-fff mt10">
 			<comInput v-if="is_follow" :type="1" :titleDark="true" title="跟进编号" :value="datas.string8" paramkey="string8" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="客户编号" :value="datas.string10" paramkey="string10" @getInputVal="getInputVal" :isSpecialColorTxt="true" :textRight="false"></comInput>
-			<comInput v-if="!is_follow" :type="6" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" :filterList="customerOptions" @getFilterSelet="getFilterSelet" :textRight="false"></comInput>
+			<comInput v-if="!is_follow" :type="6" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" :filterList="customerOptions" @getFilterSelet="getFilterSelet" @hideTextarea="hideTextarea" :textRight="false"></comInput>
 			<comInput v-else :type="1" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<comInput :type="2" :titleDark="true" title="跟进方式" :value="datas.string2" paramkey="string2" :options="options.followWay" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
 			<comInput :type="3" :titleDark="true" title="跟进开始时间" :value="datas.date1" paramkey="date1" @getSelectDate="getSelectDate" :textRight="false"></comInput>
@@ -13,17 +13,17 @@
 			<comInput :type="1" :titleDark="true" title="累计投资总额" :value="datas.string25 | NumFormat" paramkey="string25" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<div class="mlr15 ptb10 border-b">
 				<div class="cblack f16 mb10">跟进主题</div>
-				<textarea v-model="datas.string3" placeholder="请输入跟进主题"></textarea>
+				<textarea v-show="!isHideTextarea" v-model="datas.string3" placeholder="请输入跟进主题"></textarea>
 			</div>
 			<comInput :type="2" :titleDark="true" title="跟进类型" :value="datas.string4" paramkey="string4" :options="options.followType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
 			<div class="mlr15 ptb10 border-b">
 				<div class="cblack f16 mb10">跟进内容</div>
-				<textarea v-model="datas.string26" placeholder="请输入跟进内容"></textarea>
+				<textarea v-show="!isHideTextarea" v-model="datas.string26" placeholder="请输入跟进内容"></textarea>
 			</div>
 			<comInput :type="3" :titleDark="true" title="下次跟进时间" :value="datas.date3" paramkey="date3" @getSelectDate="getSelectDate" :textRight="false"></comInput>
 			<div class="mlr15 ptb10 border-b">
 				<div class="cblack f16 mb10">下次跟进计划</div>
-				<textarea v-model="datas.string5" placeholder="请输入下次跟进计划"></textarea>
+				<textarea v-show="!isHideTextarea" v-model="datas.string5" placeholder="请输入下次跟进计划"></textarea>
 			</div>
 			<comInput :type="1" :titleDark="true" title="跟进人" :value="datas.string7" paramkey="string7" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="跟进部门" :value="datas.string6" paramkey="string6" @getInputVal="getInputVal" :textRight="false"></comInput>
@@ -176,7 +176,8 @@ export default {
 				string6: ''
 			},
 			customers: [],
-			customerOptions: []
+			customerOptions: [],
+			isHideTextarea: false
 		}
 	},
 
@@ -229,6 +230,9 @@ export default {
 		getFilterSelet(data){
 			console.log(data)
 			this.datas[data.key] = data.value
+		},
+		hideTextarea(flag){
+			this.isHideTextarea = flag
 		}
 	},
 

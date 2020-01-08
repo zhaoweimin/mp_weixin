@@ -1,5 +1,5 @@
 <template>
-	<div class="pl15 bg-fff border-box" :class="{ pr15: !isSpecialBorderStyle }">
+	<div class="pl15 bg-fff border-box" :class="{ pr15: !isSpecialBorderStyle }" @touchmove.prevent>
 		<div class="inputItem dis-flex l-center ptb10 rel" :class="{ 'border-b': border, pr15: isSpecialBorderStyle }">
 			<div v-if="isRequired" class="required">*</div>
 			<div class="label" :class="[titleDark ? 'cblack' : 'cgey', fontSize]">{{ title }}</div>
@@ -23,7 +23,7 @@
 					<span v-if="!disabled" class="icon-r iconfont iconright"></span>
 				</picker>
 				<!-- 过滤筛选选择 -->
-				<div v-if="type === 6" class="w-full rel pr20" @click="isShowFilter=true">
+				<div v-if="type === 6" class="w-full rel pr20" @click="onFilterClick">
 					<div :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择'  }}</div>
 					<span class="icon-r iconfont iconright"></span>
 				</div>
@@ -39,7 +39,7 @@
 		<div v-if="isShowFilter" class="fliter has-header">
         	<search placeholder="搜索" :list="filterList" @getFilterResult="getFilterResult" :rightButton="true" @cancel="isShowFilter=false"></search>
 			<div v-if="fList.length > 0" class="wrap"> 
-				<div v-for="(item, index) in fList" :key="index" class="fliter-item plr15 ptb10 flex l-center f16 cblack border-b" @click="getFilterSelet(item,index)">{{item}}</div>
+				<div v-for="(item, index) in fList" :key="index" class="fliter-item plr15 ptb10 flex l-center f16 cblack border-b" @click="getFilterSelet(item)">{{item}}</div>
 			</div>
 			<div v-else class="wrap">
 				<div class="ta-c pt20 cgey f14">暂无数据</div>
@@ -175,9 +175,9 @@ export default {
 			this.resultValue = newV
 			console.log('newV=>', newV)
 		},
-		filterList(newV){
-			this.fList = newV 
-		}
+		// filterList(newV){
+		// 	this.fList = newV 
+		// }
 	},
 	components: {
 		search
@@ -245,8 +245,15 @@ export default {
 				this.fList = this.filterList
 			}
 		},
-		getFilterSelet(data,index){
-			this.$emit('getFilterSelet', { key: this.paramkey, value: data, index: index })
+		onFilterClick(){
+			// hideTextarea 隐藏textarea, 解决  placeholder bug 
+			this.$emit('hideTextarea', true)
+			this.fList = this.filterList
+			this.isShowFilter=true
+		},
+		getFilterSelet(data){
+			this.$emit('getFilterSelet', { key: this.paramkey, value: data, index: this.filterList.findIndex(m=>m===data) })			
+			this.$emit('hideTextarea', false)
 			this.isShowFilter = false
 		}
 	}
@@ -304,6 +311,7 @@ input[disabled] {
 	bottom: 0;
 	background: #fff;
 	z-index: 999;
+	-webkit-overflow-scrolling : touch;
 }
 .fliter .wrap{
 	height: 100%;

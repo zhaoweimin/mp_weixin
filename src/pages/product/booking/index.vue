@@ -5,9 +5,15 @@
 				<div class="title">客户信息</div>
 				<div class="from">
 					<comInput :type="1" title="预约编号" paramkey="string1" :value="datas.string1" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
-					<comInput :type="1" title="客户姓名" paramkey="string13" :value="datas.string13"  @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
-					<comInput :type="2" title="证件类型" paramkey="string3" :value="datas.string3" :textRight="false" :options="options.certType" @getSelect="getSelect" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-					<comInput :type="1" title="证件号码" paramkey="string2" :value="datas.string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="6" title="客户姓名" ref="string13" :value="datas.string13" paramkey="string13" :textRight="false" :filterList="customerOptions" @getFilterSelet="getFilterSelet" :isSpecialBorderStyle="true"></comInput>
+					<div v-if="isCustomer">
+						<comInput :type="1" title="证件类型" paramkey="string3" :value="datas.string3" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+						<comInput :type="1" title="证件号码" paramkey="string2" :value="datas.string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					</div>
+					<div v-else>
+						<comInput :type="1" title="执照类型" paramkey="string36" :value="datas.string36" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+						<comInput :type="1" title="执照号码" paramkey="string37" :value="datas.string37" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -66,6 +72,14 @@ export default {
 				},
 				{
 					Field: 'string3', // 证件类型
+					Value: ''
+				},
+				{
+					Field: 'string36', // 执照类型
+					Value: ''
+				},
+				{
+					Field: 'string37', // 执照号码
 					Value: ''
 				},
 				{
@@ -180,14 +194,21 @@ export default {
 				string13: '',
 				string3: '',
 				string2: '',
+				string36: '',
+				string37: '',
 				date2: '',
 				number2: ''
 			},
-			isEdit:''
+			isEdit:'',
+			customers: [],
+			customerOptions: [],
+			isCustomer: true
 		}
 	},
 	onLoad(option) {
+		Object.assign(this.$data, this.$options.data())
 		this.isEdit = option.isEdit
+		this.getCustomers()
 		mpvue.getStorage({
 			// 获取本地缓存
 			key: 'product_info',
@@ -225,6 +246,21 @@ export default {
 	},
 	components: { comInput },
 	methods: {
+		getCustomers() {
+			this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
+				console.log('res=>>', res)
+				this.customerOptions = res.rows.map(m => m.FName)
+				this.customers = res.rows.map(m => {
+					return {
+						FDocumentType: m.FDocumentType,
+						FIDNumber: m.FIDNumber,
+						FLicenseType: m.FLicenseType,
+						FLicenseNumber: m.FLicenseNumber,
+						FApplySubject: m.FApplySubject
+					}
+				})
+			})
+		},
 		bindTypeChange(e) {
 			let val = e.mp.detail.value
 			this.type = val
@@ -264,6 +300,25 @@ export default {
 		getSelectDate(data) {
 			console.log(data)
 			this.datas[data.key] = data.value
+		},
+		getFilterSelet(data){
+			console.log(data)
+			this.datas[data.key] = data.value
+			if (data.key === 'string13') {
+				if(this.customers[data.index].FApplySubject === '个人客户'){
+					this.isCustomer = true
+					this.datas.string36 = ''
+					this.datas.string37 = ''
+					this.datas.string3 = this.customers[data.index].FDocumentType
+					this.datas.string2 = this.customers[data.index].FIDNumber
+				}else{
+					this.isCustomer = false
+					this.datas.string3 = ''
+					this.datas.string2 = ''
+					this.datas.string36 = this.customers[data.index].FLicenseType
+					this.datas.string37 = this.customers[data.index].FLicenseNumber
+				}
+			}
 		}
 	},
 
