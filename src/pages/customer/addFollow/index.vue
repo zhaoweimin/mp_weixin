@@ -8,6 +8,7 @@
 			<comInput :type="2" :titleDark="true" title="跟进方式" :value="datas.string2" paramkey="string2" :options="options.followWay" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
 			<comInput :type="3" :titleDark="true" title="跟进开始时间" :value="datas.date1" paramkey="date1" @getSelectDate="getSelectDate" :textRight="false"></comInput>
 			<comInput :type="3" :titleDark="true" title="跟进结束时间" :value="datas.date2" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+			<comInput :type="5" :titleDark="true" title="跟进结束时间" @getSelectDateTime="getSelectDateTime"></comInput>
 			<comInput :type="2" :titleDark="true" title="客户类型" :value="datas.string16" paramkey="string16" :options="options.customerType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="投资总额" :value="datas.string24 | NumFormat" paramkey="string24" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="累计投资总额" :value="datas.string25 | NumFormat" paramkey="string25" @getInputVal="getInputVal" :textRight="false"></comInput>
@@ -36,11 +37,13 @@
 
 <script>
 import comInput from '@/components/comInput'
+import dateTimePicker from '@/components/dateTimePicker'
 import Options from '@/utils/Options.js'
 
 export default {
 	components: {
-		comInput
+		comInput,
+		dateTimePicker
 	},
 
 	data() {
@@ -227,12 +230,15 @@ export default {
 				})
 			})
 		},
-		getFilterSelet(data){
+		getFilterSelet(data) {
 			console.log(data)
 			this.datas[data.key] = data.value
 		},
-		hideTextarea(flag){
+		hideTextarea(flag) {
 			this.isHideTextarea = flag
+		},
+		getSelectDateTime(data) {
+			console.log('tag1111111111', data)
 		}
 	},
 
@@ -263,7 +269,7 @@ export default {
 				string6: ''
 			}
 			mpvue.removeStorageSync('follow_info')
-		}else{
+		} else {
 			this.getCustomers()
 		}
 		mpvue.setNavigationBarTitle({ title: '新增跟进' })

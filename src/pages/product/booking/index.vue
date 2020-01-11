@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-		<div class="booking" v-if="isEdit==='1'">
+		<div class="booking" v-if="isEdit === '1'">
 			<div class="block">
 				<div class="title">客户信息</div>
 				<div class="from">
@@ -11,8 +11,8 @@
 						<comInput :type="1" title="证件号码" paramkey="string2" :value="datas.string2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					</div>
 					<div v-else>
-						<comInput :type="1" title="执照类型" paramkey="string36" :value="datas.string36" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-						<comInput :type="1" title="执照号码" paramkey="string37" :value="datas.string37" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+						<comInput :type="1" title="执照类型" paramkey="string29" :value="datas.string29" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+						<comInput :type="1" title="执照号码" paramkey="string32" :value="datas.string32" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					</div>
 				</div>
 			</div>
@@ -25,17 +25,17 @@
 					<comInput :type="0" title="产品编号" :value="info['产品编号']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" title="产品名称" :value="info['产品名称']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" title="产品期限" :value="info['产品期限']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
-					<comInput :type="0" title="募集账户" :value="info['募集账户']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
-					<comInput :type="0" title="已募集份数" :value="info['已募集份数']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
+					<comInput :type="0" title="募集账户" :value="info['募集账户']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="已募集份数" :value="info['已募集份数']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" title="已募集金额" :value="info['已募集金额']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
-					<comInput :type="0" title="剩余募集金额" :value="info['剩余募集金额']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
-					<comInput :type="0" title="已预约人数" :value="info['已预约人数']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
-					<comInput :type="0" title="已预约金额" :value="info['已预约金额']" :textRight="false" :isSpecialBorderStyle="true" ></comInput>
+					<comInput :type="0" title="剩余募集金额" :value="info['剩余募集金额']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="已预约人数" :value="info['已预约人数']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="已预约金额" :value="info['已预约金额']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" title="剩余可预约" :value="info['剩余可预约']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 				</div>
 			</div>
 		</div>
-		<div class="booking" v-if="isEdit==='1'">
+		<div class="booking" v-if="isEdit === '1'">
 			<div class="block">
 				<div class="title">付款信息</div>
 				<div class="from">
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 		</div>
-		<button class="btn-submit" v-if="isEdit==='1'" @click="submit">提交审核</button>
+		<button class="btn-submit" v-if="isEdit === '1'" @click="submit">提交审核</button>
 	</div>
 </template>
 
@@ -75,11 +75,11 @@ export default {
 					Value: ''
 				},
 				{
-					Field: 'string36', // 执照类型
+					Field: 'string29', // 执照类型
 					Value: ''
 				},
 				{
-					Field: 'string37', // 执照号码
+					Field: 'string32', // 执照号码
 					Value: ''
 				},
 				{
@@ -194,12 +194,12 @@ export default {
 				string13: '',
 				string3: '',
 				string2: '',
-				string36: '',
-				string37: '',
+				string29: '',
+				string32: '',
 				date2: '',
 				number2: ''
 			},
-			isEdit:'',
+			isEdit: '',
 			customers: [],
 			customerOptions: [],
 			isCustomer: true
@@ -301,22 +301,22 @@ export default {
 			console.log(data)
 			this.datas[data.key] = data.value
 		},
-		getFilterSelet(data){
+		getFilterSelet(data) {
 			console.log(data)
 			this.datas[data.key] = data.value
 			if (data.key === 'string13') {
-				if(this.customers[data.index].FApplySubject === '个人客户'){
+				if (this.customers[data.index].FApplySubject === '个人客户') {
 					this.isCustomer = true
-					this.datas.string36 = ''
-					this.datas.string37 = ''
+					this.datas.string29 = ''
+					this.datas.string32 = ''
 					this.datas.string3 = this.customers[data.index].FDocumentType
 					this.datas.string2 = this.customers[data.index].FIDNumber
-				}else{
+				} else {
 					this.isCustomer = false
 					this.datas.string3 = ''
 					this.datas.string2 = ''
-					this.datas.string36 = this.customers[data.index].FLicenseType
-					this.datas.string37 = this.customers[data.index].FLicenseNumber
+					this.datas.string29 = this.customers[data.index].FLicenseType
+					this.datas.string32 = this.customers[data.index].FLicenseNumber
 				}
 			}
 		}

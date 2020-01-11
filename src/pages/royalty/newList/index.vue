@@ -12,10 +12,10 @@
             <!-- <comInput @getInputVal="setValue" paramkey="number2" :type="3" title="到账日" :textRight="false" value="2019-3-18"></comInput> -->
             <!-- <comInput @getInputVal="setValue" paramkey="ads" :type="3" title="到期日" :textRight="false" value="2019-3-18"></comInput> -->
             <comInput @getInputVal="setValue" paramkey="number2" :type="0" title="认购费" :textRight="false" value="2千万"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string8" :type="0" title="提成方式" :textRight="false" :value="params.string8"></comInput>
-            <comInput @getInputVal="setValue" paramkey="number4" :type="0" title="提成总额" :textRight="false" :value="params.number4"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string9" :type="0" title="提成率" :textRight="false" :value="params.string9"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string11" :type="0" title="本次提奖" :textRight="false" :value="params.string11"></comInput>
+            <comInput @getInputVal="setValue" paramkey="string8" :type="1" title="提成方式" :textRight="false" :value="params.string8"></comInput>
+            <comInput @getInputVal="setValue" paramkey="number4" :type="1" title="提成总额" :textRight="false" :value="params.number4"></comInput>
+            <comInput @getInputVal="setValue" paramkey="string9" :type="1" title="提成率" :textRight="false" :value="params.string9"></comInput>
+            <comInput @getInputVal="setValue" paramkey="string11" :type="1" title="本次提奖" :textRight="false" :value="params.string11"></comInput>
             <comInput @getInputVal="setValue" paramkey="string13" :type="0" title="理财经理" :textRight="false" value="理财经理"></comInput>
             <comInput @getInputVal="setValue" paramkey="string14" :type="0" title="归属部门" :textRight="false" value="归属部门"></comInput>
             <comInput @getInputVal="setValue" paramkey="date1" :type="3" title="申请时间" :textRight="false" :value="params.data1"></comInput>
@@ -138,16 +138,16 @@ export default {
 		},
 		getDate() {
 			var myDate = new Date()
-			//获取当前年
+			// 获取当前年
 			var year = myDate.getFullYear()
-			//获取当前月
+			// 获取当前月
 			var month = myDate.getMonth() + 1
-			//获取当前日
+			// 获取当前日
 			var date = myDate.getDate()
-			var h = myDate.getHours() //获取当前小时数(0-23)
-			var m = myDate.getMinutes() //获取当前分钟数(0-59)
+			var h = myDate.getHours() // 获取当前小时数(0-23)
+			var m = myDate.getMinutes() // 获取当前分钟数(0-59)
 			var s = myDate.getSeconds()
-			//获取当前时间
+			// 获取当前时间
 			var now = year + '-' + conver(month) + '-' + conver(date) + ' ' + conver(h) + ':' + conver(m) + ':' + conver(s)
 
 			function conver(s) {

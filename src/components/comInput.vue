@@ -22,9 +22,10 @@
 					<span :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择' }}</span>
 					<span v-if="!disabled" class="icon-r iconfont iconright"></span>
 				</picker>
+				<div v-if="type === 5" class="cblack" :class="[textRight ? 'ta-r' : 'ta-l', isSpecialColorTxt ? 'clink' : 'cblack', fontSize]" @click="isShowDateTimePicker = true">{{ resultValue || '请选择' }}</div>
 				<!-- 过滤筛选选择 -->
 				<div v-if="type === 6" class="w-full rel pr20" @click="onFilterClick">
-					<div :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择'  }}</div>
+					<div :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择' }}</div>
 					<span class="icon-r iconfont iconright"></span>
 				</div>
 				<!-- 文字 -->
@@ -36,21 +37,25 @@
 				<div class="error-tip" :class="[textRight ? 'ta-r' : 'ta-l']" v-if="isShowErr && enableInputErr">{{ errTxt }}</div>
 			</div>
 		</div>
+		<!-- 快速过滤选择层 -->
 		<div v-if="isShowFilter" class="fliter has-header">
-        	<search placeholder="搜索" :list="filterList" @getFilterResult="getFilterResult" :rightButton="true" @cancel="isShowFilter=false"></search>
-			<div v-if="fList.length > 0" class="wrap"> 
-				<div v-for="(item, index) in fList" :key="index" class="fliter-item plr15 ptb10 flex l-center f16 cblack border-b" @click="getFilterSelet(item)">{{item}}</div>
+			<search placeholder="搜索" :list="filterList" @getFilterResult="getFilterResult" :rightButton="true" @cancel="isShowFilter = false"></search>
+			<div v-if="fList.length > 0" class="wrap">
+				<div v-for="(item, index) in fList" :key="index" class="fliter-item plr15 ptb10 flex l-center f16 cblack border-b" @click="getFilterSelet(item)">{{ item }}</div>
 			</div>
 			<div v-else class="wrap">
 				<div class="ta-c pt20 cgey f14">暂无数据</div>
 			</div>
 		</div>
+		<!-- 时间日期 -->
+		<dateTimePicker :show="isShowDateTimePicker" @getPickerValue="getPickerValue"></dateTimePicker>
 	</div>
 </template>
 
 <script>
 import Verify from '@/utils/Verify.js'
 import search from '@/components/search'
+import dateTimePicker from '@/components/dateTimePicker'
 
 export default {
 	props: {
@@ -163,7 +168,7 @@ export default {
 				return 'text'
 			}
 		},
-		filterList:{
+		filterList: {
 			type: Array,
 			default() {
 				return []
@@ -174,13 +179,14 @@ export default {
 		value(newV) {
 			this.resultValue = newV
 			console.log('newV=>', newV)
-		},
+		}
 		// filterList(newV){
-		// 	this.fList = newV 
+		// 	this.fList = newV
 		// }
 	},
 	components: {
-		search
+		search,
+		dateTimePicker
 	},
 	data() {
 		return {
@@ -190,7 +196,8 @@ export default {
 			scrollTop: '',
 			focusDOMScrollTop: '',
 			isShowFilter: false,
-			fList: []
+			fList: [],
+			isShowDateTimePicker: false
 		}
 	},
 	methods: {
@@ -238,23 +245,27 @@ export default {
 		getTabChoose(index) {
 			this.$emit('getTabChoose', this.dataList[index].key)
 		},
-		getFilterResult(data){
-			if(!data.reload){
+		getFilterResult(data) {
+			if (!data.reload) {
 				this.fList = data.result
-			}else{
+			} else {
 				this.fList = this.filterList
 			}
 		},
-		onFilterClick(){
-			// hideTextarea 隐藏textarea, 解决  placeholder bug 
+		onFilterClick() {
+			// hideTextarea 隐藏textarea, 解决  placeholder bug
 			this.$emit('hideTextarea', true)
 			this.fList = this.filterList
-			this.isShowFilter=true
+			this.isShowFilter = true
 		},
-		getFilterSelet(data){
-			this.$emit('getFilterSelet', { key: this.paramkey, value: data, index: this.filterList.findIndex(m=>m===data) })			
+		getFilterSelet(data) {
+			this.$emit('getFilterSelet', { key: this.paramkey, value: data, index: this.filterList.findIndex(m => m === data) })
 			this.$emit('hideTextarea', false)
 			this.isShowFilter = false
+		},
+		getPickerValue(data) {
+			this.isShowDateTimePicker = false
+			this.$emit('getSelectDateTime', data)
 		}
 	}
 }
@@ -303,7 +314,7 @@ input[disabled] {
 	right: 0;
 	top: 4px;
 }
-.fliter{
+.fliter {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -311,14 +322,14 @@ input[disabled] {
 	bottom: 0;
 	background: #fff;
 	z-index: 999;
-	-webkit-overflow-scrolling : touch;
+	-webkit-overflow-scrolling: touch;
 }
-.fliter .wrap{
+.fliter .wrap {
 	height: 100%;
 	width: 100%;
 	overflow: scroll;
 }
-.fliter .wrap .fliter-item{
+.fliter .wrap .fliter-item {
 	height: 50px;
 	width: 100%;
 	background: #fff;

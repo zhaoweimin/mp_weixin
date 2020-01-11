@@ -1,40 +1,40 @@
 <template>
-    <div class="customer">
-        <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 strong">赎回信息</div>
-            <comInput :type="0" title="赎回编号" :textRight="false" :isSpecialColorTxt="true" value="265512223664"></comInput>
-            <comInput :type="3" title="赎回日期" :textRight="false" value="2019-3-18"></comInput>
-            <comInput :type="1" title="赎回金额" :textRight="false" value="2千万"></comInput>
-            <comInput :type="3" title="浮动收益率" :textRight="false" value="12%"></comInput>
-            <comInput :type="3" title="剩余金额" :textRight="false" value="2234"></comInput>
-            <comInput :type="0" title="后端提奖金额" :textRight="false" value="4233"></comInput>
-        </div>
-        <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 strong">业绩信息</div>
-            <comInput :type="0" title="业绩单号" :textRight="false" :isSpecialColorTxt="true" value="265512223664"></comInput>
-            <comInput :type="1" title="客户名称" :textRight="false" value="某某某某"></comInput>
-            <comInput :type="1" title="产品名称" :textRight="false" value="XXX"></comInput>
-            <comInput :type="1" title="产品期限" :textRight="false" value="XXX"></comInput>
-            <comInput :type="1" title="证件类型" :textRight="false" value="XXX"></comInput>
-            <comInput :type="1" title="证件号码" :textRight="false" value="XXX"></comInput>
-            <comInput :type="3" title="银行账号" :textRight="false" value="XXX"></comInput>
-            <comInput :type="3" title="账号开户行" :textRight="false" value="XXX"></comInput>
-            <comInput :type="1" title="合同编号" :textRight="false" value="XXX"></comInput>
-            <comInput :type="3" title="合同金额" :textRight="false" value="XXX"></comInput>
-            <comInput :type="2" title="理财经理" :textRight="false" :options="[1,2,3]"></comInput>
-            <comInput :type="2" title="归属部门" :textRight="false" :options="[1,2,3]"></comInput>
-            <comInput :type="2" title="单据状态" :textRight="false" :options="[1,2,3]"></comInput>
-            <div class="pt10 plr15">
-                <div class="key mb10">上传附件 <span class="cgey">（格式pdf或图片）</span></div>
-                <div class="val" style="padding-bottom: 10px;">
-                    <upload></upload>
-                </div>
-            </div>
-        </div>
-        <div class="mlr15 mb15 mt25">
-            <van-button type="info" size="large">确认</van-button>
-        </div>
-    </div>
+	<div class="customer">
+		<div class="bg-fff mt10">
+			<div class="plr15 ptb15 f16 strong">赎回信息</div>
+			<comInput :type="0" title="赎回编号" :textRight="false" :isSpecialColorTxt="true" value="265512223664"></comInput>
+			<comInput :type="3" title="赎回日期" :textRight="false" value="2019-3-18"></comInput>
+			<comInput :type="1" title="赎回金额" :textRight="false" value="2千万"></comInput>
+			<comInput :type="3" title="浮动收益率" :textRight="false" value="12%"></comInput>
+			<comInput :type="3" title="剩余金额" :textRight="false" value="2234"></comInput>
+			<comInput :type="0" title="后端提奖金额" :textRight="false" value="4233"></comInput>
+		</div>
+		<div class="bg-fff mt10">
+			<div class="plr15 ptb15 f16 strong">业绩信息</div>
+			<comInput :type="6" title="业绩单号" :textRight="false" :value="datas.string13" paramkey="string13" :filterList="redeemOrderNoOptions" @getFilterSelet="getFilterSelet" :isSpecialBorderStyle="true"></comInput>
+			<comInput :type="1" title="客户名称" :textRight="false" value="某某某某"></comInput>
+			<comInput :type="1" title="产品名称" :textRight="false" value="XXX"></comInput>
+			<comInput :type="1" title="产品期限" :textRight="false" value="XXX"></comInput>
+			<comInput :type="1" title="证件类型" :textRight="false" value="XXX"></comInput>
+			<comInput :type="1" title="证件号码" :textRight="false" value="XXX"></comInput>
+			<comInput :type="3" title="银行账号" :textRight="false" value="XXX"></comInput>
+			<comInput :type="3" title="账号开户行" :textRight="false" value="XXX"></comInput>
+			<comInput :type="1" title="合同编号" :textRight="false" value="XXX"></comInput>
+			<comInput :type="3" title="合同金额" :textRight="false" value="XXX"></comInput>
+			<comInput :type="2" title="理财经理" :textRight="false" :options="[1, 2, 3]"></comInput>
+			<comInput :type="2" title="归属部门" :textRight="false" :options="[1, 2, 3]"></comInput>
+			<comInput :type="2" title="单据状态" :textRight="false" :options="[1, 2, 3]"></comInput>
+			<div class="pt10 plr15">
+				<div class="key mb10">上传附件 <span class="cgey">（格式pdf或图片）</span></div>
+				<div class="val" style="padding-bottom: 10px;">
+					<upload></upload>
+				</div>
+			</div>
+		</div>
+		<div class="mlr15 mb15 mt25">
+			<van-button type="info" size="large">确认</van-button>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -43,24 +43,37 @@ import comInput from '@/components/comInput'
 import upload from '@/components/upload'
 
 export default {
-  components: {
-    card,
-    comInput,
-    upload
-  },
+	components: {
+		card,
+		comInput,
+		upload
+	},
 
-  data () {
-    return {
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '张耀扬',
-        level: 1,
-        sex: 1
-      }
-    }
-  },
-
-  created () {}
+	data() {
+		return {
+			redeemOrderNoOptions: [],
+			datas: {
+				string13: ''
+			}
+		}
+	},
+	onLoad() {
+		Object.assign(this.$data, this.$options.data())
+		this.getList()
+	},
+	methods: {
+		getList() {
+			this.$api.getHistoryAchievementList(0).then(res => {
+				res = JSON.parse(res.RetValue)
+				console.log(res)
+				this.redeemOrderNoOptions = res.rows.map(m => m['业绩单号'])
+			})
+		},
+		getFilterSelet(data) {
+			console.log(data)
+			this.datas[data.key] = data.value
+		}
+	}
 }
 </script>
 
