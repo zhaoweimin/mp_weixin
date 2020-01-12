@@ -6,9 +6,8 @@
 			<comInput v-if="!is_follow" :type="6" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" :filterList="customerOptions" @getFilterSelet="getFilterSelet" @hideTextarea="hideTextarea" :textRight="false"></comInput>
 			<comInput v-else :type="1" :titleDark="true" title="客户姓名" :value="datas.string1" paramkey="string1" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<comInput :type="2" :titleDark="true" title="跟进方式" :value="datas.string2" paramkey="string2" :options="options.followWay" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
-			<comInput :type="3" :titleDark="true" title="跟进开始时间" :value="datas.date1" paramkey="date1" @getSelectDate="getSelectDate" :textRight="false"></comInput>
-			<comInput :type="3" :titleDark="true" title="跟进结束时间" :value="datas.date2" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false"></comInput>
-			<comInput :type="5" :titleDark="true" title="跟进结束时间" @getSelectDateTime="getSelectDateTime"></comInput>
+			<comInput :type="5" :titleDark="true" title="跟进开始时间" :value="datas.date1" paramkey="date1" @getSelectDateTime="getSelectDateTime" @hideTextarea="hideTextarea" :textRight="false"></comInput>
+			<comInput :type="5" :titleDark="true" title="跟进结束时间" :value="datas.date2" paramkey="date2" @getSelectDateTime="getSelectDateTime" @hideTextarea="hideTextarea" :textRight="false"></comInput>
 			<comInput :type="2" :titleDark="true" title="客户类型" :value="datas.string16" paramkey="string16" :options="options.customerType" placeholder="请选择" @getSelect="getSelect" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="投资总额" :value="datas.string24 | NumFormat" paramkey="string24" @getInputVal="getInputVal" :textRight="false"></comInput>
 			<comInput :type="1" :titleDark="true" title="累计投资总额" :value="datas.string25 | NumFormat" paramkey="string25" @getInputVal="getInputVal" :textRight="false"></comInput>
@@ -239,6 +238,7 @@ export default {
 		},
 		getSelectDateTime(data) {
 			console.log('tag1111111111', data)
+			this.datas[data.key] = data.value
 		}
 	},
 

@@ -132,6 +132,12 @@ export default {
           } else {
             this.list = this.list.concat(res.rows)
           }
+          this.list = this.list.map(m=>{
+            let item = m
+            item = m['上次跟进时间'].split(' ')[0]
+            item = m['计划跟进时间'].split(' ')[0]
+            return item
+          })
           if (res.rows.length > 0 && page !== 1) this.page = page
         } else {
           if (page === 1) {

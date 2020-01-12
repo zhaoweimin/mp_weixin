@@ -22,7 +22,10 @@
 					<span :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择' }}</span>
 					<span v-if="!disabled" class="icon-r iconfont iconright"></span>
 				</picker>
-				<div v-if="type === 5" class="cblack" :class="[textRight ? 'ta-r' : 'ta-l', isSpecialColorTxt ? 'clink' : 'cblack', fontSize]" @click="isShowDateTimePicker = true">{{ resultValue || '请选择' }}</div>
+				<div v-if="type === 5" class="w-full rel">
+					<div :class="[resultValue ? 'cblack' : 'clight', fontSize]" @click="onDateTimePickerClick">{{ resultValue || '请选择' }}</div>
+					<span v-if="!disabled" class="icon-r iconfont iconright"></span>
+				</div>
 				<!-- 过滤筛选选择 -->
 				<div v-if="type === 6" class="w-full rel pr20" @click="onFilterClick">
 					<div :class="[resultValue ? 'cblack' : 'clight', fontSize]">{{ resultValue || '请选择' }}</div>
@@ -48,7 +51,7 @@
 			</div>
 		</div>
 		<!-- 时间日期 -->
-		<dateTimePicker :show="isShowDateTimePicker" @getPickerValue="getPickerValue"></dateTimePicker>
+		<dateTimePicker :show="isShowDateTimePicker" @getPickerValue="getPickerValue" @onCancel="onCancelPicker"></dateTimePicker>
 	</div>
 </template>
 
@@ -263,9 +266,16 @@ export default {
 			this.$emit('hideTextarea', false)
 			this.isShowFilter = false
 		},
+		onDateTimePickerClick(){
+			this.isShowDateTimePicker = true
+			this.$emit('hideTextarea', true)
+		},
 		getPickerValue(data) {
 			this.isShowDateTimePicker = false
-			this.$emit('getSelectDateTime', data)
+			this.$emit('getSelectDateTime', { key: this.paramkey, value: data })
+		},
+		onCancelPicker(){
+			this.isShowDateTimePicker = false
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <template>
 	<van-popup :show="show" position="bottom">
-		<van-datetime-picker class="w100" type="datetime" :value="currentDate" @confirm="confirm" />
+		<van-datetime-picker class="w100" type="datetime" :value="currentDate" @confirm="confirm" @cancel="cancel"/>
 	</van-popup>
 </template>
 
@@ -21,6 +21,9 @@ export default {
 		confirm(event) {
 			// this.currentDate = event.mp.detail
 			this.$emit('getPickerValue', formatTime2(new Date(event.mp.detail)))
+		},
+		cancel(){
+			this.$emit('onCancel' )
 		}
 	}
 }

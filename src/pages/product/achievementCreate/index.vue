@@ -37,7 +37,7 @@
 			</div>
 			<div class="block">
 				<div class="from">
-					<comInput :type="3" ref="date1" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date1" paramkey="date1" :textRight="false" title="打款日期" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
+					<comInput :type="5" ref="date1" :titleDark="true" title="打款日期" :value="datas.date1" paramkey="date1" @getSelectDateTime="getSelectDateTime" :isSpecialBorderStyle="true" :textRight="false"></comInput>
 					<comInput :type="1" ref="string16" @getInputVal="getInputVal" fontSize="f14" validType="numberFloatValid" :value="datas.string16" paramkey="string16" :textRight="false" title="合同金额" inputType="number" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="2" fontSize="f14" :value="datas.string17" paramkey="string17" :textRight="false" :options="options.payWay" @getSelect="getSelect" title="付款方式" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="1" ref="string18" @getInputVal="getInputVal" fontSize="f14" :value="datas.string18" paramkey="string18" :textRight="false" title="付款账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
@@ -53,7 +53,7 @@
 					<comInput :type="0" fontSize="f14" :value="datas.number2" paramkey="number2" :textRight="false" title="年化业绩" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="1" ref="string22" @getInputVal="getInputVal" fontSize="f14" :value="datas.string22" paramkey="string22" :textRight="false" title="收益分配账户" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="1" ref="string21" @getInputVal="getInputVal" fontSize="f14" :value="datas.string21" paramkey="string21" :textRight="false" title="收益分配账户开户行" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
-					<comInput :type="3" @getSelectDate="getSelectDate" fontSize="f14" :value="datas.date8" paramkey="date8" :textRight="false" title="冷静期" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" fontSize="f14" :value="datas.date8" paramkey="date8" :textRight="false" title="冷静期" :isSpecialBorderStyle="true"></comInput>
 				</div>
 			</div>
 		</div>
@@ -72,6 +72,7 @@
 import upload from '@/components/upload'
 import comInput from '@/components/comInput'
 import Options from '@/utils/Options.js'
+import { formatTime2 } from '@/utils/index.js'
 
 export default {
 	data() {
@@ -151,7 +152,7 @@ export default {
 				string15: '管理员',
 				string34: '天玑财富',
 
-				date1: '',
+				date1: formatTime2(),
 				string16: '',
 				string17: '',
 				string18: '',
@@ -174,6 +175,7 @@ export default {
 		this.getCustomers()
 		this.getProducts()
 		this.getContractList()
+		this.datas.date8 = this.getTomorrow(new Date(this.datas.date1.replace(/-/g,'/')).getTime())
 	},
 	components: {
 		upload,
@@ -281,6 +283,16 @@ export default {
 				this.datas.string7 = this.products[data.index].FTypeId
 				this.datas.string5 = this.products[data.index].FInvestment
 			}
+		},
+		getSelectDateTime(data) {
+			this.datas[data.key] = data.value
+			if(data.key==='date1'){
+				this.datas.date8 = this.getTomorrow(new Date(this.datas.date1.replace(/-/g,'/')).getTime())
+			}
+		},
+		// 获取明日日期时间
+		getTomorrow(timeStamp=new Date().getTime()){
+			return formatTime2(new Date(timeStamp+24*60*60*1000))
 		}
 	}
 }
