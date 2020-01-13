@@ -1,7 +1,7 @@
 <template>
-    <div class="filter ptb15 plr15">
-        <div class="dis-flex">
-            <!-- <div class="nav flex-1">
+	<div class="filter ptb15 plr15">
+		<div class="dis-flex">
+			<!-- <div class="nav flex-1">
                 综合 <span class="iconfont iconxiangxiajiantou"></span>
             </div>
             <div class="nav flex-1">
@@ -10,51 +10,49 @@
             <div class="nav flex-1">
                 级别 <span class="iconfont iconxiangxiajiantou"></span>
             </div> -->
-            <div class="nav flex a-right flex-1 clink" @click="setShowFilter()">
-                <span class="iconfont iconshaixuan clink"></span> 筛选
-            </div>
-        </div>
-        <block v-if="is_show">
-            <div class="meng" @click="setShowFilter()"></div>
-            <div class="select">
-                <div class="filter-block">
-                    <div class="title">客户编号</div>
-                    <div class="con">
-                        <input v-model="filter.FNumber" class="input" type="text" placeholder="输入编号">
-                    </div>
-                    <div class="title">客户类型</div>
-                    <div class="con">
-                        <div class="type" :class="[radio_FCustomerType == 1 ? 'active' : '']" @click="setFilterType(1,'潜在')">潜在客户</div>
-                        <div class="type" :class="[radio_FCustomerType  == 2 ? 'active' : '']" @click="setFilterType(2,'准客户')">准客户</div>
-                        <div class="type" :class="[radio_FCustomerType == 3 ? 'active' : '']" @click="setFilterType(3,'成交')">成交客户</div>
-                        <div class="type" :class="[radio_FCustomerType == 4 ? 'active' : '']" @click="setFilterType(4,'历史成交客户')">历史成交客户</div>
-                    </div>
-                    <div class="title">客户级别</div>
-                    <div class="con">
-                        <div class="type" :class="[radio_FDealType == 1 ? 'active' : '']" @click="setFilterLevel(1,'A')">A级</div>
-                        <div class="type" :class="[radio_FDealType == 2 ? 'active' : '']" @click="setFilterLevel(2,'B')">B级</div>
-                        <div class="type" :class="[radio_FDealType == 3 ? 'active' : '']" @click="setFilterLevel(3,'C')">C级</div>
-                        <div class="type" :class="[radio_FDealType == 4 ? 'active' : '']" @click="setFilterLevel(4,'D')">D级</div>
-                    </div>
-                    <div class="title">客户来源</div>
-                    <div class="con">
-                        <div class="type" :class="[radio_FTranType == 1 ? 'active' : '']" @click="setFilterFrom(1,'直销')">直销</div>
-                        <div class="type" :class="[radio_FTranType == 2 ? 'active' : '']" @click="setFilterFrom(2,'渠道')">渠道</div>
-                    </div>
-                    <div class="title">来源明细</div>
-                    <div class="con">
-                        <div class="type" :class="[radio_FtranTypeEntry == 1 ? 'active' : '']" @click="setFilterIntro(1,'市场活动')">市场活动</div>
-                        <div class="type" :class="[radio_FtranTypeEntry == 2 ? 'active' : '']" @click="setFilterIntro(2,'个人拓展')">个人拓展</div>
-                        <div class="type" :class="[radio_FtranTypeEntry == 3 ? 'active' : '']" @click="setFilterIntro(3,'渠道')">渠道</div>
-                    </div>
-                </div>
-                <div class="footer dis-flex">
-                    <div class="flex-1 btn" @click="reSet()">重置</div>
-                    <div class="flex-1 btn sure" @click="sure()">确定</div>
-                </div>
-            </div>
-        </block>
-    </div>
+			<div class="nav flex a-right flex-1 clink" @click="setShowFilter()"><span class="iconfont iconshaixuan clink"></span> 筛选</div>
+		</div>
+		<block v-if="is_show">
+			<div class="meng" @click="setShowFilter()"></div>
+			<div class="select">
+				<div class="filter-block">
+					<div class="title">客户编号</div>
+					<div class="con">
+						<input v-model="filter.FNumber" class="input" type="text" placeholder="输入编号" />
+					</div>
+					<div class="title">客户类型</div>
+					<div class="con">
+						<div class="type" :class="[radio_FCustomerType == 1 ? 'active' : '']" @click="setFilterType(1, '潜在')">潜在客户</div>
+						<div class="type" :class="[radio_FCustomerType == 2 ? 'active' : '']" @click="setFilterType(2, '准客户')">准客户</div>
+						<div class="type" :class="[radio_FCustomerType == 3 ? 'active' : '']" @click="setFilterType(3, '成交')">成交客户</div>
+						<div class="type" :class="[radio_FCustomerType == 4 ? 'active' : '']" @click="setFilterType(4, '历史成交客户')">历史成交客户</div>
+					</div>
+					<div class="title">客户级别</div>
+					<div class="con">
+						<div class="type" :class="[radio_FDealType == 1 ? 'active' : '']" @click="setFilterLevel(1, 'A')">A级</div>
+						<div class="type" :class="[radio_FDealType == 2 ? 'active' : '']" @click="setFilterLevel(2, 'B')">B级</div>
+						<div class="type" :class="[radio_FDealType == 3 ? 'active' : '']" @click="setFilterLevel(3, 'C')">C级</div>
+						<div class="type" :class="[radio_FDealType == 4 ? 'active' : '']" @click="setFilterLevel(4, 'D')">D级</div>
+					</div>
+					<div class="title">客户来源</div>
+					<div class="con">
+						<div class="type" :class="[radio_FTranType == 1 ? 'active' : '']" @click="setFilterFrom(1, '直销')">直销</div>
+						<div class="type" :class="[radio_FTranType == 2 ? 'active' : '']" @click="setFilterFrom(2, '渠道')">渠道</div>
+					</div>
+					<div class="title">来源明细</div>
+					<div class="con">
+						<div class="type" :class="[radio_FtranTypeEntry == 1 ? 'active' : '']" @click="setFilterIntro(1, '市场活动')">市场活动</div>
+						<div class="type" :class="[radio_FtranTypeEntry == 2 ? 'active' : '']" @click="setFilterIntro(2, '个人拓展')">个人拓展</div>
+						<div class="type" :class="[radio_FtranTypeEntry == 3 ? 'active' : '']" @click="setFilterIntro(3, '渠道')">渠道</div>
+					</div>
+				</div>
+				<div class="footer dis-flex">
+					<div class="flex-1 btn" @click="reSet()">重置</div>
+					<div class="flex-1 btn sure" @click="sure()">确定</div>
+				</div>
+			</div>
+		</block>
+	</div>
 </template>
 
 <script>
@@ -76,6 +74,9 @@ export default {
 		}
 	},
 	props: ['info'],
+	onLoad() {
+		Object.assign(this.$data, this.$options.data())
+	},
 	methods: {
 		setShowFilter() {
 			this.is_show = this.is_show ? 0 : 1

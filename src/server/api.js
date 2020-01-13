@@ -1,5 +1,5 @@
 // eslint-disable-next-line semi
-import WXrequest from './WXrequest';
+import WXrequest from './WXrequest'
 
 export default {
     // base action

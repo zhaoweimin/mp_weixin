@@ -247,8 +247,7 @@ export default {
 	components: { comInput },
 	methods: {
 		getCustomers() {
-			this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
-				console.log('res=>>', res)
+			this.$api.getAchiveList('', {}, `&r=1&UserID=${this.$store.state.account.info.RetValue.UserID}`, true).then(res => {
 				this.customerOptions = res.rows.map(m => m.FName)
 				this.customers = res.rows.map(m => {
 					return {

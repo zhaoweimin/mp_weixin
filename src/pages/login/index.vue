@@ -56,7 +56,7 @@ export default {
 						icon: 'success'
 					})
 					this.$store.commit('setInfo', res)
-					console.log(this.$store.state)
+					console.log('state=>', this.$store.state.account.info)
 
 					mpvue.switchTab({ url: '/pages/home/main' })
 				} else {
