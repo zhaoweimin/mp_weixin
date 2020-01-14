@@ -52,6 +52,8 @@
 <script>
 import comInput from '@/components/comInput'
 import Options from '@/utils/Options.js'
+import { formatTime2 } from '@/utils/index.js'
+
 export default {
 	data() {
 		return {
@@ -94,91 +96,91 @@ export default {
 					Field: 'number2', // 出资金额
 					Value: ''
 				},
-				// --------带入 ------
+				// -------- 带入 ------
 				{
-					Field: 'string35', // 产品类别
+					Field: 'string35', // 产品类别8_
 					Value: ''
 				},
 				{
-					Field: 'string33', // 产品编号
+					Field: 'string33', // 产品编号9
 					Value: ''
 				},
 				{
-					Field: 'string34', // 产品名称有两个产品名称     值一样-------特殊-------
+					Field: 'string34', // 产品名称有两个产品名称10     值一样-------特殊-------
 					Value: ''
 				},
 				{
-					Field: 'string16', // 产品名称            值一样-------特殊-------
+					Field: 'string16', // 产品名称11            值一样-------特殊-------
 					Value: ''
 				},
 				{
-					Field: 'string17', // 产品期限
+					Field: 'string17', // 产品期限12
 					Value: ''
 				},
 				{
-					Field: 'string3', // 募集账户
+					Field: 'string38', // 募集账户13
 					Value: ''
 				},
 				{
-					Field: 'string18', // 已募集份数
+					Field: 'string18', // 已募集份数14
 					Value: ''
 				},
 				{
-					Field: 'string19', // 已募集金额
+					Field: 'string19', // 已募集金额15
 					Value: ''
 				},
 				{
-					Field: 'string20', // 剩余募集金额
+					Field: 'string20', // 剩余募集金额16
 					Value: ''
 				},
 				{
-					Field: 'string21', // 已预约人数
+					Field: 'string21', // 已预约人数17
 					Value: ''
 				},
 				{
-					Field: 'string22', // 已预约金额
+					Field: 'string22', // 已预约金额18
 					Value: ''
 				},
 				{
-					Field: 'string23', // 剩余预约金额
+					Field: 'string23', // 剩余预约金额19
+					Value: ''
+				},
+				{
+					Field: 'string7', // 理财经理20
+					Value: ''
+				},
+				{
+					Field: 'string8', // 理财经理所属部门21
+					Value: ''
+				},
+				{
+					Field: 'string27', // 创建人22
+					Value: ''
+				},
+				{
+					Field: 'string26', // 创建部门23
+					Value: ''
+				},
+				{
+					Field: 'string25', // 最后修改人24
+					Value: ''
+				},
+				{
+					Field: 'string24', // 最后修改人部门25
+					Value: ''
+				},
+				{
+					Field: 'date4', // 最后修改时间26
+					Value: ''
+				},
+				{
+					Field: 'date5', // 创建时间27
 					Value: ''
 				},
 				// --------默认 ------
 				{
 					Field: 'string6', // 客户编码
 					Value: '客户编码'
-				},
-				{
-					Field: 'string7', // 理财经理
-					Value: '管理员'
-				},
-				{
-					Field: 'string8', // 所属部门
-					Value: '天玑财富'
-				},
-				{
-					Field: 'string25', // 最后修改人
-					Value: '管理员'
-				},
-				{
-					Field: 'string24', // 最后修改部门
-					Value: '天玑财富'
-				},
-				{
-					Field: 'date4', // 最后修改时间
-					Value: '2019-12-10'
-				},
-				{
-					Field: 'string27', // 创建人
-					Value: '管理员'
-				},
-				{
-					Field: 'string26', // 创建部门
-					Value: '天玑财富'
-				},
-				{
-					Field: 'date5', // 创建时间
-					Value: '2019-12-10'
 				},
 				{
 					Field: 'string12',
@@ -207,6 +209,7 @@ export default {
 	},
 	onLoad(option) {
 		Object.assign(this.$data, this.$options.data())
+		this.setDefautValue(this.$store.state.account.info.RetValue)
 		this.isEdit = option.isEdit
 		this.getCustomers()
 		mpvue.getStorage({
@@ -218,26 +221,28 @@ export default {
 				console.log('==>', Object.keys(this.info))
 				for (const key in this.info) {
 					if (key === '产品编号') {
-						this.reqParams[7].Value = this.info[key]
-					} else if (key === '已募集金额') {
-						this.reqParams[13].Value = this.info[key]
-					} else if (key === '已募集份数') {
-						this.reqParams[12].Value = this.info[key]
-					} else if (key === '已预约金额') {
-						this.reqParams[16].Value = this.info[key]
-					} else if (key === '剩余可预约') {
-						this.reqParams[17].Value = this.info[key]
-					} else if (key === '已预约人数') {
-						this.reqParams[15].Value = this.info[key]
-					} else if (key === '产品类型') {
-						this.reqParams[6].Value = this.info[key]
-					} else if (key === '募集账户') {
-						this.reqParams[11].Value = this.info[key]
-					} else if (key === '产品名称') {
-						this.reqParams[8].Value = this.info[key]
 						this.reqParams[9].Value = this.info[key]
-					} else if (key === '产品期限') {
+					} else if (key === '已募集金额') {
+						this.reqParams[15].Value = this.info[key]
+					} else if (key === '已募集份数') {
+						this.reqParams[14].Value = this.info[key]
+					} else if (key === '剩余募集金额') {
+						this.reqParams[16].Value = this.info[key]
+					} else if (key === '已预约金额') {
+						this.reqParams[18].Value = this.info[key]
+					} else if (key === '剩余可预约') {
+						this.reqParams[19].Value = this.info[key]
+					} else if (key === '已预约人数') {
+						this.reqParams[17].Value = this.info[key]
+					} else if (key === '产品类别') {
+						this.reqParams[8].Value = this.info[key]
+					} else if (key === '募集账户') {
+						this.reqParams[13].Value = this.info[key]
+					} else if (key === '产品名称') {
 						this.reqParams[10].Value = this.info[key]
+						this.reqParams[11].Value = this.info[key]
+					} else if (key === '产品期限') {
+						this.reqParams[12].Value = this.info[key]
 					}
 				}
 				console.log('==>', this.reqParams)
@@ -318,6 +323,17 @@ export default {
 					this.datas.string32 = this.customers[data.index].FLicenseNumber
 				}
 			}
+		},
+		// 设置默认传的值
+		setDefautValue(data) {
+			this.reqParams[20].Value = data.Name
+			this.reqParams[21].Value = data.deptname
+			this.reqParams[22].Value = data.Name
+			this.reqParams[23].Value = data.deptname
+			this.reqParams[24].Value = data.Name
+			this.reqParams[25].Value = data.deptname
+			this.reqParams[26].Value = formatTime2().split(' ')[0]
+			this.reqParams[27].Value = formatTime2().split(' ')[0]
 		}
 	},
 

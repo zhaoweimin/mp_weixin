@@ -266,15 +266,17 @@ export default {
 			this.$emit('hideTextarea', false)
 			this.isShowFilter = false
 		},
-		onDateTimePickerClick(){
+		onDateTimePickerClick() {
 			this.isShowDateTimePicker = true
 			this.$emit('hideTextarea', true)
 		},
 		getPickerValue(data) {
 			this.isShowDateTimePicker = false
+			this.$emit('hideTextarea', false)
 			this.$emit('getSelectDateTime', { key: this.paramkey, value: data })
 		},
-		onCancelPicker(){
+		onCancelPicker() {
+			this.$emit('hideTextarea', false)
 			this.isShowDateTimePicker = false
 		}
 	}

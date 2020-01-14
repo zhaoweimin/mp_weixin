@@ -240,8 +240,23 @@ export default {
         return this.post(obj)
     },
 
+    // 查询跟进人列表
+    getFollowList(page) {
+        let obj = {
+            url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+            data: {
+                id: '1f3105da-2d4a-4bfa-bd3e-9f3aa33f6f7c',
+                index: page - 1,
+                Parameter: 'escontain=true&deptid=1',
+                filter: '{}',
+                rightvalueid: '1f3105da-2d4a-4bfa-bd3e-9f3aa33f6f7c'
+            }
+        }
+        return this.post(obj)
+    },
+
     // 客户跟进本周需跟进客户接口查询
-    getProductList(page, r) {
+    getProductList(page, r, UserID) {
         // r- 0 客户跟进历史跟进客 3- 客户跟进超过30天未跟进客户 2- 客户跟进本周需跟进客户
         let obj = {
             url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
@@ -249,7 +264,7 @@ export default {
                 id: '27458a0c-3000-4f36-8b93-81a82f59093f',
                 userid: '',
                 index: page - 1,
-                Parameter: `escontain=true&deptid=1&r=${r}&userid=10183`,
+                Parameter: `escontain=true&deptid=1&r=${r}&userid=${UserID}`,
                 rightvalueid: '59bd9d7b-c6c9-046b-36b0-39eb71be4e6c',
                 formid: '59bd9d7b-c6c9-046b-36b0-39eb71be4e6c',
                 filter: '{}',

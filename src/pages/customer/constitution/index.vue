@@ -90,10 +90,10 @@
             <div v-show="open[1]">
                 <comInput :type="0" fontSize="f14" title="主联系人" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FMainName" :isRequired="true"></comInput>
                 <comInput :type="0" fontSize="f14" title="性别" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FMGender" :isRequired="true"></comInput>
-                <comInput :type="0" fontSize="f14" title="年龄" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.Fage"></comInput>
-                <comInput :type="0" fontSize="f14" title="主联系人电话" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FphoneType1" :isRequired="true"></comInput>
+                <comInput :type="0" fontSize="f14" title="年龄" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FAge"></comInput>
+                <comInput :type="0" fontSize="f14" title="主联系人电话" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FMainPhone" :isRequired="true"></comInput>
                 <comInput :type="0" fontSize="f14" title="主联系人传真" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FMainFax"></comInput>
-                <comInput :type="0" fontSize="f14" title="主联系人邮箱" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FEmail"></comInput>
+                <comInput :type="0" fontSize="f14" title="主联系人邮箱" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FMainEmail"></comInput>
                 <div class="table pr15 line required">
                     <div class="flex-1">
                         <div class="key f14 cgey l-end w100">通讯地址</div>
