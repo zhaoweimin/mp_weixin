@@ -175,7 +175,7 @@ export default {
 		this.getCustomers()
 		this.getProducts()
 		this.getContractList()
-		this.datas.date8 = this.getTomorrow(new Date(this.datas.date1.replace(/-/g,'/')).getTime())
+		this.datas.date8 = this.getTomorrow(new Date(this.datas.date1.replace(/-/g, '/')).getTime())
 	},
 	components: {
 		upload,
@@ -208,7 +208,7 @@ export default {
 		},
 		getContractList() {
 			this.$api.getContractList('', { string5: '已发放' }).then(res => {
-				this.contractOptions = res.rows.map(m => m['编号'])
+				this.contractOptions = res.rows.map(m => m['合同编号'])
 			})
 		},
 		bindTypeChange(e) {
@@ -272,7 +272,7 @@ export default {
 			console.log(data)
 			this.datas[data.key] = data.value
 		},
-		getFilterSelet(data){
+		getFilterSelet(data) {
 			console.log(data)
 			this.datas[data.key] = data.value
 			if (data.key === 'string2') {
@@ -286,13 +286,13 @@ export default {
 		},
 		getSelectDateTime(data) {
 			this.datas[data.key] = data.value
-			if(data.key==='date1'){
-				this.datas.date8 = this.getTomorrow(new Date(this.datas.date1.replace(/-/g,'/')).getTime())
+			if (data.key === 'date1') {
+				this.datas.date8 = this.getTomorrow(new Date(this.datas.date1.replace(/-/g, '/')).getTime())
 			}
 		},
 		// 获取明日日期时间
-		getTomorrow(timeStamp=new Date().getTime()){
-			return formatTime2(new Date(timeStamp+24*60*60*1000))
+		getTomorrow(timeStamp = new Date().getTime()) {
+			return formatTime2(new Date(timeStamp + 24 * 60 * 60 * 1000))
 		}
 	}
 }

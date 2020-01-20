@@ -53,6 +53,7 @@ let Options = {
 	followType: ['转化成交', '客情维护'],
 	customerType: ['潜在客户', '成交客户'],
 	nianjianyouxiao: ['是', '否'],
-	payWay: ['网银转账', '柜台转账', '其他']
+	payWay: ['网银转账', '柜台转账', '其他'],
+	royaltyWay: ['分次每年提成（期限≥2年）', '一次性提成']
 }
 export default Options

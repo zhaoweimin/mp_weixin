@@ -556,8 +556,6 @@ export default {
       return this.post(obj)
   },
 
-
-
     // 业绩新增
     addAchievement(params) {
         let obj = {
@@ -565,11 +563,26 @@ export default {
             data: {
                 id: "73a617ba-31f2-c3a3-1d0e-39e80b23f04c",
                 content: "text/html",
-                AutoSend: 0,
+                AutoSend: 1,
                 StarterID: 10183,
                 FlowName: "业绩单",
                 FlowModelID: "ee0ccdcc-5668-69e5-d62a-39eb6d640e49",
                 HeadFields: params
+            }
+        }
+        return this.post(obj)
+    },
+
+    // 选择提成方式时获取对应的提成数据
+    getTichengData(params) {
+        let obj = {
+            url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+            data: {
+                id: "9e0dd3cc-3ff6-e911-b397-39f10f3ff06e",
+                string1:"TJ-00212720191210CRM", 				//业绩单号
+                string2:"一次性提成",								//提成方式
+                string3:"TJ-00140220191011CRM",					//产品编号（可在1.22历史业绩接口中取到）
+                string4:"天玑聚盈十五号私募投资基金（契约）"		//产品名称
             }
         }
         return this.post(obj)

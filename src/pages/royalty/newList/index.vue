@@ -1,34 +1,35 @@
 <template>
-    <div class="customer">
-        <div class="bg-fff mt10">
-            <!-- <comInput @getInputVal="setValue" paramkey="string1" :type="0" title="单据编号" :textRight="false" :isSpecialColorTxt="true" value="2322115565512223664"></comInput> -->
-            <!-- <comInput @getInputVal="setValue" paramkey="string6" :type="0" title="业绩单号" :textRight="false" :isSpecialColorTxt="true" :value="params.string6"></comInput> -->
-            <comInput :type="2" fontSize="f14" :value="params.string6" paramkey="string6" :textRight="false" :options="achievementOptions" @getSelect="getSelect" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
-            <comInput paramkey="string2" :type="0" title="客户姓名" :textRight="false" :value="params.string2"></comInput>
-            <comInput paramkey="string3" :type="0" title="购买产品" :textRight="false" :value="params.string3"></comInput>
-            <comInput paramkey="string4" :type="0" title="产品期限" :textRight="false" :value="params.string4"></comInput>
-            <comInput paramkey="number3" :type="0" title="认购金额" :textRight="false" :value="params.number3"></comInput>
-            <comInput paramkey="date4" :type="0" title="出资认缴日" :textRight="false" :value="params.date4"></comInput>
-            <!-- <comInput @getInputVal="setValue" paramkey="number2" :type="3" title="到账日" :textRight="false" value="2019-3-18"></comInput> -->
-            <!-- <comInput @getInputVal="setValue" paramkey="ads" :type="3" title="到期日" :textRight="false" value="2019-3-18"></comInput> -->
-            <comInput @getInputVal="setValue" paramkey="number2" :type="0" title="认购费" :textRight="false" value="2千万"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string8" :type="1" title="提成方式" :textRight="false" :value="params.string8"></comInput>
-            <comInput @getInputVal="setValue" paramkey="number4" :type="1" title="提成总额" :textRight="false" :value="params.number4"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string9" :type="1" title="提成率" :textRight="false" :value="params.string9"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string11" :type="1" title="本次提奖" :textRight="false" :value="params.string11"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string13" :type="0" title="理财经理" :textRight="false" value="理财经理"></comInput>
-            <comInput @getInputVal="setValue" paramkey="string14" :type="0" title="归属部门" :textRight="false" value="归属部门"></comInput>
-            <comInput @getInputVal="setValue" paramkey="date1" :type="3" title="申请时间" :textRight="false" :value="params.data1"></comInput>
-        </div>
-        <div class="mlr15 mb15 mt25">
-            <van-button type="info" size="large" @click="sure">确认</van-button>
-        </div>
-    </div>
+	<div class="customer">
+		<div class="bg-fff mt10">
+			<!-- <comInput @getInputVal="setValue" paramkey="string1" :type="0" title="单据编号" :textRight="false" :isSpecialColorTxt="true" value="2322115565512223664"></comInput> -->
+			<!-- <comInput @getInputVal="setValue" paramkey="string6" :type="0" title="业绩单号" :textRight="false" :isSpecialColorTxt="true" :value="params.string6"></comInput> -->
+			<comInput :type="2" :value="params.string6" paramkey="string6" :textRight="false" :options="achievementOptions" @getSelect="getSelect" title="业绩单号"></comInput>
+			<comInput paramkey="string2" :type="0" title="客户姓名" :textRight="false" :value="params.string2"></comInput>
+			<comInput paramkey="string3" :type="0" title="购买产品" :textRight="false" :value="params.string3"></comInput>
+			<comInput paramkey="string4" :type="0" title="产品期限" :textRight="false" :value="params.string4"></comInput>
+			<comInput paramkey="number3" :type="0" title="认购金额" :textRight="false" :value="params.number3"></comInput>
+			<comInput paramkey="date4" :type="0" title="出资认缴日" :textRight="false" :value="params.date4"></comInput>
+			<!-- <comInput @getInputVal="setValue" paramkey="number2" :type="3" title="到账日" :textRight="false" value="2019-3-18"></comInput> -->
+			<!-- <comInput @getInputVal="setValue" paramkey="ads" :type="3" title="到期日" :textRight="false" value="2019-3-18"></comInput> -->
+			<comInput @getInputVal="setValue" paramkey="number2" :type="0" title="认购费" :textRight="false" value="2千万"></comInput>
+			<comInput :type="2" :value="params.string8" paramkey="string8" :textRight="false" :options="Options.royaltyWay" @getSelect="getSelect" title="提成方式"></comInput>
+			<comInput @getInputVal="setValue" paramkey="number4" :type="1" title="提成总额" :textRight="false" :value="params.number4"></comInput>
+			<comInput @getInputVal="setValue" paramkey="string9" :type="1" title="提成率" :textRight="false" :value="params.string9"></comInput>
+			<comInput @getInputVal="setValue" paramkey="string11" :type="1" title="本次提奖" :textRight="false" :value="params.string11"></comInput>
+			<comInput @getInputVal="setValue" paramkey="string13" :type="0" title="理财经理" :textRight="false" value="理财经理"></comInput>
+			<comInput @getInputVal="setValue" paramkey="string14" :type="0" title="归属部门" :textRight="false" value="归属部门"></comInput>
+			<comInput @getInputVal="setValue" paramkey="date1" :type="3" title="申请时间" :textRight="false" :value="params.data1"></comInput>
+		</div>
+		<div class="mlr15 mb15 mt25">
+			<van-button type="info" size="large" @click="sure">确认</van-button>
+		</div>
+	</div>
 </template>
 
 <script>
 import card from '@/components/card'
 import comInput from '@/components/comInput'
+import Options from '@/utils/Options.js'
 
 export default {
 	components: {
@@ -37,6 +38,7 @@ export default {
 	},
 	data() {
 		return {
+			Options: Options,
 			info: {},
 			params: {
 				string1: '', // 单据编号
@@ -47,6 +49,7 @@ export default {
 				number3: '', // 认购金额
 				date4: '', // 出资认缴日
 				number2: '2千万', // 认购费
+				string8: '', // 提成方式
 				number4: '', // 提成总额
 				string9: '', // 提奖率
 				string11: '', // 本次提奖金额
@@ -100,6 +103,9 @@ export default {
 		},
 		getSelect(data) {
 			this.params[data.key] = data.value
+			if (data.key === 'string8') {
+				this.$api.getTichengData().then(res => {})
+			}
 			if (data.key === 'string6') {
 				this.params.string2 = this.achievements[data.index].string2
 				this.params.string3 = this.achievements[data.index].string3
@@ -107,6 +113,7 @@ export default {
 				this.params.number3 = this.achievements[data.index].number3
 				this.params.date4 = this.achievements[data.index].date4
 			}
+			console.log('tag', this.params)
 		},
 		getSelectDate(data) {},
 		setValue(val) {
