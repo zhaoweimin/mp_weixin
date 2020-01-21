@@ -11,15 +11,15 @@
             </div>
             <div class="count">
                 <div class="con">
-                    <div class="val"><span class="num">8</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.CusThisMonth}}</span><span class="unit">个</span></div>
                     <div class="text">本月新增</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">2</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.CusThisWeek}}</span><span class="unit">个</span></div>
                     <div class="text">本周新增</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">1</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.CusToday}}</span><span class="unit">个</span></div>
                     <div class="text">本日新增</div>
                 </div>
             </div>
@@ -35,21 +35,21 @@
             </div>
             <div class="count">
                 <div class="con">
-                    <div class="val"><span class="num">2</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.Potential}}</span><span class="unit">个</span></div>
                     <div class="text">潜在客户</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">2</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.Accurate}}</span><span class="unit">个</span></div>
                     <div class="text">准客户</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">1</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.Deal}}</span><span class="unit">个</span></div>
                     <div class="text">成交客户</div>
                 </div>
             </div>
             <div class="count">
                 <div class="con">
-                    <div class="val"><span class="num">1</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.HisTransactionT}}</span><span class="unit">个</span></div>
                     <div class="text">历史成交客户</div>
                 </div>
             </div>
@@ -64,15 +64,15 @@
             </div>
             <div class="count">
                 <div class="con">
-                    <div class="val"><span class="num">2</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.CollarUse}}</span><span class="unit">个</span></div>
                     <div class="text">已领用</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">2</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.AlreadyUsed}}</span><span class="unit">个</span></div>
                     <div class="text">已使用</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">0</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.ToVoid}}</span><span class="unit">个</span></div>
                     <div class="text">已作废</div>
                 </div>
             </div>
@@ -169,15 +169,15 @@
             </div>
             <div class="count">
                 <div class="con">
-                    <div class="val"><span class="num">500</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.AnnualSales}}</span><span class="unit">个</span></div>
                     <div class="text">本年销售</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">60</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.QuarterlySales}}</span><span class="unit">个</span></div>
                     <div class="text">本季销售</div>
                 </div>
                 <div class="con">
-                    <div class="val"><span class="num">35</span><span class="unit">个</span></div>
+                    <div class="val"><span class="num">{{info.MonthlySales}}</span><span class="unit">个</span></div>
                     <div class="text">本月销售</div>
                 </div>
             </div>
@@ -192,7 +192,8 @@ export default {
   data () {
     return {
       nav: ['个人报表', '管理报表'],
-      list: []
+      list: [],
+      info: {}
     }
   },
 
@@ -200,9 +201,27 @@ export default {
     navbar
   },
 
+  mounted () {
+    this.getInfo()
+  },
+
   methods: {
     changeNav (nav) {
       console.log(nav)
+    },
+    getInfo () {
+      this.$api.getReportData().then(res => {
+        console.log(res)
+        console.log(1)
+        if (res.PromptMsg === "操作成功") {
+          console.log(res.RetValue)
+          console.log(JSON.parse(res.RetValue))
+          this.info = JSON.parse(res.RetValue)
+          console.log(this.info)
+        } else {
+          console.log(3)
+        }
+      })
     }
   },
 

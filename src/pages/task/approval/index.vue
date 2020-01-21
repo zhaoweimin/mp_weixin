@@ -72,11 +72,24 @@ export default {
           time: '2019-09-09',
           mark: '管理员已审核，系统自动通过'
         }
-      ]
+      ],
+      msg: {}
     }
   },
 
-  created () {}
+  onLoad() {
+		this.msg = mpvue.getStorageSync('detail0')
+    console.log('=>>', mpvue.getStorageSync('detail0'))
+    this.getInfo()
+	},
+
+  methods: {
+    getInfo () {
+      this.$api.getApplayRes(this.msg.flowid, 10818).then(res => {
+        console.log(res);
+      })
+    }
+  }
 }
 </script>
 

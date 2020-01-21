@@ -215,6 +215,13 @@
 					"id": -1,
 					"name": "新增活动邀约",
 					"pathName": "pages/discover/invitation/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "报表",
+					"pathName": "pages/statis/main",
 					"scene": null
 				}
 			]

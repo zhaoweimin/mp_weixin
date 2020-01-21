@@ -19,7 +19,6 @@ export default {
     // login
     login: function (data) {
         // 测试接口
-        console.log(data)
         let obj = {
             url: '/ashx/mobile/MoblieLogin.ashx?service=userlogin',
             data
@@ -584,6 +583,30 @@ export default {
                 string3:params.string3,					//产品编号（可在1.22历史业绩接口中取到）
                 string4:params.string4		            //产品名称
             }
+        }
+        return this.post(obj)
+    },
+
+    // 报表数据
+    getReportData() {
+        let obj = {
+            url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+            data: {
+                id: "ed1f625e-5525-ea11-b397-39f243d234ce",
+            }
+        }
+        return this.post(obj)
+    },
+
+    // 提交申请审批流程
+    getApplayRes (messageid, userID) {
+        let obj = {
+            url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+            data: {
+                id: "4c37c469-7122-ea11-837e-39f230e0d56c",
+                messageid: messageid,//"4c37c469-7122-ea11-837e-39f230e0d56c",
+                userID: userID //10818,
+              }
         }
         return this.post(obj)
     }
