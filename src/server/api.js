@@ -579,10 +579,10 @@ export default {
             url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
             data: {
                 id: "9e0dd3cc-3ff6-e911-b397-39f10f3ff06e",
-                string1:"TJ-00212720191210CRM", 				//业绩单号
-                string2:"一次性提成",								//提成方式
-                string3:"TJ-00140220191011CRM",					//产品编号（可在1.22历史业绩接口中取到）
-                string4:"天玑聚盈十五号私募投资基金（契约）"		//产品名称
+                string1:params.string1, 				//业绩单号
+                string2:params.string2,					//提成方式
+                string3:params.string3,					//产品编号（可在1.22历史业绩接口中取到）
+                string4:params.string4		            //产品名称
             }
         }
         return this.post(obj)

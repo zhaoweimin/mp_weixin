@@ -100,7 +100,8 @@ export default {
 				string23: '', // 邀约审批状态
 				string24: '' // 备注
 			},
-			customerOptions: []
+			customerOptions: [],
+			customerDatas: []
 		}
 	},
 	onLoad(option) {
@@ -153,12 +154,13 @@ export default {
 			}
 		})
 	},
-	created() {},
 	methods: {
 		getCustomers() {
 			this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
 				console.log('res=>>', res)
 				this.customerOptions = res.rows.map(m => m.FName)
+				this.customerDatas = res.rows
+				console.log('customerDatas', this.customerDatas)
 			})
 		},
 		getSelect(data) {
@@ -235,6 +237,10 @@ export default {
 			this.customers[keys[0]][keys[1]] = data.value
 			if (keys[1] === 'string35') {
 				this.customers[keys[0]]['string15'] = data.value
+				this.customers[keys[0]]['string42'] = this.customerDatas[data.index].FMobilePhone
+				this.customers[keys[0]]['string21'] = this.customerDatas[data.index].FCustomerType
+				this.customers[keys[0]]['string18'] = this.customerDatas[data.index].FnowInvestment
+				this.customers[keys[0]]['string23'] = '待审批'
 			}
 		},
 		del(i) {

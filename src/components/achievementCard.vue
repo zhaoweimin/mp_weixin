@@ -199,14 +199,14 @@
                 <div class="name mr10">{{info.FName}}</div>
                 <div class="label-blue-outline">{{info.Fundtype}}</div>
             </div>
-            <div class="msg no-boder">
+            <div class="msg no-boder" @click="productDetail">
                 <div class="line mb10">
                     <div class="key f13"><span class="cgey">募集规模：</span>{{info.FRaiseScale}}</div>
                     <div class="key f13"><span class="cgey">募集期：</span> {{info.FRaiseDate}}</div>
                 </div>
                 <div class="line dis-flex a-between">
                     <div class="key f13"><span class="cgey">运作状态：</span>{{info['string27']}}</div>
-                    <div class="more clink f13" @click="productDetail(info.id)">查看更多</div>
+                    <div class="more clink f13">查看更多</div>
                 </div>
             </div>
         </div>
@@ -247,7 +247,7 @@
 
 <script>
 export default {
-    props: ['info', 'type', 'status', 'actionType'],
+	props: ['info', 'type', 'status', 'actionType'],
 	methods: {
 		interstDetail(type, id) {
 			let url = `/pages/${type}/detail/main?id=${id}`
@@ -269,6 +269,7 @@ export default {
 			mpvue.navigateTo({ url })
 		},
 		productDetail() {
+			console.log('tag', 111)
 			let url = `/pages/discover/productDetail/main`
 			mpvue.setStorageSync('discover_product_info', this.info)
 			mpvue.navigateTo({ url })

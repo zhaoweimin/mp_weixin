@@ -16,9 +16,9 @@
 			<comInput @getInputVal="setValue" paramkey="number4" :type="1" title="提成总额" :textRight="false" :value="params.number4"></comInput>
 			<comInput @getInputVal="setValue" paramkey="string9" :type="1" title="提成率" :textRight="false" :value="params.string9"></comInput>
 			<comInput @getInputVal="setValue" paramkey="string11" :type="1" title="本次提奖" :textRight="false" :value="params.string11"></comInput>
-			<comInput @getInputVal="setValue" paramkey="string13" :type="0" title="理财经理" :textRight="false" value="理财经理"></comInput>
-			<comInput @getInputVal="setValue" paramkey="string14" :type="0" title="归属部门" :textRight="false" value="归属部门"></comInput>
-			<comInput @getInputVal="setValue" paramkey="date1" :type="3" title="申请时间" :textRight="false" :value="params.data1"></comInput>
+			<comInput @getInputVal="setValue" paramkey="string13" :type="0" title="理财经理" :textRight="false" :value="params.string13"></comInput>
+			<comInput @getInputVal="setValue" paramkey="string14" :type="0" title="归属部门" :textRight="false" :value="params.string14"></comInput>
+			<comInput @getInputVal="setValue" paramkey="date1" :type="3" title="申请时间" :textRight="false" :value="params.date1"></comInput>
 		</div>
 		<div class="mlr15 mb15 mt25">
 			<van-button type="info" size="large" @click="sure">确认</van-button>
@@ -63,11 +63,15 @@ export default {
 				string16: '当前部门', // 最后修改人部门 （登陆的用户部门）
 				date2: '' // 最后修改时间 （当前系统时间）
 			},
-			achievementOptions: []
+			achievementOptions: [],
+			productNumber: '' // 产品编号
 		}
 	},
 	onLoad() {
 		Object.assign(this.$data, this.$options.data())
+		this.params['date1'] = this.getDate().split(' ')[0]
+		this.params['date2'] = this.getDate()
+		this.params['date3'] = this.getDate()
 	},
 	onShow() {
 		this.getHistoryAchievementList()
@@ -89,6 +93,7 @@ export default {
 		getHistoryAchievementList() {
 			this.$api.getHistoryAchievementList('', true).then(res => {
 				res = JSON.parse(res.RetValue)
+				console.log('res', res)
 				this.achievementOptions = res.rows.map(m => m['业绩单号'])
 				this.achievements = res.rows.map(m => {
 					return {
@@ -96,7 +101,8 @@ export default {
 						string3: m['产品名称'],
 						string4: m['产品期限'],
 						number3: m['合同金额'],
-						date4: m['确认收款日']
+						date4: m['确认收款日'],
+						string5: m['产品编码']
 					}
 				})
 			})
@@ -104,7 +110,20 @@ export default {
 		getSelect(data) {
 			this.params[data.key] = data.value
 			if (data.key === 'string8') {
-				this.$api.getTichengData().then(res => {})
+				console.log('productNumber', this.productNumber)
+				let params = {
+					string1: this.params.string6, // 业绩单号
+					string2: this.params.string8, // 提成方式
+					string3: this.productNumber, // 产品编号
+					string4: this.params.string3 // 产品名称
+				}
+				this.$api.getTichengData(params).then(res => {
+					res = JSON.parse(res.RetValue)
+					this.params.string11 = res.toMoney // :本次提奖
+					this.params.number4 = res.intota // 提成总额
+					this.params.string9 = res.frate // 提出率
+					console.log('params', this.params)
+				})
 			}
 			if (data.key === 'string6') {
 				this.params.string2 = this.achievements[data.index].string2
@@ -112,6 +131,8 @@ export default {
 				this.params.string4 = this.achievements[data.index].string4
 				this.params.number3 = this.achievements[data.index].number3
 				this.params.date4 = this.achievements[data.index].date4
+				this.productNumber = this.achievements[data.index].string5
+				console.log('achievements[i]', this.achievements[data.index])
 			}
 			console.log('tag', this.params)
 		},
@@ -163,12 +184,6 @@ export default {
 
 			return now
 		}
-	},
-	created() {
-		console.log(this.getDate())
-		this.params['date1'] = this.getDate()
-		this.params['date2'] = this.getDate()
-		this.params['date3'] = this.getDate()
 	}
 }
 </script>
