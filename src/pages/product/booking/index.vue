@@ -1,9 +1,9 @@
 <template>
 	<div class="main">
-		<div class="booking" v-if="isEdit === '1'">
+		<div class="booking">
 			<div class="block">
 				<div class="title">客户信息</div>
-				<div class="from">
+				<div v-if="isEdit === '1'" class="from">
 					<comInput :type="1" title="预约编号" paramkey="string1" :value="datas.string1" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="6" title="客户姓名" ref="string13" :value="datas.string13" paramkey="string13" :textRight="false" :filterList="customerOptions" @getFilterSelet="getFilterSelet" :isSpecialBorderStyle="true"></comInput>
 					<div v-if="isCustomer">
@@ -14,6 +14,14 @@
 						<comInput :type="1" title="执照类型" paramkey="string29" :value="datas.string29" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 						<comInput :type="1" title="执照号码" paramkey="string32" :value="datas.string32" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 					</div>
+				</div>
+				<div v-else class="from">
+					<comInput :type="0" title="预约编号" :value="info['预约编号']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="客户姓名" :value="info['客户姓名']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput v-if="info['证件类型']" :type="0" title="证件类型" :value="info['证件类型']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput v-if="info['证件号码']" :type="0" title="证件号码" :value="info['证件号码']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput v-if="info['执照类型']" :type="0" title="执照类型" :value="info['执照类型']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput v-if="info['执照号码']" :type="0" title="执照号码" :value="info['执照号码']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 				</div>
 			</div>
 		</div>
@@ -35,13 +43,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="booking" v-if="isEdit === '1'">
+		<div class="booking">
 			<div class="block">
 				<div class="title">付款信息</div>
-				<div class="from">
-					<comInput :type="3" title="预约打款日期" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+				<div v-if="isEdit === '1'" class="from">
+					<comInput :type="3" title="预约打款日期" paramkey="date2" @getSelectDate="getSelectDate" :textRight="false" :isSpecialBorderStyle="true" value></comInput>
 					<!-- <comInput :type="3" title="实际打款日期" paramkey="FBirthDate" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput> -->
-					<comInput :type="1" title="出资金额" paramkey="number2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value=""></comInput>
+					<comInput :type="1" title="出资金额" paramkey="number2" @getInputVal="getInputVal" :textRight="false" :isSpecialBorderStyle="true" value></comInput>
+				</div>
+				<div v-else class="from">
+					<comInput :type="0" title="预约打款日期" :value="info['预约付款日期']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="0" title="出资金额" :value="info['出资金额']" :textRight="false" :isSpecialBorderStyle="true"></comInput>
 				</div>
 			</div>
 		</div>
@@ -96,7 +108,6 @@ export default {
 					Field: 'number2', // 出资金额
 					Value: ''
 				},
-				// -------- 带入 ------
 				{
 					Field: 'string35', // 产品类别8_
 					Value: ''
@@ -211,6 +222,7 @@ export default {
 		Object.assign(this.$data, this.$options.data())
 		this.setDefautValue(this.$store.state.account.info.RetValue)
 		this.isEdit = option.isEdit
+		console.log('this.isEdit=>', this.isEdit)
 		this.getCustomers()
 		mpvue.getStorage({
 			// 获取本地缓存
@@ -243,6 +255,18 @@ export default {
 						this.reqParams[11].Value = this.info[key]
 					} else if (key === '产品期限') {
 						this.reqParams[12].Value = this.info[key]
+					} else if (key === '预约编号') {
+						this.reqParams[1].Value = this.info[key]
+					} else if (key === '客户姓名') {
+						this.reqParams[0].Value = this.info[key]
+					} else if (key === '证件类型') {
+						this.reqParams[2].Value = this.info[key]
+					} else if (key === '证件号码') {
+						this.reqParams[5].Value = this.info[key]
+					} else if (key === '预约付款日期') {
+						this.reqParams[6].Value = this.info[key]
+					} else if (key === '出资金额') {
+						this.reqParams[7].Value = this.info[key]
 					}
 				}
 				console.log('==>', this.reqParams)

@@ -3,7 +3,7 @@
 		<div class="bg-fff mt10">
 			<!-- <comInput @getInputVal="setValue" paramkey="string1" :type="0" title="单据编号" :textRight="false" :isSpecialColorTxt="true" value="2322115565512223664"></comInput> -->
 			<!-- <comInput @getInputVal="setValue" paramkey="string6" :type="0" title="业绩单号" :textRight="false" :isSpecialColorTxt="true" :value="params.string6"></comInput> -->
-			<comInput :type="2" :value="params.string6" paramkey="string6" :textRight="false" :options="achievementOptions" @getSelect="getSelect" title="业绩单号"></comInput>
+			<comInput :type="2" :value="params.string6" paramkey="string6" :textRight="false" :options="tichengYejidanhaoOptions" @getSelect="getSelect" title="业绩单号"></comInput>
 			<comInput paramkey="string2" :type="0" title="客户姓名" :textRight="false" :value="params.string2"></comInput>
 			<comInput paramkey="string3" :type="0" title="购买产品" :textRight="false" :value="params.string3"></comInput>
 			<comInput paramkey="string4" :type="0" title="产品期限" :textRight="false" :value="params.string4"></comInput>
@@ -55,6 +55,7 @@ export default {
 				string11: '', // 本次提奖金额
 				string13: '理财经理', // 理财经理
 				string14: '归属部门', // 归属部门
+				string26: '', // 理财经理ID
 				date1: '', // 申请时间
 				string19: '', // 创建人
 				string18: '', // 创建人部门
@@ -63,7 +64,7 @@ export default {
 				string16: '当前部门', // 最后修改人部门 （登陆的用户部门）
 				date2: '' // 最后修改时间 （当前系统时间）
 			},
-			achievementOptions: [],
+			tichengYejidanhaoOptions: [],
 			productNumber: '' // 产品编号
 		}
 	},
@@ -72,12 +73,18 @@ export default {
 		this.params['date1'] = this.getDate().split(' ')[0]
 		this.params['date2'] = this.getDate()
 		this.params['date3'] = this.getDate()
+
+		// 理财经理,归属部门,理财经理ID 默认为当前用户
+		this.params.string13 = this.$store.state.account.info.RetValue.UserName
+		this.params.string14 = this.$store.state.account.info.RetValue.deptname
+		this.params.string26 = this.$store.state.account.info.RetValue.UserID
 	},
 	onShow() {
-		this.getHistoryAchievementList()
+		this.getTichengYejidanhaoList()
 		let has = mpvue.getStorageSync('has_select_royalty')
 		if (has) {
 			let info = mpvue.getStorageSync('select_info')
+			console.log('info=========>', info)
 			this.params['string8'] = info['string2'] // 提成方式
 			this.params['string6'] = info['string3'] // 产品编号
 			this.params['string3'] = info['string4'] // 产品名称
@@ -90,18 +97,16 @@ export default {
 	},
 
 	methods: {
-		getHistoryAchievementList() {
-			this.$api.getHistoryAchievementList('', true).then(res => {
-				res = JSON.parse(res.RetValue)
-				console.log('res', res)
-				this.achievementOptions = res.rows.map(m => m['业绩单号'])
-				this.achievements = res.rows.map(m => {
+		getTichengYejidanhaoList() {
+			this.$api.getTichengYejidanhaoList(this.$store.state.account.info.RetValue.UserID).then(res => {
+				this.tichengYejidanhaoOptions = res.rows.map(m => m['业绩单号'])
+				this.tichengYejidanhaoList = res.rows.map(m => {
 					return {
 						string2: m['客户姓名'],
 						string3: m['产品名称'],
 						string4: m['产品期限'],
 						number3: m['合同金额'],
-						date4: m['确认收款日'],
+						date4: m['确认收款日期'],
 						string5: m['产品编码']
 					}
 				})
@@ -110,7 +115,6 @@ export default {
 		getSelect(data) {
 			this.params[data.key] = data.value
 			if (data.key === 'string8') {
-				console.log('productNumber', this.productNumber)
 				let params = {
 					string1: this.params.string6, // 业绩单号
 					string2: this.params.string8, // 提成方式
@@ -119,22 +123,23 @@ export default {
 				}
 				this.$api.getTichengData(params).then(res => {
 					res = JSON.parse(res.RetValue)
+					console.log(res)
 					this.params.string11 = res.toMoney // :本次提奖
 					this.params.number4 = res.intota // 提成总额
 					this.params.string9 = res.frate // 提出率
-					console.log('params', this.params)
+					console.log(this.params)
 				})
 			}
 			if (data.key === 'string6') {
-				this.params.string2 = this.achievements[data.index].string2
-				this.params.string3 = this.achievements[data.index].string3
-				this.params.string4 = this.achievements[data.index].string4
-				this.params.number3 = this.achievements[data.index].number3
-				this.params.date4 = this.achievements[data.index].date4
-				this.productNumber = this.achievements[data.index].string5
-				console.log('achievements[i]', this.achievements[data.index])
+				this.$api.getTichengYejidanhaoList(this.$store.state.account.info.RetValue.UserID).then(res => {
+					this.params.string2 = this.tichengYejidanhaoList[data.index].string2
+					this.params.string3 = this.tichengYejidanhaoList[data.index].string3
+					this.params.string4 = this.tichengYejidanhaoList[data.index].string4
+					this.params.number3 = this.tichengYejidanhaoList[data.index].number3
+					this.params.date4 = this.tichengYejidanhaoList[data.index].date4
+					this.productNumber = this.tichengYejidanhaoList[data.index].string5
+				})
 			}
-			console.log('tag', this.params)
 		},
 		getSelectDate(data) {},
 		setValue(val) {
@@ -150,6 +155,7 @@ export default {
 			for (let key in params) {
 				data.push({ Field: key, Value: params[key] })
 			}
+			console.log('params==>', params)
 			this.$api.creatRoyaltyList(data).then(res => {
 				if (res.Msg === '操作成功') {
 					// mpvue.

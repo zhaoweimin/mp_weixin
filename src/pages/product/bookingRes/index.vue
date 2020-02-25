@@ -1,88 +1,89 @@
 <template>
-    <div>
-        <div class="contract-card" @click="booking(key)" v-for="(vo, key) in list" :key="key">
-            <!-- <div class="order">合同编号：201903201530326548 <div class="copy">复制</div></div> -->
-            <div class="order-two"><span class="bg">预约编号：{{vo['预约编号']}}</span></div>
-            <div class="status c1" v-if="status == 0">审核中</div>
-            <div class="status" v-if="status == 1">预约成功</div>
-            <div class="status c2" v-if="status == 2">预约失败</div>
-            <div class="title">
-                <div class="name">产品名称：<span class="tag">{{vo['产品名称']}}</span> <span class="tag white">股权类</span></div>
-            </div>
-            <div class="msg no-boder">
-                <div class="line">
-                    <span class="key">产品限期：</span><span class="val">{{vo['产品期限']}}个月</span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">客户姓名：</span><span class="val">{{vo['客户姓名']}}</span>
-                </div>
-                <div class="line">
-                    <span class="key">预约金额：</span><span class="val">{{vo['已预约金额']}}</span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">预计打款日期：{{vo['预约付款日期']}}</span>
-                    <span class="clink fr">查看更多</span>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div>
+		<div class="contract-card" @click="booking(key)" v-for="(vo, key) in list" :key="key">
+			<!-- <div class="order">合同编号：201903201530326548 <div class="copy">复制</div></div> -->
+			<div class="order-two">
+				<span class="bg">预约编号：{{ vo['预约编号'] }}</span>
+			</div>
+			<div class="status c1" v-if="status == 0">审核中</div>
+			<div class="status" v-if="status == 1">预约成功</div>
+			<div class="status c2" v-if="status == 2">预约失败</div>
+			<div class="title">
+				<div class="name">
+					产品名称：<span class="tag">{{ vo['产品名称'] }}</span> <span class="tag white">股权类</span>
+				</div>
+			</div>
+			<div class="msg no-boder">
+				<div class="line">
+					<span class="key">产品限期：</span><span class="val">{{ vo['产品期限'] }}个月</span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">客户姓名：</span><span class="val">{{ vo['客户姓名'] }}</span>
+				</div>
+				<div class="line">
+					<span class="key">预约金额：</span><span class="val">{{ vo['已预约金额'] }}</span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">预计打款日期：{{ vo['预约付款日期'] }}</span>
+					<span class="clink fr">查看更多</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
-
 
 <script>
 export default {
-  props: ['status'],
-  data () {
-    return {
-      nav: ['新建预约', '历史预约'],
-      nav_num: 0,
-      list: [],
-      page: 1
-    }
-  },
+	props: ['status'],
+	data() {
+		return {
+			nav: ['新建预约', '历史预约'],
+			nav_num: 0,
+			list: [],
+			page: 1
+		}
+	},
 
-  components: {},
-  created () {
-  },
+	components: {},
+	created() {},
 
-  onLoad (option) {
-    this.getList()
-  },
+	onLoad(option) {
+		this.getList()
+	},
 
-  onReachBottom () {
-	return false
-    this.getList(this.page + 1)
-  },
+	onReachBottom() {
+		return false
+		this.getList(this.page + 1)
+	},
 
-  methods: {
-    getList (page = 1) {
-      this.$api
-        .getHistoryProductBookingList(page, this.status + 1)
-        .then(res => {
-          res = JSON.parse(res.RetValue)
-          if (res.success) {
-            if (page === 1) {
-              this.list = res.rows
-            } else {
-              this.list = this.list.concat(res.rows)
-            }
-            if (res.rows.length > 0) this.page = page
-          }
-        })
-    },
-    changeNav (nav) {
-      this.nav_num = nav
-    },
-    booking (key) {
-      let url = `../booking/main?id=${key}&isEdit=0`
-      mpvue.setStorageSync('product_info', this.list[key])
-      mpvue.navigateTo({ url })
-    }
-  }
+	methods: {
+		getList(page = 1) {
+			this.$api.getHistoryProductBookingList(page, this.status + 1).then(res => {
+				res = JSON.parse(res.RetValue)
+				if (res.success) {
+					if (page === 1) {
+						this.list = res.rows
+						console.log('llxllxllx===========', this.list)
+					} else {
+						this.list = this.list.concat(res.rows)
+					}
+					if (res.rows.length > 0) this.page = page
+				}
+			})
+		},
+		changeNav(nav) {
+			this.nav_num = nav
+		},
+		booking(key) {
+			let url = `../booking/main?id=${key}&isEdit=0`
+			mpvue.setStorageSync('product_info', this.list[key])
+			mpvue.navigateTo({ url })
+		}
+	}
 }
 </script>
 
