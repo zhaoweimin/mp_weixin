@@ -6,7 +6,7 @@
 			</div>
 			<div class="block">
 				<div class="from">
-					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
+					<comInput :type="1" :disabled="isFromAdd" @getInputVal="getInputVal" fontSize="f14" :value="datas.string1" paramkey="string1" :textRight="false" title="业绩单号" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="6" ref="string2" fontSize="f14" :value="datas.string2" paramkey="string2" :textRight="false" :filterList="customerOptions" @getFilterSelet="getFilterSelet" title="客户姓名" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string36" paramkey="string36" :textRight="false" title="证件类型" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="0" fontSize="f14" :value="datas.string37" paramkey="string37" :textRight="false" title="证件号码" :isSpecialBorderStyle="true"></comInput>
@@ -166,12 +166,17 @@ export default {
 				string22: '',
 				string21: '',
 				date8: ''
-			}
+			},
+			isFromAdd: false
 		}
 	},
 	onLoad(option) {
 		Object.assign(this.$data, this.$options.data())
 		console.log(option)
+		if (option.orderNum) {
+			this.datas.string1 = option.orderNum
+			this.isFromAdd = true
+		}
 		this.getCustomers()
 		this.getProducts()
 		this.getContractList()

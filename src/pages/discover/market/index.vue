@@ -14,7 +14,7 @@
         <div class="items" v-if="active!==0">
             <div class="item ptb" v-for="(vo, key) in marketList" :key="key">
                 <div class="dis-flex l-baseline">
-                    <div class="f18 strong pr5">{{vo['邀约审批人']}}</div>
+                    <div class="f18 strong pr5">{{vo['客户名称']}}</div>
                     <div class="f12 cgey">{{vo['性别']}}</div>
                 </div>
                 <div class="dis-flex mb10">
@@ -45,72 +45,72 @@
 <script>
 const titles = new Map([['0', '市场活动'], ['1', '待审批'], ['2', '同意'], ['3', '拒绝']])
 export default {
-  data () {
-    return {
-      active: 0,
-      status: '',
-      list: [
-        { name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0` },
-        { name: '历史活动', url: `/pages/discover/marketAction/main?type=1` },
-        { name: '历史邀约客户', url: `/pages/discover/marketCustomer/main?type=2` }
-      ],
-      marketList: [],
-      page: 1
-    }
-  },
-  onLoad () {
-    Object.assign(this.$data, this.$options.data())
-  },
-  methods: {
-    link (url) {
-      console.log(url)
-      if (url) {
-        mpvue.navigateTo({ url })
-      }
-    },
-    onChange (event) {
-      this.active = event.mp.detail
-      console.log(this.active)
-      this.status = titles.get(String(event.mp.detail))
-      wx.setNavigationBarTitle({
-        title: titles.get(String(event.mp.detail))
-      })
-      this.getList()
-    },
-    onReachBottom () {
+	data() {
+		return {
+			active: 0,
+			status: '',
+			list: [
+				{ name: '可邀约活动', url: `/pages/discover/marketAction/main?type=0` },
+				{ name: '历史活动', url: `/pages/discover/marketAction/main?type=1` },
+				{ name: '历史邀约客户', url: `/pages/discover/marketCustomer/main?type=2` }
+			],
+			marketList: [],
+			page: 1
+		}
+	},
+	onLoad() {
+		Object.assign(this.$data, this.$options.data())
+	},
+	methods: {
+		link(url) {
+			console.log(url)
+			if (url) {
+				mpvue.navigateTo({ url })
+			}
+		},
+		onChange(event) {
+			this.active = event.mp.detail
+			console.log(this.active)
+			this.status = titles.get(String(event.mp.detail))
+			wx.setNavigationBarTitle({
+				title: titles.get(String(event.mp.detail))
+			})
+			this.getList()
+		},
+		onReachBottom() {
 		  return false
-      this.getList(this.page + 1)
-    },
-    getList (page = 1) {
-      let active = this.active
-      this._page = page
-      if (active === 1) {
-        this.$api.getDaiDiscoverMarkerExerciseList(page).then(this.resList)
-      } else if (active === 2) {
-        this.$api.getAgreatDiscoverMarkerExerciseList(page).then(this.resList)
-      } else if (active === 3) {
-        this.$api.getRejectDiscoverMarkerExerciseList(page).then(this.resList)
-      }
-    },
-    resList (res) {
-      let page = this._page
-      res = JSON.parse(res.RetValue)
-      console.log(res)
-      if (res.success) {
-        if (page === 1) {
-          this.marketList = res.rows
-        } else {
-          this.marketList = this.marketList.concat(res.rows)
-        }
-        if (res.rows.length > 0) this.page = page
-      }
-    },
-    detail (key) {
-      let url = `/pages/discover/details/main?type=${this.active}`
-      mpvue.setStorageSync('action_detail_info', this.marketList[key])
-      mpvue.navigateTo({ url })
-    }
-  }
+			this.getList(this.page + 1)
+		},
+		getList(page = 1) {
+			let active = this.active
+			this._page = page
+			if (active === 1) {
+				this.$api.getDaiDiscoverMarkerExerciseList(page).then(this.resList)
+			} else if (active === 2) {
+				this.$api.getAgreatDiscoverMarkerExerciseList(page).then(this.resList)
+			} else if (active === 3) {
+				this.$api.getRejectDiscoverMarkerExerciseList(page).then(this.resList)
+			}
+		},
+		resList(res) {
+			let page = this._page
+			res = JSON.parse(res.RetValue)
+			console.log(res)
+			if (res.success) {
+				if (page === 1) {
+					this.marketList = res.rows
+				} else {
+					this.marketList = this.marketList.concat(res.rows)
+				}
+				if (res.rows.length > 0) this.page = page
+			}
+		},
+		detail(key) {
+			let url = `/pages/discover/details/main?type=${this.active}`
+			mpvue.setStorageSync('action_detail_info', this.marketList[key])
+			mpvue.navigateTo({ url })
+		}
+	}
 }
 </script>
 

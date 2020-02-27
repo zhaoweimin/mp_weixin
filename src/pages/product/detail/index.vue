@@ -1,61 +1,60 @@
 <template>
-    <div class="main">
-        <div class="intro">
-            <div class="block big">
-                <div class="title">产品规模</div>
-                <div class="desc">
-                    <text>产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。</text>
-                </div>
-            </div>
-        </div>
+	<div class="main">
+		<div class="intro">
+			<div class="block big">
+				<div class="title">产品规模</div>
+				<div class="desc">
+					<text>{{ info['产品规模'] || '暂无' }}</text>
+				</div>
+			</div>
+		</div>
 
-        <div class="intro">
-            <div class="block big">
-                <div class="title">产品结构</div>
-                <div class="desc">
-                    <text>产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。</text>
-                </div>
-            </div>
-        </div>
-        <div class="intro">
-            <div class="block big">
-                <div class="title">产品结构描述</div>
-                <div class="desc">
-                    <text>产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。产品生产专业化的经济性，由于产品生产的分工和专业化，可以提高每个生产者操作效率，减少活劳动和物化劳动的消耗，提高经济效益。产品规模经济是最基本的规模经济形态。</text>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="intro">
+			<div class="block big">
+				<div class="title">产品结构</div>
+				<div class="desc">
+					<text>{{ info['产品结构'] || '暂无' }}</text>
+				</div>
+			</div>
+		</div>
+		<div class="intro">
+			<div class="block big">
+				<div class="title">产品结构描述</div>
+				<div class="desc">
+					<text>{{ info['产品结构描述'] || '暂无' }}</text>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      info: {}
-    }
-  },
+	data() {
+		return {
+			info: {}
+		}
+	},
 
-  components: {},
+	components: {},
 
-  onLoad () {
-    mpvue.getStorage({
-      // 获取本地缓存
-      key: 'product_info',
-      success: res => {
-        this.info = res.data
-        console.log(this.info)
-      }
-    })
-  },
+	onLoad() {
+		mpvue.getStorage({
+			// 获取本地缓存
+			key: 'product_info',
+			success: res => {
+				this.info = res.data
+			}
+		})
+	},
 
-  methods: {
-    changeNav (nav) {
-      console.log(nav)
-    }
-  },
+	methods: {
+		changeNav(nav) {
+			console.log(nav)
+		}
+	},
 
-  created () {}
+	created() {}
 }
 </script>
 

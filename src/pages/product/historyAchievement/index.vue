@@ -1,42 +1,53 @@
 <template>
-    <div class="main has-header">
-        <search placeholder="搜索" :rightButton="true"></search>
-        <div class="filter f13 clink">
-            <span class="iconfont iconshaixuan"></span> 筛选
-        </div>
-        <block v-for="(vo, key) in list" :key="key">
-            <!-- <card :info="vo" :type="3"></card> -->
-            <div class="contract-card history">
-                <div class="order">
-                    <div class="bg">业绩单号：{{vo['业绩单号']}}</div>
-                </div>
-                <div class="msg no-boder">
-                    <div class="line">
-                        <span class="key">客户姓名：{{vo['客户姓名']}}</span>
-                    </div>
-                </div>
-                <div class="msg">
-                    <div class="line"><span class="key pr10 strong">{{vo['产品名称']}}</span><span class="label-blue-outline">{{vo['产品类型']}}</span></div>
-                </div>
-                <div class="msg no-boder" @click="detail(key)">
-                    <div class="line"><span class="key">产品期限：{{vo['产品期限']}}个月</span></div>
-                    <div class="line"><span class="key">合同金额：{{vo['合同金额']}}</span></div>
-                    <div class="line"><span class="key">确认收款日：{{vo['确认收款日']}}</span></div>
-                </div>
-                <div class="msg no-boder">
-                    <div class="line"><span class="key">起息日：{{vo['起息日']}}</span></div>
-                    <div class="line"><span class="key">产品到期日：{{vo['产品到期日']}}</span></div>
-                </div>
-                <div class="add" @click="add(key)">追加</div>
-                <div class="status">
-                    <img class="img" src="../../../img/check_in.png" alt="">
-                </div>
-                <div class="icon">
-                    <span class="iconfont iconright cgey"></span>
-                </div>
-            </div>
-        </block>
-    </div>
+	<div class="main has-header">
+		<search placeholder="搜索" :rightButton="true"></search>
+		<div class="filter f13 clink"><span class="iconfont iconshaixuan"></span> 筛选</div>
+		<block v-for="(vo, key) in list" :key="key">
+			<!-- <card :info="vo" :type="3"></card> -->
+			<div class="contract-card history">
+				<div class="order">
+					<div class="bg">业绩单号：{{ vo['业绩单号'] }}</div>
+				</div>
+				<div class="msg no-boder">
+					<div class="line">
+						<span class="key">客户姓名：{{ vo['客户姓名'] }}</span>
+					</div>
+				</div>
+				<div class="msg">
+					<div class="line">
+						<span class="key pr10 strong">{{ vo['产品名称'] }}</span
+						><span class="label-blue-outline">{{ vo['产品类型'] }}</span>
+					</div>
+				</div>
+				<div class="msg no-boder" @click="detail(key)">
+					<div class="line">
+						<span class="key">产品期限：{{ vo['产品期限'] }}个月</span>
+					</div>
+					<div class="line">
+						<span class="key">合同金额：{{ vo['合同金额'] }}</span>
+					</div>
+					<div class="line">
+						<span class="key">确认收款日：{{ vo['确认收款日'] }}</span>
+					</div>
+				</div>
+				<div class="msg no-boder">
+					<div class="line">
+						<span class="key">起息日：{{ vo['起息日'] }}</span>
+					</div>
+					<div class="line">
+						<span class="key">产品到期日：{{ vo['产品到期日'] }}</span>
+					</div>
+				</div>
+				<div class="add" @click="add(vo['业绩单号'])">追加</div>
+				<div class="status">
+					<img class="img" src="../../../img/check_in.png" alt="" />
+				</div>
+				<div class="icon">
+					<span class="iconfont iconright cgey"></span>
+				</div>
+			</div>
+		</block>
+	</div>
 </template>
 
 <script>
@@ -89,8 +100,8 @@ export default {
 		changeNav(nav) {
 			this.nav_num = nav
 		},
-		add() {
-			let url = `../addAchievement/main`
+		add(orderNum) {
+			let url = `../achievementCreate/main?orderNum=${orderNum}`
 			mpvue.navigateTo({ url })
 		},
 		detail(key) {
