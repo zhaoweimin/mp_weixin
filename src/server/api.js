@@ -626,5 +626,36 @@ export default {
 			}
 		}
 		return this.post(obj)
+    },
+    
+    // 获取个人风险能力评测
+	getPersonTestResult(fnumber) {
+		let obj = {
+			url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+			data: {
+                id: "590acc29-43a7-9e04-b61b-39ed556179b0",
+                pageIndex: 0,
+                pageSize: 10,
+                Parameter: `escontain=true&deptid=1&r=1&fnumber=${fnumber}`,
+                filter: "{}",
+                rightvalueid: "590acc29-43a7-9e04-b61b-39ed556179b0"
+            }
+		}
+		return this.post(obj)
+    },
+    // 获取机构风险能力评测
+	getInstitutionTestResult(fnumber) {
+		let obj = {
+			url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
+			data: {
+                id: "b8f0700c-923f-682a-6253-39ed56b95c31",
+                pageIndex: 0,
+                pageSize: 10,
+                Parameter: `escontain=true&deptid=1&r=1&fnumber=${fnumber}`,
+                filter: "{}",
+                rightvalueid: "b8f0700c-923f-682a-6253-39ed56b95c31"
+            }
+		}
+		return this.post(obj)
 	}
 }

@@ -354,6 +354,7 @@ export default {
       key: 'cusInfo',
       success: res => {
         this.pageData = res.data
+        console.log('FNumber',this.pageData.FNumber)
         res.data.FChoIncom.split(',').forEach(item => {
           let idx = this.souce_income.findIndex(m => m.text === item)
           this.souce_income[idx].val = true
@@ -460,8 +461,8 @@ export default {
       console.log(e)
       this.seel = e.mp.detail.value
     },
-    lingQuestion (e) {
-      let url = `../quetions/main?type=1`
+    lingQuestion () {
+      let url = `../quetions/main?type=1&FNumber=${this.pageData.FNumber}`
       mpvue.navigateTo({ url })
     }
   }

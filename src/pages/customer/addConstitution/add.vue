@@ -11,13 +11,13 @@
             </div>
             <div class="flex chart">
                 <div class="count ml10">
-                    <div class="num">80</div>
+                    <div class="num">{{score}}</div>
                     <div class="text">风险测评得分</div>
                 </div>
                 <div class="pl20 flex-1">
-                    <div class="text mb10">客户风险等级：---</div>
-                    <div class="text mb10">风险承受能力类型：---</div>
-                    <div class="text">相匹配产品风险等级：---</div>
+                    <div class="text mb10">客户风险等级：{{gradeResult.grade}}</div>
+                    <div class="text mb10">风险承受能力类型：{{gradeResult.type}}</div>
+                    <div class="text">相匹配产品风险等级：{{gradeResult.proType}}</div>
                 </div>
             </div>
         </div>
@@ -199,6 +199,7 @@
 import card from '@/components/card'
 import comInput from '@/components/comInput'
 import Options from '@/utils/Options.js'
+import { getInstitutionGrade } from '@/utils/index.js'
 
 export default {
 	components: {
@@ -208,6 +209,9 @@ export default {
 	computed: {
 		updateSource() {
 			return this.source
+		},
+		gradeResult(){
+			return getInstitutionGrade(this.score)
 		}
 	},
 	onLoad() {
@@ -393,7 +397,8 @@ export default {
 				Fhumanhandwork: [],
 				Fdeliciousfood: [],
 				FTourism: []
-			}
+			},
+			score:80
 		}
 	},
 	created() {},

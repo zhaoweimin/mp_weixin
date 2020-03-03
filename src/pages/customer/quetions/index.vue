@@ -386,6 +386,17 @@ export default {
   onLoad (options) {
     this.type = options.type
     console.log('tag', options.type)
+    console.log('FNumber', options.FNumber)
+    if(!options.FNumber) return false
+    if(this.type === '1'){
+      this.$api.getPersonTestResult(options.FNumber).then(res=>{
+        console.log(res)
+      })
+    }else if(this.type === '2'){
+      this.$api.getInstitutionTestResult(options.FNumber).then(res=>{
+        console.log(res)
+      })
+    }
   },
   created () {
     // let app = getApp()
