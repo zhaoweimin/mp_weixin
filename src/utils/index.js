@@ -117,7 +117,60 @@ export function getInstitutionGrade(score) {
 	}
 	return rs
 }
-
+const personScoreArr = [
+	{'A':5,'B':7,'C':6,'D':2},
+	{'A':3,'B':5,'C':6,'D':7},
+	{'A':3,'B':6,'C':6,'D':7},
+	{'A':2,'B':5,'C':6,'D':7,'E':1},
+	{'A':4,'B':6,'C':7,'D':8,'E':9},
+	{'A':2,'B':5,'C':6,'D':7},
+	{'A':4,'B':3,'C':2,'D':1},
+	{'A':3,'B':4,'C':5},
+	{'A':3,'B':4,'C':5,'D':6},
+	{'A':1,'B':3,'C':5,'D':6,'E':7},
+	{'A':1,'B':5,'C':6,'D':7},
+	{'A':3,'B':5,'C':6,'D':2},
+	{'A':4,'B':5,'C':6,'D':7},
+	{'A':3,'B':5,'C':6,'D':7},
+	{'A':3,'B':5,'C':6,'D':7}
+]
+const institutionScoreArr = [
+	{'A':4,'B':2,'C':3,'D':5},
+	{'A':1,'B':3,'C':4,'D':6},
+	{'A':2,'B':3,'C':4,'D':5},
+	{'A':1,'B':2,'C':3,'D':4},
+	{'A':3,'B':2,'C':1,'D':0,'E':5},
+	{'A':1,'B':2,'C':3,'D':4},
+	{'A':5,'B':5,'C':5,'D':0},
+	{'A':1,'B':3,'C':5},
+	{'A':1,'B':3,'C':5,'D':7},
+	{'A':1,'B':2,'C':3,'D':4},
+	{'A':1,'B':3,'C':4,'D':6},
+	{'A':1,'B':3,'C':4,'D':5,'E':6},
+	{'A':1,'B':2,'C':3,'D':4,'E':0},
+	{'A':2,'B':4,'C':5},
+	{'A':1,'B':3,'C':4,'D':6},
+	{'A':2,'B':4,'C':5,'D':6,'E':3},
+	{'A':1,'B':3,'C':4,'D':6},
+	{'A':1,'B':2,'C':3,'D':5,'E':7},
+	{'A':3,'B':5,'C':4,'D':1}
+]
+// 获取个人评测分
+export function getPersonScore(answer) {
+	let score = 0
+	answer.forEach((item,index) => {
+		score+=Number(personScoreArr[index][item])
+	})
+	return score
+}
+// 获取机构评测分
+export function getInstitutionScore(answer) {
+	let score = 0
+	answer.forEach((item,index) => {
+		score+=Number(institutionScoreArr[index][item])
+	})
+	return score
+}
 export default {
 	formatNumber,
 	formatTime,

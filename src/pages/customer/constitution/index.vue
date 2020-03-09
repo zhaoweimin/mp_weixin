@@ -465,7 +465,7 @@ export default {
       console.log(e)
       this.seel = e.mp.detail.value
     },
-    lingQuestion (e) {
+    lingQuestion () {
       let url = `../quetions/main?type=2&FNumber=${this.pageData.FNumber}`
       mpvue.navigateTo({ url })
     }

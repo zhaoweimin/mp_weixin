@@ -200,6 +200,7 @@ import card from '@/components/card'
 import comInput from '@/components/comInput'
 import Options from '@/utils/Options.js'
 import { getInstitutionGrade } from '@/utils/index.js'
+import { mapState } from 'vuex'
 
 export default {
 	components: {
@@ -207,6 +208,9 @@ export default {
 		comInput
 	},
 	computed: {
+		...mapState({
+			score: state => state.score.num
+		}),
 		updateSource() {
 			return this.source
 		},
@@ -216,6 +220,7 @@ export default {
 	},
 	onLoad() {
 		Object.assign(this.$data, this.$options.data())
+	  	this.$store.commit('SET_NUM', 0)
 		console.log('ref=>', this.datas)
 	},
 	data() {
@@ -397,11 +402,9 @@ export default {
 				Fhumanhandwork: [],
 				Fdeliciousfood: [],
 				FTourism: []
-			},
-			score:80
+			}
 		}
 	},
-	created() {},
 	methods: {
 		setStep(type) {
 			if (type) {

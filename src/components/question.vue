@@ -13,13 +13,17 @@
 </template>
 <script>
 export default {
-  props: ['data', 'sort', 'sign'],
+  props: ['data', 'sort', 'sign', 'reveal'],
   data () {
     return {
       val: ''
     }
   },
-  mounted () {
+  mounted(){
+      this.val = this.reveal||''
+  },
+  onLoad (options) {
+		Object.assign(this.$data, this.$options.data())
   },
   methods: {
     choose (val) {
