@@ -43,7 +43,7 @@
             </div>
             <div class="flex chart">
                 <div class="count ml10">
-                    <div class="num">{{pageData.Fassessment}}</div>
+                    <div class="num">{{score||pageData.Fassessment}}</div>
                     <div class="text">风险测评得分</div>
                 </div>
                 <div class="flex-1 pl20">
@@ -258,6 +258,7 @@
 <script>
 import card from '@/components/card'
 import comInput from '@/components/comInput'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -265,6 +266,9 @@ export default {
     comInput
   },
   computed: {
+    ...mapState({
+			score: state => state.score.num
+		}),
     updateSource () {
       return this.source
     }
@@ -403,6 +407,7 @@ export default {
         console.log(9999, res.data)
       }
     })
+    this.$store.commit('SET_NUM', 0)
   },
   methods: {
     setOpen (key) {

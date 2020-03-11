@@ -479,6 +479,7 @@ export default {
           item.reveal = op?op.val:''
         })
       }
+			this.$forceUpdate();
     },
     onSubmit () {
       let result = []
@@ -505,7 +506,6 @@ export default {
     }
   },
   onLoad (options) {
-		Object.assign(this.$data, this.$options.data())
     this.type = options.type
     console.log('FNumber', options.FNumber)
     if(!options.FNumber) return false
