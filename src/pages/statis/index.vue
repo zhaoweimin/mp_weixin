@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="statis">
+        <!-- <div class="statis">
             <div class="title">
                 <div class="bg">
                     规模业绩
@@ -117,8 +117,8 @@
                     <div class="text">达成率</div>
                 </div>
             </div>
-        </div>
-        <div class="statis">
+        </div> -->
+        <!-- <div class="statis">
             <div class="title">
                 <div class="bg">
                     年化业绩
@@ -158,7 +158,7 @@
                     <div class="text">达成率</div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="statis">
             <div class="title">
                 <div class="bg">
@@ -215,9 +215,8 @@ export default {
         console.log(1)
         if (res.PromptMsg === "操作成功") {
           console.log(res.RetValue)
-          console.log(JSON.parse(res.RetValue))
-          this.info = JSON.parse(res.RetValue)
-          console.log(this.info)
+          let a = res.RetValue.replace(/\'/g,'"')
+          this.info = JSON.parse(a)
         } else {
           console.log(3)
         }

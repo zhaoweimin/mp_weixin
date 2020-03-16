@@ -78,13 +78,13 @@ export default {
     // 通过Action 修改vuex 里面保存的值
     this.$store.dispatch('setTest')
     // 通过store的state 获取vuex保存的值 (直接使用这个方法获取就好了 不用getters)
-    console.log(this.$store.state.test.test)
+    // console.log(this.$store.state.test.test)
     // 通过store的getters 获取vuex保存的值
-    console.log(this.$store.getters.getTest)
+    // console.log(this.$store.getters.getTest)
     // 测试直接在data 中赋值的store
-    console.log(this.textStore)
+    // console.log(this.textStore)
     this.account = this.$store.state.account.info.RetValue
-    console.log(this.account);
+    // console.log(this.account);
   },
 
   methods: {
