@@ -6,12 +6,12 @@
                 <div v-for="(item, index) in steps" :key="index" class="steps-item">
                     <div class="steps-item-dot" :class="[index===0?'active':'bg-blue']"></div>
                     <div class="steps-item-cnt f14" :class="{'border-l':index!==steps.length-1}">
-                        <div class="mt-2">{{item.person}}</div>
+                        <div class="mt-2">{{item.DoPerson}}</div>
                         <div class="pt5 pb10">
-                            <div>环节名称：{{item.stepName}}</div>
-                            <div v-if="item.status">处理状态：<span class="clink">{{item.status}}</span></div>
-                            <div v-if="item.time">处理时间：{{item.time}}</div>
-                            <div v-if="item.mark">处理意见：<span class="cgreen">{{item.mark}}</span></div>
+                            <div>环节名称：{{item.NodeName}}</div>
+                            <!-- <div v-if="item.status">处理状态：<span class="clink">{{item.status}}</span></div> -->
+                            <div v-if="item.DoTime">处理时间：{{item.DoTime}}</div>
+                            <div v-if="item.DoOpinion">处理意见：<span class="cgreen">{{item.DoOpinion}}</span></div>
                         </div>
                     </div>
                 </div>
@@ -19,11 +19,11 @@
         </div>
         <div class="bg-fff plr15 ptb20">
             <div class="f16 clink mb15">处理意见</div>
-            <textarea class="textarea bg-color plr10 ptb10 border-box" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"></textarea>
+            <textarea class="textarea bg-color plr10 ptb10 border-box" v-model="opinion"></textarea>
         </div>
         <div class="dis-flex a-between plr15 mt25 pb20">
-            <van-button plain type="info" custom-style="width: 160px">驳回</van-button>
-            <van-button type="info" custom-style="width: 160px">通过</van-button>
+            <van-button plain type="info" custom-style="width: 160px" @click="verify(0)">驳回</van-button>
+            <van-button type="info" custom-style="width: 160px" @click="verify(1)">通过</van-button>
         </div>
     </div>
 </template>
@@ -47,33 +47,9 @@ export default {
         sex: 1
       },
       active: 0,
-      steps: [
-        {
-          person: '管理员',
-          stepName: '起草',
-          status: '待审批',
-          time: '2019-09-09'
-        },
-        {
-          person: '管理员',
-          stepName: '会审3',
-          time: '2019-09-09',
-          proccess: '提交kingdee管理员进行会审'
-        },
-        {
-          person: '管理员',
-          stepName: '会审3',
-          time: '2019-09-09',
-          mark: '管理员已审核，系统自动通过'
-        },
-        {
-          person: '管理员',
-          stepName: '会审3',
-          time: '2019-09-09',
-          mark: '管理员已审核，系统自动通过'
-        }
-      ],
-      msg: {}
+      steps: [],
+      msg: {},
+      opinion:''
     }
   },
 
@@ -81,12 +57,37 @@ export default {
 		this.msg = mpvue.getStorageSync('detail0')
     console.log('=>>', mpvue.getStorageSync('detail0'))
     this.getInfo()
+    this.getFlowsLog()
 	},
 
   methods: {
     getInfo () {
       this.$api.getApplayRes(this.msg.flowid, 10818).then(res => {
         console.log(res);
+      })
+    },
+
+    // 获取流程审批日志
+    getFlowsLog(){
+			let userid = this.$store.state.account.info.RetValue.UserID
+      let MessageID = mpvue.getStorageSync('MessageID')
+      this.$api.getFlowsLog(MessageID, userid).then(res=>{
+        console.log(JSON.parse(JSON.parse(res.RetValue).RetValue))
+        this.steps = JSON.parse(JSON.parse(res.RetValue).RetValue)
+      })
+    },
+
+    // 审核
+    verify(type){
+      let MessageID = mpvue.getStorageSync('MessageID')
+      this.$api.verify(type, MessageID, this.opinion).then(res=>{
+        mpvue.showToast({
+					title: '操作成功',
+					icon: 'none'
+        })
+        setTimeout(()=>{
+          mpvue.navigateBack({ delta: 2 })
+        }, 1000)
       })
     }
   }

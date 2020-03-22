@@ -17,7 +17,7 @@ import navbar from '@/components/navbar'
 import fliter from '@/components/fliterNav'
 import card from '@/components/taskCard'
 import search from '@/components/search'
-
+import {formatTime2} from '@/utils'
 export default {
 	data() {
 		return {
@@ -49,13 +49,20 @@ export default {
 			this.$api.getTaskList(page).then(res => {
 				res = JSON.parse(res.RetValue)
 				console.log(res)
+				let today = formatTime2().split(' ')[0]
+				let temp = res.rows
+				if(this.nav_num===0){
+					temp = temp.filter(f=>f.ReceiveTime.split(' ')[0]===today)
+				}else{
+					temp = temp.filter(f=>f.ReceiveTime.split(' ')[0]!==today)
+				}
 				if (res.success) {
 					if (page === 1) {
-						this.list = res.rows
+						this.list = temp
 					} else {
-						this.list = this.list.concat(res.rows)
+						this.list = this.list.concat(temp)
 					}
-					if (res.rows.length > 0) this.page = page
+					if (temp.length > 0) this.page = page
 				}
 			})
 		},
@@ -65,7 +72,9 @@ export default {
 			this.getList()
 		},
 		send() {
+			console.log(url)
 			let url = '/pages/task/detail/main?id='
+			console.log('url',url)
 			mpvue.navigateTo({ url })
 		}
 	},

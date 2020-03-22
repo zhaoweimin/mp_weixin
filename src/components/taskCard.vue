@@ -1,5 +1,5 @@
 <template>
-    <div class="contract-card task-card" @click="detail(info.flowid)">
+    <div class="contract-card task-card" @click="detail(info.flowid, info.MessageID)">
         <div class="order">
             <div class="bg">流程号：{{info.flowid}}</div>
         </div>
@@ -20,7 +20,7 @@
             </div>
             <div class="line">
                 <span class="key">发送人：{{info.SendUserName || '--'}}</span>
-                <span class="time">登记时间：2019-03-16 10:30</span>
+                <span class="time">登记时间：{{info.ReceiveTime || '--'}}</span>
             </div>
         </div>
     </div>
@@ -37,10 +37,12 @@ export default {
 		}
 	},
 	methods: {
-		detail(id) {
-			this.$api.getTaskInfo(this.info.FlowModelID, { flowid: id }).then(res => {
+		detail(id,MessageID) {
+			let userid = this.$store.state.account.info.RetValue.UserID
+			this.$api.getTaskInfo(this.info.FlowModelID, { flowid: id }, userid).then(res => {
 				res = JSON.parse(res.RetValue)
 				console.log(res)
+				console.log(1)
 				let id = ''
 				if (this.info.name === '提成申请') {
 					id = 0
@@ -51,7 +53,11 @@ export default {
 				} else if (this.info.name === '产品预约') {
 					id = 4
 				}
+				console.log(2)
 				mpvue.setStorageSync(`detail${id}`, res.rows[0])
+				console.log(3)
+				mpvue.setStorageSync(`MessageID`, MessageID)
+				console.log(4)
 				mpvue.navigateTo({ url: `/pages/task/detail${id}/main` })
 			})
 		}

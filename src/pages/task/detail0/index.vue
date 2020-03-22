@@ -11,7 +11,7 @@
             <comInput :type="0" :titleDark="false" title="到账日" :value="info['到账日']"></comInput>
             <comInput :type="0" :titleDark="false" title="到期日" :value="info['到期日']"></comInput>
             <comInput :type="0" :titleDark="false" title="认购费" :value="info['认购费']"></comInput>
-            <comInput :type="0" :titleDark="false" title="提成方式" :value="info['提成方式']"></comInput>
+            <comInput :type="0" :titleDark="false" title="提奖方式" :value="info['提奖方式']"></comInput>
             <comInput :type="0" :titleDark="false" title="提奖率" :value="info['提奖率']"></comInput>
             <comInput :type="0" :titleDark="false" title="本次提奖" :value="info['本次提奖金额']"></comInput>
             <comInput :type="0" :titleDark="false" title="部门经理" :value="info['理财经理']"></comInput>

@@ -220,20 +220,63 @@ export default {
 	},
 
 	// 待办详情
-	getTaskInfo(id, filter) {
+	getTaskInfo(id, filter, userid) {
 		let obj = {
 			url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
 			data: {
 				id: '27458a0c-3000-4f36-8b93-81a82f59093f',
-				userid: '',
-				index: 0,
-				Parameter: ``,
+				userid: userid,
 				rightvalueid: id,
 				formid: id,
+				Parameter: '',
 				filter: JSON.stringify(filter),
 				urlpara: '',
+				pageIndex: 0,
+				pageSize: 20,
 				sortField: '',
 				sortOrder: ''
+			}
+		}
+		return this.post(obj)
+	},
+
+	// 审核 type: 通过-1,驳回-0
+	verify(type, messageid, opinion) {
+		let data = {}
+		if (type === 1) {
+			data = {
+				id: '216c84a1-2d22-ea11-837e-39f22f249db9',
+				service: 'SendFlow', // 审核
+				messageid: messageid, // 流程MessageID
+				opinion: opinion, // 处理意见
+				nextUserID: '0'
+			}
+		} else {
+			data = {
+				id: '216c84a1-2d22-ea11-837e-39f22f249db9',
+				service: 'RejectFlow', // 驳回
+				messageid: messageid, // 流程MessageID
+				opinion: opinion, // 处理意见
+				nextUserID: '0',
+				specRight: '90', // 90 重审或按流程；89仅重审；91仅按流程
+				nextNodeID: 2 // 驳回到的环节号
+			}
+		}
+		let obj = {
+			url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+			data
+		}
+		return this.post(obj)
+	},
+
+	// 获取流程审批日志
+	getFlowsLog(messageid, userID) {
+		let obj = {
+			url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
+			data: {
+				id: '4c37c469-7122-ea11-837e-39f230e0d56c',
+				messageid: messageid, // 流程MessageID
+				userID: userID // 用户UserID（默认10818）
 			}
 		}
 		return this.post(obj)
