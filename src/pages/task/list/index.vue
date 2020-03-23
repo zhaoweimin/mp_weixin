@@ -34,16 +34,14 @@ export default {
 		card,
 		search
 	},
-
-	mounted() {
+	onShow() {
+		console.log(1111)
 		this.getList()
 	},
-
 	onReachBottom() {
 		return false
 		this.getList(this.page + 1)
 	},
-
 	methods: {
 		getList(page = 1) {
 			this.$api.getTaskList(page).then(res => {
@@ -51,10 +49,10 @@ export default {
 				console.log(res)
 				let today = formatTime2().split(' ')[0]
 				let temp = res.rows
-				if(this.nav_num===0){
-					temp = temp.filter(f=>f.ReceiveTime.split(' ')[0]===today)
-				}else{
-					temp = temp.filter(f=>f.ReceiveTime.split(' ')[0]!==today)
+				if (this.nav_num === 0) {
+					temp = temp.filter(f => f.ReceiveTime.split(' ')[0] === today)
+				} else {
+					temp = temp.filter(f => f.ReceiveTime.split(' ')[0] !== today)
 				}
 				if (res.success) {
 					if (page === 1) {
@@ -74,7 +72,7 @@ export default {
 		send() {
 			console.log(url)
 			let url = '/pages/task/detail/main?id='
-			console.log('url',url)
+			console.log('url', url)
 			mpvue.navigateTo({ url })
 		}
 	},

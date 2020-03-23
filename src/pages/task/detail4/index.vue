@@ -1,36 +1,36 @@
 <template>
-    <div class="customer">
-        <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">客户信息</div>
-            <comInput :type="0" :titleDark="false" title="预约编号" :isSpecialColorTxt="true" :value="info['预约编号']"></comInput>
-            <comInput :type="0" :titleDark="false" title="客户姓名" :value="info['客户姓名']"></comInput>
-            <comInput :type="0" :titleDark="false" title="证件类型" :value="info['证件类型']"></comInput>
-            <comInput :type="0" :titleDark="false" title="证件号码" :value="info['证件号码']"></comInput>
-        </div>
-        <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">产品信息</div>
-            <comInput :type="0" :titleDark="false" title="产品类别" :value="info['产品类别']"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品编号" :value="info['产品编号']"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品名称" :value="info['产品名称']"></comInput>
-            <comInput :type="0" :titleDark="false" title="产品期限" :value="info['产品期限']"></comInput>
-            <comInput :type="0" :titleDark="false" title="募集账户" :value="info['募集账户']"></comInput>
-            <comInput :type="0" :titleDark="false" title="已募集份数" :value="info['已募集份数']"></comInput>
-            <comInput :type="0" :titleDark="false" title="已募集金额" :value="info['已募集金额']"></comInput>
-            <comInput :type="0" :titleDark="false" title="剩余募集金额" :value="info['剩余募集金额']"></comInput>
-            <comInput :type="0" :titleDark="false" title="已预约人数" :value="info['已预约人数']"></comInput>
-            <comInput :type="0" :titleDark="false" title="已预约金额" :value="info['已预约金额']"></comInput>
-            <comInput :type="0" :titleDark="false" title="剩余可预约" :value="info['剩余可预约']"></comInput>
-        </div>
-        <div class="bg-fff mt10">
-            <div class="plr15 ptb15 f16 clink strong">付款信息</div>
-            <comInput :type="0" :titleDark="false" title="预打款日期" :value="info['预约付款日期']"></comInput>
-            <comInput :type="0" :titleDark="false" title="实际打款日期" :value="info['实际打款日期']"></comInput>
-            <comInput :type="0" :titleDark="false" title="出资金额" :value="info['出资金额']"></comInput>
-        </div>
-        <div class="plr15 mt25 pb20">
-            <van-button type="info" size="large">进入审批</van-button>
-        </div>
-    </div>
+	<div class="customer">
+		<div class="bg-fff mt10">
+			<div class="plr15 ptb15 f16 clink strong">客户信息</div>
+			<comInput :type="0" :titleDark="false" title="预约编号" :isSpecialColorTxt="true" :value="info['预约编号']"></comInput>
+			<comInput :type="0" :titleDark="false" title="客户姓名" :value="info['客户姓名']"></comInput>
+			<comInput :type="0" :titleDark="false" title="证件类型" :value="info['证件类型']"></comInput>
+			<comInput :type="0" :titleDark="false" title="证件号码" :value="info['证件号码']"></comInput>
+		</div>
+		<div class="bg-fff mt10">
+			<div class="plr15 ptb15 f16 clink strong">产品信息</div>
+			<comInput :type="0" :titleDark="false" title="产品类别" :value="info['产品类别']"></comInput>
+			<comInput :type="0" :titleDark="false" title="产品编号" :value="info['产品编号']"></comInput>
+			<comInput :type="0" :titleDark="false" title="产品名称" :value="info['产品名称']"></comInput>
+			<comInput :type="0" :titleDark="false" title="产品期限" :value="info['产品期限']"></comInput>
+			<comInput :type="0" :titleDark="false" title="募集账户" :value="info['募集账户']"></comInput>
+			<comInput :type="0" :titleDark="false" title="已募集份数" :value="info['已募集份数']"></comInput>
+			<comInput :type="0" :titleDark="false" title="已募集金额" :value="info['已募集金额']"></comInput>
+			<comInput :type="0" :titleDark="false" title="剩余募集金额" :value="info['剩余募集金额']"></comInput>
+			<comInput :type="0" :titleDark="false" title="已预约人数" :value="info['已预约人数']"></comInput>
+			<comInput :type="0" :titleDark="false" title="已预约金额" :value="info['已预约金额']"></comInput>
+			<comInput :type="0" :titleDark="false" title="剩余可预约" :value="info['剩余可预约']"></comInput>
+		</div>
+		<div class="bg-fff mt10">
+			<div class="plr15 ptb15 f16 clink strong">付款信息</div>
+			<comInput :type="0" :titleDark="false" title="预打款日期" :value="info['预约付款日期']"></comInput>
+			<comInput :type="0" :titleDark="false" title="实际打款日期" :value="info['实际打款日期']"></comInput>
+			<comInput :type="0" :titleDark="false" title="出资金额" :value="info['出资金额']"></comInput>
+		</div>
+		<div class="plr15 mt25 pb20">
+			<van-button type="info" size="large" @click="link">进入审批</van-button>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -48,11 +48,17 @@ export default {
 			info: {}
 		}
 	},
+	methods: {
+		link() {
+			let url = '/pages/task/approval/main?id='
+			mpvue.navigateTo({ url })
+		}
+	},
 	onLoad() {
+		Object.assign(this.$data, this.$options.data())
 		this.info = mpvue.getStorageSync('detail4')
 		console.log('=>>', mpvue.getStorageSync('detail4'))
-	},
-	created() {}
+	}
 }
 </script>
 

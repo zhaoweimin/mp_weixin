@@ -58,6 +58,8 @@
 		"pages/task/detail3/main",
 		"pages/task/detail4/main",
 		"pages/task/detail5/main",
+		"pages/task/detail6/main",
+		"pages/task/detail7/main",
 
 		"pages/success/main",
 		"pages/statis/main"

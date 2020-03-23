@@ -37,41 +37,15 @@
 					<div class="item f12">{{ vo.date6 }}</div>
 					<div class="item f12">{{ vo.cuts ? '✓' : '--' }}</div>
 				</div>
-				<!-- 
-                <div class="list ta-c dis-flex l-center">
-                    <div class="item f12">第二次</div>
-                    <div class="item f12">2019-06-06</div>
-                    <div class="item f12">523452</div>
-                    <div class="item f12">2019-06-09</div>
-                    <div class="item f12">--</div>
-                </div>
-                <div class="list ta-c dis-flex l-center">
-                    <div class="item f12">第三次</div>
-                    <div class="item f12">2019-06-06</div>
-                    <div class="item f12">523452</div>
-                    <div class="item f12">2019-06-09</div>
-                    <div class="item f12"></div>
-                </div>
-                <div class="list ta-c dis-flex l-center">
-                    <div class="item f12">第四次</div>
-                    <div class="item f12">2019-06-06</div>
-                    <div class="item f12">523452</div>
-                    <div class="item f12">2019-06-09</div>
-                    <div class="item f12">✓</div>
-                </div>
-                <div class="list ta-c dis-flex l-center">
-                    <div class="item f12">第五次</div>
-                    <div class="item f12">2019-06-06</div>
-                    <div class="item f12">523452</div>
-                    <div class="item f12">2019-06-09</div>
-                    <div class="item f12">✓</div>
-                </div> -->
 			</div>
 			<div class="plr15 pb20">
 				<div class="cgey f16 ptb15">说明</div>
 				<div class="bg-color">
 					<textarea class="f16 ptb10 plr10" name="" id="" cols="30" rows="10" :value="info['说明']" disabled></textarea>
 				</div>
+			</div>
+			<div class="plr15 mt25 pb20">
+				<van-button type="info" size="large" @click="link">进入审批</van-button>
 			</div>
 		</div>
 	</div>
@@ -95,21 +69,13 @@ export default {
 	},
 
 	onLoad(options) {
-		this.id = options.id
-		mpvue.getStorage({
-			// 获取本地缓存
-			key: 'interest_info',
-			success: res => {
-				this.info = res.data
-				console.log(this.info)
-			}
-		})
-		this.getInfo()
-		console.log(this.id)
+		Object.assign(this.$data, this.$options.data())
+		this.info = mpvue.getStorageSync('detail6')
+		this.getInfo(this.info.flowid)
 	},
 	methods: {
-		getInfo() {
-			this.$api.getInterestDetail(this.id).then(res => {
+		getInfo(id) {
+			this.$api.getInterestDetail(id).then(res => {
 				res = JSON.parse(res.RetValue)
 				console.log(res)
 				this.list = res.rows.map(m => {
@@ -119,6 +85,10 @@ export default {
 					return info
 				})
 			})
+		},
+		link() {
+			let url = '/pages/task/approval/main?id='
+			mpvue.navigateTo({ url })
 		}
 	}
 }
