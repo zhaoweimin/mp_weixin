@@ -1,55 +1,55 @@
 <template>
-    <div class="main">
-        <div class="block" @click="create(1)">
-            <img v-if="type==='1'" src="../../../img/questions.png" alt="" mode="aspectFit">
-            <img v-else src="../../../img/questions1.png" alt="" mode="aspectFit">
-        </div>
-        <div v-if="type==='1'">
-            <div class="question-block">
-                <div class="title">一、基本信息</div>
-                <div class="input-question">
-                    <div class="flex">
-                        <div class="key">1、客户姓名</div>
-                        <div class="val flex-1">
-                            <input type="text" placeholder="请输入用户姓名" disabled :value="revealData.string1" placeholder-class="cplaceholder">
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="key"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;身份号码</div>
-                        <div class="val flex-1">
-                            <input type="text" placeholder="请输入身份号码" disabled :value="revealData.string2" placeholder-class="cplaceholder">
-                        </div>
-                    </div>
-                </div>
-                <question v-for="(vo, key) in questions1" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
-            </div>
-            <div class="question-block">
-                <div class="title">二、财务状况</div>
-                <question v-for="(vo, key) in questions2" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
-            </div>
-            <div class="question-block">
-                <div class="title">三、投资知识</div>
-                <question v-for="(vo, key) in questions3" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
-            </div>
-            <div class="question-block">
-                <div class="title">四、投资目标</div>
-                <question v-for="(vo, key) in questions4" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
-            </div>
-            <div class="question-block">
-                <div class="title">五、风险偏好</div>
-                <question v-for="(vo, key) in questions5" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
-            </div>
-        </div>
-        <div v-if="type==='2'">
-            <div class="question-block">
-                <question v-for="(vo, key) in questions_constitution" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
-            </div>
-        </div>
+	<div class="main">
+		<div class="block" @click="create(1)">
+			<img v-if="type === '1'" src="../../../img/questions.png" alt="" mode="aspectFit" />
+			<img v-else src="../../../img/questions1.png" alt="" mode="aspectFit" />
+		</div>
+		<div v-if="type === '1'">
+			<div class="question-block">
+				<div class="title">一、基本信息</div>
+				<div class="input-question">
+					<div class="flex">
+						<div class="key">1、客户姓名</div>
+						<div class="val flex-1">
+							<input type="text" placeholder="请输入用户姓名" :value="revealData.string1" placeholder-class="cplaceholder" />
+						</div>
+					</div>
+					<div class="flex">
+						<div class="key">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;身份号码</div>
+						<div class="val flex-1">
+							<input type="text" placeholder="请输入身份号码" :value="revealData.string2" placeholder-class="cplaceholder" />
+						</div>
+					</div>
+				</div>
+				<question v-for="(vo, key) in questions1" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
+			</div>
+			<div class="question-block">
+				<div class="title">二、财务状况</div>
+				<question v-for="(vo, key) in questions2" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
+			</div>
+			<div class="question-block">
+				<div class="title">三、投资知识</div>
+				<question v-for="(vo, key) in questions3" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
+			</div>
+			<div class="question-block">
+				<div class="title">四、投资目标</div>
+				<question v-for="(vo, key) in questions4" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
+			</div>
+			<div class="question-block">
+				<div class="title">五、风险偏好</div>
+				<question v-for="(vo, key) in questions5" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
+			</div>
+		</div>
+		<div v-if="type === '2'">
+			<div class="question-block">
+				<question v-for="(vo, key) in questions_constitution" :key="key" :data="vo" :sort="vo.num" :sign="vo.sign" @change="change" :reveal="vo.reveal"></question>
+			</div>
+		</div>
 
-        <div class="line-bar">
-            <van-button type="info" @click="onSubmit">确 认</van-button>
-        </div>
-    </div>
+		<div class="line-bar">
+			<van-button type="info" @click="onSubmit">确 认</van-button>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -65,21 +65,36 @@ export default {
 					num: 2,
 					sign: 'string3',
 					question: '客户年龄介于',
-					options: [{ val: 'A', text: '18-30岁' }, { val: 'B', text: '31-50岁' }, { val: 'C', text: '51-65岁' }, { val: 'D', text: '高于65岁' }],
+					options: [
+						{ val: 'A', text: '18-30岁' },
+						{ val: 'B', text: '31-50岁' },
+						{ val: 'C', text: '51-65岁' },
+						{ val: 'D', text: '高于65岁' }
+					],
 					reveal: ''
 				},
 				{
 					num: 3,
 					sign: 'string6',
 					question: '客户的学历',
-					options: [{ val: 'A', text: '高中及以下' }, { val: 'B', text: '中专或大专' }, { val: 'C', text: '本科' }, { val: 'D', text: '硕士及以上' }],
+					options: [
+						{ val: 'A', text: '高中及以下' },
+						{ val: 'B', text: '中专或大专' },
+						{ val: 'C', text: '本科' },
+						{ val: 'D', text: '硕士及以上' }
+					],
 					reveal: ''
 				},
 				{
 					num: 3,
 					sign: 'string7',
 					question: '客户的职业',
-					options: [{ val: 'A', text: '无固定职业' }, { val: 'B', text: '专业技术人员' }, { val: 'C', text: '一般企事业单位员工' }, { val: 'D', text: '金融行业一般从业人员' }],
+					options: [
+						{ val: 'A', text: '无固定职业' },
+						{ val: 'B', text: '专业技术人员' },
+						{ val: 'C', text: '一般企事业单位员工' },
+						{ val: 'D', text: '金融行业一般从业人员' }
+					],
 					reveal: ''
 				}
 			],
@@ -100,21 +115,36 @@ export default {
 					num: 2,
 					sign: 'string9',
 					question: '客户的家庭可支配年收入为（折合人民币）',
-					options: [{ val: 'A', text: '50万元以下' }, { val: 'B', text: '50-100万元' }, { val: 'C', text: '100-500万元' }, { val: 'D', text: '500-1000万元' }],
+					options: [
+						{ val: 'A', text: '50万元以下' },
+						{ val: 'B', text: '50-100万元' },
+						{ val: 'C', text: '100-500万元' },
+						{ val: 'D', text: '500-1000万元' }
+					],
 					reveal: ''
 				},
 				{
 					num: 3,
 					sign: 'string10',
 					question: '客户每年的家庭可支配收入中，可用于金融投资（储蓄存款除外）的比例为？',
-					options: [{ val: 'A', text: '小于10%' }, { val: 'B', text: '10%至25%' }, { val: 'C', text: '25%至50%' }, { val: 'D', text: '大于50%' }],
+					options: [
+						{ val: 'A', text: '小于10%' },
+						{ val: 'B', text: '10%至25%' },
+						{ val: 'C', text: '25%至50%' },
+						{ val: 'D', text: '大于50%' }
+					],
 					reveal: ''
 				},
 				{
 					num: 4,
 					sign: 'string11',
 					question: '客户是否有尚未清偿的数额较大的债务，如有，其性质是',
-					options: [{ val: 'A', text: '没有' }, { val: 'B', text: '有，住房抵押贷款等长期定额债务' }, { val: 'C', text: '有，信用卡欠款、消费信贷' }, { val: 'D', text: '有，亲戚朋友借款' }],
+					options: [
+						{ val: 'A', text: '没有' },
+						{ val: 'B', text: '有，住房抵押贷款等长期定额债务' },
+						{ val: 'C', text: '有，信用卡欠款、消费信贷' },
+						{ val: 'D', text: '有，亲戚朋友借款' }
+					],
 					reveal: ''
 				}
 			],
@@ -146,7 +176,13 @@ export default {
 					num: 3,
 					sign: 'string14',
 					question: '客户有多少年投资基金、股票、信托、私募证券或金融衍生产品等风险投资品的经验？',
-					options: [{ val: 'A', text: '没有经验' }, { val: 'B', text: '少于2年' }, { val: 'C', text: '2至5年' }, { val: 'D', text: '5至10年' }, { val: 'E', text: '10年以上' }],
+					options: [
+						{ val: 'A', text: '没有经验' },
+						{ val: 'B', text: '少于2年' },
+						{ val: 'C', text: '2至5年' },
+						{ val: 'D', text: '5至10年' },
+						{ val: 'E', text: '10年以上' }
+					],
 					reveal: ''
 				}
 			],
@@ -155,7 +191,12 @@ export default {
 					num: 1,
 					sign: 'string15',
 					question: '客户计划的投资期限是多久',
-					options: [{ val: 'A', text: '1年以下' }, { val: 'B', text: '1至3年' }, { val: 'C', text: '3至5年' }, { val: 'D', text: '5年以上' }],
+					options: [
+						{ val: 'A', text: '1年以下' },
+						{ val: 'B', text: '1至3年' },
+						{ val: 'C', text: '3至5年' },
+						{ val: 'D', text: '5年以上' }
+					],
 					reveal: ''
 				},
 				{
@@ -200,7 +241,12 @@ export default {
 					num: 3,
 					sign: 'string19',
 					question: '客户认为自己能承受的最大投资损失是多少',
-					options: [{ val: 'A', text: '10%以内' }, { val: 'B', text: '10%-30%' }, { val: 'C', text: '30%-50%' }, { val: 'D', text: '超过50%' }],
+					options: [
+						{ val: 'A', text: '10%以内' },
+						{ val: 'B', text: '10%-30%' },
+						{ val: 'C', text: '30%-50%' },
+						{ val: 'D', text: '超过50%' }
+					],
 					reveal: ''
 				}
 			],
@@ -209,28 +255,48 @@ export default {
 					num: 1,
 					sign: 'string2',
 					question: '客户的单位的性质：',
-					options: [{ val: 'A', text: '国有企事业单位' }, { val: 'B', text: '非上市民营企业' }, { val: 'C', text: '外资企业' }, { val: 'D', text: '上市公司' }],
+					options: [
+						{ val: 'A', text: '国有企事业单位' },
+						{ val: 'B', text: '非上市民营企业' },
+						{ val: 'C', text: '外资企业' },
+						{ val: 'D', text: '上市公司' }
+					],
 					reveal: ''
 				},
 				{
 					num: 2,
 					sign: 'string3',
 					question: '客户单位的净资产规模为：',
-					options: [{ val: 'A', text: '500万元以下' }, { val: 'B', text: '500万元-2000万元' }, { val: 'C', text: '2000万元-1亿元' }, { val: 'D', text: '超过1亿元' }],
+					options: [
+						{ val: 'A', text: '500万元以下' },
+						{ val: 'B', text: '500万元-2000万元' },
+						{ val: 'C', text: '2000万元-1亿元' },
+						{ val: 'D', text: '超过1亿元' }
+					],
 					reveal: ''
 				},
 				{
 					num: 3,
 					sign: 'string4',
 					question: '客户单位年营业收入为',
-					options: [{ val: 'A', text: '500万元以下' }, { val: 'B', text: '500万元-2000万元' }, { val: 'C', text: '2000万元-1亿元' }, { val: 'D', text: '超过1亿元' }],
+					options: [
+						{ val: 'A', text: '500万元以下' },
+						{ val: 'B', text: '500万元-2000万元' },
+						{ val: 'C', text: '2000万元-1亿元' },
+						{ val: 'D', text: '超过1亿元' }
+					],
 					reveal: ''
 				},
 				{
 					num: 4,
 					sign: 'string5',
 					question: '客户单位证券账户资产为：',
-					options: [{ val: 'A', text: '300万元以内' }, { val: 'B', text: '300万元-1000万元' }, { val: 'C', text: '1000万元-3000万元' }, { val: 'D', text: '超过3000万元' }],
+					options: [
+						{ val: 'A', text: '300万元以内' },
+						{ val: 'B', text: '300万元-1000万元' },
+						{ val: 'C', text: '1000万元-3000万元' },
+						{ val: 'D', text: '超过3000万元' }
+					],
 					reveal: ''
 				},
 				{
@@ -298,14 +364,24 @@ export default {
 					num: 10,
 					sign: 'string11',
 					question: '有一个投资者一个月内做了15笔5交易（同一个品种买卖各一次算一笔）客户单位认为这样的交易频率：',
-					options: [{ val: 'A', text: '太高了' }, { val: 'B', text: '偏高' }, { val: 'C', text: '正常' }, { val: 'D', text: '偏低' }],
+					options: [
+						{ val: 'A', text: '太高了' },
+						{ val: 'B', text: '偏高' },
+						{ val: 'C', text: '正常' },
+						{ val: 'D', text: '偏低' }
+					],
 					reveal: ''
 				},
 				{
 					num: 11,
 					sign: 'string12',
 					question: '过去一年时间内，客户购买的不同金融产品（含同一类型的不同金融产品）的数量是：',
-					options: [{ val: 'A', text: '5个以下' }, { val: 'B', text: '6至10个' }, { val: 'C', text: '11至15个' }, { val: 'D', text: '16个以上' }],
+					options: [
+						{ val: 'A', text: '5个以下' },
+						{ val: 'B', text: '6至10个' },
+						{ val: 'C', text: '11至15个' },
+						{ val: 'D', text: '16个以上' }
+					],
 					reveal: ''
 				},
 				{
@@ -338,7 +414,11 @@ export default {
 					num: 14,
 					sign: 'string15',
 					question: '客户单位用于证券投资等大部分资金不会用作其他用途的时间段为：',
-					options: [{ val: 'A', text: '短期——0到1年' }, { val: 'B', text: '中期——1到5年' }, { val: 'C', text: '长期——5年以上' }],
+					options: [
+						{ val: 'A', text: '短期——0到1年' },
+						{ val: 'B', text: '中期——1到5年' },
+						{ val: 'C', text: '长期——5年以上' }
+					],
 					reveal: ''
 				},
 				{
@@ -370,7 +450,12 @@ export default {
 					num: 17,
 					sign: 'string18',
 					question: '客户单位认为自己能承担等最大投资损失是多少：',
-					options: [{ val: 'A', text: '10%以内' }, { val: 'B', text: '10%-30%' }, { val: 'C', text: '30%-50%' }, { val: 'D', text: '超过50%' }],
+					options: [
+						{ val: 'A', text: '10%以内' },
+						{ val: 'B', text: '10%-30%' },
+						{ val: 'C', text: '30%-50%' },
+						{ val: 'D', text: '超过50%' }
+					],
 					reveal: ''
 				},
 				{
@@ -516,13 +601,13 @@ export default {
 			this.$api.getPersonTestResult(options.FNumber).then(res => {
 				console.log(res)
 				this.revealData = res.rows[0]
-				this.revealFunc(res.rows[0])
+				// this.revealFunc(res.rows[0])
 			})
 		} else if (this.type === '2') {
 			this.$api.getInstitutionTestResult(options.FNumber).then(res => {
 				console.log(res)
 				this.revealData = res.rows[0]
-				this.revealFunc(res.rows[0])
+				// this.revealFunc(res.rows[0])
 			})
 		}
 	}
