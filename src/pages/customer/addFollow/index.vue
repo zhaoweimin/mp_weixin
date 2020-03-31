@@ -226,7 +226,8 @@ export default {
 					return {
 						FCustomerType: m.FCustomerType,
 						FnowInvestment: m.FnowInvestment,
-						FsumInvestment: m.FsumInvestment
+						FsumInvestment: m.FsumInvestment,
+						FNumber: m.FNumber
 					}
 				})
 			})
@@ -271,6 +272,7 @@ export default {
 				this.datas.string16 = this.customers[data.index].FCustomerType
 				this.datas.string24 = this.customers[data.index].FnowInvestment
 				this.datas.string25 = this.customers[data.index].FsumInvestment
+				this.datas.string10 = this.customers[data.index].FNumber
 			}
 			if (data.key === 'string7') {
 				this.datas.string6 = this.follows[data.index].deptName
@@ -330,7 +332,7 @@ export default {
 				string7: '',
 				string6: ''
 			}
-			mpvue.removeStorageSync('follow_info')
+			// mpvue.removeStorageSync('follow_info')
 		} else {
 			this.getCustomers()
 		}

@@ -42,7 +42,7 @@
 		</div>
 		<!-- 快速过滤选择层 -->
 		<div v-if="isShowFilter" class="fliter has-header">
-			<search placeholder="搜索" :list="filterList" @getFilterResult="getFilterResult" :rightButton="true" @cancel="isShowFilter = false"></search>
+			<search placeholder="搜索" :list="filterList" @getFilterResult="getFilterResult" :rightButton="true" @cancel="onCancelFilter"></search>
 			<div v-if="fList.length > 0" class="wrap">
 				<div v-for="(item, index) in fList" :key="index" class="fliter-item plr15 ptb10 flex l-center f16 cblack border-b" @click="getFilterSelet(item)">{{ item }}</div>
 			</div>
@@ -265,6 +265,10 @@ export default {
 			this.$emit('getFilterSelet', { key: this.paramkey, value: data, index: this.filterList.findIndex(m => m === data) })
 			this.$emit('hideTextarea', false)
 			this.isShowFilter = false
+		},
+		onCancelFilter() {
+			this.isShowFilter = false
+			this.$emit('hideTextarea', false)
 		},
 		onDateTimePickerClick() {
 			this.isShowDateTimePicker = true
