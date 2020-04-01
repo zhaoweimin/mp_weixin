@@ -17,7 +17,7 @@
 				<comInput :type="1" :paramkey="index + '_string42'" @getInputVal="getInputVal" title="手机号码" :titleDark="true" placeholder="请输入手机号码" :value="vo.string42" :textRight="false"></comInput>
 				<comInput :type="2" :paramkey="index + '_string21'" @getInputVal="getInputVal" title="客户类型" :titleDark="true" placeholder="请选择客户类型" :value="vo.string21" @getSelect="getSelect" :options="['有意向客户']" :textRight="false"></comInput>
 				<comInput :type="1" :paramkey="index + '_string18'" @getInputVal="getInputVal" title="客户投资总额" :titleDark="true" placeholder="请输入客户投资总额" :value="vo.string18" :textRight="false"></comInput>
-				<comInput :type="1" :paramkey="index+'_string100'" @getInputVal="getInputVal" title="客户累计投资总额" :titleDark="true" placeholder="请输入客户累计投资总额" :value="vo.string100" :textRight="false"></comInput>
+				<comInput :type="1" :paramkey="index + '_string34'" @getInputVal="getInputVal" title="客户累计投资总额" :titleDark="true" placeholder="请输入客户累计投资总额" :value="vo.string34" :textRight="false"></comInput>
 				<!-- <comInput :type="1" :paramkey="index+'_'" @getInputVal="getInputVal" title="所属部门" :titleDark="true" placeholder="请输入客户投资总额" :value="vo.string5" :textRight="false"></comInput> -->
 				<comInput :type="1" :paramkey="index + '_string23'" @getInputVal="getInputVal" title="邀约审批状态" :titleDark="true" placeholder="自动判断状态" :value="vo.string23" :textRight="false"></comInput>
 				<comInput :type="1" :paramkey="index + '_string24'" @getInputVal="getInputVal" title="备注" :titleDark="true" placeholder="请输入备注" :value="vo.string24" :textRight="false"></comInput>
@@ -118,8 +118,8 @@ export default {
 				this.customers = customers
 				let account = this.$store.state.account.info.RetValue
 				this.account = account
-				console.log(data)
-				console.log(this.account)
+				// console.log(data)
+				// console.log(this.account)
 				this.params = {
 					string1: '', // 邀约编号
 					string2: data['活动名称'], // 活动名称
@@ -133,6 +133,7 @@ export default {
 					string43: data['负责人编码'], // 负责人编码
 					string31: data['负责人部门'], // 负责部门
 					string30: data['邀约审批人'], // 邀约审批人
+					string34: data['客户累计投资总额'], // 邀约审批人
 					string9: data['审批人编码'], // 审批人编码
 					string44: data['邀约审批人归属部门'], // 邀约审批人归属部门
 					date8: data['邀约日期'], // 邀约开始时间
@@ -157,10 +158,10 @@ export default {
 	methods: {
 		getCustomers() {
 			this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
-				console.log('res=>>', res)
+				// console.log('res=>>', res)
 				this.customerOptions = res.rows.map(m => m.FName)
 				this.customerDatas = res.rows
-				console.log('customerDatas', this.customerDatas)
+				// console.log('customerDatas', this.customerDatas)
 			})
 		},
 		getSelect(data) {
