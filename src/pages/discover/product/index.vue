@@ -1,14 +1,14 @@
 <template>
 	<div class="main has-big-header">
 		<navbar :info="nav" @changeNav="changeNav"></navbar>
-		<search :fixed="false" :isMainBg="false" :rightButton="true" placeholder="搜索"></search>
+		<search :list="renderList" filterParam="FNumber" @getFilterResult="getFilterResult" @cancel="onCancelFilter" :fixed="false" :rightButton="true" :isMainBg="false" placeholder="请输入产品编号搜索"></search>
 		<!-- <block v-if="nav_num === 0">
 			<card v-for="(vo, key) in list" :key="key" :info="vo" :type="6" :status="nav_num"></card>
 		</block>
 		<block v-else>
 			<card v-for="(vo, key) in list" :key="key" :info="vo" :type="6" :status="nav_num"></card>
 		</block> -->
-        <card v-for="(vo, key) in list" :key="key" :info="vo" :type="6"></card>
+		<card v-for="(vo, key) in renderList" :key="key" :info="vo" :type="6"></card>
 	</div>
 </template>
 
@@ -22,7 +22,8 @@ export default {
 		return {
 			nav: ['在售产品', '历史产品'],
 			nav_num: 0,
-			list: []
+			list: [],
+			renderList: []
 		}
 	},
 
@@ -52,11 +53,22 @@ export default {
 					}
 					if (res.rows.length > 0) this.page = page
 				}
+				this.renderList = this.list
 			})
 		},
 		changeNav(nav) {
 			this.nav_num = nav
 			this.getList()
+		},
+		getFilterResult(data) {
+			if (!data.reload) {
+				this.renderList = data.result
+			} else {
+				this.renderList = this.list
+			}
+		},
+		onCancelFilter() {
+			this.renderList = this.list
 		}
 	},
 
