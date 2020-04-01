@@ -17,7 +17,7 @@
 				<comInput :type="1" :paramkey="index + '_string42'" @getInputVal="getInputVal" title="手机号码" :titleDark="true" placeholder="请输入手机号码" :value="vo.string42" :textRight="false"></comInput>
 				<comInput :type="2" :paramkey="index + '_string21'" @getInputVal="getInputVal" title="客户类型" :titleDark="true" placeholder="请选择客户类型" :value="vo.string21" @getSelect="getSelect" :options="['有意向客户']" :textRight="false"></comInput>
 				<comInput :type="1" :paramkey="index + '_string18'" @getInputVal="getInputVal" title="客户投资总额" :titleDark="true" placeholder="请输入客户投资总额" :value="vo.string18" :textRight="false"></comInput>
-				<!-- <comInput :type="1" :paramkey="index+'_'" @getInputVal="getInputVal" title="邀约审批人" :titleDark="true" placeholder="请输入客户投资总额" :value="vo.string2" :textRight="false"></comInput> -->
+				<comInput :type="1" :paramkey="index+'_string100'" @getInputVal="getInputVal" title="客户累计投资总额" :titleDark="true" placeholder="请输入客户累计投资总额" :value="vo.string100" :textRight="false"></comInput>
 				<!-- <comInput :type="1" :paramkey="index+'_'" @getInputVal="getInputVal" title="所属部门" :titleDark="true" placeholder="请输入客户投资总额" :value="vo.string5" :textRight="false"></comInput> -->
 				<comInput :type="1" :paramkey="index + '_string23'" @getInputVal="getInputVal" title="邀约审批状态" :titleDark="true" placeholder="自动判断状态" :value="vo.string23" :textRight="false"></comInput>
 				<comInput :type="1" :paramkey="index + '_string24'" @getInputVal="getInputVal" title="备注" :titleDark="true" placeholder="请输入备注" :value="vo.string24" :textRight="false"></comInput>

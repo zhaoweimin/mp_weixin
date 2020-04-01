@@ -212,7 +212,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 23,
 					"name": "新增活动邀约",
 					"pathName": "pages/discover/invitation/main",
 					"query": "",
@@ -222,6 +222,14 @@
 					"id": -1,
 					"name": "报表",
 					"pathName": "pages/statis/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "应用",
+					"pathName": "pages/home/main",
+					"query": "",
 					"scene": null
 				}
 			]
