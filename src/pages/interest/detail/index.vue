@@ -21,8 +21,12 @@
 			<div class="plr15 ptb15 f16 clink strong">财务信息 <span class="iconfont iconliaotianduihua"></span></div>
 			<comInput :type="0" :titleDark="false" title="本息总额" :value="info['本息总额']" :border="false"></comInput>
 			<comInput :type="0" :titleDark="false" title="总计息天数" :value="info['总计息天数'] + '天'" :border="false"></comInput>
-			<div class="f12 ta-c pt10 pb15">展开<span class="iconfont iconxiangxiajiantou"></span></div>
-			<div class="bg-color mlr10">
+			<div v-if="showDetailList" class="f12 ta-c pt10 pb15 flex a-center" @click="showDetailList = false">
+				<div class="mr5">收起</div>
+				<div class="rotate-180"><span class="iconfont iconxiangxiajiantou"></span></div>
+			</div>
+			<div v-else class="f12 ta-c pt10 pb15" @click="showDetailList = true">展开 <span class="iconfont iconxiangxiajiantou"></span></div>
+			<div v-if="showDetailList" class="bg-color mlr10">
 				<div class="list ta-c dis-flex l-center">
 					<div class="item f12">结算次数</div>
 					<div class="item f12">结算日</div>
@@ -90,7 +94,8 @@ export default {
 	data() {
 		return {
 			info: {},
-			list: []
+			list: [],
+			showDetailList: false
 		}
 	},
 
@@ -216,5 +221,8 @@ export default {
 }
 .list .item {
 	width: 20%;
+}
+.rotate-180 {
+	transform: rotate(180deg);
 }
 </style>

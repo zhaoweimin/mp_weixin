@@ -1,76 +1,83 @@
 <template>
-    <div class="search dis-flex l-center" :class="[fixed?'fixed':'',isMainBg?'bg-blue':'bg-color']">
-        <div class="input flex-1 bg-fff dis-flex l-center">
-            <div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
-            <input class="flex-1 f14" type="text" :placeholder="placeholder" @input="oninput">
-        </div>
-        <div v-if="rightButton" class="f12 pl10" :class="[isMainBg?'cfff':'cgey']" @click="cancel">取消</div>
-    </div>
+	<div class="search dis-flex l-center" :class="[fixed ? 'fixed' : '', isMainBg ? 'bg-blue' : 'bg-color']">
+		<div class="input flex-1 bg-fff dis-flex l-center">
+			<div class="icon cgey"><span class="iconfont iconsearch-1-copy"></span></div>
+			<input ref="input" class="flex-1 f14" type="text" :placeholder="placeholder" v-model="inputVal" @blur="onblur" />
+		</div>
+		<div v-if="rightButton" class="f12 pl10" :class="[isMainBg ? 'cfff' : 'cgey']" @click="cancel">取消</div>
+	</div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {}
-  },
-  props: {
-    rightButton: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    },
-    fixed: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
-    placeholder: {
-      type: String,
-      default () {
-        return '请输入搜索内容'
-      }
-    },
-    isMainBg: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
-    // 过滤待字段名
-    filterParam:  {
-      type: String,
-      default () {
-        return ''
-      }
-    },
-    // 传入的待过滤数组
-    list:{
-      type:Array,
-      default(){
-        return []
-      }
-    }
-  },
-  methods: {
-    oninput(value){
-      let result,txt=value.mp.detail.value,reload
-      if(txt){
-        result = this.filterParam?this.list.filter(m=>m[this.filterParam].indexOf(txt)>-1):this.list.filter(m=>m.indexOf(txt)>-1)
-        reload = false
-      }else{
-        reload = true
-      }
-      this.$emit('getFilterResult', {reload,result})
-    },
-    cancel(){
-      this.$emit('cancel')
-    }
-  },
-  mounted () {
-    console.log(this.rightButton)
-  }
+	data() {
+		return {
+			inputVal: ''
+		}
+	},
+	onLoad(option) {
+		Object.assign(this.$data, this.$options.data())
+	},
+	props: {
+		rightButton: {
+			type: Boolean,
+			default() {
+				return false
+			}
+		},
+		fixed: {
+			type: Boolean,
+			default() {
+				return true
+			}
+		},
+		placeholder: {
+			type: String,
+			default() {
+				return '请输入搜索内容'
+			}
+		},
+		isMainBg: {
+			type: Boolean,
+			default() {
+				return true
+			}
+		},
+		// 过滤待字段名
+		filterParam: {
+			type: String,
+			default() {
+				return ''
+			}
+		},
+		// 传入的待过滤数组
+		list: {
+			type: Array,
+			default() {
+				return []
+			}
+		}
+	},
+	methods: {
+		onblur(value) {
+			let result, reload
+			let txt = value.mp.detail.value
+			if (txt) {
+				console.log('list', this.list)
+				result = this.filterParam ? this.list.filter(m => m[this.filterParam].indexOf(txt) > -1) : this.list.filter(m => m.indexOf(txt) > -1)
+				reload = false
+			} else {
+				reload = true
+			}
+			this.$emit('getFilterResult', { reload, result })
+		},
+		cancel() {
+			console.log(this.inputVal)
+			console.log(this.$refs['input'])
+			this.inputVal = ''
+			this.$emit('cancel')
+		}
+	}
 }
 </script>
 

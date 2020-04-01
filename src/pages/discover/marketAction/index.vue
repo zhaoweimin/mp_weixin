@@ -1,7 +1,7 @@
 <template>
     <div class="main has-header">
-        <search :rightButton="true" placeholder="搜索"></search>
-        <block v-for="(vo, key) in list" :key="key">
+		<search :list="renderList" filterParam="活动名称" @getFilterResult="getFilterResult" @cancel="onCancelFilter" :rightButton="true" placeholder="请输入活动名称搜索"></search>
+        <block v-for="(vo, key) in renderList" :key="key">
             <card :info="vo" :type="8" :actionType="type"></card>
         </block>
     </div>
@@ -17,6 +17,7 @@ export default {
 			searchValue: '',
 			type: 0,
 			list: [],
+			renderList: [],
 			page: 1,
 			apiArr: ['getDiscoverMarkerExerciseList', 'getDiscoverMarkerHistoryExerciseList']
 		}
@@ -55,15 +56,22 @@ export default {
 					}
 					if (res.rows.length > 0) this.page = page
 				}
+				this.renderList = this.list
 			})
 		},
 		changeNav(nav) {
 			this.nav_num = nav
 		},
-		onSearch() {
-			console.log(111)
+		getFilterResult(data) {
+			if (!data.reload) {
+				this.renderList = data.result
+			} else {
+				this.renderList = this.list
+			}
 		},
-		onCancel() {}
+		onCancelFilter() {
+			this.renderList = this.list
+		}
 	},
 
 	created() {}

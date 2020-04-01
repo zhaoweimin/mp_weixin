@@ -33,8 +33,14 @@
 				<div class="cblack f16 mb10">下次跟进计划</div>
 				<textarea v-show="!isHideTextarea" v-model="datas.string5" placeholder="请输入下次跟进计划"></textarea>
 			</div>
-			<comInput :type="6" :titleDark="true" title="跟进人" :value="datas.string7" paramkey="string7" :filterList="followOptions" @getFilterSelet="getFilterSelet" @hideTextarea="hideTextarea" :textRight="false"></comInput>
-			<comInput :type="1" :titleDark="true" title="跟进部门" :value="datas.string6" paramkey="string6" @getInputVal="getInputVal" :textRight="false"></comInput>
+			<div v-if="is_follow">
+				<comInput :type="0" :titleDark="true" title="跟进人" :value="datas.string7" paramkey="string7" :textRight="false"></comInput>
+				<comInput :type="0" :titleDark="true" title="跟进部门" :value="datas.string6" paramkey="string6" :textRight="false"></comInput>
+			</div>
+			<div v-else>
+				<comInput :type="6" :titleDark="true" title="跟进人" :value="datas.string7" paramkey="string7" :filterList="followOptions" @getFilterSelet="getFilterSelet" @hideTextarea="hideTextarea" :textRight="false"></comInput>
+				<comInput :type="1" :titleDark="true" title="跟进部门" :value="datas.string6" paramkey="string6" @getInputVal="getInputVal" :textRight="false"></comInput>
+			</div>
 		</div>
 		<div class="ptb25 plr15">
 			<van-button type="info" size="large" @click="submit">确认</van-button>
@@ -305,13 +311,13 @@ export default {
 	onLoad(options) {
 		Object.assign(this.$data, this.$options.data())
 		this.setDefautValue(this.$store.state.account.info.RetValue)
-
 		this.is_follow = options.is_follow
 		let { is_follow } = options
-		console.log(is_follow)
+		console.log('is_follow=====>', is_follow)
 		// 获取跟进人列表
 		this.getFollow()
 		if (is_follow) {
+			let account = this.$store.state.account.info.RetValue
 			let info = mpvue.getStorageSync('follow_info')
 			console.log(info)
 			this.datas = {
@@ -329,10 +335,10 @@ export default {
 				string26: info['请输入跟进内容'],
 				date3: '',
 				string5: '',
-				string7: '',
-				string6: ''
+				string7: account.Name,
+				string6: account.deptname
 			}
-			// mpvue.removeStorageSync('follow_info')
+			mpvue.removeStorageSync('follow_info')
 		} else {
 			this.getCustomers()
 		}

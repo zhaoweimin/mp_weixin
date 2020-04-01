@@ -1,13 +1,13 @@
 <template>
-    <div class="main has-header">
-        <search :rightButton="true" placeholder="搜索"></search>
-        <block v-for="(vo, key) in list" :key="key">
-            <card :info="vo" :type="5"></card>
-        </block>
-        <div class="btn-create" @click="link">
-            <img class="icon-create" src="../../../img/create.png" alt="">
-        </div>
-    </div>
+	<div class="main has-header">
+		<search :list="renderList" filterParam="业绩单号" @getFilterResult="getFilterResult" @cancel="onCancelFilter" :rightButton="true" placeholder="请输入业绩单号搜索"></search>
+		<block v-for="(vo, key) in renderList" :key="key">
+			<card :info="vo" :type="5"></card>
+		</block>
+		<div class="btn-create" @click="link">
+			<img class="icon-create" src="../../../img/create.png" alt="" />
+		</div>
+	</div>
 </template>
 
 <script>
@@ -21,6 +21,7 @@ export default {
 			nav: ['销售新增', '财务新增', '业绩打回'],
 			nav_num: 0,
 			list: [],
+			renderList: [],
 			page: 1
 		}
 	},
@@ -36,7 +37,7 @@ export default {
 	},
 
 	onReachBottom() {
-    	return false
+		return false
 		this.getList(this.page + 1)
 	},
 
@@ -52,6 +53,7 @@ export default {
 					}
 					if (res.rows.length > 0) this.page = page
 				}
+				this.renderList = this.list
 			})
 		},
 		changeNav(nav) {
@@ -59,6 +61,16 @@ export default {
 		},
 		link() {
 			mpvue.navigateTo({ url: `/pages/royalty/newList/main` })
+		},
+		getFilterResult(data) {
+			if (!data.reload) {
+				this.renderList = data.result
+			} else {
+				this.renderList = this.list
+			}
+		},
+		onCancelFilter() {
+			this.renderList = this.list
 		}
 	},
 

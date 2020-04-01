@@ -1,248 +1,249 @@
 <template>
-    <div>
-        <div class="contract-card" v-if="type == 0">
-            <div class="order">
-                <div class="bg">合同编号：201903201530326548</div>
-            </div>
-            <div class="status">审核中</div>
-            <div class="title">
-                <div class="name">产品名称<span class="small">基金</span></div>
-            </div>
-            <div class="msg no-boder">
-                <div class="line">
-                    <span class="key">产品限期：(14个月) 2018-03-20至2019-5-20</span>
-                </div>
-                <div class="line">
-                    <span class="key">提成计提周期：3个月</span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">合同编号：523256654555444</span>
-                </div>
-                <div class="line">
-                    <span class="key">预约编号：201903202156984</span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">理财经理：523256654555444</span>
-                </div>
-                <div class="line">
-                    <span class="key">所属部门：市场部</span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">录单员：陈有财</span>
-                </div>
-            </div>
-        </div>
+	<div>
+		<div class="contract-card" v-if="type == 0">
+			<div class="order">
+				<div class="bg">合同编号：201903201530326548</div>
+			</div>
+			<div class="status">审核中</div>
+			<div class="title">
+				<div class="name">产品名称<span class="small">基金</span></div>
+			</div>
+			<div class="msg no-boder">
+				<div class="line">
+					<span class="key">产品限期：(14个月) 2018-03-20至2019-5-20</span>
+				</div>
+				<div class="line">
+					<span class="key">提成计提周期：3个月</span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">合同编号：523256654555444</span>
+				</div>
+				<div class="line">
+					<span class="key">预约编号：201903202156984</span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">理财经理：523256654555444</span>
+				</div>
+				<div class="line">
+					<span class="key">所属部门：市场部</span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">录单员：陈有财</span>
+				</div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 1">
-            <div class="status two">审核中</div>
-            <div class="title-2">
-                <div class="clink">打款日期：2019-03-31 15:30</div>
-            </div>
-            <div class="msg no-boder">
-                <div class="line">
-                    <span class="key">合同金额：2千万</span>
-                </div>
-                <div class="line">
-                    <span class="key">付款方式：网银转账</span>
-                </div>
-                <div class="line">
-                    <span class="key">付款账号：622623261235896</span>
-                </div>
-                <div class="line">
-                    <span class="key">累计缴款金额：500万</span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">确认收款日：营销支持维护</span>
-                </div>
-                <div class="line">
-                    <span class="key">起息日：默认收款日期第二天</span>
-                </div>
-                <div class="line">
-                    <span class="key">产品到期日：产品成立后再维护此字段 </span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">年化系数：0.21</span>
-                </div>
-                <div class="line">
-                    <span class="key">年化业绩：××××</span>
-                </div>
-            </div>
-            <div class="msg">
-                <div class="line">
-                    <span class="key">收益分配账户：6321254555468499854</span>
-                </div>
-                <div class="line">
-                    <span class="key">收益分配账户开户行：招商银行</span>
-                </div>
-            </div>
-        </div>
+		<div class="contract-card" v-if="type == 1">
+			<div class="status two">审核中</div>
+			<div class="title-2">
+				<div class="clink">打款日期：2019-03-31 15:30</div>
+			</div>
+			<div class="msg no-boder">
+				<div class="line">
+					<span class="key">合同金额：2千万</span>
+				</div>
+				<div class="line">
+					<span class="key">付款方式：网银转账</span>
+				</div>
+				<div class="line">
+					<span class="key">付款账号：622623261235896</span>
+				</div>
+				<div class="line">
+					<span class="key">累计缴款金额：500万</span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">确认收款日：营销支持维护</span>
+				</div>
+				<div class="line">
+					<span class="key">起息日：默认收款日期第二天</span>
+				</div>
+				<div class="line">
+					<span class="key">产品到期日：产品成立后再维护此字段 </span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">年化系数：0.21</span>
+				</div>
+				<div class="line">
+					<span class="key">年化业绩：××××</span>
+				</div>
+			</div>
+			<div class="msg">
+				<div class="line">
+					<span class="key">收益分配账户：6321254555468499854</span>
+				</div>
+				<div class="line">
+					<span class="key">收益分配账户开户行：招商银行</span>
+				</div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 2">
-            <div class="status two">审核中</div>
-            <div class="title-3">
-                <div class="name">打回原因：<span class="cred">冷静期退款</span></div>
-            </div>
-            <div class="msg no-boder">
-                <div class="line"><span class="key">退款单号：2115649851456544</span></div>
-                <div class="line"><span class="key">退款客户：周方文</span></div>
-                <div class="line"><span class="key">退款类型：冷静期退款</span></div>
-                <div class="line"><span class="key">合同状态：已发放</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">退款原因：客户放弃</span></div>
-                <div class="line"><span class="key">合同编号：54564565145666554</span></div>
-                <div class="line"><span class="key">申请退款日期：2019-03-28</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">退款金额：2千万</span></div>
-                <div class="line"><span class="key">退款账号：622632569845612332</span></div>
-                <div class="line"><span class="key">账号开户行：招商银行</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">申请人：陈有财</span></div>
-                <div class="line"><span class="key">归属部门：市场部</span></div>
-            </div>
-        </div>
+		<div class="contract-card" v-if="type == 2">
+			<div class="status two">审核中</div>
+			<div class="title-3">
+				<div class="name">打回原因：<span class="cred">冷静期退款</span></div>
+			</div>
+			<div class="msg no-boder">
+				<div class="line"><span class="key">退款单号：2115649851456544</span></div>
+				<div class="line"><span class="key">退款客户：周方文</span></div>
+				<div class="line"><span class="key">退款类型：冷静期退款</span></div>
+				<div class="line"><span class="key">合同状态：已发放</span></div>
+			</div>
+			<div class="msg">
+				<div class="line"><span class="key">退款原因：客户放弃</span></div>
+				<div class="line"><span class="key">合同编号：54564565145666554</span></div>
+				<div class="line"><span class="key">申请退款日期：2019-03-28</span></div>
+			</div>
+			<div class="msg">
+				<div class="line"><span class="key">退款金额：2千万</span></div>
+				<div class="line"><span class="key">退款账号：622632569845612332</span></div>
+				<div class="line"><span class="key">账号开户行：招商银行</span></div>
+			</div>
+			<div class="msg">
+				<div class="line"><span class="key">申请人：陈有财</span></div>
+				<div class="line"><span class="key">归属部门：市场部</span></div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 3">
-            <div class="order">
-                <div class="bg">业绩单号：201265849215</div>
-            </div>
-            <div class="msg no-boder">
-                <div class="line">
-                    <span class="key">客户姓名：周方文</span>
-                </div>
-            </div>
-            <div class="msg no-boder">
-                <div class="line"><span class="key">产品名称</span><span class="tag">股权类</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">产品期限：14个月</span></div>
-                <div class="line"><span class="key">合同金额：20万</span></div>
-                <div class="line"><span class="key">确认收款日：2019-3-21</span></div>
-            </div>
-            <div class="msg">
-                <div class="line"><span class="key">起息日：2019-4-1</span></div>
-                <div class="line"><span class="key">产品到期日：2019-10-1</span></div>
-            </div>
-        </div>
+		<div class="contract-card" v-if="type == 3">
+			<div class="order">
+				<div class="bg">业绩单号：201265849215</div>
+			</div>
+			<div class="msg no-boder">
+				<div class="line">
+					<span class="key">客户姓名：周方文</span>
+				</div>
+			</div>
+			<div class="msg no-boder">
+				<div class="line"><span class="key">产品名称</span><span class="tag">股权类</span></div>
+			</div>
+			<div class="msg">
+				<div class="line"><span class="key">产品期限：14个月</span></div>
+				<div class="line"><span class="key">合同金额：20万</span></div>
+				<div class="line"><span class="key">确认收款日：2019-3-21</span></div>
+			</div>
+			<div class="msg">
+				<div class="line"><span class="key">起息日：2019-4-1</span></div>
+				<div class="line"><span class="key">产品到期日：2019-10-1</span></div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 4" @click="interstDetail('interest', info.flowid)">
-            <div class="order">
-                <div class="bg">业绩单号：{{info['业绩单']}}</div>
-            </div>
-            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{info['客户姓名']}}</div>
-            <div class="msg no-boder">
-                <div class="f13"><span class="cgey">产品名称：</span>{{info['购买产品']}}</div>
-                <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['产品期限']}}个月</div>
-                <div class="f13"><span class="cgey">合同金额：</span>{{info['认购金额']}}(打款日期：{{info['打款日']}})</div>
-            </div>
-            <div class="dis-flex a-between plr15 pb10">
-                <div class="f13 cgey">成立日：2019-03-31</div>
-                <div class="f13 clink">更多信息</div>
-            </div>
-        </div>
+		<div class="contract-card" v-if="type == 4" @click="interstDetail('interest', info.flowid)">
+			<div class="order">
+				<div class="bg">业绩单号：{{ info['业绩单'] }}</div>
+			</div>
+			<div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{ info['客户姓名'] }}</div>
+			<div class="msg no-boder">
+				<div class="f13"><span class="cgey">产品名称：</span>{{ info['购买产品'] }}</div>
+				<div class="f13 mb10"><span class="cgey">产品期限：</span>{{ info['产品期限'] }}个月</div>
+				<div class="f13"><span class="cgey">合同金额：</span>{{ info['认购金额'] }}(打款日期：{{ info['打款日'] }})</div>
+			</div>
+			<div class="dis-flex a-between plr15 pb10">
+				<div class="f13 cgey">成立日：2019-03-31</div>
+				<div class="f13 clink">更多信息</div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 41" @click="interstDetail('redeem', id)">
-            <div class="order">
-                <div class="bg">赎回编号：{{info['赎回编号']}}</div>
-            </div>
-            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{info['客户姓名']}}</div>
-            <div class="dis-flex l-end">
-                <div class="msg no-boder flex-1">
-                    <div class="f13"><span class="cgey">产品名称：</span>{{info['产品名称']}}</div>
-                    <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['产品期限']}}个月</div>
-                    <div class="f13"><span class="cgey">赎回金额：</span>{{info['赎回金额']}}</div>
-                    <div class="f13 cgey">赎回日期：{{info['赎回日期']}}</div>
-                </div>
-                <div class="dis-flex a-between plr15 pb10">
-                    <div class="f13 clink">查看更多</div>
-                </div>
-            </div>
-        </div>
+		<div class="contract-card" v-if="type == 41" @click="interstDetail('redeem', id)">
+			<div class="order">
+				<div class="bg">赎回编号：{{ info['赎回编号'] }}</div>
+			</div>
+			<div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{ info['客户姓名'] }}</div>
+			<div class="dis-flex l-end">
+				<div class="msg no-boder flex-1">
+					<div class="f13"><span class="cgey">产品名称：</span>{{ info['产品名称'] }}</div>
+					<div class="f13 mb10"><span class="cgey">产品期限：</span>{{ info['产品期限'] }}个月</div>
+					<div class="f13"><span class="cgey">赎回金额：</span>{{ info['赎回金额'] }}</div>
+					<div class="f13 cgey">赎回日期：{{ info['赎回日期'] }}</div>
+				</div>
+				<div class="dis-flex a-between plr15 pb10">
+					<div class="f13 clink">查看更多</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 5" @click="royaltyDetail(id)">
-            <img class="img-status" src="../img/status_1.png" alt="">
-            <div class="order">
-                <div class="bg">业绩单号：{{info['业绩单号']}}</div>
-            </div>
-            <div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{info['客户姓名']}}</div>
-            <div class="msg no-boder">
-                <div class="f13"><span class="cgey">产品名称：</span>{{info['客户姓名']}}</div>
-                <div class="f13 mb10"><span class="cgey">产品期限：</span>{{info['客户姓名']}}个月</div>
-                <div class="f13"><span class="cgey">合同金额：</span>{{info['认购金额']}}(打款日期：{{info['打款日期']||'--'}})</div>
-                <div class="f13"><span class="cgey">本次提奖：</span>{{info['本次提奖金额']}}万</div>
-            </div>
-            <div class="dis-flex a-between plr15 pb10">
-                <div class="f13 cgey">申请日期：{{info['申请时间']}}</div>
-                <div class="f13 clink">更多信息</div>
-            </div>
-        </div>
+		<div class="contract-card" v-if="type == 5" @click="royaltyDetail(id)">
+			<img class="img-status" v-if="info['单据状态'] == '审核中'" src="../img/status_1.png" alt="" />
+			<img class="img-status" v-else src="../img/status_no_deal.png" alt="" />
+			<div class="order">
+				<div class="bg">业绩单号：{{ info['业绩单号'] }}</div>
+			</div>
+			<div class="f13 pl15 pt10"><span class="cgey">客户姓名：</span>{{ info['客户姓名'] }}</div>
+			<div class="msg no-boder">
+				<div class="f13"><span class="cgey">产品名称：</span>{{ info['购买产品'] }}</div>
+				<div class="f13 mb10"><span class="cgey">产品期限：</span>{{ info['产品期限'] }}个月</div>
+				<div class="f13"><span class="cgey">合同金额：</span>{{ info['认购金额'] }}(打款日期：{{ info['打款日期'] || '--' }})</div>
+				<div class="f13"><span class="cgey">本次提奖：</span>{{ info['本次提奖金额'] }}</div>
+			</div>
+			<div class="dis-flex a-between plr15 pb10">
+				<div class="f13 cgey">申请日期：{{ info['申请时间'] }}</div>
+				<div class="f13 clink">更多信息</div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 6">
-            <div class="order">
-                <div class="bg">产品编号：{{ info['FNumber'] }}</div>
-            </div>
-            <!-- <div class="status two c1" v-if="status == 0">募集中</div>
+		<div class="contract-card" v-if="type == 6">
+			<div class="order">
+				<div class="bg">产品编号：{{ info['FNumber'] }}</div>
+			</div>
+			<!-- <div class="status two c1" v-if="status == 0">募集中</div>
             <div class="status two c2" v-if="status == 1">已完成</div> -->
-            <div class="title dis-flex l-baseline">
-                <div class="name mr10">{{info.FName}}</div>
-                <div class="label-blue-outline">{{info.Fundtype}}</div>
-            </div>
-            <div class="msg no-boder" @click="productDetail">
-                <div class="line mb10">
-                    <div class="key f13"><span class="cgey">募集规模：</span>{{info.FRaiseScale}}</div>
-                    <div class="key f13"><span class="cgey">募集期：</span> {{info.FRaiseDate}}</div>
-                </div>
-                <div class="line dis-flex a-between">
-                    <div class="key f13"><span class="cgey">运作状态：</span>{{info['string27']}}</div>
-                    <div class="more clink f13">查看更多</div>
-                </div>
-            </div>
-        </div>
+			<div class="title dis-flex l-baseline">
+				<div class="name mr10">{{ info.FName }}</div>
+				<div class="label-blue-outline">{{ info.Fundtype }}</div>
+			</div>
+			<div class="msg no-boder" @click="productDetail">
+				<div class="line mb10">
+					<div class="key f13"><span class="cgey">募集规模：</span>{{ info.FRaiseScale }}</div>
+					<div class="key f13"><span class="cgey">募集期：</span> {{ info.FRaiseDate }}</div>
+				</div>
+				<div class="line dis-flex a-between">
+					<div class="key f13"><span class="cgey">运作状态：</span>{{ info['string27'] }}</div>
+					<div class="more clink f13">查看更多</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="contract-card" v-if="type == 7">
-            <div class="dis-flex l-baseline ptb10 plr15 border-b">
-                <div class="name f16 strong mr10">{{info['标题']}}</div>
-                <div class="f13 cgey">{{info['类型']}}</div>
-            </div>
-            <div class="msg no-boder">
-                <div class="line f13 mb10"><span class="key cgey">所属目录：</span>{{info['所属目录']}}</div>
-                <div class="line f13"><span class="key cgey">上传人：</span>{{info['上传人']}}</div>
-                <div class="line f13"><span class="key cgey">上传部门：</span>{{info['上传部门']}}</div>
-                <div class="line dis-flex a-between">
-                    <div class="key f13"><span class="key cgey">上传时间：</span>{{info['上传时间']}}</div>
-                    <div @click="openDoc" class="f13 clink">查看更多</div>
-                </div>
-            </div>
-        </div>
+		<div class="contract-card" v-if="type == 7">
+			<div class="dis-flex l-baseline ptb10 plr15 border-b">
+				<div class="name f16 strong mr10">{{ info['标题'] }}</div>
+				<div class="f13 cgey">{{ info['类型'] }}</div>
+			</div>
+			<div class="msg no-boder">
+				<div class="line f13 mb10"><span class="key cgey">所属目录：</span>{{ info['所属目录'] }}</div>
+				<div class="line f13"><span class="key cgey">上传人：</span>{{ info['上传人'] }}</div>
+				<div class="line f13"><span class="key cgey">上传部门：</span>{{ info['上传部门'] }}</div>
+				<div class="line dis-flex a-between">
+					<div class="key f13"><span class="key cgey">上传时间：</span>{{ info['上传时间'] }}</div>
+					<div @click="openDoc" class="f13 clink">查看更多</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="contract-card plr10" v-if="type == 8" @click="actionDetail">
-            <div class="ptb10 border-b">
-                <div class="f16 strong">{{info['活动名称']}}</div>
-            </div>
-            <div class="dis-flex l-end ptb10">
-                <div class="flex-1">
-                    <div class="mb5 f13"><span class="cgey">活动时间：</span>{{info['活动时间']}}</div>
-                    <div class="mb5 f13"><span class="cgey">活动目的：</span>{{info['活动目的']}}</div>
-                    <div class="mb5 f13"><span class="cgey">活动范围：</span>{{info['活动范围']}}</div>
-                    <div class="mb5 f13"><span class="cgey">活动发起人：</span>{{info['活动发起人']}}</div>
-                    <div class="f13"><span class="cgey">活动发起部门：</span>{{info['所属部门']}}</div>
-                </div>
-                <div class="clink f13">查看更多</div>
-            </div>
-        </div>
-    </div>
+		<div class="contract-card plr10" v-if="type == 8" @click="actionDetail">
+			<div class="ptb10 border-b">
+				<div class="f16 strong">{{ info['活动名称'] }}</div>
+			</div>
+			<div class="dis-flex l-end ptb10">
+				<div class="flex-1">
+					<div class="mb5 f13"><span class="cgey">活动时间：</span>{{ info['活动时间'] }}</div>
+					<div class="mb5 f13"><span class="cgey">活动目的：</span>{{ info['活动目的'] }}</div>
+					<div class="mb5 f13"><span class="cgey">活动范围：</span>{{ info['活动范围'] }}</div>
+					<div class="mb5 f13"><span class="cgey">活动发起人：</span>{{ info['活动发起人'] }}</div>
+					<div class="f13"><span class="cgey">活动发起部门：</span>{{ info['所属部门'] }}</div>
+				</div>
+				<div class="clink f13">查看更多</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>

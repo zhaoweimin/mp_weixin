@@ -1,7 +1,7 @@
 <template>
 	<div class="main has-header">
-		<search :rightButton="true" placeholder="搜索"></search>
-		<div class="customer-card follow-custom" v-for="(vo, key) in list" :key="key" @click="detail(key)">
+		<search :list="renderList" filterParam="客户名称" @getFilterResult="getFilterResult" @cancel="onCancelFilter" :rightButton="true" placeholder="请输入客户名称搜索"></search>
+		<div class="customer-card follow-custom" v-for="(vo, key) in renderList" :key="key" @click="detail(key)">
 			<div class="dis-flex">
 				<div class="avatar">
 					<img class="img" :src="vo.avatar" mode="aspectFill" />
@@ -55,7 +55,8 @@ export default {
 		return {
 			type: 0,
 			page: 1,
-			list: []
+			list: [],
+			renderList: []
 		}
 	},
 
@@ -84,12 +85,23 @@ export default {
 					}
 					if (res.rows.length > 0) this.page = page
 				}
+				this.renderList = this.list
 			})
 		},
 		detail(key) {
 			let url = `/pages/discover/invitationDetail/main`
 			mpvue.setStorageSync('market_customer_info', this.list[key])
 			mpvue.navigateTo({ url })
+		},
+		getFilterResult(data) {
+			if (!data.reload) {
+				this.renderList = data.result
+			} else {
+				this.renderList = this.list
+			}
+		},
+		onCancelFilter() {
+			this.renderList = this.list
 		}
 	}
 }
