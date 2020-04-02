@@ -700,5 +700,23 @@ export default {
 			}
 		}
 		return this.post(obj)
+	},
+	// 编辑客户信息
+	editInfo(params, customerId) {
+		let obj = {
+			url: '/ashx/UIFramework/UploadServerice.ashx?service=SaveForm',
+			data: {
+				id: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
+				formdata: {
+					formid: 'd9987c7b-d6c8-14c8-8293-39eb8ff08730',
+					UrlParams: `value=${customerId}`, // 客户ID
+					HeadFields: params,
+					Fentrys: [],
+					PluginName: null,
+					PluginId: null
+				}
+			}
+		}
+		return this.post(obj)
 	}
 }
