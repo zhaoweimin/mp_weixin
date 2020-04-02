@@ -1,28 +1,152 @@
 <template>
 	<div class="customer">
 		<div class="bg-fff mb20">
-			<comInput :type="0" @getInputVal="getInputVal" title="邀约编号" :titleDark="true" :value="params.string1" :textRight="false"></comInput>
-			<comInput :type="0" @getInputVal="getInputVal" title="活动名称" :titleDark="true" :value="params.string2" :textRight="false"></comInput>
-			<comInput :type="0" @getInputVal="getInputVal" title="活动编号" :titleDark="true" :value="params.string3" :textRight="false"></comInput>
-			<comInput :type="0" @getInputVal="getInputVal" title="邀约日期" :titleDark="true" :value="params.date8" @getSelectDate="getSelectDate" :textRight="false"></comInput>
+			<comInput
+				:type="0"
+				@getInputVal="getInputVal"
+				title="邀约编号"
+				:titleDark="true"
+				:value="params.string1"
+				:textRight="false"
+			></comInput>
+			<comInput
+				:type="0"
+				@getInputVal="getInputVal"
+				title="活动名称"
+				:titleDark="true"
+				:value="params.string2"
+				:textRight="false"
+			></comInput>
+			<comInput
+				:type="0"
+				@getInputVal="getInputVal"
+				title="活动编号"
+				:titleDark="true"
+				:value="params.string3"
+				:textRight="false"
+			></comInput>
+			<comInput
+				:type="0"
+				@getInputVal="getInputVal"
+				title="邀约日期"
+				:titleDark="true"
+				:value="params.date8"
+				@getSelectDate="getSelectDate"
+				:textRight="false"
+			></comInput>
 			<!-- <comInput :type="2" @getInputVal="getInputVal" title="审批状态" :titleDark="true" placeholder="请选择审批状态" :value="params.string2" @getSelect="getSelect" :options="['通过','未通过','等待审核中']" :textRight="false"></comInput> -->
-			<comInput :type="0" @getInputVal="getInputVal" title="备注" :titleDark="true" placeholder="请输入备注" :value="params.string7" :textRight="false"></comInput>
+			<comInput
+				:type="0"
+				@getInputVal="getInputVal"
+				title="备注"
+				:titleDark="true"
+				placeholder="请输入备注"
+				:value="params.string7"
+				:textRight="false"
+			></comInput>
 
 			<div v-for="(vo, index) in customers" :key="index">
 				<div class="flex a-between mlr15 ptb15">
 					<div class="f16 strong clink border-b">邀约({{ index + 1 }})</div>
 					<div class="btn-del cfff flex l-center a-center f12" @click="del(index)">删除</div>
 				</div>
-				<comInput :type="6" :paramkey="index + '_string35'" title="客户姓名" :titleDark="true" :value="vo.string35" :filterList="customerOptions" @getFilterSelet="getFilterSelet" :textRight="false"></comInput>
-				<comInput :type="1" :paramkey="index + '_string42'" @getInputVal="getInputVal" title="手机号码" :titleDark="true" placeholder="请输入手机号码" :value="vo.string42" :textRight="false"></comInput>
-				<comInput :type="2" :paramkey="index + '_string21'" @getInputVal="getInputVal" title="客户类型" :titleDark="true" placeholder="请选择客户类型" :value="vo.string21" @getSelect="getSelect" :options="['有意向客户']" :textRight="false"></comInput>
-				<comInput :type="1" :paramkey="index + '_string18'" @getInputVal="getInputVal" title="客户投资总额" :titleDark="true" placeholder="请输入客户投资总额" :value="vo.string18" :textRight="false"></comInput>
-				<comInput :type="1" :paramkey="index + '_string34'" @getInputVal="getInputVal" title="客户累计投资总额" :titleDark="true" placeholder="请输入客户累计投资总额" :value="vo.string34" :textRight="false"></comInput>
+				<comInput
+					:type="6"
+					:paramkey="index + '_string35'"
+					title="客户姓名"
+					:titleDark="true"
+					:value="vo.string35"
+					:filterList="customerOptions"
+					@getFilterSelet="getFilterSelet"
+					:textRight="false"
+				></comInput>
+				<comInput
+					:type="1"
+					:paramkey="index + '_string42'"
+					@getInputVal="getInputVal"
+					title="手机号码"
+					:titleDark="true"
+					placeholder="请输入手机号码"
+					:value="vo.string42"
+					:textRight="false"
+				></comInput>
+				<comInput
+					:type="2"
+					:paramkey="index + '_string21'"
+					@getInputVal="getInputVal"
+					title="客户类型"
+					:titleDark="true"
+					placeholder="请选择客户类型"
+					:value="vo.string21"
+					@getSelect="getSelect"
+					:options="['有意向客户']"
+					:textRight="false"
+				></comInput>
+				<comInput
+					:type="1"
+					:paramkey="index + '_string18'"
+					@getInputVal="getInputVal"
+					title="客户投资总额"
+					:titleDark="true"
+					placeholder="请输入客户投资总额"
+					:value="vo.string18"
+					:textRight="false"
+				></comInput>
+				<comInput
+					:type="1"
+					:paramkey="index + '_string34'"
+					@getInputVal="getInputVal"
+					title="客户累计投资总额"
+					:titleDark="true"
+					placeholder="请输入客户累计投资总额"
+					:value="vo.string34"
+					:textRight="false"
+				></comInput>
 				<!-- <comInput :type="1" :paramkey="index+'_'" @getInputVal="getInputVal" title="所属部门" :titleDark="true" placeholder="请输入客户投资总额" :value="vo.string5" :textRight="false"></comInput> -->
-				<comInput :type="1" :paramkey="index + '_string23'" @getInputVal="getInputVal" title="邀约审批状态" :titleDark="true" placeholder="自动判断状态" :value="vo.string23" :textRight="false"></comInput>
-				<comInput :type="1" :paramkey="index + '_string24'" @getInputVal="getInputVal" title="备注" :titleDark="true" placeholder="请输入备注" :value="vo.string24" :textRight="false"></comInput>
-				<comInput :type="2" :paramkey="index + '_string28'" @getInputVal="getInputVal" title="理财经理" :titleDark="true" placeholder="请选择理财经理" :value="vo.string28" @getSelect="getSelect" :options="['小王', '小李']" :textRight="false"></comInput>
-				<comInput :type="2" :paramkey="index + '_string5'" @getInputVal="getInputVal" title="归属部门" :titleDark="true" placeholder="请选择归属部门" :value="vo.string5" @getSelect="getSelect" :options="['市场部门', '行政部门']" :textRight="false"></comInput>
+				<comInput
+					:type="1"
+					:paramkey="index + '_string23'"
+					@getInputVal="getInputVal"
+					title="邀约审批状态"
+					:titleDark="true"
+					placeholder="自动判断状态"
+					:value="vo.string23"
+					:textRight="false"
+				></comInput>
+				<comInput
+					:type="1"
+					:paramkey="index + '_string24'"
+					@getInputVal="getInputVal"
+					title="备注"
+					:titleDark="true"
+					placeholder="请输入备注"
+					:value="vo.string24"
+					:textRight="false"
+				></comInput>
+				<comInput
+					:type="2"
+					:paramkey="index + '_string28'"
+					@getInputVal="getInputVal"
+					title="理财经理"
+					:titleDark="true"
+					placeholder="请选择理财经理"
+					:value="vo.string28"
+					@getSelect="getSelect"
+					:options="['小王', '小李']"
+					:textRight="false"
+				></comInput>
+				<comInput
+					:type="2"
+					:paramkey="index + '_string5'"
+					@getInputVal="getInputVal"
+					title="归属部门"
+					:titleDark="true"
+					placeholder="请选择归属部门"
+					:value="vo.string5"
+					@getSelect="getSelect"
+					:options="['市场部门', '行政部门']"
+					:textRight="false"
+				></comInput>
 			</div>
 		</div>
 		<div class="ta-c pt25 pb25 clink f16" @click="addCustomer">+ 添加邀约</div>
@@ -156,7 +280,8 @@ export default {
 	},
 	methods: {
 		getCustomers() {
-			this.$api.getAchiveList('', {}, '&r=1&UserID=10183', true).then(res => {
+			let userid = this.$store.state.account.info.RetValue.UserID
+			this.$api.getAchiveList('', { string8: userid }, '&r=1&UserID=10183', true).then(res => {
 				// console.log('res=>>', res)
 				this.customerOptions = res.rows.map(m => m.FName)
 				this.customerDatas = res.rows
