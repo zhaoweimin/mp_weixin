@@ -13,7 +13,7 @@
 			<comInput :type="0" :titleDark="false" title="客户投资总额" :value="info['客户投资总额']"></comInput>
 			<comInput :type="0" :titleDark="false" title="邀约审批人" :value="info['邀约审批人']"></comInput>
 			<comInput :type="0" :titleDark="false" title="所属活动" :value="info['活动名称']"></comInput>
-			<comInput :type="0" :titleDark="false" title="客户来源明细" :value="info['客户来源']"></comInput>
+			<!-- <comInput :type="0" :titleDark="false" title="客户来源明细" :value="info['客户来源']"></comInput> -->
 			<comInput :type="0" :titleDark="false" title="备注" :value="info['备注2']"></comInput>
 			<comInput :type="0" :titleDark="false" title="理财经理" :value="info['理财经理']"></comInput>
 			<comInput :type="0" :titleDark="false" title="归属部门" :value="info['所属部门']"></comInput>

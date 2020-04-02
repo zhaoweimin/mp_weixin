@@ -204,12 +204,12 @@ export default {
 	},
 
 	// 待办
-	getTaskList(page) {
+	getTaskList(page, userid) {
 		let obj = {
 			url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
 			data: {
 				id: 'd0ccb1c4-687f-47b7-a20a-05d0a55251b5',
-				UserID: '10818',
+				UserID: userid,
 				PageSize: 10,
 				PageIndex: page - 1,
 				Types: `assembly`,
@@ -431,12 +431,12 @@ export default {
 	},
 
 	// 待审批邀约活动接口查询
-	getDaiDiscoverMarkerExerciseList(page, type = 0) {
+	getDaiDiscoverMarkerExerciseList(page, userid) {
 		// type  1 历史邀约 0 可邀约
 		let obj = {
 			url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
 			data: {
-				userId: 10183,
+				userId: userid,
 				id: '27458a0c-3000-4f36-8b93-81a82f59093f',
 				rightvalueid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
 				formid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
@@ -452,11 +452,11 @@ export default {
 	},
 
 	// 拒绝邀约活动接口查询
-	getRejectDiscoverMarkerExerciseList(page) {
+	getRejectDiscoverMarkerExerciseList(page, userid) {
 		let obj = {
 			url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
 			data: {
-				userId: 10183,
+				userId: userid,
 				id: '27458a0c-3000-4f36-8b93-81a82f59093f',
 				rightvalueid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
 				formid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
@@ -472,11 +472,11 @@ export default {
 	},
 
 	// 同意邀约活动接口查询
-	getAgreatDiscoverMarkerExerciseList(page) {
+	getAgreatDiscoverMarkerExerciseList(page, userid) {
 		let obj = {
 			url: '/ashx/UIFramework/PluginServerice.ashx?service=EmitAssembly',
 			data: {
-				userId: 10183,
+				userId: userid,
 				id: '27458a0c-3000-4f36-8b93-81a82f59093f',
 				rightvalueid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
 				formid: '82907d3f-4979-d0d0-1f50-39eb6765d115',
@@ -669,35 +669,35 @@ export default {
 			}
 		}
 		return this.post(obj)
-    },
-    
-    // 获取个人风险能力评测
+	},
+
+	// 获取个人风险能力评测
 	getPersonTestResult(fnumber) {
 		let obj = {
 			url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
 			data: {
-                id: "590acc29-43a7-9e04-b61b-39ed556179b0",
-                pageIndex: 0,
-                pageSize: 10,
-                Parameter: `escontain=true&deptid=1&r=1&fnumber=${fnumber}`,
-                filter: "{}",
-                rightvalueid: "590acc29-43a7-9e04-b61b-39ed556179b0"
-            }
+				id: '590acc29-43a7-9e04-b61b-39ed556179b0',
+				pageIndex: 0,
+				pageSize: 10,
+				Parameter: `escontain=true&deptid=1&r=1&fnumber=${fnumber}`,
+				filter: '{}',
+				rightvalueid: '590acc29-43a7-9e04-b61b-39ed556179b0'
+			}
 		}
 		return this.post(obj)
-    },
-    // 获取机构风险能力评测
+	},
+	// 获取机构风险能力评测
 	getInstitutionTestResult(fnumber) {
 		let obj = {
 			url: '/ashx/UIFramework/UploadServerice.ashx?service=GetGridData',
 			data: {
-                id: "b8f0700c-923f-682a-6253-39ed56b95c31",
-                pageIndex: 0,
-                pageSize: 10,
-                Parameter: `escontain=true&deptid=1&r=1&fnumber=${fnumber}`,
-                filter: "{}",
-                rightvalueid: "b8f0700c-923f-682a-6253-39ed56b95c31"
-            }
+				id: 'b8f0700c-923f-682a-6253-39ed56b95c31',
+				pageIndex: 0,
+				pageSize: 10,
+				Parameter: `escontain=true&deptid=1&r=1&fnumber=${fnumber}`,
+				filter: '{}',
+				rightvalueid: 'b8f0700c-923f-682a-6253-39ed56b95c31'
+			}
 		}
 		return this.post(obj)
 	}

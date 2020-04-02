@@ -70,7 +70,6 @@ export default {
 				string16: '', // 最后修改人
 				date3: '', // 最后修改日期
 				string14: '', // 最后修改部门
-				date8: '', // 邀约日期
 				string6: '', // 审批状态
 				string7: '' // 备注
 			},

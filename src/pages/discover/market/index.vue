@@ -82,14 +82,15 @@ export default {
 			this.getList(this.page + 1)
 		},
 		getList(page = 1) {
+			var userid = this.$store.state.account.info.RetValue.UserID
 			let active = this.active
 			this._page = page
 			if (active === 1) {
-				this.$api.getDaiDiscoverMarkerExerciseList(page).then(this.resList)
+				this.$api.getDaiDiscoverMarkerExerciseList(page, userid).then(this.resList)
 			} else if (active === 2) {
-				this.$api.getAgreatDiscoverMarkerExerciseList(page).then(this.resList)
+				this.$api.getAgreatDiscoverMarkerExerciseList(page, userid).then(this.resList)
 			} else if (active === 3) {
-				this.$api.getRejectDiscoverMarkerExerciseList(page).then(this.resList)
+				this.$api.getRejectDiscoverMarkerExerciseList(page, userid).then(this.resList)
 			}
 		},
 		resList(res) {
