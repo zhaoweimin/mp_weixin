@@ -61,7 +61,7 @@
 				<div class="fr cblack iconfont" :class="{ iconxiangxiajiantou: !open[0], 'iconxiangxiajiantou-copy': open[0] }"></div>
 			</div>
 			<div v-show="open[0]">
-				<div v-if="isEdit">
+				<div v-show="isEdit">
 					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FNumber" paramkey="FNumber" :textRight="false" title="客户编号" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="2" fontSize="f14" ref="FTranType" :value="datas.FTranType" paramkey="FTranType" :textRight="false" :options="options.customerOrigin" @getSelect="getSelect" title="客户来源" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="2" fontSize="f14" ref="FtranTypeEntry" :value="datas.FtranTypeEntry" paramkey="FtranTypeEntry" :textRight="false" :options="options.customerOriginDetails" @getSelect="getSelect" title="客户来源明细" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
@@ -84,7 +84,7 @@
 					<comInput :type="2" fontSize="f14" :value="datas.FPermanentProvinces" paramkey="FPermanentProvinces" :textRight="false" :options="options.province" @getSelect="getSelect" title="常住省份" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" :value="datas.FPermanentCity" paramkey="FPermanentCity" :textRight="false" title="常住城市" :isSpecialBorderStyle="true"></comInput>
 				</div>
-				<div v-else>
+				<div v-show="!isEdit">
 					<comInput :type="0" fontSize="f14" title="客户编号" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FNumber"></comInput>
 					<comInput :type="0" fontSize="f14" title="客户来源" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FTranType" :isRequired="true"></comInput>
 					<comInput :type="0" fontSize="f14" title="客户来源明细" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FtranTypeEntry" :isRequired="true"></comInput>
@@ -117,7 +117,7 @@
 				<div class="fr cblack iconfont" :class="{ iconxiangxiajiantou: !open[1], 'iconxiangxiajiantou-copy': open[1] }"></div>
 			</div>
 			<div v-show="open[1]">
-				<div v-if="isEdit">
+				<div v-show="isEdit">
 					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" ref="FMobilePhone" validType="phoneValid" :value="datas.FMobilePhone" paramkey="FMobilePhone" :textRight="false" title="手机号码" :isSpecialBorderStyle="true" :isRequired="true"></comInput>
 					<comInput :type="2" fontSize="f14" :value="datas.FPhoneType" paramkey="FPhoneType" :textRight="false" :options="options.phoneType" @getSelect="getSelect" title="电话类型" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="1" @getInputVal="getInputVal" fontSize="f14" validType="emailValid" :value="datas.Email" paramkey="Email" :textRight="false" title="邮箱" :isSpecialBorderStyle="true"></comInput>
@@ -130,7 +130,7 @@
 						</div>
 					</div>
 				</div>
-				<div v-else>
+				<div v-show="!isEdit">
 					<comInput :type="0" fontSize="f14" title="手机号码" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FMobilePhone" :isRequired="true"></comInput>
 					<comInput :type="0" fontSize="f14" title="电话类型" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FPhoneType"></comInput>
 					<comInput :type="0" fontSize="f14" title="邮箱" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.email"></comInput>
@@ -152,14 +152,14 @@
 				<div class="fr cblack iconfont" :class="{ iconxiangxiajiantou: !open[3], 'iconxiangxiajiantou-copy': open[3] }"></div>
 			</div>
 			<div v-show="open[3]">
-				<div v-if="isEdit">
+				<div v-show="isEdit">
 					<comInput :type="2" fontSize="f14" :value="datas.FChoGender" paramkey="FChoGender" :textRight="false" :options="options.sex" @getSelect="getSelect" title="性别" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="2" fontSize="f14" :value="datas.FChoold" paramkey="FChoold" :textRight="false" :options="options.ageRange" @getSelect="getSelect" title="年龄段" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="2" fontSize="f14" :value="datas.Findustry" paramkey="Findustry" :textRight="false" :options="options.industry" @getSelect="getSelect" title="行业" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="2" fontSize="f14" :value="datas.FInvestment" paramkey="FInvestment" :textRight="false" :options="options.investmentRate" @getSelect="getSelect" title="投资占收入比" :isSpecialBorderStyle="true"></comInput>
 					<comInput :type="2" fontSize="f14" :value="datas.FYearInvest" paramkey="FYearInvest" :textRight="false" :options="options.investmentYears" @getSelect="getSelect" title="投资理财年限" :isSpecialBorderStyle="true"></comInput>
 				</div>
-				<div v-else>
+				<div v-show="!isEdit">
 					<comInput :type="0" fontSize="f14" title="性别" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FChoGender"></comInput>
 					<comInput :type="0" fontSize="f14" title="年龄段" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.FChoold"></comInput>
 					<comInput :type="0" fontSize="f14" title="行业" :titleDark="false" :isSpecialBorderStyle="true" :value="pageData.Findustry"></comInput>
@@ -172,7 +172,7 @@
 							<div class="key">收入来源</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_income" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'income')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'income')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -182,7 +182,7 @@
 							<div class="key">投资私募基金信息来源渠道</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_channel" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'channel')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'channel')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -192,7 +192,7 @@
 							<div class="key">选择私募基金的关注点</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_point" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'point')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'point')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -202,7 +202,7 @@
 							<div class="key">运动健康</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_exercise" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'exercise')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'exercise')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -212,7 +212,7 @@
 							<div class="key">私享会</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_enjoy" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'enjoy')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'enjoy')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -222,7 +222,7 @@
 							<div class="key">沙龙分享</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_salon" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'salon')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'salon')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -232,7 +232,7 @@
 							<div class="key">女性专享手作</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_hands" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'hands')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'hands')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -242,7 +242,7 @@
 							<div class="key">亲子/单人手作</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_selfHands" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'selfHands')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'selfHands')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -252,7 +252,7 @@
 							<div class="key">美食专享</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_food" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'food')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'food')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -262,7 +262,7 @@
 							<div class="key">旅行</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_travel" :key="key">
-									<van-checkbox :value="vo.val" @change="onChange(key, 'travel')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'travel')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -298,7 +298,7 @@
 			</div>
 		</div>
 
-		<div class="footer-bar" v-if="isEdit">
+		<div class="footer-bar" v-show="isEdit">
 			<div class="flex-1 mr10">
 				<van-button plain type="info" @click="cancle">取消</van-button>
 			</div>
@@ -467,13 +467,6 @@ export default {
 			key: 'cusInfo',
 			success: res => {
 				this.pageData = res.data
-				console.log(res.data)
-				Object.keys(this.datas).forEach(e => {
-					this.datas[e] = res.data[e]
-					console.log(e)
-					console.log(res.data[e])
-					console.log(this.datas[e])
-				})
 				console.log('FNumber', this.pageData.FNumber)
 				res.data.FChoIncom.split(',').forEach(item => {
 					let idx = this.souce_income.findIndex(m => m.text === item)
@@ -543,33 +536,83 @@ export default {
 				switch (type) {
 					case 'income':
 						this.souce_income[key].val = !this.souce_income[key].val
+						if (this.souce_income[key].val) {
+							this.datas.FChoIncom.push(this.souce_income[key].text)
+						} else {
+							this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
+						}
 						break
 					case 'channel':
 						this.souce_channel[key].val = !this.souce_channel[key].val
+						if (this.souce_channel[key].val) {
+							this.datas.FwhereFund.push(this.souce_channel[key].text)
+						} else {
+							this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
+						}
 						break
 					case 'point':
 						this.souce_point[key].val = !this.souce_point[key].val
+						if (this.souce_point[key].val) {
+							this.datas.FFollowFund.push(this.souce_point[key].text)
+						} else {
+							this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
+						}
 						break
 					case 'exercise':
 						this.souce_exercise[key].val = !this.souce_exercise[key].val
+						if (this.souce_exercise[key].val) {
+							this.datas.Fhealthy.push(this.souce_exercise[key].text)
+						} else {
+							this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
+						}
 						break
 					case 'enjoy':
 						this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+						if (this.souce_enjoy[key].val) {
+							this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
+						} else {
+							this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
+						}
 						break
 					case 'salon':
 						this.souce_salon[key].val = !this.souce_salon[key].val
+						if (this.souce_salon[key].val) {
+							this.datas.FsalonMeet.push(this.souce_salon[key].text)
+						} else {
+							this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
+						}
 						break
 					case 'hands':
 						this.souce_hands[key].val = !this.souce_hands[key].val
+						if (this.souce_hands[key].val) {
+							this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
+						} else {
+							this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
+						}
 						break
 					case 'selfHands':
 						this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+						if (this.souce_selfHands[key].val) {
+							this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
+						} else {
+							this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
+						}
 						break
 					case 'food':
 						this.souce_food[key].val = !this.souce_food[key].val
+						if (this.souce_food[key].val) {
+							this.datas.Fdeliciousfood.push(this.souce_food[key].text)
+						} else {
+							this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
+						}
 						break
 					case 'travel':
 						this.souce_travel[key].val = !this.souce_travel[key].val
+						if (this.souce_travel[key].val) {
+							this.datas.FTourism.push(this.souce_travel[key].text)
+						} else {
+							this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
+						}
 						break
 				}
 				this.$forceUpdate()
@@ -592,6 +635,16 @@ export default {
 			let url = `../quetions/main?type=1&FNumber=${this.pageData.FNumber}`
 			mpvue.navigateTo({ url })
 		}
+	},
+	onShow(){
+		Object.keys(this.datas).forEach(e => {
+			if(Array.isArray(this.datas[e])){
+				this.datas[e] = this.pageData[e].split(',')
+			}else{
+				this.datas[e] = this.pageData[e]
+			}
+		})
+		console.log('datas',this.datas)
 	}
 }
 </script>
