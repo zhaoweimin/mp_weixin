@@ -252,43 +252,57 @@ export default {
 			souce_exercise: [
 				{ val: false, text: '马术运动' },
 				{ val: false, text: '帆船/游艇出海' },
+				{ val: false, text: '高尔夫赛事/体验场' },
+				{ val: false, text: '登山' },
 				{ val: false, text: '室内高尔夫' },
 				{ val: false, text: '网球' },
-				{ val: false, text: '射箭' },
 				{ val: false, text: '羽毛球' },
+				{ val: false, text: '射箭' },
 				{ val: false, text: '其他' }
 			],
 			souce_enjoy: [
 				{ val: false, text: '红酒品鉴' },
-				{ val: false, text: '形象提升（男/女）' },
-				{ val: false, text: '美体/形体培训' },
 				{ val: false, text: '珠宝鉴赏' },
+				{ val: false, text: '形象提升（男/女）' },
+				{ val: false, text: '美妆/形体培训' },
 				{ val: false, text: '其他' }
 			],
-			souce_salon: [{ val: false, text: '摄影分享' }, { val: false, text: '花艺沙龙' }, { val: false, text: '投资策略' }, { val: false, text: '茶艺沙龙' }, { val: false, text: '其他' }],
+			souce_salon: [
+				{ val: false, text: '摄影分享' },
+				{ val: false, text: '投资策略' },
+				{ val: false, text: '花艺沙龙' },
+				{ val: false, text: '茶艺沙龙' },
+				{ val: false, text: '其他' }
+			],
 			souce_hands: [
 				{ val: false, text: '香水手作' },
-				{ val: false, text: '小黑裙手作' },
-				{ val: false, text: '包包手作' },
 				{ val: false, text: '香薰干花蜡烛手作' },
+				{ val: false, text: '小黑裙手作' },
 				{ val: false, text: '口红手作' },
+				{ val: false, text: '包包手作' },
 				{ val: false, text: '其他' }
 			],
 			souce_selfHands: [
+				{ val: false, text: '永生花、永生花团扇手作' },
 				{ val: false, text: '油画创作手作' },
-				{ val: false, text: '鸡尾酒/精酿啤酒手作' },
 				{ val: false, text: '咖啡手作' },
-				{ val: false, text: '永生花＆永生花团扇手作' },
+				{ val: false, text: '鸡尾酒/精酿啤酒手作' },
 				{ val: false, text: '蛋糕/粽子/饼干手作' },
 				{ val: false, text: '其他' }
 			],
-			souce_food: [{ val: false, text: '西餐' }, { val: false, text: '自助餐' }, { val: false, text: '中餐' }, { val: false, text: '日料' }, { val: false, text: '日料' }],
+			souce_food: [
+				{ val: false, text: '西餐' },
+				{ val: false, text: '中餐' },
+				{ val: false, text: '自助餐' },
+				{ val: false, text: '日料' },
+				{ val: false, text: '其他' }
+			],
 			souce_travel: [
 				{ val: false, text: '繁华都市' },
-				{ val: false, text: '名胜古迹' },
-				{ val: false, text: '自然景观' },
 				{ val: false, text: '水乡古镇' },
+				{ val: false, text: '名胜古迹' },
 				{ val: false, text: '海滨海岛' },
+				{ val: false, text: '自然景观' },
 				{ val: false, text: '其他' }
 			],
 

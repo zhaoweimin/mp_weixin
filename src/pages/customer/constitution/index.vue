@@ -288,67 +288,81 @@ export default {
       isEdit: false,
       check: [true, true, false, false],
       souce_income: [
-        { val: false, text: '工资，劳务报酬' },
-        { val: false, text: '生产经营所得' },
-        { val: false, text: '利息、股息，转让证券等金融性资产收入' },
-        { val: false, text: '出租、出售房地产等非金融性资产收入' }
-      ],
-      souce_channel: [
-        { val: false, text: '互联网' },
-        { val: false, text: '微信、微博等手机App' },
-        { val: false, text: '亲戚朋友' },
-        { val: false, text: '银行、证券、信托公司' },
-        { val: false, text: '私募基金管理机构' },
-        { val: false, text: '第三方理财机构' }
-      ],
-      souce_point: [
-        { val: false, text: '私募基金管理机构的品牌' },
-        { val: false, text: '基金销售机构的宣传和推介' },
-        { val: false, text: '私募基金的业绩表现' },
-        { val: false, text: '综合考虑私募基金管理机构的管理能力' }
-      ],
-      souce_exercise: [
-        { val: false, text: '马术运动' },
-        { val: false, text: '帆船/游艇出海' },
-        { val: false, text: '室内高尔夫' },
-        { val: false, text: '网球' },
-        { val: false, text: '射箭' },
-        { val: false, text: '羽毛球' },
-        { val: false, text: '其他' }
-      ],
-      souce_enjoy: [
-        { val: false, text: '红酒品鉴' },
-        { val: false, text: '形象提升（男/女）' },
-        { val: false, text: '美体/形体培训' },
-        { val: false, text: '珠宝鉴赏' },
-        { val: false, text: '其他' }
-      ],
-      souce_salon: [{ val: false, text: '摄影分享' }, { val: false, text: '花艺沙龙' }, { val: false, text: '投资策略' }, { val: false, text: '茶艺沙龙' }, { val: false, text: '其他' }],
-      souce_hands: [
-        { val: false, text: '香水手作' },
-        { val: false, text: '小黑裙手作' },
-        { val: false, text: '包包手作' },
-        { val: false, text: '香薰干花蜡烛手作' },
-        { val: false, text: '口红手作' },
-        { val: false, text: '其他' }
-      ],
-      souce_selfHands: [
-        { val: false, text: '油画创作手作' },
-        { val: false, text: '鸡尾酒/精酿啤酒手作' },
-        { val: false, text: '咖啡手作' },
-        { val: false, text: '永生花＆永生花团扇手作' },
-        { val: false, text: '蛋糕/粽子/饼干手作' },
-        { val: false, text: '其他' }
-      ],
-      souce_food: [{ val: false, text: '西餐' }, { val: false, text: '自助餐' }, { val: false, text: '中餐' }, { val: false, text: '日料' }, { val: false, text: '日料' }],
-      souce_travel: [
-        { val: false, text: '繁华都市' },
-        { val: false, text: '名胜古迹' },
-        { val: false, text: '自然景观' },
-        { val: false, text: '水乡古镇' },
-        { val: false, text: '海滨海岛' },
-        { val: false, text: '其他' }
-      ],
+				{ val: false, text: '工资，劳务报酬' },
+				{ val: false, text: '生产经营所得' },
+				{ val: false, text: '利息、股息，转让证券等金融性资产收入' },
+				{ val: false, text: '出租、出售房地产等非金融性资产收入' }
+			],
+			souce_channel: [
+				{ val: false, text: '互联网' },
+				{ val: false, text: '微信、微博等手机App' },
+				{ val: false, text: '亲戚朋友' },
+				{ val: false, text: '银行、证券、信托公司' },
+				{ val: false, text: '私募基金管理机构' },
+				{ val: false, text: '第三方理财机构' }
+			],
+			souce_point: [
+				{ val: false, text: '私募基金管理机构的品牌' },
+				{ val: false, text: '基金销售机构的宣传和推介' },
+				{ val: false, text: '私募基金的业绩表现' },
+				{ val: false, text: '综合考虑私募基金管理机构的管理能力' }
+			],
+			souce_exercise: [
+				{ val: false, text: '马术运动' },
+				{ val: false, text: '帆船/游艇出海' },
+				{ val: false, text: '高尔夫赛事/体验场' },
+				{ val: false, text: '登山' },
+				{ val: false, text: '室内高尔夫' },
+				{ val: false, text: '网球' },
+				{ val: false, text: '羽毛球' },
+				{ val: false, text: '射箭' },
+				{ val: false, text: '其他' }
+			],
+			souce_enjoy: [
+				{ val: false, text: '红酒品鉴' },
+				{ val: false, text: '珠宝鉴赏' },
+				{ val: false, text: '形象提升（男/女）' },
+				{ val: false, text: '美妆/形体培训' },
+				{ val: false, text: '其他' }
+			],
+			souce_salon: [
+				{ val: false, text: '摄影分享' },
+				{ val: false, text: '投资策略' },
+				{ val: false, text: '花艺沙龙' },
+				{ val: false, text: '茶艺沙龙' },
+				{ val: false, text: '其他' }
+			],
+			souce_hands: [
+				{ val: false, text: '香水手作' },
+				{ val: false, text: '香薰干花蜡烛手作' },
+				{ val: false, text: '小黑裙手作' },
+				{ val: false, text: '口红手作' },
+				{ val: false, text: '包包手作' },
+				{ val: false, text: '其他' }
+			],
+			souce_selfHands: [
+				{ val: false, text: '永生花、永生花团扇手作' },
+				{ val: false, text: '油画创作手作' },
+				{ val: false, text: '咖啡手作' },
+				{ val: false, text: '鸡尾酒/精酿啤酒手作' },
+				{ val: false, text: '蛋糕/粽子/饼干手作' },
+				{ val: false, text: '其他' }
+			],
+			souce_food: [
+				{ val: false, text: '西餐' },
+				{ val: false, text: '中餐' },
+				{ val: false, text: '自助餐' },
+				{ val: false, text: '日料' },
+				{ val: false, text: '其他' }
+			],
+			souce_travel: [
+				{ val: false, text: '繁华都市' },
+				{ val: false, text: '水乡古镇' },
+				{ val: false, text: '名胜古迹' },
+				{ val: false, text: '海滨海岛' },
+				{ val: false, text: '自然景观' },
+				{ val: false, text: '其他' }
+			],
 
       sells: ['直销', '代理'],
       sexs: ['男', '女'],
