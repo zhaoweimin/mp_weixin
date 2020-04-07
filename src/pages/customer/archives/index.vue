@@ -34,7 +34,6 @@ export default {
 	},
 	onLoad() {
 		Object.assign(this.$data, this.$options.data())
-		this.getData()
 	},
 	methods: {
 		getData(page = 1) {
@@ -65,6 +64,9 @@ export default {
 			this.filter = { ...this.filter, ...val }
 			this.getData(1, val)
 		}
+	},
+	onShow(){
+		this.getData()
 	},
 	onReachBottom() {
 		return false

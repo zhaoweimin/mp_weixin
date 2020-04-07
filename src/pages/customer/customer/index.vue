@@ -300,7 +300,7 @@
 
 		<div class="footer-bar" v-show="isEdit">
 			<div class="flex-1 mr10">
-				<van-button plain type="info" @click="cancle">取消</van-button>
+				<van-button plain type="info" @click="cancel">取消</van-button>
 			</div>
 			<div class="flex-1">
 				<van-button type="info" @click="submit">确定</van-button>
@@ -469,6 +469,7 @@ export default {
 		}
 	},
 	onLoad() {
+		Object.assign(this.$data, this.$options.data())
 		wx.getStorage({
 			// 获取本地缓存
 			key: 'cusInfo',
@@ -570,15 +571,16 @@ export default {
 			 
 			let params = [...temp1,...temp2]
 			console.log(params)
-			this.$api.editInfo(params).then(res=>{
+			this.$api.editInfo(params,this.pageData.id).then(res=>{
 				this.isEdit = false
 				mpvue.showToast({
 					title: '操作成功',
 					icon: 'none'
 				})
+			  	mpvue.navigateBack({ delta: '1' })
 			})
 		},
-		cancle() {
+		cancel() {
 			this.isEdit = false
 		},
 		onChange(key, type) {
