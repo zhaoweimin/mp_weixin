@@ -305,41 +305,41 @@
 <script>
 import card from '@/components/card'
 import comInput from '@/components/comInput'
-import { formatTime2 } from '@/utils/index.js'
-import { getPersonGrade } from '@/utils/index.js'
+import { formatTime2, getPersonGrade } from '@/utils/index.js'
+
 import Options from '@/utils/Options.js'
 import { mapState } from 'vuex'
 
 export default {
-  components: {
-    card,
-    comInput
-  },
-  computed: {
-    ...mapState({
+	components: {
+		card,
+		comInput
+	},
+	computed: {
+		...mapState({
 			score: state => state.score.num
 		}),
-    updateSource () {
-      return this.source
-    },
+		updateSource() {
+			return this.source
+		},
 		gradeResult() {
 			return getPersonGrade(this.score)
 		}
-  },
-  data () {
-    return {
+	},
+	data() {
+		return {
 			options: Options,
-      pageData: {},
-      info: {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
-        name: '深圳市XXX有限公司',
-        level: 1,
-        sex: 1
-      },
-      open: [false, false, false, false, false],
-      isEdit: false,
-      check: [true, true, false, false],
-      souce_income: [
+			pageData: {},
+			info: {
+				avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
+				name: '深圳市XXX有限公司',
+				level: 1,
+				sex: 1
+			},
+			open: [false, false, false, false, false],
+			isEdit: false,
+			check: [true, true, false, false],
+			souce_income: [
 				{ val: false, text: '工资，劳务报酬' },
 				{ val: false, text: '生产经营所得' },
 				{ val: false, text: '利息、股息，转让证券等金融性资产收入' },
@@ -393,7 +393,7 @@ export default {
 				{ val: false, text: '其他' }
 			],
 			souce_selfHands: [
-				{ val: false, text: '永生花和永生花团扇手作' },
+				{ val: false, text: '永生花、永生花团扇手作' },
 				{ val: false, text: '油画创作手作' },
 				{ val: false, text: '咖啡手作' },
 				{ val: false, text: '鸡尾酒/精酿啤酒手作' },
@@ -415,7 +415,7 @@ export default {
 				{ val: false, text: '自然景观' },
 				{ val: false, text: '其他' }
 			],
-      sex: 0,
+			sex: 0,
 			datas: {
 				FNumber: '',
 				FTranType: '',
@@ -457,208 +457,208 @@ export default {
 				Fdeliciousfood: [],
 				FTourism: []
 			}
-    }
-  },
-  onLoad () {
+		}
+	},
+	onLoad() {
 		Object.assign(this.$data, this.$options.data())
-    wx.getStorage({
-      // 获取本地缓存
-      key: 'cusInfo',
-      success: res => {
-        this.pageData = res.data
-        res.data.FChoIncom.split(',').forEach(item => {
-          let idx = this.souce_income.findIndex(m => m.text === item)
-          this.souce_income[idx].val = true
-        })
-        res.data.FwhereFund.split(',').forEach(item => {
-          let idx = this.souce_channel.findIndex(m => m.text === item)
-          this.souce_channel[idx].val = true
-        })
-        res.data.FFollowFund.split(',').forEach(item => {
-          let idx = this.souce_point.findIndex(m => m.text === item)
-          this.souce_point[idx].val = true
-        })
-        res.data.Fhealthy.split(',').forEach(item => {
-          let idx = this.souce_exercise.findIndex(m => m.text === item)
-          this.souce_exercise[idx].val = true
-        })
-        res.data.FprivateMeet.split(',').forEach(item => {
-          let idx = this.souce_enjoy.findIndex(m => m.text === item)
-          this.souce_enjoy[idx].val = true
-        })
-        res.data.FsalonMeet.split(',').forEach(item => {
-          let idx = this.souce_salon.findIndex(m => m.text === item)
-          this.souce_salon[idx].val = true
-        })
-        res.data.Fwomenhandwork.split(',').forEach(item => {
-          let idx = this.souce_hands.findIndex(m => m.text === item)
-          this.souce_hands[idx].val = true
-        })
-        res.data.Fhumanhandwork.split(',').forEach(item => {
-          let idx = this.souce_selfHands.findIndex(m => m.text === item)
-          this.souce_selfHands[idx].val = true
-        })
-        res.data.Fdeliciousfood.split(',').forEach(item => {
-          let idx = this.souce_food.findIndex(m => m.text === item)
-          this.souce_food[idx].val = true
-        })
-        res.data.FTourism.split(',').forEach(item => {
-          let idx = this.souce_travel.findIndex(m => m.text === item)
-          this.souce_travel[idx].val = true
-        })
+		wx.getStorage({
+			// 获取本地缓存
+			key: 'cusInfo',
+			success: res => {
+				this.pageData = res.data
+				res.data.FChoIncom.split(',').forEach(item => {
+					let idx = this.souce_income.findIndex(m => m.text === item)
+					this.souce_income[idx].val = true
+				})
+				res.data.FwhereFund.split(',').forEach(item => {
+					let idx = this.souce_channel.findIndex(m => m.text === item)
+					this.souce_channel[idx].val = true
+				})
+				res.data.FFollowFund.split(',').forEach(item => {
+					let idx = this.souce_point.findIndex(m => m.text === item)
+					this.souce_point[idx].val = true
+				})
+				res.data.Fhealthy.split(',').forEach(item => {
+					let idx = this.souce_exercise.findIndex(m => m.text === item)
+					this.souce_exercise[idx].val = true
+				})
+				res.data.FprivateMeet.split(',').forEach(item => {
+					let idx = this.souce_enjoy.findIndex(m => m.text === item)
+					this.souce_enjoy[idx].val = true
+				})
+				res.data.FsalonMeet.split(',').forEach(item => {
+					let idx = this.souce_salon.findIndex(m => m.text === item)
+					this.souce_salon[idx].val = true
+				})
+				res.data.Fwomenhandwork.split(',').forEach(item => {
+					let idx = this.souce_hands.findIndex(m => m.text === item)
+					this.souce_hands[idx].val = true
+				})
+				res.data.Fhumanhandwork.split(',').forEach(item => {
+					let idx = this.souce_selfHands.findIndex(m => m.text === item)
+					this.souce_selfHands[idx].val = true
+				})
+				res.data.Fdeliciousfood.split(',').forEach(item => {
+					let idx = this.souce_food.findIndex(m => m.text === item)
+					this.souce_food[idx].val = true
+				})
+				res.data.FTourism.split(',').forEach(item => {
+					let idx = this.souce_travel.findIndex(m => m.text === item)
+					this.souce_travel[idx].val = true
+				})
 
 				Object.keys(this.datas).forEach(e => {
-					if(Array.isArray(this.datas[e])){
+					if (Array.isArray(this.datas[e])) {
 						this.datas[e] = this.pageData[e].split(',')
-					}else{
+					} else {
 						this.datas[e] = this.pageData[e]
 					}
 				})
-				console.log('====>',this.datas)
-      }
-    })
-    this.$store.commit('SET_NUM', 0)
-  },
-  methods: {
-    setOpen (key) {
-      this.open[key] = !this.open[key]
-      this.$forceUpdate()
-    },
-    edit () {
-      // console.log(1)
-      if (!this.isEdit) {
-        this.isEdit = true
-      }
-    },
-    submit() {
+				console.log('====>', this.datas)
+			}
+		})
+		this.$store.commit('SET_NUM', 0)
+	},
+	methods: {
+		setOpen(key) {
+			this.open[key] = !this.open[key]
+			this.$forceUpdate()
+		},
+		edit() {
+			// console.log(1)
+			if (!this.isEdit) {
+				this.isEdit = true
+			}
+		},
+		submit() {
 			let name = this.$store.state.account.info.RetValue.Name
 			let temp1 = []
-			Object.keys(this.datas).forEach(el=>{
+			Object.keys(this.datas).forEach(el => {
 				let value = ''
-				if(Array.isArray(this.datas[el])){
+				if (Array.isArray(this.datas[el])) {
 					value = this.datas[el].join(',')
-				}else{
+				} else {
 					value = this.datas[el]
 				}
 				temp1.push({
-					Field:el,
-					Value:value
+					Field: el,
+					Value: value
 				})
 			})
 			let temp2 = [
-				{Field: 'esvalidate',Value: this.pageData.id},
-				{Field: 'FMktId',Value: ''},
-				{Field: 'FupdateUserId',Value: name},
-				{Field: 'FUpdateTime',Value: formatTime2()},
-				{Field: 'Fassessment',Value: this.score||this.pageData.Fassessment},
-				{Field: 'FRiskLevel',Value: this.gradeResult.grade||this.pageData.FRiskLevel}, 		
-				{Field: 'Fbear',Value: this.gradeResult.type||this.pageData.Fbear}, 
-				{Field: 'FproductLevel',Value: this.gradeResult.proType||this.pageData.FproductLevel},	
-				{Field: 'date1',Value: formatTime2().split(' ')[0]}
+				{Field: 'esvalidate', Value: this.pageData.id},
+				{Field: 'FMktId', Value: ''},
+				{Field: 'FupdateUserId', Value: name},
+				{Field: 'FUpdateTime', Value: formatTime2()},
+				{Field: 'Fassessment', Value: this.score || this.pageData.Fassessment},
+				{Field: 'FRiskLevel', Value: this.gradeResult.grade || this.pageData.FRiskLevel},
+				{Field: 'Fbear', Value: this.gradeResult.type || this.pageData.Fbear},
+				{Field: 'FproductLevel', Value: this.gradeResult.proType || this.pageData.FproductLevel},
+				{Field: 'date1', Value: formatTime2().split(' ')[0]}
 			]
-			 
-			let params = [...temp1,...temp2]
+
+			let params = [...temp1, ...temp2]
 			console.log(params)
-			this.$api.editInfo(params,this.pageData.id).then(res=>{
+			this.$api.editInfo(params, this.pageData.id).then(res => {
 				this.isEdit = false
 				mpvue.showToast({
 					title: '操作成功',
 					icon: 'none'
-        })
+				})
 			  mpvue.navigateBack({ delta: '1' })
 			})
 		},
-    cancel () {
-      this.isEdit = false
-    },
-    onChange(key, type) {
+		cancel() {
+			this.isEdit = false
+		},
+		onChange(key, type) {
 			if (this.isEdit) {
 				switch (type) {
-					case 'income':
-						this.souce_income[key].val = !this.souce_income[key].val
-						if (this.souce_income[key].val) {
-							this.datas.FChoIncom.push(this.souce_income[key].text)
-						} else {
-							this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
-						}
-						break
-					case 'channel':
-						this.souce_channel[key].val = !this.souce_channel[key].val
-						if (this.souce_channel[key].val) {
-							this.datas.FwhereFund.push(this.souce_channel[key].text)
-						} else {
-							this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
-						}
-						break
-					case 'point':
-						this.souce_point[key].val = !this.souce_point[key].val
-						if (this.souce_point[key].val) {
-							this.datas.FFollowFund.push(this.souce_point[key].text)
-						} else {
-							this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
-						}
-						break
-					case 'exercise':
-						this.souce_exercise[key].val = !this.souce_exercise[key].val
-						if (this.souce_exercise[key].val) {
-							this.datas.Fhealthy.push(this.souce_exercise[key].text)
-						} else {
-							this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
-						}
-						break
-					case 'enjoy':
-						this.souce_enjoy[key].val = !this.souce_enjoy[key].val
-						if (this.souce_enjoy[key].val) {
-							this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
-						} else {
-							this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
-						}
-						break
-					case 'salon':
-						this.souce_salon[key].val = !this.souce_salon[key].val
-						if (this.souce_salon[key].val) {
-							this.datas.FsalonMeet.push(this.souce_salon[key].text)
-						} else {
-							this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
-						}
-						break
-					case 'hands':
-						this.souce_hands[key].val = !this.souce_hands[key].val
-						if (this.souce_hands[key].val) {
-							this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
-						} else {
-							this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
-						}
-						break
-					case 'selfHands':
-						this.souce_selfHands[key].val = !this.souce_selfHands[key].val
-						if (this.souce_selfHands[key].val) {
-							this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
-						} else {
-							this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
-						}
-						break
-					case 'food':
-						this.souce_food[key].val = !this.souce_food[key].val
-						if (this.souce_food[key].val) {
-							this.datas.Fdeliciousfood.push(this.souce_food[key].text)
-						} else {
-							this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
-						}
-						break
-					case 'travel':
-						this.souce_travel[key].val = !this.souce_travel[key].val
-						if (this.souce_travel[key].val) {
-							this.datas.FTourism.push(this.souce_travel[key].text)
-						} else {
-							this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
-						}
-						break
+				case 'income':
+					this.souce_income[key].val = !this.souce_income[key].val
+					if (this.souce_income[key].val) {
+						this.datas.FChoIncom.push(this.souce_income[key].text)
+					} else {
+						this.datas.FChoIncom.splice(this.datas.FChoIncom.indexOf(this.souce_income[key].text), 1)
+					}
+					break
+				case 'channel':
+					this.souce_channel[key].val = !this.souce_channel[key].val
+					if (this.souce_channel[key].val) {
+						this.datas.FwhereFund.push(this.souce_channel[key].text)
+					} else {
+						this.datas.FwhereFund.splice(this.datas.FwhereFund.indexOf(this.souce_channel[key].text), 1)
+					}
+					break
+				case 'point':
+					this.souce_point[key].val = !this.souce_point[key].val
+					if (this.souce_point[key].val) {
+						this.datas.FFollowFund.push(this.souce_point[key].text)
+					} else {
+						this.datas.FFollowFund.splice(this.datas.FFollowFund.indexOf(this.souce_point[key].text), 1)
+					}
+					break
+				case 'exercise':
+					this.souce_exercise[key].val = !this.souce_exercise[key].val
+					if (this.souce_exercise[key].val) {
+						this.datas.Fhealthy.push(this.souce_exercise[key].text)
+					} else {
+						this.datas.Fhealthy.splice(this.datas.Fhealthy.indexOf(this.souce_exercise[key].text), 1)
+					}
+					break
+				case 'enjoy':
+					this.souce_enjoy[key].val = !this.souce_enjoy[key].val
+					if (this.souce_enjoy[key].val) {
+						this.datas.FprivateMeet.push(this.souce_enjoy[key].text)
+					} else {
+						this.datas.FprivateMeet.splice(this.datas.FprivateMeet.indexOf(this.souce_enjoy[key].text), 1)
+					}
+					break
+				case 'salon':
+					this.souce_salon[key].val = !this.souce_salon[key].val
+					if (this.souce_salon[key].val) {
+						this.datas.FsalonMeet.push(this.souce_salon[key].text)
+					} else {
+						this.datas.FsalonMeet.splice(this.datas.FsalonMeet.indexOf(this.souce_salon[key].text), 1)
+					}
+					break
+				case 'hands':
+					this.souce_hands[key].val = !this.souce_hands[key].val
+					if (this.souce_hands[key].val) {
+						this.datas.Fwomenhandwork.push(this.souce_hands[key].text)
+					} else {
+						this.datas.Fwomenhandwork.splice(this.datas.Fwomenhandwork.indexOf(this.souce_hands[key].text), 1)
+					}
+					break
+				case 'selfHands':
+					this.souce_selfHands[key].val = !this.souce_selfHands[key].val
+					if (this.souce_selfHands[key].val) {
+						this.datas.Fhumanhandwork.push(this.souce_selfHands[key].text)
+					} else {
+						this.datas.Fhumanhandwork.splice(this.datas.Fhumanhandwork.indexOf(this.souce_selfHands[key].text), 1)
+					}
+					break
+				case 'food':
+					this.souce_food[key].val = !this.souce_food[key].val
+					if (this.souce_food[key].val) {
+						this.datas.Fdeliciousfood.push(this.souce_food[key].text)
+					} else {
+						this.datas.Fdeliciousfood.splice(this.datas.Fdeliciousfood.indexOf(this.souce_food[key].text), 1)
+					}
+					break
+				case 'travel':
+					this.souce_travel[key].val = !this.souce_travel[key].val
+					if (this.souce_travel[key].val) {
+						this.datas.FTourism.push(this.souce_travel[key].text)
+					} else {
+						this.datas.FTourism.splice(this.datas.FTourism.indexOf(this.souce_travel[key].text), 1)
+					}
+					break
 				}
 				this.$forceUpdate()
 			}
 		},
-    getSelectDate(data) {
+		getSelectDate(data) {
 			console.log(data)
 			this.datas[data.key] = data.value
 		},
@@ -667,17 +667,17 @@ export default {
 			this.datas[data.key] = data.value
 		},
 		getInputVal(data) {
-      console.log(data)
-      if (data.key === 'FName') {
+			console.log(data)
+			if (data.key === 'FName') {
 				this.datas.FName1 = data.value
 			}
 			this.datas[data.key] = data.value
 		},
-    lingQuestion () {
-      let url = `../quetions/main?type=2&FNumber=${this.pageData.FNumber}`
-      mpvue.navigateTo({ url })
-    }
-  }
+		lingQuestion() {
+			let url = `../quetions/main?type=2&FNumber=${this.pageData.FNumber}`
+			mpvue.navigateTo({ url })
+		}
+	}
 }
 </script>
 

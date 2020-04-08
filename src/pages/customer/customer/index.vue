@@ -48,9 +48,9 @@
 					<div class="text">风险测评得分</div>
 				</div>
 				<div class="flex-1 pl20">
-					<div class="text mb10">客户风险等级：{{ gradeResult.grade||pageData.FRiskLevel }}</div>
-					<div class="text mb10">风险承受能力类型：{{ gradeResult.type||pageData.Fbear }}</div>
-					<div class="text">相匹配产品风险等级：{{ gradeResult.proType||pageData.FproductLevel }}</div>
+					<div class="text mb10">客户风险等级：{{ gradeResult.grade || pageData.FRiskLevel }}</div>
+					<div class="text mb10">风险承受能力类型：{{ gradeResult.type || pageData.Fbear }}</div>
+					<div class="text">相匹配产品风险等级：{{ gradeResult.proType || pageData.FproductLevel }}</div>
 				</div>
 			</div>
 		</div>
@@ -172,7 +172,7 @@
 							<div class="key">收入来源</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_income" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'income')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'income')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -182,7 +182,7 @@
 							<div class="key">投资私募基金信息来源渠道</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_channel" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'channel')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'channel')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -192,7 +192,7 @@
 							<div class="key">选择私募基金的关注点</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_point" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'point')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'point')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -202,7 +202,7 @@
 							<div class="key">运动健康</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_exercise" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'exercise')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'exercise')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -212,7 +212,7 @@
 							<div class="key">私享会</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_enjoy" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'enjoy')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'enjoy')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -222,7 +222,7 @@
 							<div class="key">沙龙分享</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_salon" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'salon')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'salon')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -232,7 +232,7 @@
 							<div class="key">女性专享手作</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_hands" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'hands')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'hands')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -242,7 +242,7 @@
 							<div class="key">亲子/单人手作</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_selfHands" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'selfHands')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'selfHands')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -252,7 +252,7 @@
 							<div class="key">美食专享</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_food" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'food')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'food')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -262,7 +262,7 @@
 							<div class="key">旅行</div>
 							<div class="check-bok">
 								<div v-for="(vo, key) in souce_travel" :key="key">
-									<van-checkbox :disabled=!isEdit :value="vo.val" @change="onChange(key, 'travel')">{{ vo.text }}</van-checkbox>
+									<van-checkbox :disabled="!isEdit" :value="vo.val" @change="onChange(key, 'travel')">{{ vo.text }}</van-checkbox>
 								</div>
 							</div>
 						</div>
@@ -312,26 +312,25 @@
 <script>
 import card from '@/components/card'
 import comInput from '@/components/comInput'
-import { formatTime2 } from '@/utils/index.js'
-import { getPersonGrade } from '@/utils/index.js'
+import { formatTime2, getPersonGrade } from '@/utils/index.js'
 import Options from '@/utils/Options.js'
 import { mapState } from 'vuex'
 
 export default {
 	components: {
 		card,
-		comInput
+		comInput,
 	},
 	computed: {
 		...mapState({
-			score: state => state.score.num
+			score: state => state.score.num,
 		}),
 		updateSource() {
 			return this.source
 		},
 		gradeResult() {
 			return getPersonGrade(this.score)
-		}
+		},
 	},
 	data() {
 		return {
@@ -341,7 +340,7 @@ export default {
 				avatar: 'https://wx.qlogo.cn/mmopen/vi_32/Po7hia4bia7Ua8tZxjcLfpHsEKgzMT3wf3HzhE6TqQHqsbXSL72dFpjIlPmAYuzv5VVpgic1iaZ703Op5I4LovGOgg/132?imageView2/2/w/100/q/80/v=',
 				name: '张耀扬',
 				level: 1,
-				sex: 1
+				sex: 1,
 			},
 			open: [false, false, false, false, false],
 			isEdit: false,
@@ -350,7 +349,7 @@ export default {
 				{ val: false, text: '工资，劳务报酬' },
 				{ val: false, text: '生产经营所得' },
 				{ val: false, text: '利息、股息，转让证券等金融性资产收入' },
-				{ val: false, text: '出租、出售房地产等非金融性资产收入' }
+				{ val: false, text: '出租、出售房地产等非金融性资产收入' },
 			],
 			souce_channel: [
 				{ val: false, text: '互联网' },
@@ -358,13 +357,13 @@ export default {
 				{ val: false, text: '亲戚朋友' },
 				{ val: false, text: '银行、证券、信托公司' },
 				{ val: false, text: '私募基金管理机构' },
-				{ val: false, text: '第三方理财机构' }
+				{ val: false, text: '第三方理财机构' },
 			],
 			souce_point: [
 				{ val: false, text: '私募基金管理机构的品牌' },
 				{ val: false, text: '基金销售机构的宣传和推介' },
 				{ val: false, text: '私募基金的业绩表现' },
-				{ val: false, text: '综合考虑私募基金管理机构的管理能力' }
+				{ val: false, text: '综合考虑私募基金管理机构的管理能力' },
 			],
 			souce_exercise: [
 				{ val: false, text: '马术运动' },
@@ -375,21 +374,21 @@ export default {
 				{ val: false, text: '网球' },
 				{ val: false, text: '羽毛球' },
 				{ val: false, text: '射箭' },
-				{ val: false, text: '其他' }
+				{ val: false, text: '其他' },
 			],
 			souce_enjoy: [
 				{ val: false, text: '红酒品鉴' },
 				{ val: false, text: '珠宝鉴赏' },
 				{ val: false, text: '形象提升（男/女）' },
 				{ val: false, text: '美妆/形体培训' },
-				{ val: false, text: '其他' }
+				{ val: false, text: '其他' },
 			],
 			souce_salon: [
 				{ val: false, text: '摄影分享' },
 				{ val: false, text: '投资策略' },
 				{ val: false, text: '花艺沙龙' },
 				{ val: false, text: '茶艺沙龙' },
-				{ val: false, text: '其他' }
+				{ val: false, text: '其他' },
 			],
 			souce_hands: [
 				{ val: false, text: '香水手作' },
@@ -397,7 +396,7 @@ export default {
 				{ val: false, text: '小黑裙手作' },
 				{ val: false, text: '口红手作' },
 				{ val: false, text: '包包手作' },
-				{ val: false, text: '其他' }
+				{ val: false, text: '其他' },
 			],
 			souce_selfHands: [
 				{ val: false, text: '永生花、永生花团扇手作' },
@@ -405,14 +404,14 @@ export default {
 				{ val: false, text: '咖啡手作' },
 				{ val: false, text: '鸡尾酒/精酿啤酒手作' },
 				{ val: false, text: '蛋糕/粽子/饼干手作' },
-				{ val: false, text: '其他' }
+				{ val: false, text: '其他' },
 			],
 			souce_food: [
 				{ val: false, text: '西餐' },
 				{ val: false, text: '中餐' },
 				{ val: false, text: '自助餐' },
 				{ val: false, text: '日料' },
-				{ val: false, text: '其他' }
+				{ val: false, text: '其他' },
 			],
 			souce_travel: [
 				{ val: false, text: '繁华都市' },
@@ -420,7 +419,7 @@ export default {
 				{ val: false, text: '名胜古迹' },
 				{ val: false, text: '海滨海岛' },
 				{ val: false, text: '自然景观' },
-				{ val: false, text: '其他' }
+				{ val: false, text: '其他' },
 			],
 			sex: 0,
 			datas: {
@@ -464,8 +463,8 @@ export default {
 				Fwomenhandwork: [],
 				Fhumanhandwork: [],
 				Fdeliciousfood: [],
-				FTourism: []
-			}
+				FTourism: [],
+			},
 		}
 	},
 	onLoad() {
@@ -506,7 +505,7 @@ export default {
 					this.souce_hands[idx].val = true
 				})
 				res.data.Fhumanhandwork.split(',').forEach(item => {
-					console.log('item====>',item)
+					console.log('item====>', item)
 					let idx = this.souce_selfHands.findIndex(m => m.text === item)
 					this.souce_selfHands[idx].val = true
 				})
@@ -520,14 +519,14 @@ export default {
 				})
 
 				Object.keys(this.datas).forEach(e => {
-					if(Array.isArray(this.datas[e])){
+					if (Array.isArray(this.datas[e])) {
 						this.datas[e] = this.pageData[e].split(',')
-					}else{
+					} else {
 						this.datas[e] = this.pageData[e]
 					}
 				})
-				console.log('====>',this.datas)
-			}
+				console.log('====>', this.datas)
+			},
 		})
 		this.$store.commit('SET_NUM', 0)
 	},
@@ -545,39 +544,39 @@ export default {
 		submit() {
 			let name = this.$store.state.account.info.RetValue.Name
 			let temp1 = []
-			Object.keys(this.datas).forEach(el=>{
+			Object.keys(this.datas).forEach(el => {
 				let value = ''
-				if(Array.isArray(this.datas[el])){
+				if (Array.isArray(this.datas[el])) {
 					value = this.datas[el].join(',')
-				}else{
+				} else {
 					value = this.datas[el]
 				}
 				temp1.push({
-					Field:el,
-					Value:value
+					Field: el,
+					Value: value,
 				})
 			})
 			let temp2 = [
-				{Field: 'esvalidate',Value: this.pageData.id},
-				{Field: 'FMktId',Value: ''},
-				{Field: 'FupdateUserId',Value: name},
-				{Field: 'FUpdateTime',Value: formatTime2()},
-				{Field: 'Fassessment',Value: this.score||this.pageData.Fassessment},
-				{Field: 'FRiskLevel',Value: this.gradeResult.grade||this.pageData.FRiskLevel}, 		
-				{Field: 'Fbear',Value: this.gradeResult.type||this.pageData.Fbear}, 
-				{Field: 'FproductLevel',Value: this.gradeResult.proType||this.pageData.FproductLevel},	
-				{Field: 'date1',Value: formatTime2().split(' ')[0]}
+				{ Field: 'esvalidate', Value: this.pageData.id },
+				{ Field: 'FMktId', Value: '' },
+				{ Field: 'FupdateUserId', Value: name },
+				{ Field: 'FUpdateTime', Value: formatTime2() },
+				{ Field: 'Fassessment', Value: this.score || this.pageData.Fassessment },
+				{ Field: 'FRiskLevel', Value: this.gradeResult.grade || this.pageData.FRiskLevel },
+				{ Field: 'Fbear', Value: this.gradeResult.type || this.pageData.Fbear },
+				{ Field: 'FproductLevel', Value: this.gradeResult.proType || this.pageData.FproductLevel },
+				{ Field: 'date1', Value: formatTime2().split(' ')[0] },
 			]
-			 
-			let params = [...temp1,...temp2]
+
+			let params = [...temp1, ...temp2]
 			console.log(params)
-			this.$api.editInfo(params,this.pageData.id).then(res=>{
+			this.$api.editInfo(params, this.pageData.id).then(res => {
 				this.isEdit = false
 				mpvue.showToast({
 					title: '操作成功',
-					icon: 'none'
+					icon: 'none',
 				})
-			  	mpvue.navigateBack({ delta: '1' })
+				mpvue.navigateBack({ delta: '1' })
 			})
 		},
 		cancel() {
@@ -685,8 +684,8 @@ export default {
 		lingQuestion() {
 			let url = `../quetions/main?type=1&FNumber=${this.pageData.FNumber}`
 			mpvue.navigateTo({ url })
-		}
-	}
+		},
+	},
 }
 </script>
 
